@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="65b9e7a9-a305-4b92-bfbb-0da186ad8f75" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/free-blog-common/target/" />
+    <ignored path="$PROJECT_DIR$/free-blog-portal/target/" />
+    <ignored path="$PROJECT_DIR$/free-blog-manage/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/article/PortalArticleMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2508">
+              <caret line="114" column="9" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/articlecategory/PortalCategoryMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/articlecategory/controller/PortalCategoryController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>PortalArticleService</find>
+      <find>USER</find>
+      <find>domain.USER</find>
+      <find>userId</find>
+      <find>domain.RoleMenu</find>
+      <find>Parameters</find>
+      <find>RoleMenu</find>
+      <find>sys_base_user</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>portal_user</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/user/service/impl/PortalUserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/menu/controller/PortalMenuController.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/speech/service/ShowSpeechBookService.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/speech/service/impl/ShowSpeechBookServiceImpl.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/speech/service/impl/PortalShowSpeechBookServiceImpl.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/speech/controller/PortalShowSpeechBookController.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/comment/entity/domain/SysBaseArticleComment.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/comment/service/impl/PortalCommentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/comment/dao/PortalCommentMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/listener/UserArticleListener.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/entity/dto/ArticleCheckDTO.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/controller/PortalArticleController.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/service/PortalArticleService.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/service/impl/PortalArticleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/entity/vo/PortalArticleInfoVO.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/entity/vo/ManageArticleInfoVO.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/menu/dao/MenuMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/category/PortalCategoryMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/articlecategory/service/impl/PortalArticleCategoryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/articlecategory/dao/PortalArticleCategoryMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/articletag/dao/PortalArticleTagMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/log/dao/PortalLogMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/speech/dao/PortalShowSpeechBookMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/role/dao/PortalRoleMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/articletag/PortalArticleTagMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/comment/PortalCommentMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/log/PortalLogMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/message/PortalMessageMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/ManageMenuMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/ManageRoleMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/MenuMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/RoleMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/PortalRoleMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/ManageUserMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/menu/dao/PortalMenuMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/ManageRoleMenuMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/menu/dao/PortalRoleMenuMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/ManageUserRoleMapper.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/role/dao/PortalUserRoleMapper.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/PortalMenuMapper.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/free-blog-common/src/main/java/com/blog/core/common/interceptor/SqlStatementInterceptor.java" />
+        <option value="$PROJECT_DIR$/free-blog-common/src/main/java/com/blog/core/common/config/MyBatisConfig.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/application-test.yml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/logback-spring.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/pom.xml" />
+        <option value="$PROJECT_DIR$/free-blog-manage/pom.xml" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/log/controller/PortalLogController.java" />
+        <option value="$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/article/PortalArticleMapper.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\repository" />
+        <option name="mavenHome" value="D:/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="free-blog" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="free-blog" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-32000" />
+    <option name="y" value="-32000" />
+    <option name="width" value="160" />
+    <option name="height" value="39" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="article" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="article" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="article" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="article" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="articlecategory" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="articlecategory" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="log" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="log" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="article" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="free-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="free-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="free-blog-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="articlecategory" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571331402769" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.blog.core.common.config" />
+      <recent name="com.blog.core.common.entity" />
+      <recent name="com.blog.core" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\myBlog\blog\free-blog\free-blog-portal\src\main\resources" />
+      <recent name="D:\Users\myBlog\blog\free-blog\free-blog-portal\src\main\resources\mapper" />
+      <recent name="D:\Users\myBlog\blog\free-blog\free-blog-portal\src\main\java\com\blog\core\tag\entity" />
+      <recent name="D:\Users\myBlog\blog\free-blog\free-blog-portal\src\main\java\com\blog\core\system\role\entity" />
+      <recent name="D:\Users\myBlog\blog\free-blog\free-blog-portal\src\main\java\com\blog\core\system\user\entity" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="FreeBlogPortalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="free-blog-portal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blog.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.blog.core.FreeBlogPortalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.FreeBlogPortalApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="65b9e7a9-a305-4b92-bfbb-0da186ad8f75" name="Default Changelist" comment="" />
+      <created>1570611793794</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570611793794</updated>
+      <workItem from="1570611796736" duration="14296000" />
+      <workItem from="1570781769176" duration="1470000" />
+      <workItem from="1570787144309" duration="6543000" />
+      <workItem from="1571362192065" duration="648000" />
+      <workItem from="1571549978980" duration="595000" />
+      <workItem from="1571555260271" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="23579000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-32000" y="-32000" width="160" height="39" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Alibaba Cloud Explorer" order="7" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.43336946" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Alibaba Cloud View" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.32995737" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Alibaba Log Console" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/user/service/impl/PortalUserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="946">
+          <caret line="71" column="66" selection-start-line="71" selection-start-column="66" selection-end-line="71" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/role/service/impl/RoleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/menu/service/impl/PortalMenuServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/tag/service/impl/PortalTagServiceServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/message/controller/PortalMessageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/articletag/dao/PortalArticleTagMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/comment/PortalCommentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1892">
+          <caret line="86" column="143" selection-start-line="86" selection-start-column="143" selection-end-line="86" selection-end-column="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/comment/dao/PortalCommentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <caret line="3" column="63" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/log/dao/PortalLogMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/log/PortalLogMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="84" selection-start-line="4" selection-start-column="84" selection-end-line="4" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/message/PortalMessageMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-113">
+          <caret line="4" column="112" selection-start-line="4" selection-start-column="112" selection-end-line="4" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/message/dao/PortalMessageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="61" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/tag/PortalTagMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/tag/dao/PortalTagMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/UserMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/role/dao/PortalRoleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="78" column="23" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/user/dao/PortalUserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1455">
+          <caret line="5" column="59" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/menu/entity/domain/PortalRoleMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="47" selection-start-column="8" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/menu/dao/PortalRoleMenuMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/role/entity/domain/PortalUserRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="47" selection-start-column="8" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/MenuMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/RoleMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/role/dao/PortalUserRoleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/PortalRoleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="114" column="96" selection-start-line="114" selection-start-column="96" selection-end-line="114" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/PortalRoleMenuMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="63" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/PortalUserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="142" column="42" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/PortalUserRoleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="63" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/system/menu/dao/PortalMenuMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/system/PortalMenuMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2926">
+          <caret line="136" column="98" selection-start-line="136" selection-start-column="98" selection-end-line="136" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="114" column="21" selection-start-line="114" selection-start-column="21" selection-end-line="114" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-common/src/main/java/com/blog/core/common/interceptor.java" />
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/log4j2.xml" />
+    <entry file="file://$PROJECT_DIR$/free-blog-common/src/main/java/com/blog/core/common/config/MyBatisConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-common/src/main/java/com/blog/core/common/interceptor/SqlStatementInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="97" column="85" lean-forward="true" selection-start-line="97" selection-start-column="85" selection-end-line="97" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/error/platform-error.2019-10-11.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/info/platform-info.2019-10-11.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2970" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/logback-spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/application-test.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-manage/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-manage/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/FreeBlogPortalApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/service/impl/PortalArticleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2640">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/log/controller/PortalLogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/article/controller/PortalArticleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/article/PortalArticleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2508">
+          <caret line="114" column="9" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/java/com/blog/core/articlecategory/controller/PortalCategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free-blog-portal/src/main/resources/mapper/articlecategory/PortalCategoryMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

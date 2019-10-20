@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.core.system.menu.dao.PortalRoleMenuMapper">
+
+    <insert id="insertRoleMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalRoleMenu">
+        INSERT INTO sys_base_role_menu
+        (id, role_id, menu_id, create_id,create_time)
+        VALUES
+        (#{id}, #{roleId}, #{menuId}, #{createId}, #{createTime})
+    </insert>
+
+    <delete id="deleteRoleMenuByRoleId" parameterType="java.lang.String">
+        DELETE FROM sys_base_role_menu WHERE role_id = #{roleId}
+    </delete>
+</mapper>

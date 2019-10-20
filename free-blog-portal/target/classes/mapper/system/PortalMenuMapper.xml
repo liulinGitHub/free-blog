@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.menu.dao.PortalMenuMapper">
+
+    <select id="selectMenuByPage" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+        SELECT
+            id AS menuId,
+            parent_id AS parentId,
+            menu_name AS menuName,
+            web_code AS webCode,
+            menu_url AS menuUrl,
+            icon AS icon,
+            menu_sort AS menuSort,
+            menu_type AS menuType,
+            perms AS perms,
+            is_enable AS isEnable,
+            create_time AS createTime
+        FROM
+            sys_base_menu
+        ORDER BY menu_sort
+    </select>
+
+    <select id="selectMenu" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+        SELECT
+            id AS menuId,
+            parent_id AS parentId,
+            menu_name AS menuName,
+            web_code AS webCode,
+            menu_url AS menuUrl,
+            icon AS icon,
+            menu_sort AS menuSort,
+            menu_type AS menuType,
+            perms AS perms,
+            is_enable AS isEnable,
+            create_time AS createTime
+        FROM
+            sys_base_menu
+        ORDER BY menu_sort
+    </select>
+
+    <select id="selectMenuByMenuId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+        SELECT
+            id AS menuId,
+            parent_id AS parentId,
+            menu_name AS menuName,
+            web_code AS webCode,
+            menu_url AS menuUrl,
+            icon AS icon,
+            menu_sort AS menuSort,
+            menu_type AS menuType,
+            perms AS perms,
+            is_enable AS isEnable,
+            create_time AS createTime
+        FROM
+            sys_base_menu
+        WHERE
+           id = #{id}
+    </select>
+
+    <insert id="addMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalMenu">
+        INSERT INTO
+         sys_base_menu
+         (
+          id,
+          parent_id,
+          menu_name,
+          web_code,
+          menu_url,
+          icon,
+          menu_sort,
+          menu_type,
+          perms,
+          is_enable,
+          create_id,
+          create_time
+         )
+         VALUES
+         (
+            #{id},
+            #{parentId},
+            #{menuName},
+            #{webCode},
+            #{menuUrl},
+            #{icon},
+            #{menuSort},
+            #{menuType.value},
+            #{perms},
+            #{isEnable.value},
+            #{createId},
+            #{createTime}
+         )
+    </insert>
+
+    <update id="editMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalMenu">
+        UPDATE
+            sys_base_menu
+        SET
+            parent_id = #{parentId},
+            menu_name = #{menuName},
+            web_code = #{webCode},
+            menu_url = #{menuUrl},
+            icon = #{icon},
+            menu_sort = #{menuSort},
+            menu_type = #{menuType.value},
+            perms = #{perms},
+            update_id = #{updateId},
+            update_time = #{updateTime}
+        WHERE
+            id = #{id}
+    </update>
+
+    <delete id="deleteMenu" parameterType="java.lang.String">
+        DELETE
+            sys_base_menu
+        WHERE
+            id = #{id}
+    </delete>
+
+    <update id="enableMenu" parameterType="java.lang.String">
+        UPDATE
+            sys_base_menu
+        SET
+            is_enable = '1'
+        WHERE
+            id = #{menuId}
+    </update>
+
+    <update id="disabledMenu" parameterType="java.lang.String">
+        UPDATE
+            sys_base_menu
+        SET
+            is_enable = '0'
+        WHERE
+            id = #{menuId}
+    </update>
+
+    <insert id="addRoleMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalRoleMenu">
+        INSERT
+            sys_base_role_menu
+          (
+            id,
+            role_id,
+            menu_id,
+            create_id,
+            create_time
+          )
+         VALUES
+         (
+            #{id},
+            #{roleId},
+            #{menuId},
+            #{createId},
+            #{createTime}
+         )
+    </insert>
+
+    <select id="selectMenuByRoleId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+        SELECT
+            menu.id AS menuId,
+            menu.parent_id AS parentId,
+            menu.menu_name AS menuName,
+            menu.web_code AS webCode,
+            menu.menu_url AS menuUrl,
+            menu.icon AS icon,
+            menu.menu_sort AS menuSort,
+            menu.menu_type AS menuType,
+            menu.perms AS perms,
+            menu.is_enable AS isEnable,
+            menu.create_time AS createTime
+        FROM
+            sys_base_menu AS menu
+            LEFT JOIN sys_base_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
+        WHERE
+	        roleMenu.role_id = #{roleId}
+    </select>
+
+    <select id="selectUserMenu" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+        SELECT
+            menu.id AS menuId,
+            menu.parent_id AS parentId,
+            menu.menu_name AS menuName,
+            menu.web_code AS webCode,
+            menu.menu_url AS menuUrl,
+            menu.icon AS icon,
+            menu.menu_sort AS menuSort,
+            menu.menu_type AS menuType,
+            menu.perms AS perms,
+            menu.is_enable AS isEnable,
+            menu.create_time AS createTime,
+            menu.is_web AS isWeb
+        FROM
+            sys_base_menu AS menu
+    </select>
+
+    <select id="selectUserMenuByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+        SELECT
+            menu.id AS menuId,
+            menu.parent_id AS parentId,
+            menu.menu_name AS menuName,
+            menu.web_code AS webCode,
+            menu.menu_url AS menuUrl,
+            menu.icon AS icon,
+            menu.menu_sort AS menuSort,
+            menu.menu_type AS menuType,
+            menu.perms AS perms,
+            menu.is_enable AS isEnable,
+            menu.create_time AS createTime,
+            menu.is_web AS isWeb
+        FROM
+            sys_base_menu AS menu
+            LEFT JOIN sys_base_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
+            LEFT JOIN sys_base_role AS role ON role.id = roleMenu.role_id
+            LEFT JOIN sys_base_user_role AS userRole ON userRole.role_id = role.id
+        WHERE
+            userRole.user_id = #{userId}
+    </select>
+
+    <select id="queryAllMenuId" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT
+            menu.id
+        FROM
+            sys_base_menu AS menu
+            LEFT JOIN sys_base_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
+            LEFT JOIN sys_base_role AS role ON role.id = roleMenu.role_id
+            LEFT JOIN sys_base_user_role AS userRole ON userRole.role_id = role.id
+        WHERE
+            userRole.user_id = #{userId}
+    </select>
+
+    <select id="selectMenuByParentId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+        SELECT
+            menu.id AS menuId,
+            menu.parent_id AS parentId,
+            menu.menu_name AS menuName,
+            menu.web_code AS webCode,
+            menu.menu_url AS menuUrl,
+            menu.icon AS icon,
+            menu.menu_sort AS menuSort,
+            menu.menu_type AS menuType,
+            menu.perms AS perms,
+            menu.is_enable AS isEnable,
+            menu.create_time AS createTime,
+            menu.is_web AS isWeb
+        FROM
+            sys_base_menu AS menu
+        WHERE
+            menu.parent_id = #{parentId}
+    </select>
+</mapper>

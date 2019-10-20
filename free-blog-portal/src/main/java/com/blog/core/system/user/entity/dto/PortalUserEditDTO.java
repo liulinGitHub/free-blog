@@ -1,0 +1,46 @@
+package com.blog.core.system.user.entity.dto;
+
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.util.List;
+
+/**
+ * @ClassNmae: SysBaseUserQueryDTO
+ * @description: 修改用户信息传参对象
+ * @Author: liulin
+ * @Date: 2019/4/14 23:46
+ **/
+@Data
+public class PortalUserEditDTO {
+
+    @ApiModelProperty(value="用户id",name="id")
+    private String id;
+
+    @ApiModelProperty(value="登陆用户名",name="userName")
+    private String userName;
+
+    @ApiModelProperty(value="登陆密码",name="userPassword")
+    private String userPassword;
+
+    @ApiModelProperty(value="昵称",name="nickName")
+    private String nickName;
+
+    @ApiModelProperty(value="头像",name="avatar")
+    private String avatar;
+
+    @ApiModelProperty(value="电话号码",name="telephone")
+    private String telephone;
+
+    @ApiModelProperty(value="邮箱",name="email")
+    private String email;
+;
+    @ApiModelProperty(value="个性签名",name="signature")
+    private String signature;
+
+    @ApiModelProperty(value="性别",name="gender")
+    private String gender;
+
+    private List<String> roleIdList;
+
+}

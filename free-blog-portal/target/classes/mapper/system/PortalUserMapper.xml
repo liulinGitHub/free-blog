@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.core.system.user.dao.PortalUserMapper">
+
+    <select id="queryUser" resultType="com.blog.core.system.user.entity.vo.PortalUserVO"
+            parameterType="com.blog.core.system.user.entity.dto.PortalUserQueryDTO">
+        SELECT
+            id,
+            user_name,
+            user_password,
+            nick_name,
+            avatar,
+            telephone,
+            email,
+            is_enable,
+            last_login_ip,
+            last_login_time,
+            create_time,
+            update_time,
+            create_id,
+            update_id,
+            signature,
+            comments,
+            article_total,
+            gender,
+            attention_id
+        FROM
+            sys_base_user
+        <where>
+            <if test="username != null and username != ''">
+                user_name like #{username}
+            </if>
+        </where>
+        ORDER BY is_enable DESC, create_time DESC
+    </select>
+
+    <select id="selectUserById" resultType="com.blog.core.system.user.entity.vo.PortalUserVO" parameterType="java.lang.String">
+        SELECT
+            id,
+            user_name userName,
+            user_password userPassword,
+            nick_name nickName,
+            avatar avatar,
+            telephone telephone,
+            email,
+            is_enable isEnable,
+            last_login_ip lastLoginIp,
+            last_login_time,
+            create_time,
+            update_time,
+            create_id,
+            update_id,
+            signature,
+            comments,
+            article_total,
+            gender,
+            attention_id signature,
+            is_supper isSupper
+        FROM
+            sys_base_user
+        <where>
+            <if test="userId != null">
+                id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="login" parameterType="com.blog.core.system.user.entity.dto.PortalUserLoginDTO"
+            resultType="com.blog.core.system.user.entity.vo.PortalUserLoginVO" >
+        SELECT
+            id,
+            user_name,
+            user_password,
+            nick_name,
+            avatar,
+            telephone,
+            email,
+            is_enable,
+            last_login_ip,
+            last_login_time,
+            create_time,
+            update_time,
+            create_id,
+            update_id,
+            signature,
+            comments,
+            article_total,
+            gender,
+            attention_id
+        FROM
+            sys_base_user
+        <where>
+            <if test="username  !=  null">
+                user_name = #{username}
+            </if>
+            <if test="password  !=  null">
+                AND user_password = #{password}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByUserName" resultType="com.blog.core.system.user.entity.vo.PortalUserLoginVO" parameterType="java.lang.String">
+        SELECT
+            id,
+            user_name,
+            user_password,
+            salt,
+            nick_name,
+            avatar,
+            telephone,
+            email,
+            is_enable,
+            last_login_ip,
+            last_login_time,
+            create_time,
+            update_time,
+            create_id,
+            update_id,
+            signature,
+            comments,
+            article_total,
+            gender,
+            attention_id
+        FROM
+            sys_base_user
+        WHERE
+            user_name= #{userName}
+        AND
+            is_enable = '1'
+    </select>
+
+    <select id="selectUserInfo" resultType="com.blog.core.system.user.entity.vo.PortalUserInfoVO" parameterType="java.lang.String">
+        SELECT
+            id AS userId,
+            user_name AS userName,
+            nick_name AS nickName,
+            avatar AS avatar,
+            telephone AS telephone,
+            email AS email,
+            last_login_time AS lastLoginTime,
+            signature AS signature,
+            comments AS comments,
+            article_total AS articleTotal,
+            gender AS gender
+        FROM
+            sys_base_user
+        WHERE
+            id = #{id}
+    </select>
+
+    <!--auto generated Code-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
+        INSERT INTO sys_base_user (
+            id,
+            user_name,
+            user_password,
+            nick_name,
+            avatar,
+            telephone,
+            email,
+            signature,
+            is_enable,
+            create_time,
+            create_id,
+            gender,
+            salt
+        ) VALUES (
+            #{id},
+            #{userName},
+            #{userPassword},
+            #{nickName},
+            #{avatar},
+            #{telephone},
+            #{email},
+            #{signature},
+            #{isEnable},
+            #{createTime},
+            #{createId},
+            #{gender},
+            #{salt}
+        )
+    </insert>
+
+    <update id="updateUser" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
+        UPDATE sys_base_user
+        <set>
+            <if test="id != null"> id = #{id}, </if>
+            <if test="userName != null"> user_name = #{userName}, </if>
+            <if test="userPassword !=  null"> user_password = #{userPassword}, </if>
+            <if test="nickName != null"> nick_name = #{nickName}, </if>
+            <if test="avatar != null"> avatar = #{avatar}, </if>
+            <if test="telephone != null"> telephone = #{telephone}, </if>
+            <if test="email != null"> email = #{email}, </if>
+            <if test="updateTime != null"> update_time = #{updateTime}, </if>
+            <if test="updateId != null"> update_id = #{updateId}, </if>
+            <if test="signature != null"> signature = #{signature}, </if>
+            <if test="gender != null"> gender = #{gender} </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateIsEnable" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
+        UPDATE
+        sys_base_user
+        SET
+        is_enable = #{isEnable}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateArticleTotal" parameterType="java.lang.String">
+        UPDATE
+        sys_base_user
+        SET
+        article_total = article_total + 1
+        WHERE id = #{articleUserId}
+    </update>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_base_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null"> id,</if>
+            <if test="userName != null"> user_name,</if>
+            <if test="userPassword != null"> user_password,</if>
+            <if test="nickName != null"> nick_name,</if>
+            <if test="avatar != null"> avatar,</if>
+            <if test="telephone != null"> telephone,</if>
+            <if test="email != null"> email,</if>
+            <if test="isEnable != null"> is_enable,</if>
+            <if test="lastLoginIp != null"> last_login_ip,</if>
+            <if test="lastLoginTime != null"> last_login_time,</if>
+            <if test="createTime != null"> create_time,</if>
+            <if test="updateTime != null"> update_time,</if>
+            <if test="updateId != null"> create_id,</if>
+            <if test="updateId != null"> update_id,</if>
+            <if test="signature != null"> signature,</if>
+            <if test="comments != null"> comments,</if>
+            <if test="articleTotal != null"> article_total,</if>
+            <if test="gender != null"> gender,</if>
+            <if test="attentionId != null"> attention_id,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userName != null">#{userName},</if>
+            <if test="userPassword != null">#{userPassword},</if>
+            <if test="nickName != null">#{nickName},</if>
+            <if test="avatar != null">#{avatar},</if>
+            <if test="telephone != null">#{telephone},</if>
+            <if test="email != null">#{email},</if>
+            <if test="isEnable != null">#{isEnable},</if>
+            <if test="lastLoginIp != null">#{lastLoginIp},</if>
+            <if test="lastLoginTime != null">#{lastLoginTime},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createId != null">#{createId},</if>
+            <if test="updateId != null">#{updateId},</if>
+            <if test="signature != null">#{signature},</if>
+            <if test="comments != null">#{comments},</if>
+            <if test="articleTotal != null">#{articleTotal},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="attentionId != null">#{attentionId},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO sys_base_user (
+        id,
+        user_name,
+        user_password,
+        nick_name,
+        avatar,
+        telephone,
+        email,
+        is_enable,
+        last_login_ip,
+        last_login_time,
+        create_time,
+        update_time,
+        create_id,
+        update_id,
+        signature,
+        comments,
+        article_total,
+        gender,
+        attention_id
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{id},
+            #{userName},
+            #{userPassword},
+            #{nickName},
+            #{avatar},
+            #{telephone},
+            #{email},
+            #{isEnable},
+            #{lastLoginIp},
+            #{lastLoginTime},
+            #{createTime},
+            #{updateTime},
+            #{createId},
+            #{updateId},
+            #{signature},
+            #{comments},
+            #{articleTotal},
+            #{gender},
+            #{attentionId}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

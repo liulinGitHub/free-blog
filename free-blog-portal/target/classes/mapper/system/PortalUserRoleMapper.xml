@@ -8,19 +8,19 @@
             role_id,
             user_id
         FROM
-            sys_base_user_role
+            portal_user_role
         WHERE
             user_id = #{userId}
     </select>
 
     <insert id="insertUserRole" parameterType="com.blog.core.system.role.entity.domain.PortalUserRole">
-        INSERT INTO sys_base_user_role
+        INSERT INTO portal_user_role
         (role_id, user_id, create_id,create_time)
         VALUES
         (roleId, userId, createId, createTime)
     </insert>
 
     <delete id="deleteUserRoleByUserId" parameterType="java.lang.String">
-        DELETE FROM sys_base_user_role WHERE user_id = #{userId}
+        DELETE FROM portal_user_role WHERE user_id = #{userId}
     </delete>
 </mapper>

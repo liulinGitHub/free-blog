@@ -13,7 +13,7 @@
             update_time,
             create_id,
             update_id
-        from sys_base_role
+        from portal_role
         <where>
             <if test="roleName != null and roleName != ''">
                 role_name = #{roleName}
@@ -30,13 +30,13 @@
             is_enable,
             create_time
         FROM
-            sys_base_role
+            portal_role
         WHERE
             id = #{roleId}
     </select>
 
     <insert id="addRole" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.system.role.entity.domain.PortalRole">
-        INSERT INTO sys_base_role (
+        INSERT INTO portal_role (
             id,
             role_name,
             role_describe,
@@ -57,7 +57,7 @@
 
     <update id="editRole" parameterType="com.blog.core.system.role.entity.domain.PortalRole">
         UPDATE
-            sys_base_role
+            portal_role
         SET
             role_name = #{roleName},
             role_describe = #{roleDescribe},
@@ -69,14 +69,14 @@
 
     <delete id="deleteRole" parameterType="java.lang.String">
         DELETE FROM
-            sys_base_role
+            portal_role
         WHERE
             id = #{roleId}
     </delete>
 
     <update id="enableRole" parameterType="java.lang.String">
         UPDATE
-            sys_base_role
+            portal_role
         SET
             is_enable = '1'
         WHERE
@@ -85,7 +85,7 @@
 
     <update id="disabledRole" parameterType="java.lang.String">
         UPDATE
-            sys_base_role
+            portal_role
         SET
             is_enable = '0'
         WHERE
@@ -94,7 +94,7 @@
 
     <insert id="addUserRole" parameterType="com.blog.core.system.role.entity.domain.PortalUserRole">
         INSERT
-            sys_base_user_role
+            portal_role
         (
             id,
             role_id,
@@ -121,8 +121,8 @@
             role.is_enable AS isEnable,
             role.create_time AS createTime
         FROM
-            sys_base_role AS role
-            LEFT JOIN sys_base_user_role AS userRole ON userRole.role_id = role.id
+            portal_role AS role
+            LEFT JOIN portal_user_role AS userRole ON userRole.role_id = role.id
         <where>
             <if test="userId != null and userId !=''">
                 userRole.user_id = #{userId}
@@ -132,7 +132,7 @@
 
     <!--auto generated Code-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
-        INSERT INTO sys_base_role (
+        INSERT INTO portal_role (
             `id`,
             `role_name`,
             `describe`,

@@ -14,7 +14,7 @@
         `approves`,
         `is_enable`
         FROM
-        sys_base_comment
+        portal_comment
     </select>
 
     <select id="queryCommentById" resultType="com.blog.core.comment.entity.vo.PortalArticleCommentVO">
@@ -32,8 +32,8 @@
             END AS author,
             user.avatar AS avatar
         FROM
-	        sys_base_comment AS comment
-        LEFT JOIN sys_base_user AS user ON `comment`.comment_user_id = `user`.id
+	        portal_comment AS comment
+        LEFT JOIN portal_user AS user ON `comment`.comment_user_id = `user`.id
         WHERE comment.id = #{commentId}
         ORDER BY comment.comment_time desc
     </select>
@@ -53,8 +53,8 @@
             END AS author,
             user.avatar AS avatar
         FROM
-            sys_base_comment AS comment
-        LEFT JOIN sys_base_user AS user ON `comment`.comment_user_id = `user`.id
+            portal_comment AS comment
+        LEFT JOIN portal_user AS user ON `comment`.comment_user_id = `user`.id
         WHERE comment.parent_id = #{parentId}
         ORDER BY comment.comment_time desc
     </select>
@@ -74,8 +74,8 @@
             END AS author,
             user.avatar AS avatar
         FROM
-            sys_base_comment AS comment
-            LEFT JOIN sys_base_user AS user ON comment.comment_user_id = user.id
+            portal_comment AS comment
+            LEFT JOIN portal_user AS user ON comment.comment_user_id = user.id
         WHERE
             comment.article_id = #{articleId}
             AND comment.is_parent = '1'
@@ -85,7 +85,7 @@
 
     <!--auto generated Code-->
     <insert id="insertComment" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.comment.entity.domain.PortalArticleComment">
-        INSERT INTO sys_base_comment (
+        INSERT INTO portal_comment (
             `id`,
             `comment_content`,
             `comment_user_id`,

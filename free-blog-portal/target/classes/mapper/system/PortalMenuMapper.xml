@@ -16,7 +16,7 @@
             is_enable AS isEnable,
             create_time AS createTime
         FROM
-            sys_base_menu
+            portal_menu
         ORDER BY menu_sort
     </select>
 
@@ -34,7 +34,7 @@
             is_enable AS isEnable,
             create_time AS createTime
         FROM
-            sys_base_menu
+            portal_menu
         ORDER BY menu_sort
     </select>
 
@@ -52,14 +52,14 @@
             is_enable AS isEnable,
             create_time AS createTime
         FROM
-            sys_base_menu
+            portal_menu
         WHERE
            id = #{id}
     </select>
 
     <insert id="addMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalMenu">
         INSERT INTO
-         sys_base_menu
+         portal_menu
          (
           id,
           parent_id,
@@ -93,7 +93,7 @@
 
     <update id="editMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalMenu">
         UPDATE
-            sys_base_menu
+            portal_menu
         SET
             parent_id = #{parentId},
             menu_name = #{menuName},
@@ -111,14 +111,14 @@
 
     <delete id="deleteMenu" parameterType="java.lang.String">
         DELETE
-            sys_base_menu
+            portal_menu
         WHERE
             id = #{id}
     </delete>
 
     <update id="enableMenu" parameterType="java.lang.String">
         UPDATE
-            sys_base_menu
+            portal_menu
         SET
             is_enable = '1'
         WHERE
@@ -127,7 +127,7 @@
 
     <update id="disabledMenu" parameterType="java.lang.String">
         UPDATE
-            sys_base_menu
+            portal_menu
         SET
             is_enable = '0'
         WHERE
@@ -136,7 +136,7 @@
 
     <insert id="addRoleMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalRoleMenu">
         INSERT
-            sys_base_role_menu
+            portal_menu
           (
             id,
             role_id,
@@ -168,8 +168,8 @@
             menu.is_enable AS isEnable,
             menu.create_time AS createTime
         FROM
-            sys_base_menu AS menu
-            LEFT JOIN sys_base_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
+            portal_menu AS menu
+            LEFT JOIN portal_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
         WHERE
 	        roleMenu.role_id = #{roleId}
     </select>
@@ -189,7 +189,7 @@
             menu.create_time AS createTime,
             menu.is_web AS isWeb
         FROM
-            sys_base_menu AS menu
+            portal_menu AS menu
     </select>
 
     <select id="selectUserMenuByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
@@ -207,10 +207,10 @@
             menu.create_time AS createTime,
             menu.is_web AS isWeb
         FROM
-            sys_base_menu AS menu
-            LEFT JOIN sys_base_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
-            LEFT JOIN sys_base_role AS role ON role.id = roleMenu.role_id
-            LEFT JOIN sys_base_user_role AS userRole ON userRole.role_id = role.id
+            portal_menu AS menu
+            LEFT JOIN portal_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
+            LEFT JOIN portal_role AS role ON role.id = roleMenu.role_id
+            LEFT JOIN portal_user_role AS userRole ON userRole.role_id = role.id
         WHERE
             userRole.user_id = #{userId}
     </select>
@@ -219,10 +219,10 @@
         SELECT
             menu.id
         FROM
-            sys_base_menu AS menu
-            LEFT JOIN sys_base_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
-            LEFT JOIN sys_base_role AS role ON role.id = roleMenu.role_id
-            LEFT JOIN sys_base_user_role AS userRole ON userRole.role_id = role.id
+            portal_menu AS menu
+            LEFT JOIN portal_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
+            LEFT JOIN portal_role AS role ON role.id = roleMenu.role_id
+            LEFT JOIN portal_user_role AS userRole ON userRole.role_id = role.id
         WHERE
             userRole.user_id = #{userId}
     </select>
@@ -242,7 +242,7 @@
             menu.create_time AS createTime,
             menu.is_web AS isWeb
         FROM
-            sys_base_menu AS menu
+            portal_menu AS menu
         WHERE
             menu.parent_id = #{parentId}
     </select>

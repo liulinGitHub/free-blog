@@ -4,9 +4,14 @@
 
     <select id="selectCategoryById" resultType="com.blog.core.articlecategory.entity.vo.PortalCategoryVO">
         SELECT
-        id,category_name,sort,create_time,update_time,is_enable
+        id,
+        category_name,
+        sort,
+        create_time,
+        update_time,
+        is_enable
         FROM
-        sys_base_category
+        portal_category
         WHERE
         id = #{CategoryId}
     </select>

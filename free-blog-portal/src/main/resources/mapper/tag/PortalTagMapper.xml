@@ -9,7 +9,7 @@
         tag_category_id,
         create_time createTime
         FROM
-        sys_base_tag
+        portal_tag
         <where>
             <if test="tagName != null and tagName != ''">
                 tag_name = #{tagName}
@@ -25,9 +25,9 @@
             tag.tag_category_id,
             tag.create_time createTime
         FROM
-            sys_base_tag tag
-            LEFT JOIN sys_base_article_tag sbat ON tag.id = sbat.tag_id
-            LEFT JOIN sys_base_article article ON article.id = sbat.article_id
+            portal_tag tag
+            LEFT JOIN portal_article_tag sbat ON tag.id = sbat.tag_id
+            LEFT JOIN portal_article article ON article.id = sbat.article_id
         WHERE article.id = #{articleId}
         ORDER BY tag.create_time DESC
     </select>

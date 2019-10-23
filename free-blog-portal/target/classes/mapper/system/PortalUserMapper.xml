@@ -143,14 +143,14 @@
             article_total AS articleTotal,
             gender AS gender
         FROM
-            sys_base_user
+            portal_user
         WHERE
             id = #{id}
     </select>
 
     <!--auto generated Code-->
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
-        INSERT INTO sys_base_user (
+        INSERT INTO portal_user (
             id,
             user_name,
             user_password,
@@ -182,7 +182,7 @@
     </insert>
 
     <update id="updateUser" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
-        UPDATE sys_base_user
+        UPDATE portal_user
         <set>
             <if test="id != null"> id = #{id}, </if>
             <if test="userName != null"> user_name = #{userName}, </if>
@@ -201,7 +201,7 @@
 
     <update id="updateIsEnable" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
         UPDATE
-        sys_base_user
+        portal_user
         SET
         is_enable = #{isEnable}
         WHERE id = #{id}
@@ -209,7 +209,7 @@
 
     <update id="updateArticleTotal" parameterType="java.lang.String">
         UPDATE
-        sys_base_user
+        portal_user
         SET
         article_total = article_total + 1
         WHERE id = #{articleUserId}
@@ -217,7 +217,7 @@
 
     <!--auto generated Code-->
     <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO sys_base_user
+        INSERT INTO portal_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null"> id,</if>
             <if test="userName != null"> user_name,</if>
@@ -265,7 +265,7 @@
 
     <!--auto generated Code-->
     <insert id="insertList">
-        INSERT INTO sys_base_user (
+        INSERT INTO portal_user (
         id,
         user_name,
         user_password,

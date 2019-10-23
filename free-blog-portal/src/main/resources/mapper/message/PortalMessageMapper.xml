@@ -14,13 +14,13 @@
             message_type,
             read_status
         FROM
-        im_message
+        portal_im_message
         WHERE
         message_type = #{messageType.value}
     </select>
 
     <insert id="insertPortalMessage" parameterType="com.blog.core.message.entity.domain.PortalMessage">
-        INSERT INTO im_message
+        INSERT INTO portal_im_message
         (id, receive_id, receive_time, send_id, send_id, send_time, content, message_type, read_status)
         VALUES
         (#{id}, #{receiveId}, #{receiveTime}, #{sendId}, #{sendTime}, #{content}, #{messageType}, #{readStatus})

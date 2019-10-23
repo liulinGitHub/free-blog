@@ -3,13 +3,13 @@
 <mapper namespace="com.blog.core.system.menu.dao.PortalRoleMenuMapper">
 
     <insert id="insertRoleMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalRoleMenu">
-        INSERT INTO sys_base_role_menu
+        INSERT INTO portal_role_menu
         (id, role_id, menu_id, create_id,create_time)
         VALUES
         (#{id}, #{roleId}, #{menuId}, #{createId}, #{createTime})
     </insert>
 
     <delete id="deleteRoleMenuByRoleId" parameterType="java.lang.String">
-        DELETE FROM sys_base_role_menu WHERE role_id = #{roleId}
+        DELETE FROM portal_role_menu WHERE role_id = #{roleId}
     </delete>
 </mapper>

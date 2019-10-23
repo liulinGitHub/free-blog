@@ -30,8 +30,8 @@
             END AS articleAuthor,
             user.avatar AS articleAuthorImage
         FROM
-            sys_base_article article
-        LEFT JOIN sys_base_user AS user ON article.article_user_id = user .id
+            portal_article article
+        LEFT JOIN portal_user AS user ON article.article_user_id = user .id
         WHERE
           article.is_enable = '1'
           AND article.release_status = '1'
@@ -61,37 +61,37 @@
             END AS articleAuthor,
             user.avatar AS articleAuthorImage
         FROM
-            sys_base_article article
-            LEFT JOIN sys_base_user user ON article.article_user_id = user.id
+            portal_article article
+            LEFT JOIN portal_user user ON article.article_user_id = user.id
         WHERE article.id = #{id}
     </select>
 
     <update id="updateReadArticle" parameterType="java.lang.String">
-        UPDATE sys_base_article
+        UPDATE portal_article
         SET like_number = like_number + 1
         WHERE id = #{articleId}
     </update>
 
     <update id="updateApproves" parameterType="java.lang.String">
-        UPDATE sys_base_article
+        UPDATE portal_article
         SET approves = approves + 1
         WHERE id = #{articleId}
     </update>
 
     <update id="updateTemperature" parameterType="java.lang.String">
-        UPDATE sys_base_article
+        UPDATE portal_article
         SET temperature = temperature + 1
         WHERE id = #{articleId}
     </update>
 
     <update id="updateComments" parameterType="java.lang.String">
-        UPDATE sys_base_article
+        UPDATE portal_article
         SET comments = comments + 1
         WHERE id = #{articleId}
     </update>
 
     <update id="checkArticle" parameterType="com.blog.core.article.entity.domain.PortalArticle">
-        UPDATE sys_base_article
+        UPDATE portal_article
         SET article_status = #{articleStatus},
         release_status = #{releaseStatus},
         release_date = #{releaseDate}
@@ -99,7 +99,7 @@
     </update>
 
     <update id="submitCheckArticle" parameterType="com.blog.core.article.entity.domain.PortalArticle">
-        UPDATE sys_base_article
+        UPDATE portal_article
         SET article_status = #{articleStatus},
         article_title = #{articleTitle},
         article_content = #{articleContent},
@@ -111,8 +111,8 @@
 
     <insert id="saveDraft" parameterType="com.blog.core.article.entity.domain.PortalArticle">
         INSERT INTO
-        sys_base_article
-        (   `id`,
+        portal_article
+        (
             `article_title`,
             `article_content`,
             `article_user_id`,
@@ -124,7 +124,7 @@
             `create_name`
         )
         VALUES
-        (   #{id},
+        (
             #{articleTitle},
             #{articleContent},
             #{articleUserId},
@@ -139,6 +139,6 @@
     </insert>
 
     <delete id="deleteDraft" parameterType="java.lang.String">
-        DELETE FROM sys_base_article WHERE id = #{articleId}
+        DELETE FROM portal_article WHERE id = #{articleId}
     </delete>
 </mapper>

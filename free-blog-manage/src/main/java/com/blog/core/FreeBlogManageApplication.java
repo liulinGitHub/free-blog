@@ -5,17 +5,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @program: FreeBlogPortalApplication
- * @description: 前台页面展示系统启动类
+ * @program: FreeBlogManageApplication
+ * @description: 后台管理系统启动类
  * @author: liulin
- * @create: 2019-10-09 16:51
+ * @create: 2019-10-24 10:03
  * @Version: 1.0
  */
 @SpringBootApplication
 @MapperScan("com.blog.core.**.dao")
-public class FreeBlogPortalApplication {
+public class FreeBlogManageApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FreeBlogPortalApplication.class, args);
+        SpringApplication.run(FreeBlogManageApplication.class, args);
     }
 }

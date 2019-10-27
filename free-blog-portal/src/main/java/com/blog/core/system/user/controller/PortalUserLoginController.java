@@ -42,7 +42,7 @@ public class PortalUserLoginController {
         //String token = TokenUtils.getToken(portalUserLoginVO);
         String token = "123456";
         //token存入redis
-        redisUtil.set(token,portalUserLoginVO.getId());
+        redisUtil.set(token,portalUserLoginVO.getUserId());
         portalUserLoginVO.setToken(token);
         return ResponseBo.newDataResponse(portalUserLoginVO);
     }

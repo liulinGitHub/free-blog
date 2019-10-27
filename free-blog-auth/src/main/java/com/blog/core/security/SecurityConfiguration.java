@@ -1,8 +1,11 @@
 package com.blog.core.security;
 
+import com.blog.core.service.UserDetailsServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,6 +26,9 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
@@ -40,21 +46,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
     }
 
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+    /**
+     * 对password授权模式的支持
+     * @param auth
+     * @throws Exception
+     */
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService).passwordEncoder(new SecurityPasswordEncoder());
+//    }
 
-    @Bean
-    public AuthenticationSuccessHandler mobileLoginSuccessHandler() {
-        return null;
-//                MobileLoginSuccessHandler.builder()
-//                .objectMapper(objectMapper)
-//                .clientDetailsService(clientDetailsService)
-//                .passwordEncoder(passwordEncoder())
-//                .defaultAuthorizationServerTokenServices(defaultAuthorizationServerTokenServices).build();
-    }
+
+//    @Bean
+//    @Override
+//    public AuthenticationManager authenticationManagerBean() throws Exception {
+//        return super.authenticationManagerBean();
+//    }
+
+//    @Bean
+//    public AuthenticationSuccessHandler mobileLoginSuccessHandler() {
+//        return null;
+////                MobileLoginSuccessHandler.builder()
+////                .objectMapper(objectMapper)
+////                .clientDetailsService(clientDetailsService)
+////                .passwordEncoder(passwordEncoder())
+////                .defaultAuthorizationServerTokenServices(defaultAuthorizationServerTokenServices).build();
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

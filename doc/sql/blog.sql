@@ -791,7 +791,6 @@ CREATE TABLE `portal_user`  (
   `is_supper` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '是否超级管理员',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
-
 -- ----------------------------
 -- Records of portal_user
 -- ----------------------------
@@ -817,4 +816,20 @@ CREATE TABLE `portal_user_role`  (
 -- ----------------------------
 INSERT INTO `portal_user_role` VALUES ('50d2aba60d004998bb8bd1295fae6d33', '36c9ae4c53ed41519aa6a67f36d5565a', '8e20ed1dc3084825800957a89d2061d2', '0c3740672f6a4afbaa1af705e4b66c47', '2019-07-17 18:00:39', NULL, NULL);
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- SET FOREIGN_KEY_CHECKS = 1;
+
+
+CREATE TABLE `sys_oauth_client_details` (
+  `client_id` varchar(50) NOT NULL COMMENT '主键，用于唯一标识每一个客户端(client)',
+  `resource_ids` varchar(256) DEFAULT NULL COMMENT '客户端所能访问的资源id集合,多个资源时用逗号(,)分隔,如: "unity-resource,mobile-resource".',
+  `client_secret` varchar(256) DEFAULT NULL COMMENT '用于指定客户端(client)的访问密匙',
+  `scope` varchar(256) DEFAULT NULL COMMENT '指定客户端申请的权限范围,可选值包括read,write,trust;',
+  `authorized_grant_types` varchar(256) DEFAULT NULL COMMENT '指定客户端支持的grant_type,可选值包括authorization_code,password,refresh_token,implicit,client_credentials,',
+  `web_server_redirect_uri` varchar(256) DEFAULT NULL COMMENT '客户端的重定向URI,可为空',
+  `authorities` varchar(256) DEFAULT NULL COMMENT '指定客户端所拥有的Spring Security的权限值,可选',
+  `access_token_validity` int(11) DEFAULT NULL COMMENT '设定客户端的access_token的有效时间值(单位:秒),',
+  `refresh_token_validity` int(11) DEFAULT NULL COMMENT '设定客户端的refresh_token的有效时间值(单位:秒),可选,',
+  `additional_information` varchar(4096) DEFAULT NULL COMMENT '这是一个预留的字段,在Oauth的流程中没有实际的使用,可选',
+  `autoapprove` varchar(256) DEFAULT NULL COMMENT '设置用户是否自动Approval操作',
+  PRIMARY KEY (`client_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;

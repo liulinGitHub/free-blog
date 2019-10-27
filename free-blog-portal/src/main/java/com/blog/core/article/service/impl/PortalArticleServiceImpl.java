@@ -46,7 +46,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     public List<PortalArticleInfoVO> queryArticleByPage() {
         List<PortalArticleInfoVO> portalArticleInfoVOList = this.portalArticleMapper.selectArticleByPage();
         if (CollectionUtils.isNotEmpty(portalArticleInfoVOList)) {
-            portalArticleInfoVOList.stream().forEach(portalArticleInfoVO -> {
+            portalArticleInfoVOList.parallelStream().forEach(portalArticleInfoVO -> {
                 List<PortalTagVO> portalTagVOList = this.portalTagService.queryTagByArticleId(portalArticleInfoVO.getId());
                 if (CollectionUtils.isNotEmpty(portalTagVOList)) {
                     portalArticleInfoVO.setPortalTagVOList(portalTagVOList);

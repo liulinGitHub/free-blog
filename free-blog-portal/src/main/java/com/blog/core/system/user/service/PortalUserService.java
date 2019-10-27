@@ -28,11 +28,17 @@ public interface PortalUserService {
     PortalUserLoginVO login(PortalUserLoginDTO UserLoginDTO);
 
     /**
-     * 根据用户名查询用户信息
+     * 根据用户id查询用户信息
      * @param userId
      * @return
      */
     PortalUserInfoVO queryUserInfo(String userId);
+
+    /**
+     * 根据用户名查询用户信息
+     * @param username
+     */
+    PortalUserLoginVO queryUserByUserName(String username);
 
     /**
      * 查询用户信息

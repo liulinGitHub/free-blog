@@ -101,11 +101,11 @@
 
     <select id="findByUserName" resultType="com.blog.core.system.user.entity.vo.PortalUserLoginVO" parameterType="java.lang.String">
         SELECT
-            id,
-            user_name,
-            user_password,
+            id userId,
+            user_name userName,
+            user_password userPassword,
             salt,
-            nick_name,
+            nick_name nickName,
             avatar,
             telephone,
             email,
@@ -122,7 +122,7 @@
             gender,
             attention_id
         FROM
-            sys_base_user
+            portal_user
         WHERE
             user_name= #{userName}
         AND

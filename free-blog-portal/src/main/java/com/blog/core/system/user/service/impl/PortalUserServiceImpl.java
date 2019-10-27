@@ -65,6 +65,16 @@ public class PortalUserServiceImpl implements PortalUserService {
         return portalUserLoginVO;
     }
 
+    /**
+     * 根据用户名查询用户信息
+     * @param username
+     */
+    public PortalUserLoginVO queryUserByUserName(String username){
+        PortalUserLoginVO portalUserLoginVO = this.portalUserMapper.findByUserName(username);
+        return portalUserLoginVO;
+    }
+
+
     @Override
     public PortalUserInfoVO queryUserInfo(String userId) {
         PortalUserInfoVO portalUserInfoVO = this.portalUserMapper.selectUserInfo(userId);

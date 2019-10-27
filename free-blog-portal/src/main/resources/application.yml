@@ -9,11 +9,11 @@ spring:
     check-template-location: false
 
 #日志
-#logging:
-#  level:
-#    com.blog.core: DEBUG
-#    org.springframework.security: DEBUG
-#    com.blog.core.**.dao: DEBUG
+logging:
+  level:
+    com.blog.core: DEBUG
+    org.springframework.security: DEBUG
+    com.blog.core.**.dao: DEBUG
 
 
 blog:

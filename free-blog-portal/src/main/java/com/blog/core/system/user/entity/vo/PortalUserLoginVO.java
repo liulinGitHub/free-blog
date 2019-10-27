@@ -13,7 +13,7 @@ import lombok.Data;
 public class PortalUserLoginVO {
 
     @ApiModelProperty(value="用户id",name="username")
-    private String id;
+    private String userId;
 
     @ApiModelProperty(value="登陆用户名",name="userName")
     private String userName;

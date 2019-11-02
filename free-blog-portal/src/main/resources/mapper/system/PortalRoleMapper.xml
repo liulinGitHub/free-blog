@@ -2,17 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.system.role.dao.PortalRoleMapper">
 
+    <select id="selectPortalRole" resultType="com.blog.core.system.role.entity.vo.PortalRoleVO">
+        select
+            id roleId,
+            role_name roleName,
+            role_describe roleDescribe,
+            role_code roleCode,
+            is_enable isEnable,
+            create_time createTime,
+            update_time updateTime,
+            create_id createId,
+            update_id updateId
+        from portal_role
+    </select>
+
     <select id="selectRoleByPage" resultType="com.blog.core.system.role.entity.vo.PortalRoleVO">
         select
-            id,
-            role_name,
-            role_describe,
-            role_code,
-            is_enable,
-            create_time,
-            update_time,
-            create_id,
-            update_id
+            id roleId,
+            role_name roleName,
+            role_describe roleDescribe,
+            role_code roleCode,
+            is_enable isEnable,
+            create_time createTime,
+            update_time updateTime,
+            create_id createId,
+            update_id updateId
         from portal_role
         <where>
             <if test="roleName != null and roleName != ''">
@@ -23,12 +37,13 @@
 
     <select id="selectRoleByRoleId" parameterType="java.lang.String" resultType="com.blog.core.system.role.entity.vo.PortalRoleVO">
         SELECT
-            id,
-            role_name,
-            role_describe,
-            role_code,
-            is_enable,
-            create_time
+            id roleId,
+            role_name roleName,
+            role_describe roleDescribe,
+            role_code roleCode,
+            is_enable isEnable,
+            create_time createTime,
+            create_id createId
         FROM
             portal_role
         WHERE
@@ -112,9 +127,9 @@
          )
     </insert>
 
-    <select id="selectRoleByUserId" resultType="com.blog.core.system.role.entity.vo.PortalRoleVO">
+    <select id="selectRoleByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.role.entity.vo.PortalRoleVO">
          SELECT
-            role.id AS id,
+            role.id AS roleId,
             role.role_name AS roleName,
             role.role_describe AS roleDescribe,
             role.role_code AS roleCode,
@@ -128,6 +143,22 @@
                 userRole.user_id = #{userId}
             </if>
         </where>
+    </select>
+
+    <select id="selectRoleByUrl" parameterType="java.lang.String" resultType="com.blog.core.system.role.entity.vo.PortalRoleVO">
+        SELECT
+            pr.id AS roleId,
+            pr.role_name AS roleName,
+            pr.role_describe AS roleDescribe,
+            pr.role_code AS roleCode,
+            pr.is_enable AS isEnable,
+            pr.create_time AS createTime
+        FROM
+            portal_role pr
+            LEFT JOIN portal_role_menu prm ON pr.id = prm.role_id
+            LEFT JOIN portal_menu pm ON prm.menu_id = pm.id
+        WHERE
+            pm.menu_url = #{url}
     </select>
 
     <!--auto generated Code-->

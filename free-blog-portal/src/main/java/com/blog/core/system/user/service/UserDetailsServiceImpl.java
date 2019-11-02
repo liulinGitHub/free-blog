@@ -1,5 +1,8 @@
 package com.blog.core.system.user.service;
 
+import com.blog.core.system.role.entity.domain.PortalRole;
+import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
+import com.blog.core.system.role.service.PortalRoleService;
 import com.blog.core.system.user.entity.domain.SecurityUserDetails;
 import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @ClassNmae: UserDetailsService
@@ -19,8 +25,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
+    @Resource
     private PortalUserService portalUserService;
+
+    @Resource
+    private PortalRoleService portalRoleService;
 
     /**
      * 获取用户信息
@@ -32,6 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         PortalUserLoginVO portalUserLoginVO = this.portalUserService.queryUserByUserName(username);
-        return new SecurityUserDetails(portalUserLoginVO);
+        List<PortalRoleMenuInfoVO> portalRoleMenuInfoVOList = portalRoleService.queryRoleMenuInfoByUserId(portalUserLoginVO.getUserId());
+        return new SecurityUserDetails(portalUserLoginVO, portalRoleMenuInfoVOList);
     }
 }

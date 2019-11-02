@@ -50,6 +50,17 @@ public class BlogExceptionHandler {
     }
 
     /**
+     * 没有权限访问
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(NotPermissionException.class)
+    @ResponseBody
+    public ResponseBo NotPermissionException(DataNotFoundException e) {
+        return ResponseBo.error(ExceptionEnum.AUTHORIZATION_ERROR.getMessage());
+    }
+
+    /**
      * 业务异常
      * @param e
      * @return

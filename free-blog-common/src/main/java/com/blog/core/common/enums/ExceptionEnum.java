@@ -25,7 +25,7 @@ package com.blog.core.common.enums;
 
 public enum ExceptionEnum {
 
-    AUTHORIZATION_ERROR(401, "请先登录"),
+    AUTHORIZATION_ERROR(401, "权限不足，请先配置权限"),
     TOKEN_NONE(301, "token无效！"),
     DATA_NOT_FOUND(404, "数据未找到"),
     PARAMETER_ILLEGAL(403, "参数无效"),

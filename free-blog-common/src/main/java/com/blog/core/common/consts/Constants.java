@@ -9,7 +9,11 @@ package com.blog.core.common.consts;
  */
 public interface Constants {
 
-    public static final String a = null;
+    String ADMIN = "admin";
+
+    String ROLE = "ROLE_";
+
+    String BASE_ROLE = "ROLE_USER";
 
     String CLIENT_FIELDS = "client_id, client_secret, resource_ids, scope, "
             + "authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity, "

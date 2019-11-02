@@ -49,7 +49,7 @@ public class PortalUserLoginController {
 
     @LogPortal("获取用户相关信息")
     @ApiOperation(value="获取用户相关信息", notes="")
-    @GetMapping("/userinfo")
+    @GetMapping("/user/info")
     public ResponseBo queryUserInfo(@RequestParam String userId){
         return ResponseBo.newDataResponse(this.portalUserService.queryUserInfo(userId));
     }

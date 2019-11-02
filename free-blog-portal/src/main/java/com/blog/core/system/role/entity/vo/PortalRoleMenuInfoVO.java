@@ -5,15 +5,17 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
- * @ClassNmae: SysBaseRole
- * @description:
- * @Author: liulin
- * @Date: 2019/4/18 23:48
- **/
+ * @program: PortalRoleMenuInfoVO
+ * @description: 角色用户信息
+ * @author: liulin
+ * @create: 2019-10-30 15:48
+ * @Version: 1.0
+ */
 @Data
-public class PortalRoleVO {
+public class PortalRoleMenuInfoVO {
 
     @ApiModelProperty("角色ID")
     private String roleId;
@@ -33,4 +35,6 @@ public class PortalRoleVO {
     @ApiModelProperty("创建时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
+
+    private List<String> menuIdList;
 }

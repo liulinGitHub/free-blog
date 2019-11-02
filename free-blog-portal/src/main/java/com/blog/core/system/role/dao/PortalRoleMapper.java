@@ -2,7 +2,9 @@ package com.blog.core.system.role.dao;
 
 import com.blog.core.system.role.entity.domain.PortalRole;
 import com.blog.core.system.role.entity.domain.PortalUserRole;
+import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.role.entity.vo.PortalRoleVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +18,12 @@ import java.util.List;
  */
 @Repository("portalRoleMapper")
 public interface PortalRoleMapper {
+
+    /**
+     * 查询所有角色信息
+     * @return
+     */
+    List<PortalRoleVO> selectPortalRole();
 
     /**
      * 分页查询角色信息
@@ -73,8 +81,14 @@ public interface PortalRoleMapper {
 
     /**
      * 根据用户id查询角色
-     * @param UserId
+     * @param userId
      * @return
      */
-    List<PortalRoleVO> selectRoleByUserId(String UserId);
+    List<PortalRoleVO> selectRoleByUserId(@Param("userId") String userId);
+
+    /**
+     * 根据请求的URL查询所属的角色信息
+     * @param url
+     */
+    List<PortalRoleVO> selectRoleByUrl(String url);
 }

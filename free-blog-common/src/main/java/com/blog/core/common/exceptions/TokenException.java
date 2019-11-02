@@ -7,5 +7,5 @@ package com.blog.core.common.exceptions;
  * @create: 2019-05-16 17:42
  * @Version: 1.0
  */
-public class TokenException extends RuntimeException{
+public class TokenException extends RuntimeException {
 }

@@ -38,9 +38,8 @@ spring:
       server: http://localhost:8680
     oauth2:
       client:
-          client-id: admin
-          client-secret: 123456
-          scope: all
+          client-id: free
+          client-secret: blog
 
 #mybatis
 mybatis:

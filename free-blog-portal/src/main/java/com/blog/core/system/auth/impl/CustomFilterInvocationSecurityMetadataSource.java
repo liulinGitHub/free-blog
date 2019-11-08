@@ -1,5 +1,7 @@
 package com.blog.core.system.auth.impl;
 
+import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.system.role.entity.domain.PortalRole;
 import com.blog.core.system.role.entity.vo.PortalRoleVO;
 import com.blog.core.system.role.service.PortalRoleService;
 import org.apache.commons.collections.CollectionUtils;
@@ -22,7 +24,6 @@ import java.util.List;
  * @create: 2019-10-30 17:44
  * @Version: 1.0
  */
-//@Component("customFilterInvocationSecurityMetadataSource")
 public class CustomFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     @Resource
@@ -41,22 +42,19 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
         List<PortalRoleVO> portalRoleVOList = this.portalRoleService.queryRoleByUrl(url);
         if(CollectionUtils.isNotEmpty(portalRoleVOList)){
             CollectionUtils.addAll(tmpList, portalRoleVOList.iterator());
+        }else {
+            tmpList.add(new PortalRole("-100", "系统匿名角色", "SYS_DEFAULT_ROLE","游客", IsEnableEnum.Enable_NO));
         }
         return tmpList;
     }
 
     @Override
     public Collection<ConfigAttribute> getAllConfigAttributes() {
-        Collection<ConfigAttribute> tmpList = new ArrayList<>();
-        List<PortalRoleVO> portalRoleVOList = this.portalRoleService.queryPortalRole();
-        if(CollectionUtils.isNotEmpty(portalRoleVOList)){
-            CollectionUtils.addAll(tmpList, portalRoleVOList.iterator());
-        }
-        return tmpList;
+        return null;
     }
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return FilterInvocation.class.isAssignableFrom(clazz);
     }
 }

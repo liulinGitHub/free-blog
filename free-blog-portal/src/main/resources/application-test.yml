@@ -33,13 +33,14 @@ spring:
         max-wait: 10000
     # 连接超时时间（毫秒）
     timeout: 8000
-  security:
-    auth:
-      server: http://localhost:8680
-    oauth2:
-      client:
-          client-id: free
-          client-secret: blog
+
+#  security:
+#    auth:
+#      server: http://localhost:8680
+#    oauth2:
+#      client:
+#          client-id: free
+#          client-secret: blog
 
 #mybatis
 mybatis:

@@ -8,4 +8,12 @@ package com.blog.core.common.exceptions;
  * @Version: 1.0
  */
 public class NotPermissionException extends RuntimeException {
+
+    public NotPermissionException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotPermissionException(String message) {
+        super(message);
+    }
 }

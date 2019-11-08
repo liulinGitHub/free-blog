@@ -21,4 +21,4 @@ blog:
   showsql: true
 
 #开启日志记录
-isOpenPortalAopLog : true
+isOpenPortalAopLog : false

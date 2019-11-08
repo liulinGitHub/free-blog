@@ -1,8 +1,6 @@
 package com.blog.core.system.auth.impl;
 
 import com.blog.core.common.consts.Constants;
-import com.blog.core.common.exceptions.BlogExceptionHandler;
-import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.common.exceptions.NotPermissionException;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
@@ -11,9 +9,6 @@ import org.springframework.security.authentication.InsufficientAuthenticationExc
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Objects;
 
@@ -24,7 +19,6 @@ import java.util.Objects;
  * @create: 2019-10-30 17:23
  * @Version: 1.0
  */
-//@Component("customAccessDecisionManager")
 public class CustomAccessDecisionManagerImpl implements AccessDecisionManager {
 
     @Override
@@ -44,7 +38,7 @@ public class CustomAccessDecisionManagerImpl implements AccessDecisionManager {
         }
 
         //检查是否拥有权限
-        boolean isRightAccess = configAttributes.parallelStream().anyMatch(configAttribute -> {
+        boolean isRightAccess = configAttributes.stream().anyMatch(configAttribute -> {
             String needRole = configAttribute.getAttribute();
             for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
                 if (needRole.toLowerCase().trim().equals(grantedAuthority.getAuthority().toLowerCase().trim())) {
@@ -57,7 +51,7 @@ public class CustomAccessDecisionManagerImpl implements AccessDecisionManager {
             return;
         }
         //权限不足
-        throw new NotPermissionException();
+        throw new NotPermissionException("没有访问权限");
     }
 
     @Override

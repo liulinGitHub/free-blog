@@ -1,34 +1,19 @@
 package com.blog.core.system.auth.security;
 
-import com.blog.core.system.auth.impl.CustomAccessDecisionManagerImpl;
+import com.blog.core.system.auth.filter.CustomizeFilterSecurityInterceptor;
 import com.blog.core.system.auth.impl.CustomFilterInvocationSecurityMetadataSource;
-import com.blog.core.system.user.service.UserDetailsServiceImpl;
+import com.blog.core.system.user.service.CustomizeUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.AccessDecisionManager;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
-
-import javax.annotation.Resource;
-import javax.servlet.Filter;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @ClassNmae: SecurityConfiguration
@@ -38,34 +23,42 @@ import java.util.List;
  **/
 
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private CustomizeFilterSecurityInterceptor customizeFilterSecurityInterceptor;
+
+    @Autowired
+    private CustomizeUserDetailsService customizeUserDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+                //过滤oauth
+                .antMatchers("/oauth/**").permitAll()
+                //过滤首页
+                .antMatchers("/").permitAll()
+                // swagger
+                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/swagger-resources").permitAll()
+                .antMatchers("/v2/api-docs").permitAll()
+                .antMatchers("/webjars/springfox-swagger-ui/**").permitAll()
+                // 其他所有请求需要身份认证
+                .anyRequest().authenticated();
 
-        http.authorizeRequests().antMatchers("/", "/index").permitAll().anyRequest().authenticated().and().formLogin()
-                .loginPage("/login").defaultSuccessUrl("/user").permitAll().and().logout().permitAll()
+        http.addFilterBefore(customizeFilterSecurityInterceptor, FilterSecurityInterceptor.class);
 
-                .and().authorizeRequests().anyRequest().authenticated()
-                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
-                    @Override
-                    public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
-                        fsi.setAccessDecisionManager(accessDecisionManager());
-                        fsi.setSecurityMetadataSource(securityMetadataSource());
-                        return fsi;
-                    }
-                });
     }
 
-    @Bean
-    public AccessDecisionManager accessDecisionManager() {
-        return new CustomAccessDecisionManagerImpl();
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // 加入自定义的安全认证
+        auth.userDetailsService(customizeUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
-    @Bean
-    public FilterInvocationSecurityMetadataSource securityMetadataSource() {
-        return new CustomFilterInvocationSecurityMetadataSource();
-    }
+//    @Bean
+//    public FilterInvocationSecurityMetadataSource securityMetadataSource() {
+//        return new CustomFilterInvocationSecurityMetadataSource();
+//    }
 }

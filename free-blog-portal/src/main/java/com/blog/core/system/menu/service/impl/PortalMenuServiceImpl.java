@@ -32,6 +32,16 @@ public class PortalMenuServiceImpl implements PortalMenuService {
     @Resource
     private PortalUserService portalUserService;
 
+    /**
+     * 查询全部菜单
+     * @return
+     */
+    @Override
+    public List<PortalMenuVO> queryMenuList(){
+        List<PortalMenuVO> portalMenuVOList = this.portalMenuMapper.selectMenuList();
+        return portalMenuVOList;
+    }
+
     @Override
     public List<PortalMenuVO> queryMenuByUserId(String userId){
         List<PortalMenuVO> portalMenuVOList = this.portalMenuMapper.selectMenuByRoleId(userId);
@@ -51,7 +61,7 @@ public class PortalMenuServiceImpl implements PortalMenuService {
         PortalUserVO portalUserVO = this.portalUserService.queryUserById(userId);
         //如果是超级管理员就获得所有菜单
         if(SupperEnum.SUPPER.getValue().equals(portalUserVO.getIsSupper())){
-            portalMenuVOList = this.portalMenuMapper.selectUserMenu();
+            portalMenuVOList = this.portalMenuMapper.selectMenuList();
         }else {
             portalMenuVOList = this.portalMenuMapper.selectUserMenuByUserId(portalUserVO.getId());
         }

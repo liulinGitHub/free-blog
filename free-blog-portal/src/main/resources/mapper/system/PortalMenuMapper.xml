@@ -174,7 +174,7 @@
 	        roleMenu.role_id = #{roleId}
     </select>
 
-    <select id="selectUserMenu" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
+    <select id="selectMenuList" parameterType="java.lang.String" resultType="com.blog.core.system.menu.entity.vo.PortalMenuVO">
         SELECT
             menu.id AS menuId,
             menu.parent_id AS parentId,

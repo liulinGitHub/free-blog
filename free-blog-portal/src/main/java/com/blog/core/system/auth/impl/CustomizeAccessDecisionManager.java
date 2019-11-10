@@ -9,17 +9,21 @@ import org.springframework.security.authentication.InsufficientAuthenticationExc
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.Objects;
 
 /**
- * @program: CustomAccessDecisionManagerImpl
+ * @program: CustomizeAccessDecisionManager
  * @description: 操作权限判断器
  * @author: liulin
  * @create: 2019-10-30 17:23
  * @Version: 1.0
  */
-public class CustomAccessDecisionManagerImpl implements AccessDecisionManager {
+@Service
+public class CustomizeAccessDecisionManager implements AccessDecisionManager {
 
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {

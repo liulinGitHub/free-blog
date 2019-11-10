@@ -1,21 +1,20 @@
 package com.blog.core.system.auth.impl;
 
-import com.blog.core.common.enums.IsEnableEnum;
-import com.blog.core.system.role.entity.domain.PortalRole;
-import com.blog.core.system.role.entity.vo.PortalRoleVO;
-import com.blog.core.system.role.service.PortalRoleService;
-import org.apache.commons.collections.CollectionUtils;
+import com.blog.core.system.menu.entity.vo.PortalMenuVO;
+import com.blog.core.system.menu.service.PortalMenuService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
-
+import org.springframework.stereotype.Service;
+import org.springframework.util.AntPathMatcher;
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @program: CustomFilterInvocationSecurityMetadataSource
@@ -24,28 +23,40 @@ import java.util.List;
  * @create: 2019-10-30 17:44
  * @Version: 1.0
  */
+@Service
 public class CustomFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     @Resource
-    private PortalRoleService portalRoleService;
+    private PortalMenuService portalMenuService;
+
+    private Set<String> perimssionUrls = new HashSet<>();
+
+    /**
+     * 加载权限表中所有权限
+     */
+    @PostConstruct
+    public void loadResourceDefine(){
+        List<PortalMenuVO> portalRoleVOList = this.portalMenuService.queryMenuList();
+        perimssionUrls = portalRoleVOList.stream().map(PortalMenuVO::getMenuUrl).collect(Collectors.toSet());
+    }
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
-        final HttpServletRequest request = ((FilterInvocation) object).getRequest();
-
-        String url = ((FilterInvocation) object).getRequestUrl().trim();
+        HttpServletRequest request = ((FilterInvocation) object).getRequest();
+        String url = request.getRequestURI().trim();
 
         if(StringUtils.isBlank(url)) {
             return null;
         }
-        Collection<ConfigAttribute> tmpList = new ArrayList<>();
-        List<PortalRoleVO> portalRoleVOList = this.portalRoleService.queryRoleByUrl(url);
-        if(CollectionUtils.isNotEmpty(portalRoleVOList)){
-            CollectionUtils.addAll(tmpList, portalRoleVOList.iterator());
-        }else {
-            tmpList.add(new PortalRole("-100", "系统匿名角色", "SYS_DEFAULT_ROLE","游客", IsEnableEnum.Enable_NO));
+        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        Collection<ConfigAttribute> list = new ArrayList<>();
+        for (String perimssionUrl : perimssionUrls){
+            if (StringUtils.isNotBlank(perimssionUrl) && antPathMatcher.match(perimssionUrl, url)) {
+                ConfigAttribute configAttribute = new SecurityConfig(url);
+                list.add(configAttribute);
+            }
         }
-        return tmpList;
+        return list;
     }
 
     @Override

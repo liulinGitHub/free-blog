@@ -20,4 +20,10 @@ public interface PortalMenuService {
      * @return
      */
     List<PortalMenuTree> queryUserMenu();
+
+    /**
+     * 查询全部菜单
+     * @return
+     */
+    List<PortalMenuVO> queryMenuList();
 }

@@ -83,7 +83,7 @@ public interface PortalMenuMapper {
      * 查询全部菜单
      * @return
      */
-    List<PortalMenuVO> selectUserMenu();
+    List<PortalMenuVO> selectMenuList();
 
     /**
      * 根据用户ID查询所属菜单

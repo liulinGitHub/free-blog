@@ -6,6 +6,13 @@ import com.blog.core.system.role.entity.vo.PortalRoleVO;
 
 import java.util.List;
 
+/**
+ * @program: PortalRoleService
+ * @description: 角色信息service
+ * @author: liulin
+ * @create: 2019-10-30 17:44
+ * @Version: 1.0
+ */
 public interface PortalRoleService {
 
     /**
@@ -37,6 +44,7 @@ public interface PortalRoleService {
     /**
      * 根据请求的URL查询所属的角色信息
      * @param url
+     * @return
      */
     List<PortalRoleVO> queryRoleByUrl(String url);
 }

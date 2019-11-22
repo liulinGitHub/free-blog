@@ -69,14 +69,6 @@ public class PortalArticleController {
         return ResponseBo.ok("文章已经升温！");
     }
 
-//    @Log("文章审核")
-//    @ApiOperation(value="文章审核通过", notes="")
-//    @PutMapping("/article/check_article")
-//    public ResponseBo checkArticle(String articleId){
-//        this.articleService.checkArticle(articleId);
-//        return ResponseBo.ok("文章审核通过");
-//    }
-
     @LogPortal("文章点赞")
     @ApiOperation(value="文章点赞", notes="")
     @PutMapping("/update_approves")

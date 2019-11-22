@@ -1,7 +1,10 @@
 package com.blog.core.system.auth.impl;
 
 import com.blog.core.common.consts.Constants;
+import com.blog.core.common.enums.IsEnableEnum;
 import com.blog.core.common.exceptions.NotPermissionException;
+import com.blog.core.system.role.entity.domain.PortalRole;
+import com.blog.core.system.role.entity.vo.PortalRoleVO;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
@@ -25,6 +28,10 @@ import java.util.Objects;
 @Service
 public class CustomizeAccessDecisionManager implements AccessDecisionManager {
 
+    public static final PortalRoleVO ANONYMOUS_ROLE =
+            new PortalRoleVO("-200", "匿名角色", "ANONYMOUS_ROLE_CODE");
+
+
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
         if(Objects.isNull(authentication)){
@@ -39,6 +46,13 @@ public class CustomizeAccessDecisionManager implements AccessDecisionManager {
             if(Constants.ADMIN.equals(details.getUsername())){
                 return;
             }
+        }
+
+        // 如果允许匿名用户访问就直接通过
+        boolean isAnonymousAccess = configAttributes.stream()
+                .anyMatch(role-> role.equals(ANONYMOUS_ROLE));
+        if (isAnonymousAccess) {
+            return;
         }
 
         //检查是否拥有权限

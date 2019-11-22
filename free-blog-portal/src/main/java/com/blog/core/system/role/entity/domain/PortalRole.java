@@ -15,7 +15,7 @@ import org.springframework.security.access.ConfigAttribute;
  **/
 @AllArgsConstructor
 @Data
-public class PortalRole extends BaseModel implements ConfigAttribute {
+public class PortalRole extends BaseModel {
 
     @ApiModelProperty("角色ID")
     private String roleId;
@@ -31,9 +31,4 @@ public class PortalRole extends BaseModel implements ConfigAttribute {
 
     @ApiModelProperty("启用/停用")
     private IsEnableEnum isEnable;
-
-    @Override
-    public String getAttribute() {
-        return this.roleId;
-    }
 }

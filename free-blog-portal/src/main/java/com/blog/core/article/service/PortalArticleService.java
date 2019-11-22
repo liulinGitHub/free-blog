@@ -44,13 +44,6 @@ public interface PortalArticleService {
     void deleteDraft(String articleId);
 
     /**
-     * 文章审核通过，并且发表文章，并且通知文章作者
-     *
-     * @param articleId
-     */
-    void checkArticle(String articleId);
-
-    /**
      * 文章点赞
      *
      * @param articleId

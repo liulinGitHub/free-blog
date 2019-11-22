@@ -24,4 +24,5 @@ public interface Constants {
     String DEFAULT_FIND_STATEMENT = BASE_FIND_STATEMENT + " order by client_id";
 
     String DEFAULT_SELECT_STATEMENT = BASE_FIND_STATEMENT + " where client_id = ?";
+
 }

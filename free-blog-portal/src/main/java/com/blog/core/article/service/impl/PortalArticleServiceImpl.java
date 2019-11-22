@@ -130,34 +130,6 @@ public class PortalArticleServiceImpl implements PortalArticleService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void checkArticle(String articleId) {
-        //审核文章，文章状态为已审核，发布状态为已发布
-        PortalArticle article = new PortalArticle();
-        article.setId(articleId);
-        article.setArticleStatus(ArticleStatusEnum.CHECK_YES.getValue());
-        article.setReleaseStatus(ReleaseStatusEnum.RELEASE_YES.getValue());
-        article.setReleaseDate(new Date());
-        int result = this.portalArticleMapper.checkArticle(article);
-        if (result < 1) {
-            log.error("审核失败【{}】", articleId);
-            throw new BlogRuntimeException("审核文章失败！");
-        }
-        //文章审核成功。增加一次用户作者的文章数量
-        PortalArticleInfoVO portalArticleInfoVO = this.portalArticleMapper.findArticleById(articleId);
-        //修改用户信息后置事件
-        publisher.publish(new UserArticleEvent(portalArticleInfoVO.getArticleUserId()));
-        //发送消息給文章作者
-        //******************
-//        try {
-//            WebSocketServer.sendInfo(article.getArticleUserId(),"我是后台消息");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-
-    @Override
-    @Transactional(rollbackFor = Exception.class)
     public void updateApproves(String articleId) {
         int result = this.portalArticleMapper.updateApproves(articleId);
         if (result < 1) {

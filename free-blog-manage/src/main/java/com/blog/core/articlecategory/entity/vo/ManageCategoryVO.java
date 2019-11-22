@@ -16,7 +16,7 @@ import java.util.Date;
 public class ManageCategoryVO {
 
     @ApiModelProperty(name = "分类id" )
-    private String id;
+    private String categoryId;
 
     @ApiModelProperty(name = "类别名称" )
     private String categoryName;

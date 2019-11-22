@@ -13,9 +13,8 @@ import lombok.Data;
 @Data
 public class ManageCategoryEditDTO {
 
-
     @ApiModelProperty(name = "类别ID" )
-    private String id;
+    private String categoryId;
 
     @ApiModelProperty(name = "类别名称" )
     private String categoryName;

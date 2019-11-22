@@ -3,17 +3,18 @@ package com.blog.core.system.role.entity.vo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.security.access.ConfigAttribute;
 
 import java.util.Date;
 
 /**
  * @ClassNmae: SysBaseRole
- * @description:
+ * @description: 角色vo
  * @Author: liulin
  * @Date: 2019/4/18 23:48
  **/
 @Data
-public class PortalRoleVO {
+public class PortalRoleVO implements ConfigAttribute {
 
     @ApiModelProperty("角色ID")
     private String roleId;
@@ -33,4 +34,15 @@ public class PortalRoleVO {
     @ApiModelProperty("创建时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
+
+    @Override
+    public String getAttribute() {
+        return this.roleCode;
+    }
+
+    public PortalRoleVO(String roleId, String roleName, String roleCode) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.roleCode = roleCode;
+    }
 }

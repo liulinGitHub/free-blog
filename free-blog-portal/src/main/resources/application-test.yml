@@ -1,3 +1,8 @@
+server:
+  port: 8680
+  tomcat:
+    uri-encoding: utf-8
+
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

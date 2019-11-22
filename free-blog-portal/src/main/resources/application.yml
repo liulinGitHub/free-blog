@@ -1,12 +1,13 @@
-server:
-  port: 8680
-
 #环境配置切换
 spring:
   profiles:
     active: test
   freemarker:
     check-template-location: false
+
+server:
+  servlet:
+    context-path: /manage
 
 #日志
 logging:

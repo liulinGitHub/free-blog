@@ -1,20 +1,17 @@
 package com.blog.core.system.auth.impl;
 
-import com.blog.core.system.menu.entity.vo.PortalMenuVO;
-import com.blog.core.system.menu.service.PortalMenuService;
+import com.blog.core.system.auth.config.AnonymousMatcherUtils;
+import com.blog.core.system.role.entity.vo.PortalRoleVO;
+import com.blog.core.system.role.service.PortalRoleService;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.util.AntPathMatcher;
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @program: CustomFilterInvocationSecurityMetadataSource
@@ -27,34 +24,29 @@ import java.util.stream.Collectors;
 public class CustomFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     @Resource
-    private PortalMenuService portalMenuService;
+    private PortalRoleService portalRoleService;
 
-    private Set<String> perimssionUrls = new HashSet<>();
-
-    /**
-     * 加载权限表中所有权限
-     */
-    @PostConstruct
-    public void loadResourceDefine(){
-        List<PortalMenuVO> portalRoleVOList = this.portalMenuService.queryMenuList();
-        perimssionUrls = portalRoleVOList.stream().map(PortalMenuVO::getMenuUrl).collect(Collectors.toSet());
-    }
+    public static final PortalRoleVO ANONYMOUS_ROLE =
+            new PortalRoleVO("-200", "匿名角色", "ANONYMOUS_ROLE_CODE");
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         HttpServletRequest request = ((FilterInvocation) object).getRequest();
-        String url = request.getRequestURI().trim();
+        String requestUrl = request.getRequestURI().trim();
 
-        if(StringUtils.isBlank(url)) {
+        if(StringUtils.isBlank(requestUrl)) {
             return null;
         }
-        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        // AntPathMatcher antPathMatcher = new AntPathMatcher();
+
         Collection<ConfigAttribute> list = new ArrayList<>();
-        for (String perimssionUrl : perimssionUrls){
-            if (StringUtils.isNotBlank(perimssionUrl) && antPathMatcher.match(perimssionUrl, url)) {
-                ConfigAttribute configAttribute = new SecurityConfig(url);
-                list.add(configAttribute);
-            }
+        if(AnonymousMatcherUtils.isAnonymousAccess(request)){
+            list.add(ANONYMOUS_ROLE);
+        }
+
+        List<PortalRoleVO> portalRoleVOList = portalRoleService.queryRoleByUrl(requestUrl);
+        if(CollectionUtils.isNotEmpty(portalRoleVOList)){
+            CollectionUtils.addAll(list, portalRoleVOList.iterator());
         }
         return list;
     }

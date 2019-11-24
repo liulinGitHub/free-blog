@@ -41,7 +41,7 @@
         UPDATE
           manage_category
         SET
-          category_name = #{},
+          category_name = #{categoryName},
           sort = #{sort},
           update_id = #{updateId},
           update_time = #{updateTime}

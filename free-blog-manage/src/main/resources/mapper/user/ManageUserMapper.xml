@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.user.dao.ManageUserMapper">
+
+    <select id="selectArticleByPage" resultType="com.blog.core.system.user.entity.vo.ManageUserVO">
+        SELECT
+            *
+        FROM
+            manage_user
+    </select>
+
+    <select id="selectUserByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.user.entity.vo.ManageUserVO">
+        SELECT
+            *
+        FROM
+            manage_user
+        WHERE
+            id = #{userId}
+    </select>
+
+    <insert id="insertUser" parameterType="com.blog.core.system.user.entity.domain.ManageUser">
+
+    </insert>
+
+    <update id="updateUser" parameterType="com.blog.core.system.user.entity.domain.ManageUser">
+
+    </update>
+
+    <update id="disableUserByUserId" parameterType="com.blog.core.system.user.entity.domain.ManageUser">
+
+    </update>
+
+    <update id="enableUserByUserId" parameterType="com.blog.core.system.user.entity.domain.ManageUser">
+
+    </update>
+
+</mapper>

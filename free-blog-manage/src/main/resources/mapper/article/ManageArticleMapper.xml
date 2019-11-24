@@ -66,31 +66,7 @@
         WHERE article.id = #{id}
     </select>
 
-    <update id="updateReadArticle" parameterType="java.lang.String">
-        UPDATE portal_article
-        SET like_number = like_number + 1
-        WHERE id = #{articleId}
-    </update>
-
-    <update id="updateApproves" parameterType="java.lang.String">
-        UPDATE portal_article
-        SET approves = approves + 1
-        WHERE id = #{articleId}
-    </update>
-
-    <update id="updateTemperature" parameterType="java.lang.String">
-        UPDATE portal_article
-        SET temperature = temperature + 1
-        WHERE id = #{articleId}
-    </update>
-
-    <update id="updateComments" parameterType="java.lang.String">
-        UPDATE portal_article
-        SET comments = comments + 1
-        WHERE id = #{articleId}
-    </update>
-
-    <update id="checkArticle" parameterType="com.blog.core.article.entity.domain.PortalArticle">
+    <update id="checkArticle" parameterType="com.blog.core.article.entity.domain.ManageArticle">
         UPDATE portal_article
         SET article_status = #{articleStatus},
         release_status = #{releaseStatus},
@@ -98,47 +74,4 @@
         WHERE id = #{articleId}
     </update>
 
-    <update id="submitCheckArticle" parameterType="com.blog.core.article.entity.domain.PortalArticle">
-        UPDATE portal_article
-        SET article_status = #{articleStatus},
-        article_title = #{articleTitle},
-        article_content = #{articleContent},
-        article_tag = #{articleTag},
-        article_images = #{articleImages},
-        article_user_id = #{articleUserId}
-        WHERE id = #{articleId}
-    </update>
-
-    <insert id="saveDraft" parameterType="com.blog.core.article.entity.domain.PortalArticle">
-        INSERT INTO
-        portal_article
-        (
-            `article_title`,
-            `article_content`,
-            `article_user_id`,
-            `article_tag`,
-            `article_images`,
-            `article_status`,
-            `release_status`,
-            `create_time`,
-            `create_name`
-        )
-        VALUES
-        (
-            #{articleTitle},
-            #{articleContent},
-            #{articleUserId},
-            #{articleTag},
-            #{articleImages},
-            #{articleStatus},
-            #{releaseStatus},
-            #{createTime},
-            #{createName}
-        )
-
-    </insert>
-
-    <delete id="deleteDraft" parameterType="java.lang.String">
-        DELETE FROM portal_article WHERE id = #{articleId}
-    </delete>
 </mapper>

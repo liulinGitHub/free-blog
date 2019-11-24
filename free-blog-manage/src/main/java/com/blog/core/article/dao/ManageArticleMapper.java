@@ -33,54 +33,6 @@ public interface ManageArticleMapper {
     ManageArticleInfoVO selectArticleByArticleId(String articleId);
 
     /**
-     * 修改阅读文章量
-     *
-     * @param articleId
-     * @return
-     */
-    void updateReadArticle(String articleId);
-
-    /**
-     * 文章点赞
-     *
-     * @param articleId
-     * @return
-     */
-    int updateApproves(String articleId);
-
-    /**
-     * 增加评论数
-     *
-     * @param articleId
-     * @return
-     */
-    int updateComments(String articleId);
-
-    /**
-     * 删除文章草稿
-     *
-     * @param articleId
-     * @return
-     */
-    int deleteDraft(String articleId);
-
-    /**
-     * 文章已经升温
-     *
-     * @param articleId
-     * @return
-     */
-    int updateTemperature(String articleId);
-
-    /**
-     * 保存草稿
-     *
-     * @param article
-     * @return
-     */
-    int saveDraft(ManageArticle article);
-
-    /**
      * 文章审核
      *
      * @param article
@@ -88,11 +40,4 @@ public interface ManageArticleMapper {
      */
     int checkArticle(ManageArticle article);
 
-    /**
-     * 提交审核
-     *
-     * @param article
-     * @return
-     */
-    int submitCheckArticle(ManageArticle article);
 }

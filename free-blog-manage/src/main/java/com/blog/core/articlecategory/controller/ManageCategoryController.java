@@ -26,14 +26,14 @@ public class ManageCategoryController {
 
     @LogPortal("分页文章分类信息")
     @ApiOperation(value="分页文章分类信息", notes="")
-    @GetMapping("/query")
+    @GetMapping("/all")
     public ResponseBo queryArticleCategoryByPage(){
         return ResponseBo.newDataResponse(this.manageArticleCategoryService.queryArticleCategoryByPage());
     }
 
     @LogPortal("分页文章分类信息")
     @ApiOperation(value="分页文章分类信息", notes="")
-    @GetMapping("/query")
+    @GetMapping("/details")
     public ResponseBo queryArticleCategoryByCategoryId(String categoryId){
         return ResponseBo.newDataResponse(this.manageArticleCategoryService.queryArticleCategoryByCategoryId(categoryId));
     }
@@ -46,11 +46,11 @@ public class ManageCategoryController {
         return ResponseBo.ok("添加分类信息成功！");
     }
 
-    @LogPortal("添加文章分类信息")
-    @ApiOperation(value="添加文章分类信息", notes="")
+    @LogPortal("修改文章分类信息")
+    @ApiOperation(value="修改文章分类信息", notes="")
     @PostMapping("/edit")
     public ResponseBo editArticleCategory(@RequestBody ManageCategoryEditDTO manageCategoryEditDTO) {
         this.manageArticleCategoryService.editArticleCategory(manageCategoryEditDTO);
-        return ResponseBo.ok("添加分类信息成功！");
+        return ResponseBo.ok("修改分类信息成功！");
     }
 }

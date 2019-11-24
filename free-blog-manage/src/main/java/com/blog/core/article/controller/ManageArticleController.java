@@ -2,6 +2,8 @@ package com.blog.core.article.controller;
 
 import com.blog.core.article.service.ManageArticleService;
 import com.blog.core.common.annotation.LogManage;
+import com.blog.core.common.utils.BaseController;
+import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,21 +20,21 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "文章信息服务Controller",tags = "文章信息服务")
 @RestController
 @RequestMapping("/article")
-public class ManageArticleController {
+public class ManageArticleController extends BaseController {
 
     @Autowired
     private ManageArticleService manageArticleService;
 
     @LogManage("分页查询文章信息")
     @ApiOperation(value="分页查询文章信息", notes="")
-    @PostMapping("/query")
-    public ResponseBo queryArticleByPage(){
-        return ResponseBo.newDataResponse(this.manageArticleService.queryArticleByPage());
+    @PostMapping("/all")
+    public ResponseBo queryArticleByPage(QueryRequest queryRequest){
+        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageArticleService.queryArticleByPage()));
     }
 
     @LogManage("查看文章详细信息")
     @ApiOperation(value="查看文章详细信息", notes="")
-    @GetMapping("/{articleId}")
+    @GetMapping("/details")
     public ResponseBo queryArticleByArticleId(@PathVariable String articleId){
         return ResponseBo.newDataResponse(this.manageArticleService.queryArticleByArticleId(articleId));
     }

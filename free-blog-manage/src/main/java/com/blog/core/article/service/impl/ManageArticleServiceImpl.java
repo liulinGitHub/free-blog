@@ -21,7 +21,7 @@ import java.util.List;
  * @create: 2019-11-22 14:53
  * @Version: 1.0
  */
-@Service
+@Service("manageArticleService")
 public class ManageArticleServiceImpl implements ManageArticleService {
 
     @Autowired

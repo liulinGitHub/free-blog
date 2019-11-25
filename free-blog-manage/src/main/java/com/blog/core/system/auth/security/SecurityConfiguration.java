@@ -1,5 +1,8 @@
 package com.blog.core.system.auth.security;
 
+import com.blog.core.system.auth.utils.CustomFilterInvocationSecurityMetadataSource;
+import com.blog.core.system.auth.utils.CustomizeAccessDecisionManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,6 +21,12 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private CustomFilterInvocationSecurityMetadataSource customFilterInvocationSecurityMetadataSource;
+
+    @Autowired
+    private CustomizeAccessDecisionManager customizeAccessDecisionManager;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
@@ -26,9 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 @Override
                 public <O extends FilterSecurityInterceptor> O postProcess(O object) {
-                    object.setSecurityMetadataSource(null);
-                    object.setAccessDecisionManager(null);
-                    return null;
+                    object.setSecurityMetadataSource(customFilterInvocationSecurityMetadataSource);
+                    object.setAccessDecisionManager(customizeAccessDecisionManager);
+                    return object;
                 }
             });
 

@@ -1,5 +1,6 @@
 package com.blog.core.system.auth.security;
 
+import com.blog.core.system.auth.filter.CustomizeFilterSecurityInterceptor;
 import com.blog.core.system.auth.utils.CustomFilterInvocationSecurityMetadataSource;
 import com.blog.core.system.auth.utils.CustomizeAccessDecisionManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,22 +26,34 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private CustomFilterInvocationSecurityMetadataSource customFilterInvocationSecurityMetadataSource;
 
     @Autowired
-    private CustomizeAccessDecisionManager customizeAccessDecisionManager;
+    private CustomizeFilterSecurityInterceptor customizeFilterSecurityInterceptor;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable();
-        http.authorizeRequests()
-            .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>(){
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/logout").permitAll()
+                .antMatchers("/images/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/fonts/**").permitAll()
+                .antMatchers("/favicon.ico").permitAll()
+                .antMatchers("/").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .and()
+                .httpBasic();
 
-                @Override
-                public <O extends FilterSecurityInterceptor> O postProcess(O object) {
-                    object.setSecurityMetadataSource(customFilterInvocationSecurityMetadataSource);
-                    object.setAccessDecisionManager(customizeAccessDecisionManager);
-                    return object;
-                }
-            });
-
+        http.addFilterBefore(customizeFilterSecurityInterceptor, FilterSecurityInterceptor.class);
     }
 
     @Override
@@ -48,4 +61,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring()
            .antMatchers("/oauth/**", "/swagger-ui.html", "/swagger-resources", "/v2/api-docs");
     }
+
 }

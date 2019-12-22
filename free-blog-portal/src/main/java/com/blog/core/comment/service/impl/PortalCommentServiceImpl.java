@@ -8,7 +8,6 @@ import com.blog.core.comment.service.PortalCommentService;
 import com.blog.core.common.aspect.RequestHolder;
 import com.blog.core.common.enums.IsEnableEnum;
 import com.blog.core.common.enums.IsParentEnum;
-import com.blog.core.common.event.CommonEventPublisher;
 import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
@@ -27,9 +26,6 @@ public class PortalCommentServiceImpl implements PortalCommentService {
 
     @Autowired
     private PortalCommentMapper portalCommentMapper;
-
-    @Autowired
-    private CommonEventPublisher publisher;
 
     @Override
     public List<PortalArticleCommentVO> queryArticleCommentByPage() {

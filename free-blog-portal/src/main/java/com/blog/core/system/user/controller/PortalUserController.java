@@ -21,7 +21,7 @@ import javax.validation.Valid;
  **/
 @Api(value = "用户服务Controller",tags = "用户服务")
 @RestController
-@RequestMapping("/portal/user")
+@RequestMapping("/user")
 public class PortalUserController {
 
     @Autowired

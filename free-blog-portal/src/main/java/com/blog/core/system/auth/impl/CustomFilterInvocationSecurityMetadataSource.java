@@ -1,15 +1,11 @@
 package com.blog.core.system.auth.impl;
 
-import com.blog.core.system.auth.config.AnonymousMatcherUtils;
-import com.blog.core.system.role.entity.vo.PortalRoleVO;
-import com.blog.core.system.role.service.PortalRoleService;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
@@ -23,32 +19,13 @@ import java.util.*;
 @Service
 public class CustomFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
-    @Resource
-    private PortalRoleService portalRoleService;
-
-    public static final PortalRoleVO ANONYMOUS_ROLE =
-            new PortalRoleVO("-200", "匿名角色", "ANONYMOUS_ROLE_CODE");
-
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
-        HttpServletRequest request = ((FilterInvocation) object).getRequest();
-        String requestUrl = request.getRequestURI().trim();
-
-        if(StringUtils.isBlank(requestUrl)) {
-            return null;
-        }
-        // AntPathMatcher antPathMatcher = new AntPathMatcher();
-
-        Collection<ConfigAttribute> list = new ArrayList<>();
-        if(AnonymousMatcherUtils.isAnonymousAccess(request)){
-            list.add(ANONYMOUS_ROLE);
-        }
-
-        List<PortalRoleVO> portalRoleVOList = portalRoleService.queryRoleByUrl(requestUrl);
-        if(CollectionUtils.isNotEmpty(portalRoleVOList)){
-            CollectionUtils.addAll(list, portalRoleVOList.iterator());
-        }
-        return list;
+        final HttpServletRequest request = ((FilterInvocation) object).getRequest();
+        Set<ConfigAttribute> allAttributes = new HashSet<>();
+        ConfigAttribute configAttribute = new UrlConfigAttribute(request);
+        allAttributes.add(configAttribute);
+        return allAttributes;
     }
 
     @Override
@@ -58,6 +35,6 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return FilterInvocation.class.isAssignableFrom(clazz);
+        return true;
     }
 }

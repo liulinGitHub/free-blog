@@ -35,7 +35,7 @@ public class SecurityUserDetails implements UserDetails {
         portalRoleMenuInfoVOList.parallelStream().forEach(portalRoleMenuInfoVO -> {
             authorities.add(new SimpleGrantedAuthority(portalRoleMenuInfoVO.getRoleCode()));
         });
-        authorities.add(new SimpleGrantedAuthority(Constants.BASE_ROLE));
+        //authorities.add(new SimpleGrantedAuthority(Constants.BASE_ROLE));
         return authorities;
     }
 

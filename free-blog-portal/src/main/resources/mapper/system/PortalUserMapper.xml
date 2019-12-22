@@ -25,7 +25,7 @@
             gender,
             attention_id
         FROM
-            sys_base_user
+            portal_user
         <where>
             <if test="username != null and username != ''">
                 user_name like #{username}
@@ -57,7 +57,7 @@
             attention_id signature,
             is_supper isSupper
         FROM
-            sys_base_user
+            portal_user
         <where>
             <if test="userId != null">
                 id = #{userId}
@@ -88,7 +88,7 @@
             gender,
             attention_id
         FROM
-            sys_base_user
+            portal_user
         <where>
             <if test="username  !=  null">
                 user_name = #{username}

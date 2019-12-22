@@ -1,6 +1,6 @@
 package com.blog.core.system.auth.filter;
 
-import com.blog.core.system.auth.impl.CustomizeAccessDecisionManager;
+import com.blog.core.system.auth.utils.CustomizeAccessDecisionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.SecurityMetadataSource;
@@ -13,11 +13,12 @@ import org.springframework.stereotype.Component;
 import javax.servlet.*;
 import java.io.IOException;
 
+
 /**
- * @ClassNmae: CustomizeFilterSecurityInterceptor
- * @description:
+ * @ClassNmae: CustomizeInterceptor
+ * @description: 自定义动态数据拦截器
  * @Author: liulin
- * @Date: 2019/11/9 22:52
+ * @Date: 2019/12/7 23:23
  **/
 @Component
 public class CustomizeFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
@@ -74,5 +75,4 @@ public class CustomizeFilterSecurityInterceptor extends AbstractSecurityIntercep
             super.afterInvocation(token, null);
         }
     }
-
 }

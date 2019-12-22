@@ -8,12 +8,9 @@ import com.blog.core.article.service.PortalArticleService;
 import com.blog.core.articlecategory.service.PortalArticleCategoryService;
 import com.blog.core.common.aspect.RequestHolder;
 import com.blog.core.common.enums.ArticleStatusEnum;
-import com.blog.core.common.enums.ReleaseStatusEnum;
-import com.blog.core.common.event.CommonEventPublisher;
 import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
-import com.blog.core.event.UserArticleEvent;
 import com.blog.core.tag.entity.vo.PortalTagVO;
 import com.blog.core.tag.service.PortalTagService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,9 +29,6 @@ public class PortalArticleServiceImpl implements PortalArticleService {
 
     @Resource
     private PortalArticleMapper portalArticleMapper;
-
-    @Resource
-    private CommonEventPublisher publisher;
 
     @Resource
     private PortalArticleCategoryService categoryService;

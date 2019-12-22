@@ -3,12 +3,14 @@ package com.blog.core.system.user.controller;
 import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.RedisUtil;
 import com.blog.core.common.utils.ResponseBo;
+import com.blog.core.system.user.entity.domain.SecurityUserDetails;
 import com.blog.core.system.user.entity.dto.PortalUserLoginDTO;
 import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
 import com.blog.core.system.user.service.PortalUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.tio.http.common.HttpRequest;
 import javax.annotation.Resource;
@@ -23,7 +25,6 @@ import javax.validation.Valid;
 
 @Api(value = "用户登陆Controller",tags = "用户登陆")
 @RestController
-@RequestMapping("auth")
 public class PortalUserLoginController {
 
     @Autowired
@@ -34,17 +35,17 @@ public class PortalUserLoginController {
 
     @LogPortal("用户登陆")
     @ApiOperation(value="用户登陆", notes="")
-    @PostMapping("/login")
-    public ResponseBo login(@Valid @RequestBody PortalUserLoginDTO portalUserLoginDTO){
+    @RequestMapping("/login")
+    public ResponseBo login(@AuthenticationPrincipal SecurityUserDetails portalUserLoginDTO){
         //判断用户信息
-        PortalUserLoginVO portalUserLoginVO = this.portalUserService.checkLogin(portalUserLoginDTO);
-        //获取token
-        //String token = TokenUtils.getToken(portalUserLoginVO);
-        String token = "123456";
-        //token存入redis
-        redisUtil.set(token,portalUserLoginVO.getUserId());
-        portalUserLoginVO.setToken(token);
-        return ResponseBo.newDataResponse(portalUserLoginVO);
+//        PortalUserLoginVO portalUserLoginVO = this.portalUserService.checkLogin(portalUserLoginDTO);
+//        //获取token
+//        //String token = TokenUtils.getToken(portalUserLoginVO);
+//        String token = "123456";
+//        //token存入redis
+//        //redisUtil.set(token,portalUserLoginVO.getUserId());
+//        portalUserLoginVO.setToken(token);
+        return ResponseBo.newDataResponse(portalUserLoginDTO);
     }
 
     @LogPortal("获取用户相关信息")

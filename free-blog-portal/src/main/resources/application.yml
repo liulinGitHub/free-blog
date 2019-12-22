@@ -7,7 +7,7 @@ spring:
 
 server:
   servlet:
-    context-path: /manage
+    context-path: /portal
 
 #日志
 logging:

@@ -1,10 +1,8 @@
 package com.blog.core.system.user.entity.domain;
 
-import com.blog.core.common.consts.Constants;
 import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
+import com.blog.core.system.user.vo.PortalUserLoginVO;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,7 +12,7 @@ import java.util.List;
 
 /**
  * @ClassNmae: SecurityUserDetails
- * @description:
+ * @description: 用户权限扩展类
  * @Author: liulin
  * @Date: 2019/10/26 1:38
  **/

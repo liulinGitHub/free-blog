@@ -5,7 +5,7 @@ import com.blog.core.system.user.entity.dto.PortalUserEditDTO;
 import com.blog.core.system.user.entity.dto.PortalUserLoginDTO;
 import com.blog.core.system.user.entity.dto.PortalUserQueryDTO;
 import com.blog.core.system.user.entity.vo.PortalUserInfoVO;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
+import com.blog.core.system.user.vo.PortalUserLoginVO;
 import com.blog.core.system.user.entity.vo.PortalUserVO;
 
 import java.util.List;

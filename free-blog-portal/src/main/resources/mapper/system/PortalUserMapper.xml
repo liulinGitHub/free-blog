@@ -66,7 +66,7 @@
     </select>
 
     <select id="login" parameterType="com.blog.core.system.user.entity.dto.PortalUserLoginDTO"
-            resultType="com.blog.core.system.user.entity.vo.PortalUserLoginVO" >
+            resultType="com.blog.core.system.user.vo.PortalUserLoginVO" >
         SELECT
             id,
             user_name,
@@ -99,7 +99,7 @@
         </where>
     </select>
 
-    <select id="findByUserName" resultType="com.blog.core.system.user.entity.vo.PortalUserLoginVO" parameterType="java.lang.String">
+    <select id="selectUserByUserName" resultType="com.blog.core.system.user.vo.PortalUserLoginVO" parameterType="java.lang.String">
         SELECT
             id userId,
             user_name userName,

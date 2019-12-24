@@ -10,7 +10,7 @@ import com.blog.core.system.user.entity.dto.PortalUserEditDTO;
 import com.blog.core.system.user.entity.dto.PortalUserLoginDTO;
 import com.blog.core.system.user.entity.dto.PortalUserQueryDTO;
 import com.blog.core.system.user.entity.vo.PortalUserInfoVO;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
+import com.blog.core.system.user.vo.PortalUserLoginVO;
 import com.blog.core.system.user.entity.vo.PortalUserVO;
 import com.blog.core.common.enums.IsEnableEnum;
 import com.blog.core.common.exceptions.BlogRuntimeException;
@@ -51,7 +51,7 @@ public class PortalUserServiceImpl implements PortalUserService {
 
     @Override
     public PortalUserLoginVO checkLogin(PortalUserLoginDTO portalUserLoginDTO){
-        PortalUserLoginVO portalUserLoginVO = this.portalUserMapper.findByUserName(portalUserLoginDTO.getUsername());
+        PortalUserLoginVO portalUserLoginVO = this.portalUserMapper.selectUserByUserName(portalUserLoginDTO.getUsername());
         if(Objects.isNull(portalUserLoginVO)){
             throw new BlogRuntimeException("用户名不存在");
         }else {
@@ -70,7 +70,7 @@ public class PortalUserServiceImpl implements PortalUserService {
      * @param username
      */
     public PortalUserLoginVO queryUserByUserName(String username){
-        PortalUserLoginVO portalUserLoginVO = this.portalUserMapper.findByUserName(username);
+        PortalUserLoginVO portalUserLoginVO = this.portalUserMapper.selectUserByUserName(username);
         return portalUserLoginVO;
     }
 

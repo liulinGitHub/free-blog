@@ -35,6 +35,6 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return true;
+        return FilterInvocation.class.isAssignableFrom(clazz);
     }
 }

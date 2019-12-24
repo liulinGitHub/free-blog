@@ -4,7 +4,7 @@ import com.blog.core.system.user.entity.domain.PortalUser;
 import com.blog.core.system.user.entity.dto.PortalUserLoginDTO;
 import com.blog.core.system.user.entity.dto.PortalUserQueryDTO;
 import com.blog.core.system.user.entity.vo.PortalUserInfoVO;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
+import com.blog.core.system.user.vo.PortalUserLoginVO;
 import com.blog.core.system.user.entity.vo.PortalUserVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -26,7 +26,7 @@ public interface PortalUserMapper {
      * @param userName
      * @return
      */
-    PortalUserLoginVO findByUserName(String userName);
+    PortalUserLoginVO selectUserByUserName(String userName);
 
     /**
      * 根据用户名查询用户信息

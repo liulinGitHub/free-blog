@@ -4,6 +4,8 @@ import com.blog.core.articlecategory.entity.dto.ManageCategoryAddDTO;
 import com.blog.core.articlecategory.entity.dto.ManageCategoryEditDTO;
 import com.blog.core.articlecategory.service.ManageArticleCategoryService;
 import com.blog.core.common.annotation.LogPortal;
+import com.blog.core.common.utils.BaseController;
+import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "文章分类服务Controller",tags = "文章分类服务")
 @RestController
 @RequestMapping("/category")
-public class ManageCategoryController {
+public class ManageCategoryController extends BaseController {
 
     @Autowired
     private ManageArticleCategoryService manageArticleCategoryService;
@@ -27,8 +29,8 @@ public class ManageCategoryController {
     @LogPortal("分页文章分类信息")
     @ApiOperation(value="分页文章分类信息", notes="")
     @GetMapping("/all")
-    public ResponseBo queryArticleCategoryByPage(){
-        return ResponseBo.newDataResponse(this.manageArticleCategoryService.queryArticleCategoryByPage());
+    public ResponseBo queryArticleCategoryByPage(QueryRequest queryRequest){
+        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageArticleCategoryService.queryArticleCategoryByPage()));
     }
 
     @LogPortal("分页文章分类信息")

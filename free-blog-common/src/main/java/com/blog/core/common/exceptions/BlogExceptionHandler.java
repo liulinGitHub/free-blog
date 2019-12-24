@@ -4,6 +4,7 @@ import com.blog.core.common.enums.ExceptionEnum;
 import com.blog.core.common.utils.ResponseBo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -71,4 +72,14 @@ public class BlogExceptionHandler {
         return ResponseBo.error(e.getMessage());
     }
 
+    /**
+     * 用户名异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(UsernameNotFoundException.class)
+    @ResponseBody
+    public ResponseBo usernameNotFoundException(UsernameNotFoundException e) {
+        return ResponseBo.error(e.getMessage());
+    }
 }

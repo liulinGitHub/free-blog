@@ -1,25 +1,21 @@
 package com.blog.core.system.auth.impl;
 
 import com.blog.core.common.consts.Constants;
-import com.blog.core.common.enums.IsEnableEnum;
 import com.blog.core.common.exceptions.NotPermissionException;
-import com.blog.core.system.role.entity.domain.PortalRole;
-import com.blog.core.system.role.entity.vo.PortalRoleVO;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
+import com.blog.core.system.user.entity.domain.SecurityUserDetails;
+import com.blog.core.system.user.vo.PortalUserLoginVO;
 import org.springframework.security.access.AccessDecisionManager;
-import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.access.vote.AbstractAccessDecisionManager;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.FilterInvocation;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -38,12 +34,24 @@ public class CustomizeAccessDecisionManager implements AccessDecisionManager {
             return;
         }
 
+        HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
+
+        if ("anonymousUser".equals(authentication.getPrincipal())
+                || matchers("/images/**", request)
+                || matchers("/js/**", request)
+                || matchers("/css/**", request)
+                || matchers("/fonts/**", request)
+                || matchers("/", request)
+                || matchers("/favicon.ico", request)
+                || matchers("/index.html", request)
+                || matchers("/login", request)) {
+            return;
+        }
+
         // 如果是超级管理员账号,如果是则直接通过
-        Object obj = authentication.getPrincipal();
-        if(obj instanceof PortalUserLoginVO){
-            PortalUserLoginVO details = (PortalUserLoginVO) obj;
-            //如果登录名为admin，直接通过
-            if(Constants.ADMIN.equals(details.getUserName())){
+        SecurityUserDetails securityUserDetails = (SecurityUserDetails)authentication.getPrincipal();
+        if(Objects.nonNull(securityUserDetails)){
+            if(Constants.ADMIN.equals(securityUserDetails.getUsername())){
                 return;
             }
         }
@@ -68,9 +76,8 @@ public class CustomizeAccessDecisionManager implements AccessDecisionManager {
         if(isRightAccess){
             return;
         }
-        return;
         //权限不足
-        //throw new NotPermissionException("没有访问权限");
+        throw new NotPermissionException("没有访问权限");
     }
 
     @Override
@@ -81,5 +88,13 @@ public class CustomizeAccessDecisionManager implements AccessDecisionManager {
     @Override
     public boolean supports(Class<?> clazz) {
         return true;
+    }
+
+    private boolean matchers(String url, HttpServletRequest request) {
+        AntPathRequestMatcher matcher = new AntPathRequestMatcher(url);
+        if (matcher.matches(request)) {
+            return true;
+        }
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.blog.core.system.user.entity.vo;
+package com.blog.core.system.user.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

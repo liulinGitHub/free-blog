@@ -4,8 +4,6 @@ import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.RedisUtil;
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.user.entity.domain.SecurityUserDetails;
-import com.blog.core.system.user.entity.dto.PortalUserLoginDTO;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
 import com.blog.core.system.user.service.PortalUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

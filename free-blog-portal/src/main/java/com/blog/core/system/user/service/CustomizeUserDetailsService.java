@@ -1,16 +1,13 @@
 package com.blog.core.system.user.service;
 
-import com.blog.core.system.role.entity.domain.PortalRole;
 import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.role.service.PortalRoleService;
 import com.blog.core.system.user.entity.domain.SecurityUserDetails;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
+import com.blog.core.system.user.vo.PortalUserLoginVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

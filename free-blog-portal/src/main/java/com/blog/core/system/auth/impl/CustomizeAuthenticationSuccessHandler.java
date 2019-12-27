@@ -2,7 +2,6 @@ package com.blog.core.system.auth.impl;
 
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.user.entity.domain.SecurityUserDetails;
-import com.blog.core.system.user.vo.PortalUserLoginVO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -21,10 +20,11 @@ import java.io.IOException;
  */
 @Component
 public class CustomizeAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         SecurityUserDetails securityUserDetails = (SecurityUserDetails)authentication.getPrincipal();
         System.out.println(securityUserDetails);
-        ResponseBo.newDataResponse(securityUserDetails);
+        ResponseBo.newDataResponse(securityUserDetails.getPortalUserLoginVO());
     }
 }

@@ -2,6 +2,7 @@ package com.blog.core.system.user.entity.domain;
 
 import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.user.vo.PortalUserLoginVO;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,7 @@ import java.util.List;
  * @Author: liulin
  * @Date: 2019/10/26 1:38
  **/
+@Data
 public class SecurityUserDetails implements UserDetails {
 
     private PortalUserLoginVO portalUserLoginVO;
@@ -33,7 +35,6 @@ public class SecurityUserDetails implements UserDetails {
         portalRoleMenuInfoVOList.parallelStream().forEach(portalRoleMenuInfoVO -> {
             authorities.add(new SimpleGrantedAuthority(portalRoleMenuInfoVO.getRoleCode()));
         });
-        //authorities.add(new SimpleGrantedAuthority(Constants.BASE_ROLE));
         return authorities;
     }
 

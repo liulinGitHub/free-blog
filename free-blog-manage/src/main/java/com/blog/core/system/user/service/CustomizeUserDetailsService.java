@@ -1,5 +1,6 @@
 package com.blog.core.system.user.service;
 
+import com.blog.core.system.auth.entity.SecurityUserDetails;
 import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.role.service.ManageRoleService;
 import com.blog.core.system.role.service.PortalRoleService;

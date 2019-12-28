@@ -1,12 +1,8 @@
 package com.blog.core.system.user.service;
 
 import com.blog.core.system.auth.entity.SecurityUserDetails;
-import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.role.service.ManageRoleService;
-import com.blog.core.system.role.service.PortalRoleService;
 import com.blog.core.system.role.vo.ManageRoleMenuInfoVO;
-import com.blog.core.system.user.entity.domain.SecurityUserDetails;
-import com.blog.core.system.user.entity.vo.PortalUserLoginVO;
 import com.blog.core.system.user.vo.ManageUserLoginVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,7 +39,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ManageUserLoginVO manageUserLoginVO = this.manageUserService.queryUserByUserName(username);
-        List<ManageRoleMenuInfoVO> portalRoleMenuInfoVOList = this.manageRoleService.queryRoleMenuInfoByUserId(manageUserLoginVO.getUserId());
-        return new SecurityUserDetails(portalUserLoginVO, portalRoleMenuInfoVOList);
+        List<ManageRoleMenuInfoVO> manageRoleMenuInfoVOList = this.manageRoleService.queryRoleMenuInfoByUserId(manageUserLoginVO.getUserId());
+        return new SecurityUserDetails(manageUserLoginVO, manageRoleMenuInfoVOList);
     }
 }

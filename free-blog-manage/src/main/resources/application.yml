@@ -4,10 +4,8 @@ spring:
     active: test
   freemarker:
     check-template-location: false
-
-server:
-  servlet:
-    context-path: /manage
+  application:
+    name: manage
 
 #日志
 #logging:

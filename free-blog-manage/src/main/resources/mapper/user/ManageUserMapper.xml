@@ -18,6 +18,15 @@
             id = #{userId}
     </select>
 
+    <select id="selectUserByUserName" parameterType="java.lang.String" resultType="com.blog.core.system.user.vo.ManageUserLoginVO">
+        SELECT
+            *
+        FROM
+            manage_user
+        WHERE
+            user_name = #{userName}
+    </select>
+
     <insert id="insertUser" parameterType="com.blog.core.system.user.entity.domain.ManageUser">
 
     </insert>

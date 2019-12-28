@@ -5,6 +5,7 @@ import com.blog.core.system.user.entity.dto.ManageUserAddDTO;
 import com.blog.core.system.user.entity.dto.ManageUserEditDTO;
 import com.blog.core.system.user.entity.vo.ManageUserVO;
 import com.blog.core.system.user.service.ManageUserService;
+import com.blog.core.system.user.vo.ManageUserLoginVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,18 @@ public class ManageUserServiceImpl implements ManageUserService {
     @Override
     public ManageUserVO queryUserByUserId(String userId) {
         return null;
+    }
+
+    /**
+     * @Author liulin
+     * @Description 根据用户名查询登录用户信息
+     * @Date 2019/12/28 14:04
+     * @Param [userName]
+     * @return com.blog.core.system.user.vo.ManageUserLoginVO
+     **/
+    @Override
+    public ManageUserLoginVO queryUserByUserName(String userName){
+        return this.manageUserMapper.selectUserByUserName(userName);
     }
 
     @Override

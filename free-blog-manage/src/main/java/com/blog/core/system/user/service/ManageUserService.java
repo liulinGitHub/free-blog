@@ -3,6 +3,7 @@ package com.blog.core.system.user.service;
 import com.blog.core.system.user.entity.dto.ManageUserAddDTO;
 import com.blog.core.system.user.entity.dto.ManageUserEditDTO;
 import com.blog.core.system.user.entity.vo.ManageUserVO;
+import com.blog.core.system.user.vo.ManageUserLoginVO;
 
 import java.util.List;
 
@@ -28,6 +29,15 @@ public interface ManageUserService {
      * @return
      */
     ManageUserVO queryUserByUserId(String userId);
+
+    /**
+     * @Author liulin
+     * @Description 根据用户名查询登录用户信息
+     * @Date 2019/12/28 14:04
+     * @Param [userName]
+     * @return com.blog.core.system.user.vo.ManageUserLoginVO
+     **/
+    ManageUserLoginVO queryUserByUserName(String userName);
 
     /**
      * 添加用户信息

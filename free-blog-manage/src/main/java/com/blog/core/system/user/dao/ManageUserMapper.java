@@ -2,6 +2,7 @@ package com.blog.core.system.user.dao;
 
 import com.blog.core.system.user.entity.domain.ManageUser;
 import com.blog.core.system.user.entity.vo.ManageUserVO;
+import com.blog.core.system.user.vo.ManageUserLoginVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,6 +30,15 @@ public interface ManageUserMapper {
      * @return
      */
     ManageUserVO selectUserByUserId(String userId);
+
+    /**
+     * @Author liulin
+     * @Description 根据用户名查询登录用户信息
+     * @Date 2019/12/28 14:04
+     * @Param [userName]
+     * @return com.blog.core.system.user.vo.ManageUserLoginVO
+     **/
+    ManageUserLoginVO selectUserByUserName(String userName);
 
     /**
      * 添加用户信息

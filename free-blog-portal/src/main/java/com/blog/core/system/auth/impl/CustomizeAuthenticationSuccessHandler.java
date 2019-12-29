@@ -1,5 +1,6 @@
 package com.blog.core.system.auth.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.user.entity.domain.SecurityUserDetails;
 import org.springframework.security.core.Authentication;
@@ -25,6 +26,7 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         SecurityUserDetails securityUserDetails = (SecurityUserDetails)authentication.getPrincipal();
         System.out.println(securityUserDetails);
-        ResponseBo.newDataResponse(securityUserDetails.getPortalUserLoginVO());
+        String responseBoJsonString = JSONObject.toJSONString(ResponseBo.newDataResponse(securityUserDetails.getPortalUserLoginVO()));
+        response.getWriter().write(responseBoJsonString);
     }
 }

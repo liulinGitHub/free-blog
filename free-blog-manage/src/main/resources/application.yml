@@ -4,8 +4,6 @@ spring:
     active: test
   freemarker:
     check-template-location: false
-  application:
-    name: manage
 
 #日志
 #logging:
@@ -21,3 +19,4 @@ blog:
 
 #开启日志记录
 isOpenPortalAopLog : true
+

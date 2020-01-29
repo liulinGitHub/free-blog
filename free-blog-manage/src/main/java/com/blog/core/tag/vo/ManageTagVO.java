@@ -1,4 +1,4 @@
-package com.blog.core.tag.entity.vo;
+package com.blog.core.tag.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;

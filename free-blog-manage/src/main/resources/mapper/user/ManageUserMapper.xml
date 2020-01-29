@@ -20,7 +20,26 @@
 
     <select id="selectUserByUserName" parameterType="java.lang.String" resultType="com.blog.core.system.user.vo.ManageUserLoginVO">
         SELECT
-            *
+            id userId,
+            user_name userName,
+            user_password userPassword,
+            salt,
+            nick_name nickName,
+            avatar,
+            telephone,
+            email,
+            is_enable,
+            last_login_ip,
+            last_login_time,
+            create_time,
+            update_time,
+            create_id,
+            update_id,
+            signature,
+            comments,
+            article_total,
+            gender,
+            attention_id
         FROM
             manage_user
         WHERE

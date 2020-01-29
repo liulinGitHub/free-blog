@@ -1,4 +1,4 @@
-package com.blog.core.tag.service;
+package com.blog.core.tag.dao;
 
 import com.blog.core.tag.dto.ManageTagAddDTO;
 import com.blog.core.tag.dto.ManageTagEditDTO;
@@ -9,13 +9,13 @@ import com.blog.core.tag.vo.ManageTagVO;
 import java.util.List;
 
 /**
- * @program: ManageTagService
+ * @program: ManageTagMapper
  * @description:
  * @author: liulin
- * @create: 2019-12-16 15:18
+ * @create: 2020-01-18 14:13
  * @Version: 1.0
  */
-public interface ManageTagService {
+public interface ManageTagMapper {
 
     /**
      * @Author liulin
@@ -24,7 +24,7 @@ public interface ManageTagService {
      * @param
      * @return java.util.List<com.blog.core.tag.vo.ManageTagListVO>
      **/
-    List<ManageTagListVO> queryManageTagByPage();
+    List<ManageTagListVO> selectManageTagByPage();
 
     /**
      * @Author liulin
@@ -33,7 +33,7 @@ public interface ManageTagService {
      * @param tagId
      * @return com.blog.core.tag.vo.ManageTagVO
      **/
-    ManageTagVO queryManageTagByTagId(Integer tagId);
+    ManageTagVO selectManageTagByTagId(Integer tagId);
 
     /**
      * @Author liulin
@@ -42,7 +42,7 @@ public interface ManageTagService {
      * @param manageTagAddDTO
      * @return void
      **/
-    void addManageTag(ManageTagAddDTO manageTagAddDTO);
+    void insertManageTag(ManageTagAddDTO manageTagAddDTO);
 
     /**
      * @Author liulin
@@ -51,7 +51,7 @@ public interface ManageTagService {
      * @param manageTagEditDTO
      * @return void
      **/
-    void editManageTag(ManageTagEditDTO manageTagEditDTO);
+    void updateManageTag(ManageTagEditDTO manageTagEditDTO);
 
     /**
      * @Author liulin
@@ -61,22 +61,4 @@ public interface ManageTagService {
      * @return void
      **/
     void deleteManageTagByTagId(ManageTagIdDTO manageTagIdDTO);
-
-    /**
-     * @Author liulin
-     * @Description 启用标签
-     * @Date 2020/1/18 14:15
-     * @param manageTagIdDTO
-     * @return void
-     **/
-    void enableManageTagByTagId(ManageTagIdDTO manageTagIdDTO);
-
-    /**
-     * @Author liulin
-     * @Description 停用标签
-     * @Date 2020/1/18 14:16
-     * @param manageTagIdDTO
-     * @return void
-     **/
-    void disableManageTagByTagId(ManageTagIdDTO manageTagIdDTO);
 }

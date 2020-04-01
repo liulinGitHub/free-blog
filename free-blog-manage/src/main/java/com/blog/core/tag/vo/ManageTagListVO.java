@@ -22,6 +22,9 @@ public class ManageTagListVO {
     @ApiModelProperty("标签名称")
     private String tagName;
 
+    @ApiModelProperty("停用/启用")
+    private String isEnable;
+
     @ApiModelProperty("创建时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;

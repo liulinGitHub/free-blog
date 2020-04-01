@@ -10,11 +10,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * @create: 2019-05-06 18:12
  * @Version: 1.0
  */
-public enum  ArticleStatusEnum implements BaseEnum{
+public enum ArticleStatusEnum implements BaseEnum{
 
     DRAFT("0", "草稿"),
-    CHECK_NO("1", "未审核"),
-    CHECK_YES("2", "审核通过");
+    REVIEW_NO("2", "未审核"),
+    REVIEW_IN("4", "审核中"),
+    REVIEW_YES("6", "审核通过");
 
     private String value;
     private String name;

@@ -1,5 +1,6 @@
 package com.blog.core.system.user.vo;
 
+import com.blog.core.common.enums.IsEnableEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -16,13 +17,13 @@ public class ManageUserLoginVO {
     private String userId;
 
     @ApiModelProperty(value="登陆用户名",name="userName")
-    private String userName;
+    private String username;
 
-    @ApiModelProperty(value="登陆密码",name="userPassword")
-    private String userPassword;
+    @ApiModelProperty(value="登陆密码",name="password")
+    private String password;
 
-    @ApiModelProperty(value="盐",name="salt")
-    private String salt;
+    @ApiModelProperty(value="性别",name="salt")
+    private String sex;
 
     @ApiModelProperty(value="昵称",name="nickName")
     private String nickName;
@@ -36,6 +37,6 @@ public class ManageUserLoginVO {
     @ApiModelProperty(value="邮箱",name="email")
     private String email;
 
-    @ApiModelProperty(value="token",name="token")
-    private String token;
+    @ApiModelProperty(value="启用/停用",name="email")
+    private String isEnable;
 }

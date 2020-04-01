@@ -103,7 +103,7 @@ public class PortalUserServiceImpl implements PortalUserService {
     @Override
     public void addUser(PortalUserAddDTO portalUserAddDTO){
         PortalUser portalUser = MapperUtils.mapperBean(portalUserAddDTO, PortalUser.class);
-        portalUser.setId(UUIDUtil.randomUUID32());
+        portalUser.setUserId(UUIDUtil.randomUUID32());
         portalUser.setCreateId(RequestHolder.get()+"");
         portalUser.setCreateTime(new Date());
         portalUser.setIsEnable(IsEnableEnum.Enable_NO.getValue());

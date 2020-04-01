@@ -1,9 +1,9 @@
 package com.blog.core;
 
-import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @program: FreeBlogManageApplication
@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @create: 2019-10-24 10:03
  * @Version: 1.0
  */
+@EnableAsync
 @SpringBootApplication
 @MapperScan("com.blog.core.**.dao")
 public class FreeBlogManageApplication {

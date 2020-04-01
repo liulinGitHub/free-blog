@@ -17,7 +17,7 @@ import java.util.Date;
 public class ManageTagVO {
 
     @ApiModelProperty("标签ID")
-    private String id;
+    private String tagId;
 
     @ApiModelProperty("标签名称")
     private String tagName;

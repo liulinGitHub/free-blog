@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum  IsEnableEnum implements BaseEnum {
 
-    Enable_YES("0", "停用"),
-    Enable_NO("1", "启用");
+    Enable_NO("0", "停用"),
+    Enable_YES("1", "启用");
 
     private String value;
     private String name;

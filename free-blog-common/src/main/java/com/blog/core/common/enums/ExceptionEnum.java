@@ -16,6 +16,9 @@
 
 package com.blog.core.common.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * @program: free-blog
  * @description: 异常信息枚举
@@ -23,32 +26,40 @@ package com.blog.core.common.enums;
  * @create: 2019-05-04 17:34
  */
 
-public enum ExceptionEnum {
+public enum ExceptionEnum implements BaseEnum {
 
-    AUTHORIZATION_ERROR(401, "权限不足，请先配置权限"),
-    TOKEN_NONE(301, "token无效！"),
-    DATA_NOT_FOUND(404, "数据未找到"),
-    PARAMETER_ILLEGAL(403, "参数无效"),
-    USER_NOT_FOUND(602, "用户不存在"),
-    USERNAME_PASSWORD_ERROR(601, "用户名或密码错误"),
-    ARTICLE_THUMBUP_ERROR(603, "已经点过赞")
+    AUTHORIZATION_ERROR("401", "权限不足，请先配置权限"),
+    TOKEN_NONE("301", "token无效！"),
+    DATA_NOT_FOUND("404", "数据未找到"),
+    PARAMETER_ILLEGAL("403", "参数无效"),
+    USER_NOT_FOUND("602", "用户不存在"),
+    USERNAME_PASSWORD_ERROR("601", "用户名或密码错误"),
+    ARTICLE_THUMBUP_ERROR("603", "已经点过赞")
     ;
 
-    private int code;
+    private String value;
 
-    private String message;
+    private String name;
 
-    ExceptionEnum(int code, String message) {
-        this.code = code;
-        this.message = message;
+    ExceptionEnum(String value, String name) {
+        this.value = value;
+        this.name = name;
     }
 
-    public int getCode() {
-        return code;
+    @JsonCreator
+    @Override
+    public String toString() {
+        return value;
     }
 
-    public String getMessage() {
-        return message;
+    public String getName() {
+        return name;
+    }
+
+    @JsonValue
+    @Override
+    public String getValue() {
+        return value;
     }
 
 }

@@ -1,8 +1,9 @@
 package com.blog.core.article.dao;
 
 
-import com.blog.core.article.entity.domain.PortalArticle;
-import com.blog.core.article.entity.vo.PortalArticleInfoVO;
+import com.blog.core.article.domain.PortalArticle;
+import com.blog.core.article.vo.PortalArticleInfoVO;
+import com.blog.core.article.vo.PortalArticleInfoVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,6 +25,15 @@ public interface PortalArticleMapper {
      * @return
      */
     PortalArticleInfoVO findArticleById(String articleId);
+
+    /**
+     * @Author ll
+     * @Description 编辑文章信息
+     * @Date 2020/1/27 21:10
+     * @Param [articleId]
+     * @return void
+     **/
+    void updateArticleById(String articleId);
 
     /**
      * 修改阅读文章量

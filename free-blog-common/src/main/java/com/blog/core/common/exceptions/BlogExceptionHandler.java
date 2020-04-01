@@ -4,7 +4,6 @@ import com.blog.core.common.enums.ExceptionEnum;
 import com.blog.core.common.utils.ResponseBo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,7 +35,7 @@ public class BlogExceptionHandler {
     @ExceptionHandler(TokenException.class)
     @ResponseBody
     public ResponseBo tokenException(TokenException e) {
-        return ResponseBo.tokenError(ExceptionEnum.TOKEN_NONE.getMessage());
+        return ResponseBo.tokenError(ExceptionEnum.TOKEN_NONE.getName());
     }
 
     /**
@@ -47,7 +46,7 @@ public class BlogExceptionHandler {
     @ExceptionHandler(DataNotFoundException.class)
     @ResponseBody
     public ResponseBo DataNotFoundException(DataNotFoundException e) {
-        return ResponseBo.error(ExceptionEnum.DATA_NOT_FOUND.getMessage());
+        return ResponseBo.error(ExceptionEnum.DATA_NOT_FOUND.getName());
     }
 
     /**
@@ -58,7 +57,7 @@ public class BlogExceptionHandler {
     @ExceptionHandler(NotPermissionException.class)
     @ResponseBody
     public ResponseBo NotPermissionException(DataNotFoundException e) {
-        return ResponseBo.error(ExceptionEnum.AUTHORIZATION_ERROR.getMessage());
+        return ResponseBo.error(ExceptionEnum.AUTHORIZATION_ERROR.getName());
     }
 
     /**
@@ -77,9 +76,9 @@ public class BlogExceptionHandler {
      * @param e
      * @return
      */
-    @ExceptionHandler(UsernameNotFoundException.class)
-    @ResponseBody
-    public ResponseBo usernameNotFoundException(UsernameNotFoundException e) {
-        return ResponseBo.error(e.getMessage());
-    }
+//    @ExceptionHandler(UsernameNotFoundException.class)
+//    @ResponseBody
+//    public ResponseBo usernameNotFoundException(UsernameNotFoundException e) {
+//        return ResponseBo.error(e.getMessage());
+//    }
 }

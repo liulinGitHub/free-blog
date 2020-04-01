@@ -7,5 +7,10 @@ package com.blog.core.common.consts;
  * @create: 2019-06-15 09:24
  * @Version: 1.0
  */
-public class RedisKeyConst {
+public interface RedisKeyConst {
+
+    /**
+     * redis 保存随机
+     **/
+    String PIMARY_KEY = "PIMARY_KEY";
 }

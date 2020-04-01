@@ -1,8 +1,8 @@
 package com.blog.core.log.dao;
 
-import com.blog.core.log.entity.domain.ManageLog;
-import com.blog.core.log.entity.dto.ManageLogQueryDTO;
-import com.blog.core.log.entity.vo.ManageLogVO;
+import com.blog.core.log.entity.ManageLog;
+import com.blog.core.log.dto.ManageLogQueryDTO;
+import com.blog.core.log.vo.ManageLogVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

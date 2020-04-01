@@ -33,7 +33,7 @@ public interface ManageTagService {
      * @param tagId
      * @return com.blog.core.tag.vo.ManageTagVO
      **/
-    ManageTagVO queryManageTagByTagId(Integer tagId);
+    ManageTagVO queryManageTagByTagId(String tagId);
 
     /**
      * @Author liulin
@@ -79,4 +79,8 @@ public interface ManageTagService {
      * @return void
      **/
     void disableManageTagByTagId(ManageTagIdDTO manageTagIdDTO);
+
+    void parent();
+
+    void child();
 }

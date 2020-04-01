@@ -12,8 +12,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum  ReleaseStatusEnum implements BaseEnum{
 
-    RELEASE_YES("1", "发布"),
-    RELEASE_NO("0", "未发布");
+    RELEASE_NO("0", "未发布"),
+    RELEASE_YES("1", "已发布")
+    ;
 
     private String value;
     private String name;

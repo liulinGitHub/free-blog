@@ -17,51 +17,30 @@ import java.util.Date;
 @Api(value = "文章评论服务")
 public class PortalArticleComment extends BaseModel {
 
-	/**
-	 * 评论内容
-	 */
-   	@ApiModelProperty(name = "comment_content" )
+	@ApiModelProperty("评论ID" )
+	private String commentId;
+
+   	@ApiModelProperty("评论内容" )
 	private String commentContent;
 
-	/**
-	 * 评论者的用户id
-	 */
-   	@ApiModelProperty(name = "comment_user_id" )
+   	@ApiModelProperty("评论者的用户id" )
 	private String commentUserId;
 
-	/**
-	 * 父id
-	 */
-   	@ApiModelProperty(name = "parent_id" )
+   	@ApiModelProperty("父id" )
 	private String parentId;
 
-	/**
-	 * 所属文章id
-	 */
-   	@ApiModelProperty(name = "article_id" )
+   	@ApiModelProperty("所属文章id" )
 	private String articleId;
 
-	/**
-	 * 是否为父级
-	 */
-   	@ApiModelProperty(name = "is_parent" )
+   	@ApiModelProperty("是否为父级" )
 	private String isParent;
 
-	/**
-	 * 评论时间
-	 */
-   	@ApiModelProperty(name = "comment_time" )
+   	@ApiModelProperty("评论时间" )
 	private Date commentTime;
 
-	/**
-	 * 点赞数
-	 */
-   	@ApiModelProperty(name = "approves" )
+   	@ApiModelProperty("点赞数" )
 	private Long approves;
 
-	/**
-	 * 是否删除
-	 */
-   	@ApiModelProperty(name = "is_enable" )
+   	@ApiModelProperty("是否删除" )
 	private String isEnable;
 }

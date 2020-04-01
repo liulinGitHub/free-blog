@@ -1,15 +1,11 @@
 package com.blog.core.system.user.entity.domain;
 
-import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
-import com.blog.core.system.user.vo.PortalUserLoginVO;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassNmae: SecurityUserDetails
@@ -20,32 +16,37 @@ import java.util.List;
 @Data
 public class SecurityUserDetails implements UserDetails {
 
-    private PortalUserLoginVO portalUserLoginVO;
+    @ApiModelProperty(value="用户id",name="username")
+    private String userId;
 
-    private List<PortalRoleMenuInfoVO> portalRoleMenuInfoVOList;
+    @ApiModelProperty(value="登陆用户名",name="userName")
+    private String userName;
 
-    public SecurityUserDetails(PortalUserLoginVO portalUserLoginVO, List<PortalRoleMenuInfoVO> portalRoleMenuInfoVOList) {
-        this.portalUserLoginVO = portalUserLoginVO;
-        this.portalRoleMenuInfoVOList = portalRoleMenuInfoVOList;
-    }
+    @ApiModelProperty(value="登陆密码",name="userPassword")
+    private String userPassword;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        portalRoleMenuInfoVOList.parallelStream().forEach(portalRoleMenuInfoVO -> {
-            authorities.add(new SimpleGrantedAuthority(portalRoleMenuInfoVO.getRoleCode()));
-        });
-        return authorities;
-    }
+    @ApiModelProperty(value="昵称",name="nickName")
+    private String nickName;
+
+    @ApiModelProperty(value="头像",name="avatar")
+    private String avatar;
+
+    @ApiModelProperty(value="电话号码",name="telephone")
+    private String telephone;
+
+    @ApiModelProperty(value="邮箱",name="email")
+    private String email;
+
+    private final Collection<GrantedAuthority> authorities;
 
     @Override
     public String getPassword() {
-        return this.portalUserLoginVO.getUserPassword();
+        return this.userPassword;
     }
 
     @Override
     public String getUsername() {
-        return this.portalUserLoginVO.getUserName();
+        return this.userName;
     }
 
     /**
@@ -82,5 +83,9 @@ public class SecurityUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Collection getRoles() {
+        return authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet());
     }
 }

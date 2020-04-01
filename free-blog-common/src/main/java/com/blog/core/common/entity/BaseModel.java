@@ -14,9 +14,6 @@ import java.util.Date;
 @Data
 public class BaseModel {
 
-    @ApiModelProperty(name = "id" )
-    private String id;
-
     @ApiModelProperty("创建人")
     private String createId;
 

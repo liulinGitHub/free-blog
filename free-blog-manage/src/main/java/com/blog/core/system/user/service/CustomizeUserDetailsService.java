@@ -1,17 +1,19 @@
 package com.blog.core.system.user.service;
 
-import com.blog.core.system.auth.entity.SecurityUserDetails;
+import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.exceptions.BlogRuntimeException;
+import com.blog.core.system.auth.entity.SecurityUser;
 import com.blog.core.system.role.service.ManageRoleService;
-import com.blog.core.system.role.vo.ManageRoleMenuInfoVO;
 import com.blog.core.system.user.vo.ManageUserLoginVO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassNmae: UserDetailsService
@@ -39,7 +41,25 @@ public class CustomizeUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ManageUserLoginVO manageUserLoginVO = this.manageUserService.queryUserByUserName(username);
-        List<ManageRoleMenuInfoVO> manageRoleMenuInfoVOList = this.manageRoleService.queryRoleMenuInfoByUserId(manageUserLoginVO.getUserId());
-        return new SecurityUserDetails(manageUserLoginVO, manageRoleMenuInfoVOList);
+        if(Objects.isNull(manageUserLoginVO)){
+            throw new BlogRuntimeException("用户名不正确！");
+        }
+        if(IsEnableEnum.Enable_NO.getValue().equals(manageUserLoginVO.getUserId())) {
+            throw new BlogRuntimeException("账号未激活！");
+        }
+        return createSecurityUserDetailsUser(manageUserLoginVO);
+    }
+
+    private SecurityUser createSecurityUserDetailsUser(ManageUserLoginVO manageUserLoginVO){
+        Collection<GrantedAuthority> authorities = this.manageRoleService.queryRoleInfoByUserId(manageUserLoginVO.getUserId());
+        return new SecurityUser(manageUserLoginVO.getUserId(),
+                manageUserLoginVO.getUsername(),
+                manageUserLoginVO.getPassword(),
+                manageUserLoginVO.getSex(),
+                manageUserLoginVO.getNickName(),
+                manageUserLoginVO.getAvatar(),
+                manageUserLoginVO.getTelephone(),
+                manageUserLoginVO.getEmail(),
+                authorities);
     }
 }

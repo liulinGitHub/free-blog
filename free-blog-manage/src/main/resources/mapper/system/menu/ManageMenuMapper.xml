@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.menu.dao.ManageMenuMapper">
+
+    <select id="selectManageMenuAll" resultType="com.blog.core.system.menu.vo.ManageMenuListVO">
+        SELECT
+            id  id,
+            parent_id  parentId,
+            name  name,
+            component  component,
+            component_name  componentName,
+            path  path,
+            icon  icon,
+            sort  sort,
+            type  type,
+            permission  permission,
+            hidden  hidden,
+            create_time  createTime,
+            i_frame  IFrame,
+            cache cache
+        FROM
+            manage_menu  menu
+    </select>
+
+
+    <select id="selectBuildManageMenuList" resultType="com.blog.core.system.menu.vo.ManageMenuListVO">
+        SELECT
+            id  id,
+            parent_id  parentId,
+            name  name,
+            component  component,
+            component_name  componentName,
+            path  path,
+            icon  icon,
+            sort  sort,
+            type  type,
+            permission  permission,
+            hidden  hidden,
+            create_time  createTime,
+            i_frame  IFrame,
+            cache cache
+        FROM
+            manage_menu  menu
+        WHERE menu.type not in ('2')
+    </select>
+
+    <select id="selectBuildManageMenuByUserId" parameterType="java.lang.String"
+            resultType="com.blog.core.system.menu.vo.ManageMenuListVO">
+
+    </select>
+
+    <select id="selectManageMenuByMenuId" parameterType="java.lang.String"
+            resultType="com.blog.core.system.menu.vo.ManageMenuVO">
+        SELECT
+            id  id,
+            parent_id  parentId,
+            name  name,
+            component  component,
+            component_name  componentName,
+            path  path,
+            icon  icon,
+            sort  sort,
+            type  type,
+            permission  permission,
+            hidden  hidden,
+            create_time  createTime,
+            i_frame  IFrame,
+            cache cache
+        FROM
+            manage_menu
+        WHERE
+            id = #{menuId}
+    </select>
+
+    <insert id="insertManageMenu" parameterType="com.blog.core.system.menu.entity.ManageMenu">
+         INSERT INTO manage_menu
+         (id,
+         parent_id,
+         menu_name,
+         web_code,
+         menu_url,
+         icon,
+         menu_sort,
+         type,
+         perms,
+         is_enable,
+         create_id,
+         create_time,
+         is_web)
+         VALUES
+         (#{id},
+         #{parentId},
+         #{menuName},
+         #{webCode},
+         #{menuUrl},
+         #{icon},
+         #{menuSort},
+         #{type.value},
+         #{perms},
+         #{isEnable.value},
+         #{createId},
+         #{createTime},
+         #{isWeb})
+    </insert>
+
+    <update id="updateManageMenu" parameterType="com.blog.core.system.menu.entity.ManageMenu">
+        UPDATE
+            manage_menu
+        SET
+            <if test="parentId != null and parentId != ''">
+                parent_id = #{parentId},
+            </if>
+            <if test="menuName != null and menuName != ''">
+                menu_name = #{menuName},
+            </if>
+            <if test="webCode != null and webCode != ''">
+                web_code = #{webCode},
+            </if>
+            <if test="menuUrl != null and menuUrl != ''">
+                menu_url = #{menuUrl},
+            </if>
+            <if test="icon != null and icon != ''">
+                icon = #{icon},
+            </if>
+            <if test="menuSort != null and menuSort != ''">
+                menu_sort = #{menuSort},
+            </if>
+            <if test="type != null">
+                type = #{type.value},
+            </if>
+            <if test="perms != null and perms != ''">
+                perms = #{perms},
+            </if>
+            update_id = #{updateId},
+            update_time = #{updateTime}
+        WHERE
+            id = #{menuId}
+    </update>
+
+    <update id="disableManageMenuByByMenuId" parameterType="java.lang.String">
+        UPDATE
+            manage_menu
+        SET
+            is_enable = '0'
+        WHERE
+            id = #{menuId}
+    </update>
+
+    <update id="enableManageMenuByMenuId" parameterType="java.lang.String">
+        UPDATE
+            manage_menu
+        SET
+            is_enable = '1'
+        WHERE
+            id = #{menuId}
+    </update>
+</mapper>

@@ -1,8 +1,9 @@
 package com.blog.core.system.user.service;
 
-import com.blog.core.system.user.entity.dto.ManageUserAddDTO;
-import com.blog.core.system.user.entity.dto.ManageUserEditDTO;
-import com.blog.core.system.user.entity.vo.ManageUserVO;
+import com.blog.core.system.user.dto.ManageUserAddDTO;
+import com.blog.core.system.user.dto.ManageUserEditDTO;
+import com.blog.core.system.user.vo.ManageUserDetailVO;
+import com.blog.core.system.user.vo.ManageUserListVO;
 import com.blog.core.system.user.vo.ManageUserLoginVO;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface ManageUserService {
      *
      * @return
      */
-    List<ManageUserVO> queryArticleByPage();
+    List<ManageUserListVO> queryUserByPage();
 
     /**
      * 根据用户id查看用户详情
@@ -28,7 +29,7 @@ public interface ManageUserService {
      * @param userId
      * @return
      */
-    ManageUserVO queryUserByUserId(String userId);
+    ManageUserDetailVO queryUserByUserId(String userId);
 
     /**
      * @Author liulin
@@ -51,7 +52,7 @@ public interface ManageUserService {
      *
      * @param manageUserEditDTO
      */
-    void editUser(ManageUserEditDTO manageUserEditDTO);
+    void editManageUser(ManageUserEditDTO manageUserEditDTO);
 
     /**
      * 禁用用户

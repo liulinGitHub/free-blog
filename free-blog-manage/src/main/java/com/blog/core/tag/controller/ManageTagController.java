@@ -38,13 +38,13 @@ public class ManageTagController extends BaseController {
     @LogManage("查看标签信息详情")
     @ApiOperation(value="查看标签信息详情", notes="")
     @GetMapping("/details")
-    public ResponseBo queryManageTagDetails(Integer tagId){
+    public ResponseBo queryManageTagDetails(String tagId){
         return ResponseBo.newDataResponse(this.manageTagService.queryManageTagByTagId(tagId));
     }
 
     @LogManage("添加标签信息")
     @ApiOperation(value="添加标签信息", notes="")
-    @PostMapping("/all")
+    @PostMapping("/add")
     public ResponseBo addManageTag(@RequestBody ManageTagAddDTO manageTagAddDTO){
         this.manageTagService.addManageTag(manageTagAddDTO);
         return ResponseBo.ok("添加成功!");
@@ -68,7 +68,7 @@ public class ManageTagController extends BaseController {
 
     @LogManage("启用标签信息")
     @ApiOperation(value="启用标签信息", notes="")
-    @PostMapping("/delete")
+    @PostMapping("/enable")
     public ResponseBo enableManageTagByTagId(@RequestBody ManageTagIdDTO manageTagIdDTO){
         this.manageTagService.enableManageTagByTagId(manageTagIdDTO);
         return ResponseBo.ok("启用成功!");
@@ -76,9 +76,18 @@ public class ManageTagController extends BaseController {
 
     @LogManage("停用标签信息")
     @ApiOperation(value="停用标签信息", notes="")
-    @PostMapping("/delete")
+    @PostMapping("/disable")
     public ResponseBo disableManageTagByTagId(@RequestBody ManageTagIdDTO manageTagIdDTO){
         this.manageTagService.disableManageTagByTagId(manageTagIdDTO);
         return ResponseBo.ok("停用成功!");
+    }
+
+    @LogManage("test")
+    @ApiOperation(value="test", notes="")
+    @PostMapping("/test")
+    public ResponseBo test(){
+        this.manageTagService.parent();
+        this.manageTagService.child();
+        return ResponseBo.ok("test");
     }
 }

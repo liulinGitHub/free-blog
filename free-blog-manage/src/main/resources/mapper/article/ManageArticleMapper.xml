@@ -2,75 +2,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.article.dao.ManageArticleMapper">
 
-    <select id="selectArticleByPage" resultType="com.blog.core.article.entity.vo.ManageArticleInfoVO">
+    <select id="selectManageArticleByPage" resultType="com.blog.core.article.vo.ManageArticleListVO">
         SELECT
-            article.id articleId,
-            article.article_title AS articleTitle,
-            article.release_date AS releaseDate,
-            article.article_content AS articleContent,
-            article.article_user_id AS articleUserId,
-            article.article_status AS articleStatus,
-            article.release_status AS releaseStatus,
-            article.tag_id AS tagId,
-            article.article_images AS articleImages,
-            article.approves AS approves,
-            article.comment_status AS commentStatus,
-            article.like_number AS likeNumber,
-            article.read_number AS readNumber,
-            article.article_type AS articleType,
-            article.article_top AS articleTop,
-            article.article_fine_note AS articleFineNote,
-            article.article_user_id AS articleUserId,
-            article.recommend_status AS recommendStatus,
+            article.article_id articleId,
+            article.article_title  articleTitle,
+            article.article_release_date  articleReleaseDate,
+            article.article_content_html  articleContentHtml,
+            article.article_content_markdown  articleContentMarkDown,
+            article.article_user_id  articleUserId,
+            article.article_images  articleImages,
+            article.article_type  articleType,
+            article.article_status  articleStatus,
+            article.article_release_status  articleReleaseStatus,
+            article.article_comment_status  articleCommentsStatus,
+            article.article_top_status  articleTopStatus,
+            article.article_fine_note_status  articleFineNoteStatus,
+            article.approves_number  approvesNumber,
+            article.like_number  likeNumber,
+            article.read_number  readNumber,
+            article.comments_number commentsNumber,
             CASE
             WHEN user.nick_name IS NOT NULL THEN
                 user.nick_name
             ELSE
                 user.user_name
-            END AS articleAuthor,
-            user.avatar AS articleAuthorImage
+            END  articleAuthor,
+            user.avatar articleAuthorImage
         FROM
             manage_article article
-        LEFT JOIN portal_user AS user ON article.article_user_id = user .id
-        WHERE
-          article.is_enable = '1'
-          AND article.release_status = '1'
+        LEFT JOIN manage_user user ON article.article_user_id = user.user_id
     </select>
 
-    <select id="selectArticleByArticleId" resultType="com.blog.core.article.entity.vo.ManageArticleInfoVO" parameterType="java.lang.String">
+    <select id="selectManageArticleByArticleId" parameterType="java.lang.String"
+            resultType="com.blog.core.article.vo.ManageArticleVO">
          SELECT
-            article.id,
-            article.article_title AS articleTitle,
-            article.release_date AS releaseDate,
-            article.article_content AS articleContent,
-            article.tag_id AS tagId,
-            article.article_images AS articleImages,
-            article.approves AS approves,
-            article.comments AS comments,
-            article.like_number AS likeNumber,
-            article.read_number AS readNumber,
-            article.article_type AS articleType,
-            article.article_top AS articleTop,
-            article.comment_status AS commentStatus,
-            article.article_fine_note AS articleFineNote,
-            CASE
-            WHEN USER .nick_name IS NOT NULL THEN
-                USER .nick_name
-            ELSE
-                user_name
-            END AS articleAuthor,
-            user.avatar AS articleAuthorImage
+            article.article_id articleId,
+            article.article_title  articleTitle,
+            article.article_release_date  articleReleaseDate,
+            article.article_content_html  articleContentHtml,
+            article.article_content_markdown  articleContentMarkDown,
+            article.article_user_id  articleUserId,
+            article.article_images  articleImages,
+            article.article_type  articleType,
+            article.article_status  articleStatus,
+            article.article_release_status  articleReleaseStatus,
+            article.article_comment_status  articleCommentsStatus,
+            article.article_top_status  articleTopStatus,
+            article.article_fine_note_status  articleFineNoteStatus,
+            article.approves_number  approvesNumber,
+            article.like_number  likeNumber,
+            article.read_number  readNumber,
+            article.comments_number commentsNumber
         FROM
-            portal_article article
-            LEFT JOIN portal_user user ON article.article_user_id = user.id
-        WHERE article.id = #{id}
+            manage_article article
+        WHERE article.article_id = #{articleId}
     </select>
 
-    <update id="checkArticle" parameterType="com.blog.core.article.entity.domain.ManageArticle">
-        UPDATE portal_article
+    <update id="checkArticle" parameterType="com.blog.core.article.entity.ManageArticle">
+        UPDATE manage_article
         SET article_status = #{articleStatus},
-        release_status = #{releaseStatus},
-        release_date = #{releaseDate}
+        relee_status = #{releeStatus},
+        relee_date = #{releeDate}
         WHERE id = #{articleId}
     </update>
 

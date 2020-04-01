@@ -18,6 +18,9 @@ import java.util.Date;
 @Api(value = "用户信息")
 public class PortalUser extends BaseModel {
 
+    @ApiModelProperty(value="用户名Id",name="userId")
+    private String userId;
+
     @ApiModelProperty(value="登陆用户名",name="userName")
     private String userName;
 

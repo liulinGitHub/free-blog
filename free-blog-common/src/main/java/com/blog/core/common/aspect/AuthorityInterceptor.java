@@ -2,7 +2,7 @@ package com.blog.core.common.aspect;
 
 import com.blog.core.common.annotation.CheckLogin;
 import com.blog.core.common.exceptions.TokenException;
-import com.blog.core.common.utils.RedisUtil;
+import com.blog.core.common.redis.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

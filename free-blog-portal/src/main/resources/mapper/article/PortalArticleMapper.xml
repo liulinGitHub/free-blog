@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.article.dao.PortalArticleMapper">
 
-    <select id="selectArticleByPage" resultType="com.blog.core.article.entity.vo.PortalArticleInfoVO">
+    <select id="selectArticleByPage" resultType="com.blog.core.article.vo.PortalArticleInfoVO">
         SELECT
             article.id,
             article.article_title AS articleTitle,
@@ -37,7 +37,7 @@
           AND article.release_status = '1'
     </select>
 
-    <select id="findArticleById" resultType="com.blog.core.article.entity.vo.PortalArticleInfoVO" parameterType="java.lang.String">
+    <select id="findArticleById" resultType="com.blog.core.article.vo.PortalArticleInfoVO" parameterType="java.lang.String">
          SELECT
             article.id,
             article.article_title AS articleTitle,
@@ -66,6 +66,10 @@
         WHERE article.id = #{id}
     </select>
 
+    <update id="updateArticleById">
+
+    </update>
+
     <update id="updateReadArticle" parameterType="java.lang.String">
         UPDATE portal_article
         SET like_number = like_number + 1
@@ -90,7 +94,7 @@
         WHERE id = #{articleId}
     </update>
 
-    <update id="checkArticle" parameterType="com.blog.core.article.entity.domain.PortalArticle">
+    <update id="checkArticle" parameterType="com.blog.core.article.domain.PortalArticle">
         UPDATE portal_article
         SET article_status = #{articleStatus},
         release_status = #{releaseStatus},
@@ -98,7 +102,7 @@
         WHERE id = #{articleId}
     </update>
 
-    <update id="submitCheckArticle" parameterType="com.blog.core.article.entity.domain.PortalArticle">
+    <update id="submitCheckArticle" parameterType="com.blog.core.article.domain.PortalArticle">
         UPDATE portal_article
         SET article_status = #{articleStatus},
         article_title = #{articleTitle},
@@ -109,7 +113,7 @@
         WHERE id = #{articleId}
     </update>
 
-    <insert id="saveDraft" parameterType="com.blog.core.article.entity.domain.PortalArticle">
+    <insert id="saveDraft" parameterType="com.blog.core.article.domain.PortalArticle">
         INSERT INTO
         portal_article
         (

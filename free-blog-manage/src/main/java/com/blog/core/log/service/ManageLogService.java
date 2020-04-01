@@ -1,11 +1,10 @@
 package com.blog.core.log.service;
 
-import com.blog.core.log.entity.domain.ManageLog;
-import com.blog.core.log.entity.dto.ManageLogQueryDTO;
-import com.blog.core.log.entity.vo.ManageLogVO;
+import com.blog.core.log.dto.ManageLogQueryDTO;
+import com.blog.core.log.entity.ManageLog;
+import com.blog.core.log.vo.ManageLogVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.aspectj.lang.ProceedingJoinPoint;
-
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public interface ManageLogService {
 
     /**
      * 查询日志
-     * @param portalLogQueryDTO
+     * @param manageLogQueryDTO
      * @return
      */
     List<ManageLogVO> queryLogByPage(ManageLogQueryDTO manageLogQueryDTO);

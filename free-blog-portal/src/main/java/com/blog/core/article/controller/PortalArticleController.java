@@ -1,8 +1,10 @@
 package com.blog.core.article.controller;
 
-import com.blog.core.article.entity.dto.PortalArticleCheckDTO;
+import com.blog.core.article.dto.PortalArticleCheckDTO;
 import com.blog.core.article.service.PortalArticleService;
 import com.blog.core.common.annotation.LogPortal;
+import com.blog.core.common.utils.BaseController;
+import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "文章信息服务Controller",tags = "文章信息服务")
 @RestController
 @RequestMapping("/portal/article")
-public class PortalArticleController {
+public class PortalArticleController extends BaseController {
 
     @Autowired
     private PortalArticleService portalArticleService;
@@ -26,15 +28,23 @@ public class PortalArticleController {
     @LogPortal("分页查询文章信息")
     @ApiOperation(value="分页查询文章信息", notes="")
     @GetMapping("/query")
-    public ResponseBo queryArticleByPage(){
-        return ResponseBo.newDataResponse(this.portalArticleService.queryArticleByPage());
+    public ResponseBo queryArticleByPage(QueryRequest queryRequest){
+        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->this.portalArticleService.queryArticleByPage()));
     }
 
     @LogPortal("查看文章详细信息")
     @ApiOperation(value="查看文章详细信息", notes="")
-    @GetMapping("/{id}")
-    public ResponseBo findArticleById(@PathVariable String id){
-        return ResponseBo.newDataResponse(this.portalArticleService.findArticleById(id));
+    @GetMapping("/{articleId}")
+    public ResponseBo findArticleById(@PathVariable String articleId){
+        return ResponseBo.newDataResponse(this.portalArticleService.findArticleById(articleId));
+    }
+
+    @LogPortal("编辑文章信息")
+    @ApiOperation(value="查看文章详细信息", notes="")
+    @GetMapping("/edit/{articleId}")
+    public ResponseBo editArticleById(@PathVariable String articleId){
+        this.portalArticleService.editArticleById(articleId);
+        return ResponseBo.ok("编辑成功！");
     }
 
     @LogPortal("文章提交审核")

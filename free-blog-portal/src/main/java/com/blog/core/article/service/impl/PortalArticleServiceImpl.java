@@ -1,9 +1,10 @@
 package com.blog.core.article.service.impl;
 
 import com.blog.core.article.dao.PortalArticleMapper;
-import com.blog.core.article.entity.domain.PortalArticle;
-import com.blog.core.article.entity.dto.PortalArticleCheckDTO;
-import com.blog.core.article.entity.vo.PortalArticleInfoVO;
+import com.blog.core.article.domain.PortalArticle;
+import com.blog.core.article.dto.PortalArticleCheckDTO;
+import com.blog.core.article.dto.PortalArticleCheckDTO;
+import com.blog.core.article.vo.PortalArticleInfoVO;
 import com.blog.core.article.service.PortalArticleService;
 import com.blog.core.articlecategory.service.PortalArticleCategoryService;
 import com.blog.core.common.aspect.RequestHolder;
@@ -84,12 +85,17 @@ public class PortalArticleServiceImpl implements PortalArticleService {
         return portalArticleInfoVO;
     }
 
-
-    @Override
     @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void editArticleById(String articleId) {
+        this.portalArticleMapper.updateArticleById(articleId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
     public void submitCheckArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
         PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
-        article.setArticleStatus(ArticleStatusEnum.CHECK_NO.getValue());
+        article.setArticleStatus(ArticleStatusEnum.REVIEW_YES.getValue());
         article.setArticleUserId(RequestHolder.get().toString());
         int result = this.portalArticleMapper.submitCheckArticle(article);
         if (result < 1) {
@@ -102,7 +108,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     @Transactional(rollbackFor = Exception.class)
     public void saveDraft(PortalArticleCheckDTO portalArticleCheckDTO) {
         PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
-        article.setId(UUIDUtil.randomUUID32());
+        article.setArticleTitleId(UUIDUtil.randomUUID32());
         article.setCreateTime(new Date());
         article.setArticleStatus(ArticleStatusEnum.DRAFT.getValue());
         int result = this.portalArticleMapper.saveDraft(article);

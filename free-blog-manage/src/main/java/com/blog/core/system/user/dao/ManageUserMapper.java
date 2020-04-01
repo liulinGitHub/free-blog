@@ -1,7 +1,8 @@
 package com.blog.core.system.user.dao;
 
-import com.blog.core.system.user.entity.domain.ManageUser;
-import com.blog.core.system.user.entity.vo.ManageUserVO;
+import com.blog.core.system.user.entity.ManageUser;
+import com.blog.core.system.user.vo.ManageUserDetailVO;
+import com.blog.core.system.user.vo.ManageUserListVO;
 import com.blog.core.system.user.vo.ManageUserLoginVO;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +22,7 @@ public interface ManageUserMapper {
      *
      * @return
      */
-    List<ManageUserVO> selectArticleByPage();
+    List<ManageUserListVO> queryUserByPage();
 
     /**
      * 根据用户id查看用户详情
@@ -29,7 +30,7 @@ public interface ManageUserMapper {
      * @param userId
      * @return
      */
-    ManageUserVO selectUserByUserId(String userId);
+    ManageUserDetailVO selectUserByUserId(String userId);
 
     /**
      * @Author liulin
@@ -52,7 +53,7 @@ public interface ManageUserMapper {
      *
      * @param manageUser
      */
-    void updateUser(ManageUser manageUser);
+    void updateManageUser(ManageUser manageUser);
 
     /**
      * 禁用用户

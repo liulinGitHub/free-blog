@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blog.core.log.dao.PortalLogMapper">
 
-    <select id="selectLogByPage" resultType="com.blog.core.log.entity.vo.PortalLogVO" parameterType="com.blog.core.log.entity.dto.PortalLogQueryDTO">
+    <select id="selectLogByPage" parameterType="com.blog.core.log.entity.dto.PortalLogQueryDTO"
+            resultType="com.blog.core.log.entity.vo.PortalLogVO">
         SELECT
             log.id,
             log.operation,
@@ -27,7 +28,7 @@
         </where>
     </select>
 
-    <insert id="saveLog" parameterType="com.blog.core.log.entity.domain.PortalLog">
+    <insert id="saveLog" parameterType="com.blog.core.log.entity.vo.PortalLogVO">
        INSERT INTO portal_log
        (id,operation,request_method,request_path,method_name,ip_address,operating_time,result_type,result_operation,time_consuming,operating_id)
        VALUES

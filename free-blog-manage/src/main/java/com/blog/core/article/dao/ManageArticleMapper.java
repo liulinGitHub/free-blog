@@ -1,10 +1,10 @@
 package com.blog.core.article.dao;
 
 
-import com.blog.core.article.entity.domain.ManageArticle;
-import com.blog.core.article.entity.vo.ManageArticleInfoVO;
+import com.blog.core.article.entity.ManageArticle;
+import com.blog.core.article.vo.ManageArticleListVO;
+import com.blog.core.article.vo.ManageArticleVO;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 /**
@@ -22,7 +22,7 @@ public interface ManageArticleMapper {
      *
      * @return
      */
-    List<ManageArticleInfoVO> selectArticleByPage();
+    List<ManageArticleListVO> selectManageArticleByPage();
 
     /**
      * 查看文章信息
@@ -30,7 +30,7 @@ public interface ManageArticleMapper {
      * @param articleId
      * @return
      */
-    ManageArticleInfoVO selectArticleByArticleId(String articleId);
+    ManageArticleVO selectManageArticleByArticleId(String articleId);
 
     /**
      * 文章审核

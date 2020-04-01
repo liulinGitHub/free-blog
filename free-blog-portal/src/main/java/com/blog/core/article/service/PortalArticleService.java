@@ -1,8 +1,8 @@
 package com.blog.core.article.service;
 
 
-import com.blog.core.article.entity.dto.PortalArticleCheckDTO;
-import com.blog.core.article.entity.vo.PortalArticleInfoVO;
+import com.blog.core.article.dto.PortalArticleCheckDTO;
+import com.blog.core.article.vo.PortalArticleInfoVO;
 import java.util.List;
 
 public interface PortalArticleService {
@@ -21,6 +21,15 @@ public interface PortalArticleService {
      * @return
      */
     PortalArticleInfoVO findArticleById(String articleId);
+
+    /**
+     * @Author ll
+     * @Description 编辑文章信息
+     * @Date 2020/1/27 21:10
+     * @Param [articleId]
+     * @return void
+     **/
+    void editArticleById(String articleId);
 
     /**
      * 提交审核

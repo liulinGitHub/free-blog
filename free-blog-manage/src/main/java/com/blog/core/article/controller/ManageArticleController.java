@@ -28,22 +28,23 @@ public class ManageArticleController extends BaseController {
     @LogManage("分页查询文章信息")
     @ApiOperation(value="分页查询文章信息", notes="")
     @PostMapping("/all")
-    public ResponseBo queryArticleByPage(QueryRequest queryRequest){
-        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageArticleService.queryArticleByPage()));
+    public ResponseBo queryManageArticleByPage(QueryRequest queryRequest){
+        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->
+                this.manageArticleService.queryManageArticleByPage()));
     }
 
     @LogManage("查看文章详细信息")
     @ApiOperation(value="查看文章详细信息", notes="")
     @GetMapping("/details")
-    public ResponseBo queryArticleByArticleId(@PathVariable String articleId){
-        return ResponseBo.newDataResponse(this.manageArticleService.queryArticleByArticleId(articleId));
+    public ResponseBo queryManageArticleDetails(@PathVariable String articleId){
+        return ResponseBo.newDataResponse(this.manageArticleService.queryManageArticleByArticleId(articleId));
     }
 
     @LogManage("文章审核")
     @ApiOperation(value="文章审核通过", notes="")
-    @PutMapping("/article/check_article")
-    public ResponseBo checkArticle(String articleId){
-        this.manageArticleService.checkArticle(articleId);
+    @PutMapping("/check_article")
+    public ResponseBo checkManageArticle(String articleId){
+        this.manageArticleService.checkManageArticle(articleId);
         return ResponseBo.ok("文章审核通过");
     }
 }

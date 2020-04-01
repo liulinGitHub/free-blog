@@ -68,7 +68,9 @@ public class PortalMenuServiceImpl implements PortalMenuService {
         //按照父ID分组，找出所有子节点
         Map<String, List<PortalMenuVO>> groupMap = portalMenuVOList.stream().filter(b -> null != b.getParentId()).collect(Collectors.groupingBy(PortalMenuVO::getParentId));
         if(Objects.nonNull(groupMap) && groupMap.size() > 0){
-            portalMenuTreeList = portalMenuVOList.stream().filter(menu -> null == menu.getParentId() && groupMap.containsKey(menu.getParentId()))
+            portalMenuTreeList = portalMenuVOList.stream()
+                    .filter(menu ->
+                            null == menu.getParentId() && groupMap.containsKey(menu.getParentId()))
                     .map(menu -> this.getChildMenuTree(groupMap, menu))
                     .sorted(Comparator.comparingInt(PortalMenuTree::getMenuSort))
                     .collect(Collectors.toList());

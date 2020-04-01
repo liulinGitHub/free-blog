@@ -14,6 +14,9 @@ import lombok.Data;
 @Data
 public class PortalUserRole extends BaseModel {
 
+    @ApiModelProperty(" 用户角色关联ID")
+    private String userRoleId;
+
     @ApiModelProperty("角色ID")
     private String roleId;
 

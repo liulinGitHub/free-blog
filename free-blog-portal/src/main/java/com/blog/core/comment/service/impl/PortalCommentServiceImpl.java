@@ -63,7 +63,7 @@ public class PortalCommentServiceImpl implements PortalCommentService {
     @Transactional(rollbackFor = Exception.class)
     public void saveArticleComment(PortalArticleCommentAddDTO portalCommentAddDTO) {
         PortalArticleComment portalArticleComment = MapperUtils.mapperBean(portalCommentAddDTO, PortalArticleComment.class);
-        portalArticleComment.setId(UUIDUtil.randomUUID32());
+        portalArticleComment.setCommentId(UUIDUtil.randomUUID32());
         portalArticleComment.setCommentUserId(RequestHolder.get()+"");
         portalArticleComment.setCommentTime(new Date());
         portalArticleComment.setIsEnable(IsEnableEnum.Enable_NO.getValue());

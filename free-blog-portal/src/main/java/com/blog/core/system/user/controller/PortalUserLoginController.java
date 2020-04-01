@@ -1,7 +1,7 @@
 package com.blog.core.system.user.controller;
 
 import com.blog.core.common.annotation.LogPortal;
-import com.blog.core.common.utils.RedisUtil;
+import com.blog.core.common.redis.RedisUtil;
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.user.entity.domain.SecurityUserDetails;
 import com.blog.core.system.user.service.PortalUserService;
@@ -12,7 +12,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.tio.http.common.HttpRequest;
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 /**
  * @ClassNmae: UserLoginController

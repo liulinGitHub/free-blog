@@ -1,7 +1,10 @@
 package com.blog.core.system.role.service;
 
-import com.blog.core.system.role.vo.ManageRoleMenuInfoVO;
+import com.blog.core.system.role.vo.ManageRoleInfoVO;
+import com.blog.core.system.role.vo.ManageRoleListVO;
+import org.springframework.security.core.GrantedAuthority;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -11,13 +14,21 @@ import java.util.List;
  * @Date: 2019/12/22 23:25
  **/
 public interface ManageRoleService {
-    
+
     /**
-     * @Author liulin
-     * @Description 根据用户id查询角色信息
-     * @Date 2019/12/28 14:09
-     * @Param [userId]
-     * @return java.util.List<com.blog.core.system.role.vo.ManageRoleMenuInfoVO>
-     **/
-    List<ManageRoleMenuInfoVO> queryRoleMenuInfoByUserId(String userId);
+     * 分页查询角色信息
+     *
+     * @return
+     */
+    List<ManageRoleListVO> queryManageRoleByPage();
+
+    /**
+     * 根据用户查询角色信息
+     *
+     * @param userId
+     * @return
+     */
+    List<ManageRoleInfoVO> queryRoleMenuInfoByUserId(String userId);
+
+    Collection<GrantedAuthority> queryRoleInfoByUserId(String userId);
 }

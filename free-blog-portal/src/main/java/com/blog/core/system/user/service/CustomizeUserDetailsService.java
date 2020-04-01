@@ -40,6 +40,6 @@ public class CustomizeUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         PortalUserLoginVO portalUserLoginVO = this.portalUserService.queryUserByUserName(username);
         List<PortalRoleMenuInfoVO> portalRoleMenuInfoVOList = portalRoleService.queryRoleMenuInfoByUserId(portalUserLoginVO.getUserId());
-        return new SecurityUserDetails(portalUserLoginVO, portalRoleMenuInfoVOList);
+        return null;
     }
 }

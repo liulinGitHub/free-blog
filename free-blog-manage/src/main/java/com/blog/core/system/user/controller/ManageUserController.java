@@ -4,8 +4,10 @@ import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
-import com.blog.core.system.user.entity.dto.ManageUserAddDTO;
-import com.blog.core.system.user.entity.dto.ManageUserEditDTO;
+import com.blog.core.system.auth.entity.SecurityUser;
+import com.blog.core.system.auth.utils.SecurityUtils;
+import com.blog.core.system.user.dto.ManageUserAddDTO;
+import com.blog.core.system.user.dto.ManageUserEditDTO;
 import com.blog.core.system.user.service.ManageUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @Api(value = "用户信息服务Controller",tags = "用户信息服务")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class ManageUserController extends BaseController {
 
     @Autowired
@@ -28,15 +30,17 @@ public class ManageUserController extends BaseController {
 
     @LogManage("分页查询用户信息")
     @ApiOperation(value="分页查询用户信息", notes="")
-    @PostMapping("/all")
+    @GetMapping("/all")
     public ResponseBo queryUserByPage(QueryRequest queryRequest){
-        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageUserService.queryArticleByPage()));
+        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageUserService.queryUserByPage()));
     }
 
     @LogManage("查看用户详细信息")
     @ApiOperation(value="查看用户详细信息", notes="")
-    @GetMapping("/details")
-    public ResponseBo queryUserByUserId(@PathVariable String userId){
+    @GetMapping("/details/{userId}")
+    public ResponseBo queryUserByUserId(@PathVariable("userId") String userId){
+        SecurityUser user = SecurityUtils.getUser();
+        System.out.println(user);
         return ResponseBo.newDataResponse(this.manageUserService.queryUserByUserId(userId));
     }
 
@@ -50,9 +54,9 @@ public class ManageUserController extends BaseController {
 
     @LogManage("修改用户信息")
     @ApiOperation(value="修改用户信息", notes="")
-    @GetMapping("/edit")
+    @PutMapping("/edit")
     public ResponseBo editUser(@RequestBody ManageUserEditDTO manageUserEditDTO){
-        this.manageUserService.editUser(manageUserEditDTO);
+        this.manageUserService.editManageUser(manageUserEditDTO);
         return ResponseBo.ok("修改用户信息成功！");
     }
 

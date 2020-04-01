@@ -29,23 +29,31 @@ public class ManageCommentController extends BaseController {
 
     @LogManage("分页查询文章评论信息")
     @ApiOperation(value="分页查询文章评论信息", notes="")
-    @PostMapping("/query")
+    @PostMapping("/all")
     public ResponseBo queryManageCommentByPage(QueryRequest queryRequest) {
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageCommentService.queryManageCommentByPage()));
     }
 
-    @LogPortal("分页查询文章评论信息")
-    @ApiOperation(value="分页查询文章评论信息", notes="")
-    @GetMapping("/querybyarticleId")
-    public ResponseBo queryManageCommentByArticleId(String articleId){
-        return ResponseBo.newDataResponse(this.manageCommentService.queryManageCommentByArticleId(articleId));
+    @LogPortal("查询评论信息")
+    @ApiOperation(value="查询评论信息", notes="")
+    @GetMapping("/details")
+    public ResponseBo queryManageCommentDetails(String commentId){
+        return ResponseBo.newDataResponse(this.manageCommentService.queryManageCommentDetails(commentId));
     }
 
-    @LogPortal("添加文章分类信息")
-    @ApiOperation(value="添加文章分类信息", notes="")
-    @PostMapping("/save")
-    public ResponseBo saveManageComment(@RequestBody ManageCommentAddDTO manageCommentAddDTO){
-        this.manageCommentService.saveManageComment(manageCommentAddDTO);
+    @LogPortal("添加评论信息")
+    @ApiOperation(value="添加评论信息", notes="")
+    @PostMapping("/add")
+    public ResponseBo addManageComment(@RequestBody ManageCommentAddDTO manageCommentAddDTO){
+        this.manageCommentService.addManageComment(manageCommentAddDTO);
         return ResponseBo.ok("添加成功！");
+    }
+
+    @LogPortal("评论点赞")
+    @ApiOperation(value="评论点赞", notes="")
+    @GetMapping("/approves")
+    public ResponseBo addManageCommentApproves(String commentId){
+        this.manageCommentService.addManageCommentApproves(commentId);
+        return ResponseBo.ok("点赞成功！");
     }
 }

@@ -55,7 +55,7 @@ public class RoleServiceImpl implements PortalRoleService {
     @Override
     public void addUserRole(PortalUserRoleAddQO portalUserRoleAddQO) {
         PortalUserRole userRole = MapperUtils.mapperBean(portalUserRoleAddQO, PortalUserRole.class);
-        userRole.setId(UUIDUtil.randomUUID32());
+        userRole.setUserRoleId(UUIDUtil.randomUUID32());
         userRole.setCreateId(RequestHolder.get()+"");
         userRole.setCreateTime(new Date());
         int result = this.portalRoleMapper.addUserRole(userRole);

@@ -1,6 +1,7 @@
 package com.blog.core.article.service;
 
-import com.blog.core.article.entity.vo.ManageArticleInfoVO;
+import com.blog.core.article.vo.ManageArticleListVO;
+import com.blog.core.article.vo.ManageArticleVO;
 
 import java.util.List;
 
@@ -14,24 +15,27 @@ import java.util.List;
 public interface ManageArticleService {
 
     /**
-     * 分页查询文章信息
-     *
-     * @return
-     */
-    List<ManageArticleInfoVO> queryArticleByPage();
+     * @Author ll
+     * @Description 分页查询文章信息
+     * @Date 2020/2/10 17:19
+     * @Param []
+     * @return java.util.List<com.blog.core.article.vo.ManageArticleListVO>
+     **/
+    List<ManageArticleListVO> queryManageArticleByPage();
 
     /**
-     * 查看文章信息
-     *
-     * @param articleId
-     * @return
-     */
-    ManageArticleInfoVO queryArticleByArticleId(String articleId);
+     * @Author ll
+     * @Description 查看文章信息详情
+     * @Date 2020/2/10 17:20
+     * @Param [articleId]
+     * @return com.blog.core.article.vo.ManageArticleVO
+     **/
+    ManageArticleVO queryManageArticleByArticleId(String articleId);
 
     /**
      * 文章审核通过，并且发表文章，并且通知文章作者
      *
      * @param articleId
      */
-    void checkArticle(String articleId);
+    void checkManageArticle(String articleId);
 }

@@ -1,18 +1,23 @@
 package com.blog.core.log.service.impl;
 
+import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.annotation.LogPortal;
-import com.blog.core.common.utils.UUIDUtil;
+import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.log.dao.ManageLogMapper;
-import com.blog.core.log.entity.domain.ManageLog;
-import com.blog.core.log.entity.dto.ManageLogQueryDTO;
-import com.blog.core.log.entity.vo.ManageLogVO;
+import com.blog.core.log.dto.ManageLogQueryDTO;
+import com.blog.core.log.entity.ManageLog;
+import com.blog.core.log.vo.ManageLogVO;
 import com.blog.core.log.service.ManageLogService;
+import com.blog.core.system.auth.entity.SecurityUser;
+import com.blog.core.system.auth.utils.SecurityUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +25,7 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.*;
 
+@Slf4j
 @Service("manageLogService")
 public class ManageLogServiceImpl implements ManageLogService {
 
@@ -29,20 +35,24 @@ public class ManageLogServiceImpl implements ManageLogService {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private PrimarykeyUtil primarykeyUtil;
+
     @Override
     public List<ManageLogVO> queryLogByPage(ManageLogQueryDTO manageLogQueryDTO){
         List<ManageLogVO> portalLogList = this.manageLogMapper.selectLogByPage(manageLogQueryDTO);
         return portalLogList;
     }
 
+    @Async
     @Override
     public void addLog(ProceedingJoinPoint joinPoint, ManageLog manageLog) throws JsonProcessingException {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-        LogPortal logAnnotation = method.getAnnotation(LogPortal.class);
+        LogManage logAnnotation = method.getAnnotation(LogManage.class);
         if (logAnnotation != null) {
             // 注解上的描述
-            manageLog.setOperation(logAnnotation.value());
+            manageLog.setDescription(logAnnotation.value());
         }
         // 请求的类名
         String className = joinPoint.getTarget().getClass().getName();
@@ -60,15 +70,16 @@ public class ManageLogServiceImpl implements ManageLogService {
             manageLog.setRequestParams(params.toString());
         }
         manageLog.setOperatingTime(new Date());
-        manageLog.setId(UUIDUtil.randomUUID32());
-        // 保存系统日志
+        manageLog.setLogId(primarykeyUtil.getPimaryKey());
+        SecurityUser user = SecurityUtils.getUser();
+        if (Objects.nonNull(user)) {
+            manageLog.setOperatingId(user.getUserId());
+        }
         try {
             this.manageLogMapper.saveLog(manageLog);
         }catch (Exception e){
-            e.getMessage();
-            e.printStackTrace();
+            log.error("保存系统日志失败:【{}】", e.getMessage());
         }
-        System.out.println(12);
     }
 
     @SuppressWarnings("unchecked")

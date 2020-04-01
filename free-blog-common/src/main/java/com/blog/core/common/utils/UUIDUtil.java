@@ -1,5 +1,7 @@
 package com.blog.core.common.utils;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.UUID;
 
 /**
@@ -9,6 +11,9 @@ import java.util.UUID;
  * @create: 2019-04-08 14:34
  */
 public class UUIDUtil {
+
+    @Autowired
+    private PrimarykeyUtil primarykeyUtil;
 
     private static final String[] chars = new String[]{"a", "b", "c", "d", "e", "f",
             "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
@@ -44,7 +49,6 @@ public class UUIDUtil {
         String uuid = UUID.randomUUID().toString().replace("-", "");
         return uuid;
     }
-
 //    public static void main(String[] args) {
 //        String uuid = UUID.randomUUID().toString().replace("-", "");
 //        System.out.println(uuid);

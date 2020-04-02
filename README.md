@@ -28,3 +28,7 @@
 - 依赖管理：Maven
 - 数据库：MySQL 5.7+
 - 版本管理：GitHub
+
+#### 首次登陆
+> 在请求头带上 Authorization: Basic ZnJlZUJsb2c6eWFvaHc=
+> 值为 freeblog:freeblog经过base64加密

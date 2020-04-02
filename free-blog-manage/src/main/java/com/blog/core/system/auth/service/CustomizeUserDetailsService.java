@@ -1,9 +1,10 @@
-package com.blog.core.system.user.service;
+package com.blog.core.system.auth.service;
 
 import com.blog.core.common.enums.IsEnableEnum;
 import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.system.auth.entity.SecurityUser;
 import com.blog.core.system.role.service.ManageRoleService;
+import com.blog.core.system.user.service.ManageUserService;
 import com.blog.core.system.user.vo.ManageUserLoginVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,11 +14,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.Collection;
+import java.util.Objects;
 
 /**
  * @ClassNmae: UserDetailsService
- * @description:
+ * @description: 自定义用户详情
  * @Author: liulin
  * @Date: 2019/10/26 1:31
  **/

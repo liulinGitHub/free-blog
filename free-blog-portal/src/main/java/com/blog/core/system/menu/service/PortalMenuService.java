@@ -1,8 +1,8 @@
 package com.blog.core.system.menu.service;
 
 
-import com.blog.core.system.menu.entity.vo.PortalMenuTree;
-import com.blog.core.system.menu.entity.vo.PortalMenuVO;
+import com.blog.core.system.menu.entity.PortalMenuTree;
+import com.blog.core.system.menu.vo.PortalMenuVO;
 
 import java.util.List;
 

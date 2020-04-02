@@ -1,26 +1,25 @@
 package com.blog.core.system.auth.controller;
 
-import cn.hutool.core.util.IdUtil;
 import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.redis.RedisUtil;
+import com.blog.core.common.utils.IPUtils;
 import com.blog.core.common.utils.ResponseBo;
-import com.blog.core.system.auth.entity.AuthManageUser;
 import com.blog.core.system.auth.entity.SecurityUser;
 import com.blog.core.system.auth.service.AuthService;
 import com.blog.core.system.auth.utils.SecurityUtils;
+import com.blog.core.system.auth.vo.ManageUserInfoVO;
+import com.blog.core.system.onlineuser.service.ManageOnlineUserService;
+import com.blog.core.system.user.dto.ManageUserLoginInfoEditDTO;
+import com.blog.core.system.user.service.ManageUserService;
 import com.wf.captcha.ArithmeticCaptcha;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 /**
  * @ClassNmae: AuthController
@@ -38,14 +37,14 @@ public class AuthController {
     private AuthService authService;
 
     @Autowired
+    private ManageUserService manageUserService;
+
+    @Autowired
+    private ManageOnlineUserService manageOnlineUserService;
+
+    @Autowired
     private RedisUtil redisUtil;
 
-    @LogManage("登录授权")
-    @ApiOperation("登录授权")
-    @PostMapping("/login")
-    public ResponseBo login(@RequestBody AuthManageUser authManageUser){
-        return ResponseBo.newDataResponse(authService.login(authManageUser));
-    }
 
     @LogManage("获取验证码")
     @ApiOperation("获取验证码")
@@ -68,25 +67,22 @@ public class AuthController {
 
     @ApiOperation("获取用户信息")
     @GetMapping(value = "/info")
-    public ResponseBo queryUserInfo(){
-//        this.authService.queryUserInfo();
-//
-//        SecurityUser user = SecurityUtils.getUser();
-//        Set<String> permissions = new HashSet<>();
-//        permissions.add("user:list");
-//        Collection<GrantedAuthority> roles = permissions.stream().map(SimpleGrantedAuthority::new)
-//                .collect(Collectors.toList());
-//        SecurityUser securityUser = new SecurityUser(
-//                "1001",
-//                "测试用户",
-//                "****",
-//                "男",
-//                "测试昵称",
-//                "xxx",
-//                "123",
-//                "123",
-//                roles);
-        return ResponseBo.newDataResponse(this.authService.queryUserInfo());
+    public ResponseBo queryUserInfo(HttpServletRequest request){
+        SecurityUser securityUser = SecurityUtils.getUser();
+        //获取用户信息
+        ManageUserInfoVO manageUserInfoVO = this.authService.queryUserInfo();
+        //修改用户登录相关信息
+        ManageUserLoginInfoEditDTO manageUserLoginInfoEditDTO = ManageUserLoginInfoEditDTO.builder()
+                .userId(securityUser.getUserId())
+                .lastLoginIp(IPUtils.getIpAddr(request))
+                .lastLoginTime(new Date())
+                .updateId(securityUser.getUserId())
+                .updateTime(new Date())
+                .build();
+        this.manageUserService.editManageUserLoginInfo(manageUserLoginInfoEditDTO);
+        //保存在线用户
+        this.manageOnlineUserService.addOnlineUser(securityUser.getUserId());
+        return ResponseBo.newDataResponse(manageUserInfoVO);
     }
 
     @ApiOperation("退出登录")

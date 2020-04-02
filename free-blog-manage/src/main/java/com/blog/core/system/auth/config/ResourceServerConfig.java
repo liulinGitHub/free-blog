@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
  * @ClassNmae: ResourceServerConfig
@@ -22,8 +23,19 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>
                 .ExpressionInterceptUrlRegistry registry = httpSecurity
                 .authorizeRequests();
-        registry.antMatchers("/auth/code", "/auth/logout","/oauth/token").permitAll();
+        registry.antMatchers("/auth/code", "/auth/logout","/oauth/token");
+        // swagger 文档
+        registry.antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/*/api-docs").permitAll();
+
         registry.anyRequest().authenticated()
                 .and().csrf().disable();
     }
+
+//    @Override
+//    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+//        resources
+//    }
 }

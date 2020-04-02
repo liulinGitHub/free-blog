@@ -81,6 +81,16 @@
         WHERE user_id = #{userId}
     </update>
 
+    <update id="updateManageUserLoginInfo" parameterType="com.blog.core.system.user.entity.ManageUser">
+        UPDATE manage_user
+        SET
+          login_ip = #{loginIp},
+          last_login_time = #{lastLoginTime},
+          update_id = #{updateId},
+          update_time = #{updateTime}
+        WHERE user_id = #{userId}
+    </update>
+
     <update id="disableUserByUserId" parameterType="com.blog.core.system.user.entity.ManageUser">
 
     </update>

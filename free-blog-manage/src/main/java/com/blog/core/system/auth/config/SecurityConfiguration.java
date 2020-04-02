@@ -1,6 +1,6 @@
 package com.blog.core.system.auth.config;
 
-import com.blog.core.system.user.service.CustomizeUserDetailsService;
+import com.blog.core.system.auth.service.CustomizeUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

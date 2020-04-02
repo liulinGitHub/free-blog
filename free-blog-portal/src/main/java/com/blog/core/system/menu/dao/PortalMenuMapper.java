@@ -1,8 +1,8 @@
 package com.blog.core.system.menu.dao;
 
-import com.blog.core.system.menu.entity.domain.PortalMenu;
-import com.blog.core.system.menu.entity.domain.PortalRoleMenu;
-import com.blog.core.system.menu.entity.vo.PortalMenuVO;
+import com.blog.core.system.menu.entity.PortalMenu;
+import com.blog.core.system.menu.entity.PortalRoleMenu;
+import com.blog.core.system.menu.vo.PortalMenuVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

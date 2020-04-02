@@ -56,16 +56,23 @@ public interface ManageUserMapper {
     void updateManageUser(ManageUser manageUser);
 
     /**
+     * 修改用户登录相关信息
+     *
+     * @param manageUser
+     */
+    void updateManageUserLoginInfo(ManageUser manageUser);
+
+    /**
      * 禁用用户
      *
-     * @param userId
+     * @param manageUser
      */
     void disableUserByUserId(ManageUser manageUser);
 
     /**
      * 启用用户
      *
-     * @param userId
+     * @param manageUser
      */
     void enableUserByUserId(ManageUser manageUser);
 }

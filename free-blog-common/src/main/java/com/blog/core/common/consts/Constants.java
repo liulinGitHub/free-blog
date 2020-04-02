@@ -38,4 +38,5 @@ public interface Constants {
      * 用于IP定位转换
      */
     String REGION = "内网IP|内网IP";
+
 }

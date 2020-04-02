@@ -2,6 +2,8 @@ package com.blog.core.system.user.service;
 
 import com.blog.core.system.user.dto.ManageUserAddDTO;
 import com.blog.core.system.user.dto.ManageUserEditDTO;
+import com.blog.core.system.user.dto.ManageUserLoginInfoEditDTO;
+import com.blog.core.system.user.entity.ManageUser;
 import com.blog.core.system.user.vo.ManageUserDetailVO;
 import com.blog.core.system.user.vo.ManageUserListVO;
 import com.blog.core.system.user.vo.ManageUserLoginVO;
@@ -53,6 +55,13 @@ public interface ManageUserService {
      * @param manageUserEditDTO
      */
     void editManageUser(ManageUserEditDTO manageUserEditDTO);
+
+    /**
+     * 修改用户登录相关信息
+     *
+     * @param manageUserLoginInfoEditDTO
+     */
+    void editManageUserLoginInfo(ManageUserLoginInfoEditDTO manageUserLoginInfoEditDTO);
 
     /**
      * 禁用用户

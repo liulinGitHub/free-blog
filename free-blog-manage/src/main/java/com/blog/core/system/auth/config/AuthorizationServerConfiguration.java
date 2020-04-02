@@ -2,8 +2,8 @@ package com.blog.core.system.auth.config;
 
 
 import com.blog.core.common.consts.SecurityAuthorizationConstants;
+import com.blog.core.system.auth.service.CustomizeUserDetailsService;
 import com.blog.core.system.auth.entity.SecurityUser;
-import com.blog.core.system.user.service.CustomizeUserDetailsService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;

@@ -1,6 +1,6 @@
 package com.blog.core.system.menu.dao;
 
-import com.blog.core.system.menu.entity.domain.PortalRoleMenu;
+import com.blog.core.system.menu.entity.PortalRoleMenu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

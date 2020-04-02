@@ -1,6 +1,7 @@
 package com.blog.core.common.utils;
 
 import com.blog.core.common.consts.RedisKeyConst;
+import com.blog.core.common.redis.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,7 +21,7 @@ import java.util.Date;
 public class PrimarykeyUtil {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisUtil redisUtil;
 
     public String getIdPrefix(){
         Calendar calendar = Calendar.getInstance();
@@ -39,7 +40,7 @@ public class PrimarykeyUtil {
         String key = RedisKeyConst.PIMARY_KEY;
         String id = null;
         try {
-            Long increment = redisTemplate.opsForValue().increment(key, 1);
+            Long increment = redisUtil.incrBy(key, 1);
             id = getIdPrefix() + String.format("%1$022d", increment);
             return id;
         }catch (Exception e){

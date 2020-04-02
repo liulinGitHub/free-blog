@@ -9,6 +9,7 @@ import com.blog.core.system.role.service.ManageUserRoleService;
 import com.blog.core.system.user.dao.ManageUserMapper;
 import com.blog.core.system.user.dto.ManageUserAddDTO;
 import com.blog.core.system.user.dto.ManageUserEditDTO;
+import com.blog.core.system.user.dto.ManageUserLoginInfoEditDTO;
 import com.blog.core.system.user.entity.ManageUser;
 import com.blog.core.system.user.vo.ManageUserDetailVO;
 import com.blog.core.system.user.vo.ManageUserListVO;
@@ -76,6 +77,13 @@ public class ManageUserServiceImpl implements ManageUserService {
         //添加用户角色关联信息
         List<String> roleIdList = manageUserEditDTO.getRoles().stream().map(ManageRoleIdDTO::getRoleId).collect(Collectors.toList());
         this.manageUserRoleService.addUserRoleRelevance(manageUser.getUserId(), roleIdList);
+    }
+
+    @Transactional
+    @Override
+    public void editManageUserLoginInfo(ManageUserLoginInfoEditDTO manageUserLoginInfoEditDTO) {
+        ManageUser manageUser = MapperUtils.mapperBean(manageUserLoginInfoEditDTO, ManageUser.class);
+        this.manageUserMapper.updateManageUserLoginInfo(manageUser);
     }
 
     @Override

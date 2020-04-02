@@ -8,13 +8,15 @@ import com.blog.core.system.auth.utils.SecurityUtils;
 import com.blog.core.system.auth.vo.ManageUserInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
 /**
  * @ClassNmae: AuthServiceImpl
- * @description:
+ * @description: 用户登录获取用户信息
  * @Author: liulin
  * @Date: 2020/3/3 16:02
  **/
@@ -24,13 +26,10 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private ManageAuthMapper manageAuthMapper;
 
-    @Override
-    public Map<String, Object> login(AuthManageUser authManageUser) {
-        return null;
-    }
-
+    @Transactional
     @Override
     public ManageUserInfoVO queryUserInfo() {
+        //获取用户信息和拥有的角色信息
         SecurityUser securityUser = SecurityUtils.getUser();
         if (Objects.nonNull(securityUser)) {
             ManageUserInfoVO manageUserInfoVO = this.manageAuthMapper.selectUserInfoByUserId(securityUser.getUserId());

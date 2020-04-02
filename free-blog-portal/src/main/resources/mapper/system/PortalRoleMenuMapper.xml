@@ -23,7 +23,7 @@
         </foreach>
     </select>
 
-    <insert id="insertRoleMenu" parameterType="com.blog.core.system.menu.entity.domain.PortalRoleMenu">
+    <insert id="insertRoleMenu" parameterType="com.blog.core.system.menu.entity.PortalRoleMenu">
         INSERT INTO portal_role_menu
         (id, role_id, menu_id, create_id,create_time)
         VALUES

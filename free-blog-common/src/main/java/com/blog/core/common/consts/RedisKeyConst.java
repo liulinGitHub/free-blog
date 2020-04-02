@@ -10,7 +10,12 @@ package com.blog.core.common.consts;
 public interface RedisKeyConst {
 
     /**
-     * redis 保存随机
+     * ID
      **/
     String PIMARY_KEY = "PIMARY_KEY";
+
+    /**
+     * 在线用户key
+     **/
+    String ONLINE_USER_ID_KEY = "ONLINE_USER_ID";
 }

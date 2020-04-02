@@ -35,14 +35,14 @@ public class PrimarykeyUtilTest {
 
     @Test
     public void getKey(){
-        for (int i = 100; i < 200; i++) {
-            String approvalKey = Constants.getApprovalKey(ApprovalTypeEnum.APPROVAL_ARTICLE, i + "");
-            for (int j = 100; j < 200; j++) {
-                redisUtil.sAdd(approvalKey, j + "");
-            }
-
-        }
-        String approvalKey = (String) redisUtil.get(Constants.getApprovalKey(ApprovalTypeEnum.APPROVAL_ARTICLE, "1001"));
+//        for (int i = 100; i < 200; i++) {
+//            String approvalKey = Constants.getApprovalKey(ApprovalTypeEnum.APPROVAL_ARTICLE, i + "");
+//            for (int j = 100; j < 200; j++) {
+//                redisUtil.sAdd(approvalKey, j + "");
+//            }
+//
+//        }
+//        String approvalKey = (String) redisUtil.get(Constants.getApprovalKey(ApprovalTypeEnum.APPROVAL_ARTICLE, "1001"));
 
 //        Set set = new HashSet();
 //        List list = new ArrayList();
@@ -55,8 +55,8 @@ public class PrimarykeyUtilTest {
 //        System.out.println(set.size());
 //        System.out.println(list.size());
 //
-//        String key = primarykeyUtil.getPimaryKey();
-//        System.out.println(key);
+        String key = primarykeyUtil.getPimaryKey();
+        System.out.println(key);
 
 
     }

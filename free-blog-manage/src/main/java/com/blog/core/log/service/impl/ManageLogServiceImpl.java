@@ -1,7 +1,6 @@
 package com.blog.core.log.service.impl;
 
 import com.blog.core.common.annotation.LogManage;
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.log.dao.ManageLogMapper;
 import com.blog.core.log.dto.ManageLogQueryDTO;
@@ -52,7 +51,7 @@ public class ManageLogServiceImpl implements ManageLogService {
         LogManage logAnnotation = method.getAnnotation(LogManage.class);
         if (logAnnotation != null) {
             // 注解上的描述
-            manageLog.setDescription(logAnnotation.value());
+            manageLog.setOperation(logAnnotation.value());
         }
         // 请求的类名
         String className = joinPoint.getTarget().getClass().getName();

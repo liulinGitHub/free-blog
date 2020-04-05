@@ -18,5 +18,7 @@ public interface ManageRoleMapper {
 
     List<ManageRoleListVO> selectManageRoleByPage();
 
+    List<ManageRoleInfoVO> selectUserRoleByUserId(String userId);
+
     List<ManageRoleInfoVO> selectRoleInfoByUserId(String userId);
 }

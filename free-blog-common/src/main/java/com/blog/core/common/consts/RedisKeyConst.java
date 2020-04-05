@@ -15,6 +15,11 @@ public interface RedisKeyConst {
     String PIMARY_KEY = "PIMARY_KEY";
 
     /**
+     * 主键ID集合
+     **/
+    String PIMARY_KEY_LIST = "PIMARY_KEY_LIST";
+
+    /**
      * 在线用户key
      **/
     String ONLINE_USER_ID_KEY = "ONLINE_USER_ID";

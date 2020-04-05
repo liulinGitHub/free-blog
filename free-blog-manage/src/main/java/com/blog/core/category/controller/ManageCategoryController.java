@@ -4,8 +4,6 @@ import com.blog.core.category.dto.ManageCategoryAddDTO;
 import com.blog.core.category.dto.ManageCategoryEditDTO;
 import com.blog.core.category.dto.ManageCategoryIdDTO;
 import com.blog.core.category.service.ManageCategoryService;
-import com.blog.core.common.annotation.LogManage;
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -28,7 +26,6 @@ public class ManageCategoryController extends BaseController {
     @Autowired
     private ManageCategoryService manageCategoryService;
 
-    @LogPortal("分页文章分类信息")
     @ApiOperation(value="分页文章分类信息", notes="")
     @GetMapping("/all")
     public ResponseBo queryManageCategoryByPage(QueryRequest queryRequest){
@@ -36,14 +33,12 @@ public class ManageCategoryController extends BaseController {
                 this.manageCategoryService.queryManageCategoryByPage()));
     }
 
-    @LogPortal("查看分类详情")
     @ApiOperation(value="查看分类详情", notes="")
     @GetMapping("/details")
     public ResponseBo queryManageCategoryDetails(String categoryId){
         return ResponseBo.newDataResponse(this.manageCategoryService.queryManageCategoryByCategoryId(categoryId));
     }
 
-    @LogPortal("添加分类信息")
     @ApiOperation(value="添加分类信息", notes="")
     @PostMapping("/add")
     public ResponseBo addManageCategory(@RequestBody ManageCategoryAddDTO manageCategoryAddDTO){
@@ -51,7 +46,6 @@ public class ManageCategoryController extends BaseController {
         return ResponseBo.ok("添加分类信息成功！");
     }
 
-    @LogPortal("修改分类信息")
     @ApiOperation(value="修改分类信息", notes="")
     @PostMapping("/edit")
     public ResponseBo editManageCategory(@RequestBody ManageCategoryEditDTO manageCategoryEditDTO) {
@@ -59,7 +53,6 @@ public class ManageCategoryController extends BaseController {
         return ResponseBo.ok("修改分类信息成功！");
     }
 
-    @LogManage("启用分类信息")
     @ApiOperation(value="启用分类信息", notes="")
     @PostMapping("/enable")
     public ResponseBo enableManageCategory(@RequestBody ManageCategoryIdDTO manageCategoryIdDTO){
@@ -67,7 +60,6 @@ public class ManageCategoryController extends BaseController {
         return ResponseBo.ok("启用成功!");
     }
 
-    @LogManage("停用分类信息")
     @ApiOperation(value="停用分类信息", notes="")
     @PostMapping("/disable")
     public ResponseBo disableManageCategory(@RequestBody ManageCategoryIdDTO manageCategoryIdDTO){

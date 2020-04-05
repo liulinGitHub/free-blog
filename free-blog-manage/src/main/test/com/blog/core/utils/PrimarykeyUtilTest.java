@@ -44,19 +44,17 @@ public class PrimarykeyUtilTest {
 //        }
 //        String approvalKey = (String) redisUtil.get(Constants.getApprovalKey(ApprovalTypeEnum.APPROVAL_ARTICLE, "1001"));
 
-//        Set set = new HashSet();
-//        List list = new ArrayList();
-//        for(int i = 0;i < 1000000; i++){
-//            String key = primarykeyUtil.getPimaryKey();
-//            set.add(key);
-//            list.add(key);
-//            System.out.println(key);
-//        }
-//        System.out.println(set.size());
-//        System.out.println(list.size());
-//
-        String key = primarykeyUtil.getPimaryKey();
-        System.out.println(key);
+        Set set = new HashSet();
+        List list = new ArrayList();
+        for(int i = 0;i < 10; i++){
+            String key = primarykeyUtil.getPimaryKey();
+            set.add(key);
+            list.add(key);
+            System.out.println(key);
+        }
+        System.out.println(set.size());
+        System.out.println(list.size());
+
 
 
     }

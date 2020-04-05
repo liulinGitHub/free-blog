@@ -46,7 +46,7 @@ public interface ManageUserMapper {
      *
      * @param manageUser
      */
-    void insertUser(ManageUser manageUser);
+    void insertManageUser(ManageUser manageUser);
 
     /**
      * 修改用户信息

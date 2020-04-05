@@ -1,6 +1,10 @@
 package com.blog.core.system.user.dto;
 
+import com.blog.core.system.role.dto.ManageRoleIdDTO;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @ClassNmae: ManageUserAddDTO
@@ -10,4 +14,22 @@ import lombok.Data;
  **/
 @Data
 public class ManageUserAddDTO {
+
+    @ApiModelProperty("用户名")
+    private String userName;
+
+    @ApiModelProperty("用户昵称")
+    private String nickName;
+
+    @ApiModelProperty("性别")
+    private String gender;
+
+    @ApiModelProperty("手机号")
+    private String telephone;
+
+    @ApiModelProperty("邮箱")
+    private String email;
+
+    @ApiModelProperty("用户关联的角色ID")
+    private List<ManageRoleIdDTO> roles;
 }

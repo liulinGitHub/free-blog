@@ -1,6 +1,5 @@
 package com.blog.core.log.controller;
 
-import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -20,20 +19,18 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value = "后台系统操作日志Controller",tags = "操作日志Controller")
 @RestController
-@RequestMapping("/log")
+@RequestMapping("/api/log")
 public class ManageLogController extends BaseController {
 
     @Autowired
     private ManageLogService manageLogService;
 
-    @LogManage("分页查询后台系统操作日志信息")
     @ApiOperation(value="分页查询后台系统操作日志信息", notes="")
     @PostMapping("/query")
     public ResponseBo queryLogByPage(@RequestBody ManageLogQueryDTO manageLogQueryDTO, QueryRequest queryRequest){
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageLogService.queryLogByPage(manageLogQueryDTO)));
     }
 
-    @LogManage("分页查询后台系统操作日志信息")
     @ApiOperation(value="分页查询后台系统操作日志信息", notes="")
     @GetMapping("/all")
     public ResponseBo queryLogByPage(QueryRequest queryRequest){

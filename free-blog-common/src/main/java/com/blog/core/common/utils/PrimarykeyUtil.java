@@ -36,16 +36,32 @@ public class PrimarykeyUtil {
         return year + monthFormat + dayFormat + hourFormat;
     }
 
-    public String getPimaryKey(){
+    /**
+     * 生产主键id
+     *
+     * @return
+     */
+    public String generatePimaryKey(){
         String key = RedisKeyConst.PIMARY_KEY;
         String id = null;
         try {
-            Long increment = redisUtil.incrBy(key, 1);
+            Long increment = redisUtil.incrBy(key, 1L);
             id = getIdPrefix() + String.format("%1$022d", increment);
             return id;
         }catch (Exception e){
             log.error("生成id失败", e);
         }
+        return id;
+    }
+
+    /**
+     * 获取主键id
+     *
+     * @return
+     */
+    public String getPimaryKey(){
+        String id = (String) redisUtil.sRandomMember(RedisKeyConst.PIMARY_KEY_LIST);
+        redisUtil.sRemove(RedisKeyConst.PIMARY_KEY_LIST, id);
         return id;
     }
 }

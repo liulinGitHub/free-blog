@@ -1,6 +1,5 @@
 package com.blog.core.tag.controller;
 
-import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -28,21 +27,18 @@ public class ManageTagController extends BaseController {
     @Autowired
     private ManageTagService manageTagService;
 
-    @LogManage("分页查询标签信息")
     @ApiOperation(value="分页查询文章评论信息", notes="")
     @PostMapping("/all")
     public ResponseBo queryManageTagByPage(QueryRequest queryRequest){
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageTagService.queryManageTagByPage()));
     }
 
-    @LogManage("查看标签信息详情")
     @ApiOperation(value="查看标签信息详情", notes="")
     @GetMapping("/details")
     public ResponseBo queryManageTagDetails(String tagId){
         return ResponseBo.newDataResponse(this.manageTagService.queryManageTagByTagId(tagId));
     }
 
-    @LogManage("添加标签信息")
     @ApiOperation(value="添加标签信息", notes="")
     @PostMapping("/add")
     public ResponseBo addManageTag(@RequestBody ManageTagAddDTO manageTagAddDTO){
@@ -50,7 +46,6 @@ public class ManageTagController extends BaseController {
         return ResponseBo.ok("添加成功!");
     }
 
-    @LogManage("修改标签信息")
     @ApiOperation(value="修改标签信息", notes="")
     @PostMapping("/edit")
     public ResponseBo editManageTag(@RequestBody ManageTagEditDTO manageTagEditDTO){
@@ -58,7 +53,6 @@ public class ManageTagController extends BaseController {
         return ResponseBo.ok("修改成功!");
     }
 
-    @LogManage("删除标签信息")
     @ApiOperation(value="删除标签信息", notes="")
     @PostMapping("/delete")
     public ResponseBo deleteManageTagByTagId(@RequestBody ManageTagIdDTO manageTagIdDTO){
@@ -66,7 +60,6 @@ public class ManageTagController extends BaseController {
         return ResponseBo.ok("删除成功!");
     }
 
-    @LogManage("启用标签信息")
     @ApiOperation(value="启用标签信息", notes="")
     @PostMapping("/enable")
     public ResponseBo enableManageTagByTagId(@RequestBody ManageTagIdDTO manageTagIdDTO){
@@ -74,7 +67,6 @@ public class ManageTagController extends BaseController {
         return ResponseBo.ok("启用成功!");
     }
 
-    @LogManage("停用标签信息")
     @ApiOperation(value="停用标签信息", notes="")
     @PostMapping("/disable")
     public ResponseBo disableManageTagByTagId(@RequestBody ManageTagIdDTO manageTagIdDTO){
@@ -82,7 +74,6 @@ public class ManageTagController extends BaseController {
         return ResponseBo.ok("停用成功!");
     }
 
-    @LogManage("test")
     @ApiOperation(value="test", notes="")
     @PostMapping("/test")
     public ResponseBo test(){

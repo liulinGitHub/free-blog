@@ -45,7 +45,6 @@ public class AuthController {
     @Autowired
     private RedisUtil redisUtil;
 
-
     @LogManage("获取验证码")
     @ApiOperation("获取验证码")
     @GetMapping(value = "/code")
@@ -65,6 +64,7 @@ public class AuthController {
         return ResponseBo.newDataResponse(imgResult);
     }
 
+    @LogManage("获取用户信息")
     @ApiOperation("获取用户信息")
     @GetMapping(value = "/info")
     public ResponseBo queryUserInfo(HttpServletRequest request){
@@ -81,10 +81,11 @@ public class AuthController {
                 .build();
         this.manageUserService.editManageUserLoginInfo(manageUserLoginInfoEditDTO);
         //保存在线用户
-        this.manageOnlineUserService.addOnlineUser(securityUser.getUserId());
+        this.manageOnlineUserService.addOnlineUser(securityUser);
         return ResponseBo.newDataResponse(manageUserInfoVO);
     }
 
+    @LogManage("退出登录")
     @ApiOperation("退出登录")
     @DeleteMapping(value = "/logout")
     public ResponseBo logout(HttpServletRequest request){

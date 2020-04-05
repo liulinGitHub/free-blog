@@ -2,8 +2,6 @@ package com.blog.core.comment.controller;
 
 import com.blog.core.comment.dto.ManageCommentAddDTO;
 import com.blog.core.comment.service.ManageCommentService;
-import com.blog.core.common.annotation.LogManage;
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -27,21 +25,18 @@ public class ManageCommentController extends BaseController {
     @Autowired
     private ManageCommentService manageCommentService;
 
-    @LogManage("分页查询文章评论信息")
     @ApiOperation(value="分页查询文章评论信息", notes="")
     @PostMapping("/all")
     public ResponseBo queryManageCommentByPage(QueryRequest queryRequest) {
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () -> this.manageCommentService.queryManageCommentByPage()));
     }
 
-    @LogPortal("查询评论信息")
     @ApiOperation(value="查询评论信息", notes="")
     @GetMapping("/details")
     public ResponseBo queryManageCommentDetails(String commentId){
         return ResponseBo.newDataResponse(this.manageCommentService.queryManageCommentDetails(commentId));
     }
 
-    @LogPortal("添加评论信息")
     @ApiOperation(value="添加评论信息", notes="")
     @PostMapping("/add")
     public ResponseBo addManageComment(@RequestBody ManageCommentAddDTO manageCommentAddDTO){
@@ -49,7 +44,6 @@ public class ManageCommentController extends BaseController {
         return ResponseBo.ok("添加成功！");
     }
 
-    @LogPortal("评论点赞")
     @ApiOperation(value="评论点赞", notes="")
     @GetMapping("/approves")
     public ResponseBo addManageCommentApproves(String commentId){

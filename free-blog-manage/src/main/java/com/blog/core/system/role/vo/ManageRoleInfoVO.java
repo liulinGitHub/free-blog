@@ -12,6 +12,12 @@ import lombok.Data;
 @Data
 public class ManageRoleInfoVO {
 
+    @ApiModelProperty("角色id")
+    private String roleId;
+
+    @ApiModelProperty("角色名称")
+    private String roleName;
+
     @ApiModelProperty("权限")
     private String permission;
 

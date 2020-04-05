@@ -1,6 +1,5 @@
 package com.blog.core.log.service.impl;
 
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.*;
 import com.blog.core.log.dao.PortalLogMapper;
 import com.blog.core.log.entity.domain.PortalLog;

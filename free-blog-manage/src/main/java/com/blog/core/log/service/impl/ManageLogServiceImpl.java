@@ -43,7 +43,6 @@ public class ManageLogServiceImpl implements ManageLogService {
         return portalLogList;
     }
 
-    @Async
     @Override
     public void addLog(ProceedingJoinPoint joinPoint, ManageLog manageLog) throws JsonProcessingException {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -51,7 +50,7 @@ public class ManageLogServiceImpl implements ManageLogService {
         LogManage logAnnotation = method.getAnnotation(LogManage.class);
         if (logAnnotation != null) {
             // 注解上的描述
-            manageLog.setOperation(logAnnotation.value());
+            manageLog.setDescription(logAnnotation.value());
         }
         // 请求的类名
         String className = joinPoint.getTarget().getClass().getName();
@@ -77,7 +76,7 @@ public class ManageLogServiceImpl implements ManageLogService {
         try {
             this.manageLogMapper.saveLog(manageLog);
         }catch (Exception e){
-            log.error("保存系统日志失败:【{}】", e.getMessage());
+            log.error("保存系统日志失败:", e.getMessage());
         }
     }
 

@@ -1,6 +1,5 @@
 package com.blog.core.system.dept.controller;
 
-import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -26,7 +25,6 @@ public class ManageDeptController extends BaseController {
     @Autowired
     private ManageDeptService manageDeptService;
 
-    @LogManage("分页查询部门信息")
     @ApiOperation(value="分页查询部门信息", notes="")
     @GetMapping
     public ResponseBo queryManageDeptByPage(QueryRequest queryRequest){

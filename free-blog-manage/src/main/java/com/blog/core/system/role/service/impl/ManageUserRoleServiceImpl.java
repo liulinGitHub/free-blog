@@ -37,6 +37,9 @@ public class ManageUserRoleServiceImpl implements ManageUserRoleService {
         this.manageUserRoleMapper.deleteUserRoleByUserId(userId);
         //添加用户和角色关联
         List<ManageUserRole> manageUserRoleList = new ArrayList<>();
+
+        String pimaryKey = primarykeyUtil.getPimaryKey();
+        System.out.println(pimaryKey);
         for (String roleId : roleIdList) {
             ManageUserRole manageUserRole = new ManageUserRole();
             manageUserRole.setId(primarykeyUtil.getPimaryKey());

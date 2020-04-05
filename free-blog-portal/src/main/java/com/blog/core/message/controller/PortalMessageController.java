@@ -1,6 +1,5 @@
 package com.blog.core.message.controller;
 
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -28,7 +27,6 @@ public class PortalMessageController extends BaseController {
     @Autowired
     private PortalMessageService portalMessageService;
 
-    @LogPortal("分页查询消息信息")
     @ApiOperation(value="分页查询消息信息", notes="")
     @GetMapping("/query")
     public ResponseBo queryArticleByPage(QueryRequest request, PortalMessageQueryDTO portalMessageQueryDTO){

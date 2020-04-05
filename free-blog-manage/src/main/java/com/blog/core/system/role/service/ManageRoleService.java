@@ -28,7 +28,13 @@ public interface ManageRoleService {
      * @param userId
      * @return
      */
-    List<ManageRoleInfoVO> queryRoleMenuInfoByUserId(String userId);
+    List<ManageRoleInfoVO> queryUserRoleByUserId(String userId);
 
+    /**
+     * 根据用户id查询用户角色权限
+     *
+     * @param userId
+     * @return
+     */
     Collection<GrantedAuthority> queryRoleInfoByUserId(String userId);
 }

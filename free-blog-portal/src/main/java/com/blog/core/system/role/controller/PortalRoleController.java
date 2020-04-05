@@ -1,6 +1,5 @@
 package com.blog.core.system.role.controller;
 
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.role.entity.dto.PortalUserRoleAddQO;
@@ -24,7 +23,6 @@ public class PortalRoleController {
     @Autowired
     private PortalRoleService portalRoleService;
 
-    @LogPortal("分页查询角色信息")
     @ApiOperation(value="分页查询角色信息", notes="")
     @GetMapping("/query")
     public ResponseBo queryRoleByPage(QueryRequest queryRequest){
@@ -32,7 +30,6 @@ public class PortalRoleController {
         return ResponseBo.newDataResponse(null);
     }
 
-    @LogPortal("保存用户角色信息")
     @ApiOperation(value="保存用户角色信息", notes="")
     @PostMapping("/user/add")
     public ResponseBo addUserRole(@RequestBody PortalUserRoleAddQO portalUserRoleAddQO){

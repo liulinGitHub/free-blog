@@ -222,7 +222,7 @@ public class RedisUtil {
      * @param key
      * @return
      */
-    public Object get(String key) {
+    public Object get(Object key) {
         return redisTemplate.opsForValue().get(key);
     }
 
@@ -795,7 +795,7 @@ public class RedisUtil {
      * @param values
      * @return
      */
-    public Long sAdd(String key, String... values) {
+    public Long sAdd(String key, Object... values) {
         return redisTemplate.opsForSet().add(key, values);
     }
 

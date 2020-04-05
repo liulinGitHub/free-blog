@@ -1,5 +1,7 @@
 package com.blog.core.system.onlineuser.service;
 
+import com.blog.core.system.auth.entity.SecurityUser;
+
 /**
  * @program: ManageOnlineUserService
  * @description: 在线用户service
@@ -9,5 +11,5 @@ package com.blog.core.system.onlineuser.service;
  */
 public interface ManageOnlineUserService {
 
-    void addOnlineUser(String userId);
+    void addOnlineUser(SecurityUser securityUser);
 }

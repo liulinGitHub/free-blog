@@ -36,8 +36,8 @@ public class ManageRoleServiceImpl implements ManageRoleService {
     }
 
     @Override
-    public List<ManageRoleInfoVO> queryRoleMenuInfoByUserId(String userId) {
-        return null;
+    public List<ManageRoleInfoVO> queryUserRoleByUserId(String userId) {
+        return this.manageRoleMapper.selectUserRoleByUserId(userId);
     }
 
     @Override

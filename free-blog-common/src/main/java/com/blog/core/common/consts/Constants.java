@@ -39,4 +39,9 @@ public interface Constants {
      */
     String REGION = "内网IP|内网IP";
 
+    /**
+     * 主键警告值
+     */
+    Integer PRIMARY_WARN_VALUE = 10;
+
 }

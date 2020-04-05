@@ -1,4 +1,4 @@
-package com.blog.core.common.annotation;
+package com.blog.core.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,13 +6,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @program: nbbolg
- * @description:
+ * @program: LogPortal
+ * @description: 自定义日志注解
  * @author: liulin
- * @create: 2019-04-29 15:19
+ * @create: 2019-04-08 19:35
  */
 
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CheckLogin {
+public @interface LogPortal {
+    String value() default "";
 }

@@ -1,6 +1,5 @@
 package com.blog.core.system.user.controller;
 
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.redis.RedisUtil;
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.user.entity.domain.SecurityUserDetails;
@@ -30,7 +29,6 @@ public class PortalUserLoginController {
     @Resource
     private RedisUtil redisUtil;
 
-    @LogPortal("用户登陆")
     @ApiOperation(value="用户登陆", notes="")
     @RequestMapping("/login")
     public ResponseBo login(@AuthenticationPrincipal SecurityUserDetails portalUserLoginDTO){
@@ -45,14 +43,12 @@ public class PortalUserLoginController {
         return ResponseBo.newDataResponse(portalUserLoginDTO);
     }
 
-    @LogPortal("获取用户相关信息")
     @ApiOperation(value="获取用户相关信息", notes="")
     @GetMapping("/user/info")
     public ResponseBo queryUserInfo(@RequestParam String userId){
         return ResponseBo.newDataResponse(this.portalUserService.queryUserInfo(userId));
     }
 
-    @LogPortal("退出登陆")
     @ApiOperation(value="退出登陆", notes="")
     @GetMapping("logout")
     public ResponseBo logout(HttpRequest httpRequest){

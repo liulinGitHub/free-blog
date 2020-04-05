@@ -23,7 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>
                 .ExpressionInterceptUrlRegistry registry = httpSecurity
                 .authorizeRequests();
-        registry.antMatchers("/auth/code", "/auth/logout","/oauth/token");
+        registry.antMatchers("/auth/code", "/auth/logout","/oauth/token").permitAll();
         // swagger 文档
         registry.antMatchers("/swagger-ui.html").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()

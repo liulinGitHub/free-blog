@@ -1,6 +1,5 @@
 package com.blog.core.tag.controller;
 
-import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -27,7 +26,6 @@ public class PortalTagController extends BaseController {
     @Resource
     private PortalTagService portalTagService;
 
-    @LogManage("分页查询标签信息")
     @ApiOperation(value="分页查询标签信息", notes="")
     @GetMapping("/query")
     public ResponseBo queryTagByPage(PortalTagQueryDTO portalTagQueryDTO, QueryRequest queryRequest){

@@ -18,7 +18,7 @@ blog:
   showsql: true
 
 #开启日志记录
-isOpenPortalAopLog : true
+isOpenManageAopLog : true
 
 
 #密码加密传输，前端公钥加密，后端私钥解密

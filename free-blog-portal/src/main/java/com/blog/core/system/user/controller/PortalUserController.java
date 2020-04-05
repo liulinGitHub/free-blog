@@ -1,6 +1,5 @@
 package com.blog.core.system.user.controller;
 
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.user.entity.dto.PortalUserAddDTO;
 import com.blog.core.system.user.entity.dto.PortalUserEditDTO;
@@ -27,21 +26,18 @@ public class PortalUserController {
     @Autowired
     private PortalUserService portalUserService;
 
-    @LogPortal("分页查询用户信息")
     @ApiOperation(value="分页查询用户信息", notes="")
     @GetMapping("/query")
     public ResponseBo queryUser(PortalUserQueryDTO portalUserQueryDTO){
         return ResponseBo.newDataResponse( this.portalUserService.queryUser(portalUserQueryDTO));
     }
 
-    @LogPortal("根据用户id查询用户信息")
     @ApiOperation(value="根据用户id查询用户信息", notes="")
     @GetMapping("/queryUserById")
     public ResponseBo queryUserById(String userId){
         return ResponseBo.newDataResponse( this.portalUserService.queryUserById(userId));
     }
 
-    @LogPortal("添加用户信息")
     @ApiOperation(value="添加用户信息", notes="")
     @PostMapping("/add")
     public ResponseBo addUser(@Valid @RequestBody PortalUserAddDTO portalUserAddDTO){
@@ -49,7 +45,6 @@ public class PortalUserController {
         return ResponseBo.ok("添加成功！");
     }
 
-    @LogPortal("修改用户信息")
     @ApiOperation(value="修改用户信息", notes="")
     @PutMapping("/update")
     public ResponseBo updateUser(@Valid @RequestBody PortalUserEditDTO portalUserEditDTO){

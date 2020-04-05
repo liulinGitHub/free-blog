@@ -1,6 +1,5 @@
 package com.blog.core.system.menu.controller;
 
-import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.menu.service.PortalMenuService;
 import io.swagger.annotations.Api;
@@ -23,7 +22,6 @@ public class PortalMenuController {
     @Autowired
     private PortalMenuService portalMenuService;
 
-    @LogPortal("根据登录用户获取相应的菜单")
     @ApiOperation(value="保存角色菜单信息", notes="")
     @GetMapping("/nav")
     public ResponseBo queryUserMenu(){

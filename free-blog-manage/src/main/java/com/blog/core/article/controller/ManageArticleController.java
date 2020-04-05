@@ -1,7 +1,6 @@
 package com.blog.core.article.controller;
 
 import com.blog.core.article.service.ManageArticleService;
-import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -25,7 +24,6 @@ public class ManageArticleController extends BaseController {
     @Autowired
     private ManageArticleService manageArticleService;
 
-    @LogManage("分页查询文章信息")
     @ApiOperation(value="分页查询文章信息", notes="")
     @PostMapping("/all")
     public ResponseBo queryManageArticleByPage(QueryRequest queryRequest){
@@ -33,14 +31,12 @@ public class ManageArticleController extends BaseController {
                 this.manageArticleService.queryManageArticleByPage()));
     }
 
-    @LogManage("查看文章详细信息")
     @ApiOperation(value="查看文章详细信息", notes="")
     @GetMapping("/details")
     public ResponseBo queryManageArticleDetails(@PathVariable String articleId){
         return ResponseBo.newDataResponse(this.manageArticleService.queryManageArticleByArticleId(articleId));
     }
 
-    @LogManage("文章审核")
     @ApiOperation(value="文章审核通过", notes="")
     @PutMapping("/check_article")
     public ResponseBo checkManageArticle(String articleId){

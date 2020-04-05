@@ -1,9 +1,11 @@
 package com.blog.core.system.user.vo;
 
+import com.blog.core.system.role.vo.ManageRoleInfoVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ClassNmae: ManageUserVO
@@ -52,4 +54,7 @@ public class ManageUserListVO {
 
     @ApiModelProperty("创建人")
     private String createName;
+
+    @ApiModelProperty("角色信息")
+    private List<ManageRoleInfoVO> roles;
 }

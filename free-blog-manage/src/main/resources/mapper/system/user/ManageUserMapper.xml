@@ -64,8 +64,28 @@
             user_name = #{userName}
     </select>
 
-    <insert id="insertUser" parameterType="com.blog.core.system.user.entity.ManageUser">
-
+    <insert id="insertManageUser" parameterType="com.blog.core.system.user.entity.ManageUser">
+        INSERT INTO manage_user
+        (   user_id,
+            user_name,
+            nick_name,
+            gender,
+            telephone,
+            email,
+            is_enable,
+            create_time,
+            create_id
+        )
+        VALUES
+        (#{userId},
+        #{userName},
+        #{nickName},
+        #{gender},
+        #{telephone},
+        #{email},
+        #{isEnable.value},
+        #{createTime},
+        #{createId})
     </insert>
 
     <update id="updateManageUser" parameterType="com.blog.core.system.user.entity.ManageUser">
@@ -84,7 +104,7 @@
     <update id="updateManageUserLoginInfo" parameterType="com.blog.core.system.user.entity.ManageUser">
         UPDATE manage_user
         SET
-          login_ip = #{loginIp},
+          login_ip = #{lastLoginIp},
           last_login_time = #{lastLoginTime},
           update_id = #{updateId},
           update_time = #{updateTime}

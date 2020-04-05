@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @program: nbbolg
+ * @program: LogPortal
  * @description: 自定义日志注解
  * @author: liulin
  * @create: 2019-04-08 19:35

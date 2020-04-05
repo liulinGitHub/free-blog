@@ -1,11 +1,14 @@
 package com.blog.core.system.user.service.impl;
 
+import com.blog.core.common.enums.IsEnableEnum;
 import com.blog.core.common.utils.MapperUtils;
+import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.entity.SecurityUser;
 import com.blog.core.system.auth.utils.SecurityUtils;
 import com.blog.core.system.role.dto.ManageRoleIdDTO;
 import com.blog.core.system.role.service.ManageRoleService;
 import com.blog.core.system.role.service.ManageUserRoleService;
+import com.blog.core.system.role.vo.ManageRoleInfoVO;
 import com.blog.core.system.user.dao.ManageUserMapper;
 import com.blog.core.system.user.dto.ManageUserAddDTO;
 import com.blog.core.system.user.dto.ManageUserEditDTO;
@@ -15,6 +18,7 @@ import com.blog.core.system.user.vo.ManageUserDetailVO;
 import com.blog.core.system.user.vo.ManageUserListVO;
 import com.blog.core.system.user.service.ManageUserService;
 import com.blog.core.system.user.vo.ManageUserLoginVO;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,9 +42,24 @@ public class ManageUserServiceImpl implements ManageUserService {
     @Autowired
     private ManageUserRoleService manageUserRoleService;
 
+    @Autowired
+    private ManageRoleService manageRoleService;
+
+    @Autowired
+    private PrimarykeyUtil primarykeyUtil;
+
     @Override
     public List<ManageUserListVO> queryUserByPage() {
-        return this.manageUserMapper.queryUserByPage();
+        List<ManageUserListVO> manageUserListVOList = this.manageUserMapper.queryUserByPage();
+        if (CollectionUtils.isNotEmpty(manageUserListVOList)) {
+            manageUserListVOList.forEach(manageUserListVO -> {
+                List<ManageRoleInfoVO> manageRoleInfoVOList = this.manageRoleService.queryUserRoleByUserId(manageUserListVO.getUserId());
+                if (CollectionUtils.isNotEmpty(manageRoleInfoVOList)) {
+                    manageUserListVO.setRoles(manageRoleInfoVOList);
+                }
+            });
+        }
+        return manageUserListVOList;
     }
 
     @Override
@@ -62,7 +81,16 @@ public class ManageUserServiceImpl implements ManageUserService {
 
     @Override
     public void addUser(ManageUserAddDTO manageUserAddDTO) {
-
+        SecurityUser user = SecurityUtils.getUser();
+        ManageUser manageUser = MapperUtils.mapperBean(manageUserAddDTO, ManageUser.class);
+        manageUser.setUserId(primarykeyUtil.getPimaryKey());
+        manageUser.setCreateId(user.getUserId());
+        manageUser.setCreateTime(new Date());
+        manageUser.setIsEnable(IsEnableEnum.Enable_YES);
+        this.manageUserMapper.insertManageUser(manageUser);
+        //添加用户角色关联信息
+        List<String> roleIdList = manageUserAddDTO.getRoles().stream().map(ManageRoleIdDTO::getRoleId).collect(Collectors.toList());
+        this.manageUserRoleService.addUserRoleRelevance(manageUser.getUserId(), roleIdList);
     }
 
     @Transactional

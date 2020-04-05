@@ -1,6 +1,5 @@
 package com.blog.core.log.controller;
 
-import com.blog.core.common.annotation.LogManage;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -28,7 +27,6 @@ public class PortalLogController extends BaseController {
     @Autowired
     private PortalLogService portalLogService;
 
-    @LogManage("分页查询前台系统操作日志信息")
     @ApiOperation(value="分页查询前台系统操作日志信息", notes="")
     @GetMapping("/query")
     public ResponseBo queryLogByPage(PortalLogQueryDTO portalLogQueryDTO, QueryRequest queryRequest){

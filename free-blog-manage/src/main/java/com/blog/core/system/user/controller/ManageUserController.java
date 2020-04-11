@@ -11,8 +11,11 @@ import com.blog.core.system.user.dto.ManageUserEditDTO;
 import com.blog.core.system.user.service.ManageUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.AccessDeniedException;
 
 /**
  * @ClassNmae: ManageUserController
@@ -38,9 +41,7 @@ public class ManageUserController extends BaseController {
     @LogManage("查看用户详细信息")
     @ApiOperation(value="查看用户详细信息", notes="")
     @GetMapping("/details/{userId}")
-    public ResponseBo queryUserByUserId(@PathVariable("userId") String userId){
-        SecurityUser user = SecurityUtils.getUser();
-        System.out.println(user);
+    public ResponseBo queryUserByUserId(@PathVariable("userId") String userId) {
         return ResponseBo.newDataResponse(this.manageUserService.queryUserByUserId(userId));
     }
 

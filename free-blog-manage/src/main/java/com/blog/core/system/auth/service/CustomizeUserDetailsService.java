@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.nio.file.AccessDeniedException;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -43,6 +44,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ManageUserLoginVO manageUserLoginVO = this.manageUserService.queryUserByUserName(username);
+
         if(Objects.isNull(manageUserLoginVO)){
             throw new BlogRuntimeException("用户名不正确！");
         }
@@ -52,7 +54,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
         return createSecurityUserDetailsUser(manageUserLoginVO);
     }
 
-    private SecurityUser createSecurityUserDetailsUser(ManageUserLoginVO manageUserLoginVO){
+    private SecurityUser createSecurityUserDetailsUser(ManageUserLoginVO manageUserLoginVO) {
         Collection<GrantedAuthority> authorities = this.manageRoleService.queryRoleInfoByUserId(manageUserLoginVO.getUserId());
         return new SecurityUser(manageUserLoginVO.getUserId(),
                 manageUserLoginVO.getUsername(),

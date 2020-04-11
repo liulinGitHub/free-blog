@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import org.springframework.security.access.AccessDeniedException;
+
 /**
  * @program: free_blog
  * @description: 自定义全局异常
@@ -72,13 +74,14 @@ public class BlogExceptionHandler {
     }
 
     /**
-     * 用户名异常
+     *
      * @param e
      * @return
      */
-//    @ExceptionHandler(UsernameNotFoundException.class)
-//    @ResponseBody
-//    public ResponseBo usernameNotFoundException(UsernameNotFoundException e) {
-//        return ResponseBo.error(e.getMessage());
-//    }
+    @ExceptionHandler(BlogAuth2Exception.class)
+    @ResponseBody
+    public ResponseBo accessDeniedException(BlogAuth2Exception e) {
+        log.error("授权异常", e);
+        return ResponseBo.error(e.getMessage());
+    }
 }

@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @program: nbbolg
+ * @program: free-blog
  * @description: 启用停用枚举
  * @author: liulin
  * @create: 2019-04-27 14:34
  */
-public enum  IsEnableEnum implements BaseEnum {
+public enum IsEnableEnum implements BaseEnum {
 
     Enable_NO("0", "停用"),
     Enable_YES("1", "启用");

@@ -2,7 +2,7 @@
 .project
 .settings/
 log/
-target/
+**/target/
 .idea/
 sonar-project.properties
 .scannerwork/

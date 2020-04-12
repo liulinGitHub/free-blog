@@ -36,11 +36,11 @@ public class BuildTimedJob {
     @Scheduled(cron = "0 0 */1 * * ?")
     public void buildPrimarykey() {
         log.info("定时补充主键ID");
-        long PrimarykeySize = redisUtil.sSize(RedisKeyConst.PIMARY_KEY_LIST);
-        if (PrimarykeySize == 0) {
+        long primarykeySize = redisUtil.sSize(RedisKeyConst.PIMARY_KEY_LIST);
+        if (primarykeySize == 0) {
             log.info("初始化定时补充主键ID");
             this.initPrimarykey();
-        } else if (PrimarykeySize <= Constants.PRIMARY_WARN_VALUE) {
+        } else if (primarykeySize <= Constants.PRIMARY_WARN_VALUE) {
             log.info("redis中主键ID数量小于警戒值，补充主键ID");
             for (int i = 0; i < 100; i++) {
                 String key = primarykeyUtil.generatePimaryKey();

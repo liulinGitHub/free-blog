@@ -1138,3 +1138,71 @@ CREATE TABLE `sys_oauth_client_details`  (
 INSERT INTO `sys_oauth_client_details` VALUES ('freeBlog', NULL, '$2a$10$CwIutywnbs9bifHaY3Ezu.gYkWi4Zano8gVPq08hXjal6.uj.Yzuy', 'sever', 'password,refresh_token,authorization_code,implicit,mobile', NULL, NULL, NULL, NULL, NULL, 'true');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+CREATE TABLE `manage_dept`  (
+  `dept_id` varchar(32)  NOT NULL COMMENT '部门id',
+  `dept_name` varchar(32) DEFAULT NULL COMMENT '部门名称',
+  `parent_id` varchar(32) DEFAULT NULL COMMENT '上级部门名称',
+  `is_enable` varchar(32) DEFAULT '1' COMMENT '启用/停用',
+  `create_id` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(32) DEFAULT NULL COMMENT '修改人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`dept_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '员工部门表' ROW_FORMAT = Dynamic;
+
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004945', '华中分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:21', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004946', '华东分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:39', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004949', '销售部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:54', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004952', '华南分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:35', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004981', '华北分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:30', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004987', '技术部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:45', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004995', '人事部', '20200304230000000000000000004946', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:15:17', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004997', '人事部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:13:55', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004998', '财务部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:33', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000005008', '人事部', '20200304230000000000000000004952', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:15:24', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005034', '财务部', '20200304230000000000000000004981', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:20:37', NULL);
+INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005086', '公司总部', NULL, '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:27:10', NULL);
+
+
+
+CREATE TABLE `manage_job`  (
+  `job_id` varchar(32)  NOT NULL COMMENT '岗位id',
+  `job_name` varchar(32) DEFAULT NULL COMMENT '岗位名称',
+  `dept_id` varchar(32) DEFAULT NULL COMMENT '部门id',
+  `is_enable` varchar(32) DEFAULT '1' COMMENT '启用/停用',
+  `create_id` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(32) DEFAULT NULL COMMENT '修改人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`job_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '员工岗位表' ROW_FORMAT = Dynamic;
+
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005025', '后端开发', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:17', NULL);
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005053', '招聘专员', '20200304230000000000000000004995', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:04', NULL);
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005060', '前端开发', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:10', NULL);
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005061', '人工客服', '20200304230000000000000000004949', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:31:04', NULL);
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005067', '招聘专员', '20200304230000000000000000004997', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:09', NULL);
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005082', '电话销售', '20200304230000000000000000004949', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:50', NULL);
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005085', '招聘专员', '20200304230000000000000000005008', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:14', NULL);
+INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005095', '产品经理', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:29:43', NULL);
+
+
+
+CREATE TABLE `manage_role_dept`  (
+  `id` varchar(32)  NOT NULL COMMENT '角色部门关联id',
+  `role_id` varchar(32) DEFAULT NULL COMMENT '角色id',
+	`dept_id` varchar(32) DEFAULT '1' COMMENT '部门id',
+	`create_id` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(32) DEFAULT NULL COMMENT '修改人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+	`c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '角色部门关联表' ROW_FORMAT = Dynamic;

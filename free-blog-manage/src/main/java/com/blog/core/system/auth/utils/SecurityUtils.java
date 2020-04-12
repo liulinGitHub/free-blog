@@ -30,40 +30,37 @@ public class SecurityUtils {
     }
 
     /**
-     * @Author ll
-     * @Description 获取当前用户名
-     * @Date 2020/2/2 13:07
-     * @Param []
-     * @return java.lang.String
-     **/
+     * 获取当前用户名
+     *
+     * @return
+     */
     public static String getUsername() {
         String username = null;
         Authentication authentication = getAuthentication();
         if(authentication != null) {
             Object principal = authentication.getPrincipal();
-            if(principal != null && principal instanceof UserDetails) {
-                username = ((UserDetails) principal).getUsername();
+            if(principal != null && principal instanceof SecurityUser) {
+                username = ((SecurityUser) principal).getUsername();
             }
         }
         return username;
     }
 
-   /**
-    * @Author ll
-    * @Description 获取用户名
-    * @Date 2020/2/2 13:06
-    * @Param [authentication]
-    * @return java.lang.String
-    **/
-    public static String getUsername(Authentication authentication) {
-        String username = null;
+    /**
+     * 获取当前用户的用户id
+     *
+     * @return userId
+     */
+    public static String getUserId() {
+        String userId = null;
+        Authentication authentication = getAuthentication();
         if(Objects.nonNull(authentication)) {
             Object principal = authentication.getPrincipal();
-            if(Objects.nonNull(principal) && principal instanceof UserDetails) {
-                username = ((UserDetails) principal).getUsername();
+            if(Objects.nonNull(principal) && principal instanceof SecurityUser) {
+                userId = ((SecurityUser) principal).getUserId();
             }
         }
-        return username;
+        return userId;
     }
 
     /**

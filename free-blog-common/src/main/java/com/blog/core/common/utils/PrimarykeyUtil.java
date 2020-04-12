@@ -59,7 +59,7 @@ public class PrimarykeyUtil {
      *
      * @return
      */
-    public String getPimaryKey(){
+    public synchronized String getPimaryKey(){
         String id = (String) redisUtil.sRandomMember(RedisKeyConst.PIMARY_KEY_LIST);
         redisUtil.sRemove(RedisKeyConst.PIMARY_KEY_LIST, id);
         return id;

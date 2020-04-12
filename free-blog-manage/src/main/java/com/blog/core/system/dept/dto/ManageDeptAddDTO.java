@@ -1,19 +1,16 @@
-package com.blog.core.system.dept.vo;
+package com.blog.core.system.dept.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @ClassNmae: ManageDeptListVO
- * @description: 部门VO
+ * @ClassNmae: ManageDeptAddDTO
+ * @description: 部门添加参数
  * @Author: liulin
- * @Date: 2020/3/31 14:53
+ * @Date: 2020/4/12 18:21
  **/
 @Data
-public class ManageDeptListVO {
-
-    @ApiModelProperty("部门id")
-    private String deptId;
+public class ManageDeptAddDTO {
 
     @ApiModelProperty("部门上级id")
     private String parentId;

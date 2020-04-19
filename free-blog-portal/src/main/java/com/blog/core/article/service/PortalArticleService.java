@@ -2,7 +2,10 @@ package com.blog.core.article.service;
 
 
 import com.blog.core.article.dto.PortalArticleCheckDTO;
+import com.blog.core.article.vo.PortalArticleDetailsVO;
 import com.blog.core.article.vo.PortalArticleInfoVO;
+import com.blog.core.article.vo.PortalArticleListVO;
+
 import java.util.List;
 
 public interface PortalArticleService {
@@ -12,7 +15,7 @@ public interface PortalArticleService {
      *
      * @return
      */
-    List<PortalArticleInfoVO> queryArticleByPage();
+    List<PortalArticleListVO> queryArticleByPage();
 
     /**
      * 查看文章信息
@@ -20,7 +23,7 @@ public interface PortalArticleService {
      * @param articleId
      * @return
      */
-    PortalArticleInfoVO findArticleById(String articleId);
+    PortalArticleDetailsVO queryArticleDetails(String articleId);
 
     /**
      * @Author ll

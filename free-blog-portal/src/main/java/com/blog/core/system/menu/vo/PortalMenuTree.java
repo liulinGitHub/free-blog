@@ -38,7 +38,7 @@ public class PortalMenuTree {
 
     private List<PortalMenuTree> childs;
 
-    public PortalMenuTree(com.blog.core.system.menu.entity.vo.PortalMenuVO portalMenuVO) {
+    public PortalMenuTree(PortalMenuVO portalMenuVO) {
         this.menuId = portalMenuVO.getMenuId();
         this.webCode = portalMenuVO.getWebCode();
         this.menuName = portalMenuVO.getMenuName();

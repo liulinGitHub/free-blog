@@ -2,6 +2,7 @@ package com.blog.core.article.controller;
 
 import com.blog.core.article.dto.PortalArticleCheckDTO;
 import com.blog.core.article.service.PortalArticleService;
+import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value = "文章信息服务Controller",tags = "文章信息服务")
 @RestController
-@RequestMapping("/portal/article")
+@RequestMapping("/article")
 public class PortalArticleController extends BaseController {
 
     @Autowired
@@ -27,13 +28,15 @@ public class PortalArticleController extends BaseController {
     @ApiOperation(value="分页查询文章信息", notes="")
     @GetMapping("/query")
     public ResponseBo queryArticleByPage(QueryRequest queryRequest){
-        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->this.portalArticleService.queryArticleByPage()));
+        return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->
+                this.portalArticleService.queryArticleByPage()));
     }
 
+    @LogPortal
     @ApiOperation(value="查看文章详细信息", notes="")
-    @GetMapping("/{articleId}")
-    public ResponseBo findArticleById(@PathVariable String articleId){
-        return ResponseBo.newDataResponse(this.portalArticleService.findArticleById(articleId));
+    @GetMapping("/details/{articleId}")
+    public ResponseBo queryArticleDetails(@PathVariable String articleId){
+        return ResponseBo.newDataResponse(this.portalArticleService.queryArticleDetails(articleId));
     }
 
     @ApiOperation(value="查看文章详细信息", notes="")

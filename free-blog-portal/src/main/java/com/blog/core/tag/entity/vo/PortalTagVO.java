@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @program: ManageTagVO
+ * @program: PortalTagVO
  * @description: 页面标签表VO
  * @author: liulin
  * @create: 2019-07-23 17:41
@@ -17,12 +17,12 @@ import java.util.Date;
 public class PortalTagVO {
 
     @ApiModelProperty("标签ID")
-    private String id;
+    private String tagId;
 
     @ApiModelProperty("标签名称")
     private String tagName;
 
     @ApiModelProperty("创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
     private Date createTime;
 }

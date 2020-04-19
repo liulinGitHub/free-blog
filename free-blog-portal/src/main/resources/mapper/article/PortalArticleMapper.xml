@@ -2,78 +2,65 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.article.dao.PortalArticleMapper">
 
-    <select id="selectArticleByPage" resultType="com.blog.core.article.vo.PortalArticleInfoVO">
+    <select id="selectArticleByPage" resultType="com.blog.core.article.vo.PortalArticleListVO">
         SELECT
-            article.id,
-            article.article_title AS articleTitle,
-            article.release_date AS releaseDate,
-            article.article_content AS articleContent,
-            article.article_user_id AS articleUserId,
-            article.article_status AS articleStatus,
-            article.release_status AS releaseStatus,
-            article.tag_id AS tagId,
-            article.article_images AS articleImages,
-            article.approves AS approves,
-            article.comment_status AS commentStatus,
-            article.like_number AS likeNumber,
-            article.read_number AS readNumber,
-            article.article_type AS articleType,
-            article.article_top AS articleTop,
-            article.article_fine_note AS articleFineNote,
-            article.article_user_id AS articleUserId,
-            article.recommend_status AS recommendStatus,
+            pa.article_id articleId,
+            pa.article_title articleTitle,
+            pa.article_release_date articleReleaseDate,
+            pa.article_content_html articleContentHtml,
+            pa.article_content_markdown articleContentMarkDown,
+            pa.article_desc articleDesc,
+            pa.article_images articleImages,
+            pa.article_top_status articleTopStatus,
+            pa.article_comment_status articleCommentStatus,
+            pa.article_fine_note_status articleFineNoteStatus,
+            pa.article_user_id articleUserId,
             CASE
-            WHEN user.nick_name IS NOT NULL THEN
-                user.nick_name
+            WHEN pu.nick_name IS NOT NULL THEN
+                pu.nick_name
             ELSE
-                user.user_name
-            END AS articleAuthor,
-            user.avatar AS articleAuthorImage
+                pu.user_name
+            END articleAuthor,
+            pu.avatar articleAuthorImage
         FROM
-            portal_article article
-        LEFT JOIN portal_user AS user ON article.article_user_id = user .id
+            portal_article pa
+        LEFT JOIN portal_user pu ON pa.article_user_id = pu.user_id
         WHERE
-          article.is_enable = '1'
-          AND article.release_status = '1'
+          pa.enable = '1'
+          AND pa.article_release_status = '1'
     </select>
 
-    <select id="findArticleById" resultType="com.blog.core.article.vo.PortalArticleInfoVO" parameterType="java.lang.String">
+    <select id="selectArticleByArticleId" parameterType="java.lang.String"
+            resultType="com.blog.core.article.vo.PortalArticleDetailsVO">
          SELECT
-            article.id,
-            article.article_title AS articleTitle,
-            article.release_date AS releaseDate,
-            article.article_content AS articleContent,
-            article.tag_id AS tagId,
-            article.article_images AS articleImages,
-            article.approves AS approves,
-            article.comments AS comments,
-            article.like_number AS likeNumber,
-            article.read_number AS readNumber,
-            article.article_type AS articleType,
-            article.article_top AS articleTop,
-            article.comment_status AS commentStatus,
-            article.article_fine_note AS articleFineNote,
+            pa.article_id articleId,
+            pa.article_title articleTitle,
+            pa.article_release_date articleReleaseDate,
+            pa.article_content_html articleContentHtml,
+            pa.article_content_markdown articleContentMarkDown,
+            pa.article_desc articleDesc,
+            pa.article_images articleImages,
+            pa.article_top_status articleTopStatus,
+            pa.article_comment_status articleCommentStatus,
+            pa.article_fine_note_status articleFineNoteStatus,
+            pa.article_user_id articleUserId,
             CASE
-            WHEN USER .nick_name IS NOT NULL THEN
-                USER .nick_name
+            WHEN pu.nick_name IS NOT NULL THEN
+                pu.nick_name
             ELSE
-                user_name
-            END AS articleAuthor,
-            user.avatar AS articleAuthorImage
+                pu.user_name
+            END articleAuthor,
+            pu.avatar articleAuthorImage
         FROM
-            portal_article article
-            LEFT JOIN portal_user user ON article.article_user_id = user.id
-        WHERE article.id = #{id}
+            portal_article pa
+        LEFT JOIN portal_user pu ON pa.article_user_id = pu.user_id
+        WHERE pa.article_id = #{articleId}
     </select>
 
-    <update id="updateArticleById">
-
-    </update>
-
-    <update id="updateReadArticle" parameterType="java.lang.String">
+    <update id="updateReadArticleByArticleId" parameterType="java.lang.String">
         UPDATE portal_article
         SET like_number = like_number + 1
-        WHERE id = #{articleId}
+        WHERE article_id = #{articleId}
     </update>
 
     <update id="updateApproves" parameterType="java.lang.String">
@@ -94,7 +81,7 @@
         WHERE id = #{articleId}
     </update>
 
-    <update id="checkArticle" parameterType="com.blog.core.article.domain.PortalArticle">
+    <update id="checkArticle" parameterType="com.blog.core.article.entity.PortalArticle">
         UPDATE portal_article
         SET article_status = #{articleStatus},
         release_status = #{releaseStatus},
@@ -102,7 +89,7 @@
         WHERE id = #{articleId}
     </update>
 
-    <update id="submitCheckArticle" parameterType="com.blog.core.article.domain.PortalArticle">
+    <update id="submitCheckArticle" parameterType="com.blog.core.article.entity.PortalArticle">
         UPDATE portal_article
         SET article_status = #{articleStatus},
         article_title = #{articleTitle},
@@ -113,7 +100,7 @@
         WHERE id = #{articleId}
     </update>
 
-    <insert id="saveDraft" parameterType="com.blog.core.article.domain.PortalArticle">
+    <insert id="saveDraft" parameterType="com.blog.core.article.entity.PortalArticle">
         INSERT INTO
         portal_article
         (

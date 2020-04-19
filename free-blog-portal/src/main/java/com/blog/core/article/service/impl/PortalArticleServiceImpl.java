@@ -1,11 +1,13 @@
 package com.blog.core.article.service.impl;
 
 import com.blog.core.article.dao.PortalArticleMapper;
-import com.blog.core.article.domain.PortalArticle;
 import com.blog.core.article.dto.PortalArticleCheckDTO;
-import com.blog.core.article.dto.PortalArticleCheckDTO;
+import com.blog.core.article.entity.PortalArticle;
+import com.blog.core.article.service.PortalArticleInfoService;
+import com.blog.core.article.vo.PortalArticleDetailsVO;
 import com.blog.core.article.vo.PortalArticleInfoVO;
 import com.blog.core.article.service.PortalArticleService;
+import com.blog.core.article.vo.PortalArticleListVO;
 import com.blog.core.articlecategory.service.PortalArticleCategoryService;
 import com.blog.core.common.aspect.RequestHolder;
 import com.blog.core.common.enums.ArticleStatusEnum;
@@ -16,6 +18,7 @@ import com.blog.core.tag.entity.vo.PortalTagVO;
 import com.blog.core.tag.service.PortalTagService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,40 +34,43 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     @Resource
     private PortalArticleMapper portalArticleMapper;
 
-    @Resource
-    private PortalArticleCategoryService categoryService;
+    @Autowired
+    private PortalArticleInfoService portalArticleInfoService;
 
     @Resource
     private PortalTagService portalTagService;
 
     @Override
-    public List<PortalArticleInfoVO> queryArticleByPage() {
-        List<PortalArticleInfoVO> portalArticleInfoVOList = this.portalArticleMapper.selectArticleByPage();
-        if (CollectionUtils.isNotEmpty(portalArticleInfoVOList)) {
-            portalArticleInfoVOList.parallelStream().forEach(portalArticleInfoVO -> {
-                List<PortalTagVO> portalTagVOList = this.portalTagService.queryTagByArticleId(portalArticleInfoVO.getId());
+    public List<PortalArticleListVO> queryArticleByPage() {
+        List<PortalArticleListVO> portalArticleListVOList = this.portalArticleMapper.selectArticleByPage();
+        if (CollectionUtils.isNotEmpty(portalArticleListVOList)) {
+            portalArticleListVOList.parallelStream().forEach(portalArticleListVO -> {
+                String articleId = portalArticleListVO.getArticleId();
+                List<PortalTagVO> portalTagVOList = this.portalTagService.queryTagByArticleId(articleId);
                 if (CollectionUtils.isNotEmpty(portalTagVOList)) {
-                    portalArticleInfoVO.setPortalTagVOList(portalTagVOList);
+                    portalArticleListVO.setTags(portalTagVOList);
                 }
+                PortalArticleInfoVO portalArticleInfoVO = this.portalArticleInfoService.queryPortalArticleInfoDetails(articleId);
+                portalArticleListVO.setMeta(portalArticleInfoVO);
             });
         }
-        return portalArticleInfoVOList;
+        return portalArticleListVOList;
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public PortalArticleInfoVO findArticleById(String articleId) {
-        //增加一次访问量
-        this.portalArticleMapper.updateReadArticle(articleId);
-        //文章信息
-        PortalArticleInfoVO portalArticleInfoVO = this.portalArticleMapper.findArticleById(articleId);
-        if (Objects.isNull(portalArticleInfoVO)) {
-            return null;
-        }
-        List<PortalTagVO> portalTagVOList = this.portalTagService.queryTagByArticleId(portalArticleInfoVO.getId());
+    public PortalArticleDetailsVO queryArticleDetails(String articleId) {
+        // 查询文章信息
+        PortalArticleDetailsVO portalArticleDetailsVO = this.portalArticleMapper.selectArticleByArticleId(articleId);
+        // 查询文章标签
+        List<PortalTagVO> portalTagVOList = this.portalTagService.queryTagByArticleId(articleId);
         if (CollectionUtils.isNotEmpty(portalTagVOList)) {
-            portalArticleInfoVO.setPortalTagVOList(portalTagVOList);
+            portalArticleDetailsVO.setTags(portalTagVOList);
         }
+        // 查询文章相关信息
+        PortalArticleInfoVO portalArticleInfoVO = this.portalArticleInfoService.queryPortalArticleInfoDetails(articleId);
+        portalArticleDetailsVO.setMeta(portalArticleInfoVO);
+
 
 //        PortalArticleInfoVO sysBaseArticleInfoVO = new PortalArticleInfoVO();
 //        if (StringUtils.isNotEmpty(articleVO.getCategoryId())) {
@@ -81,14 +87,16 @@ public class PortalArticleServiceImpl implements PortalArticleService {
             }
         }*/
         // sysBaseArticleInfoVO.setArticleVO(articleVO);
+        // 增加一次访问量
+        // this.portalArticleInfoService.updateReadArticleByArticleId(articleId);
 
-        return portalArticleInfoVO;
+        return portalArticleDetailsVO;
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void editArticleById(String articleId) {
-        this.portalArticleMapper.updateArticleById(articleId);
+        this.portalArticleMapper.selectArticleByArticleId(articleId);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -108,7 +116,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     @Transactional(rollbackFor = Exception.class)
     public void saveDraft(PortalArticleCheckDTO portalArticleCheckDTO) {
         PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
-        article.setArticleTitleId(UUIDUtil.randomUUID32());
+        article.setArticleId(UUIDUtil.randomUUID32());
         article.setCreateTime(new Date());
         article.setArticleStatus(ArticleStatusEnum.DRAFT.getValue());
         int result = this.portalArticleMapper.saveDraft(article);

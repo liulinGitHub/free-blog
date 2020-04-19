@@ -1,9 +1,10 @@
 package com.blog.core.article.dao;
 
 
-import com.blog.core.article.domain.PortalArticle;
+import com.blog.core.article.entity.PortalArticle;
+import com.blog.core.article.vo.PortalArticleDetailsVO;
 import com.blog.core.article.vo.PortalArticleInfoVO;
-import com.blog.core.article.vo.PortalArticleInfoVO;
+import com.blog.core.article.vo.PortalArticleListVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface PortalArticleMapper {
      *
      * @return
      */
-    List<PortalArticleInfoVO> selectArticleByPage();
+    List<PortalArticleListVO> selectArticleByPage();
 
     /**
      * 查看文章信息
@@ -24,16 +25,7 @@ public interface PortalArticleMapper {
      * @param articleId
      * @return
      */
-    PortalArticleInfoVO findArticleById(String articleId);
-
-    /**
-     * @Author ll
-     * @Description 编辑文章信息
-     * @Date 2020/1/27 21:10
-     * @Param [articleId]
-     * @return void
-     **/
-    void updateArticleById(String articleId);
+    PortalArticleDetailsVO selectArticleByArticleId(String articleId);
 
     /**
      * 修改阅读文章量
@@ -41,7 +33,7 @@ public interface PortalArticleMapper {
      * @param articleId
      * @return
      */
-    void updateReadArticle(String articleId);
+    void updateReadArticleByArticleId(String articleId);
 
     /**
      * 文章点赞

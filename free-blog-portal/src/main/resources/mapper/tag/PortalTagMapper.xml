@@ -20,15 +20,15 @@
 
     <select id="selectTagByArticleId" parameterType="java.lang.String" resultType="com.blog.core.tag.entity.vo.PortalTagVO">
         SELECT
-            tag.id,
+            tag.tag_id,
             tag.tag_name tagName,
             tag.tag_category_id,
             tag.create_time createTime
         FROM
             portal_tag tag
-            LEFT JOIN portal_article_tag sbat ON tag.id = sbat.tag_id
-            LEFT JOIN portal_article article ON article.id = sbat.article_id
-        WHERE article.id = #{articleId}
+            LEFT JOIN portal_article_tag sbat ON tag.tag_id = sbat.tag_id
+            LEFT JOIN portal_article pa ON pa.article_id = sbat.article_id
+        WHERE pa.article_id = #{articleId}
         ORDER BY tag.create_time DESC
     </select>
 </mapper>

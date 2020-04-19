@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @program: ManageTagServiceServiceImpl
+ * @program: PortalTagServiceServiceImpl
  * @description: 标签service实现类
  * @author: liulin
  * @create: 2019-07-23 17:39

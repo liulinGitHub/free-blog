@@ -43,7 +43,7 @@ public class PortalArticle extends BaseModel {
     private String releaseStatus;
 
     @ApiModelProperty("文章图片" )
-    private String articleImages;
+    private String articleImage;
 
     @ApiModelProperty("文章类型" )
     private String articleType;

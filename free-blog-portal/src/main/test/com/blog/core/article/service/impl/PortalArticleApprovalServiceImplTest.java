@@ -51,7 +51,7 @@ public class PortalArticleApprovalServiceImplTest {
 //            PortalArticleApprovalVO article = new PortalArticleApprovalVO();
 //            article.setArticleTitleId(j + "");
 //            article.setArticleTitle("文章标题" + j);
-//            article.setArticleImages("文章图片" + j);
+//            article.setArticleImage("文章图片" + j);
 //            // article.setSummary("文章摘要" + j);
 //            for (int i = 1; i <= j; i++) {
 //                PortalUserApprovalVO user = new PortalUserApprovalVO();
@@ -66,7 +66,7 @@ public class PortalArticleApprovalServiceImplTest {
         PortalArticleApprovalVO article = new PortalArticleApprovalVO();
         article.setArticleTitleId(10 + "");
         article.setArticleTitle("文章标题" + 10);
-        article.setArticleImages("文章图片" + 10);
+        article.setArticleImage("文章图片" + 10);
 
         PortalUserApprovalVO user = new PortalUserApprovalVO();
         user.setUserId(1001+"");

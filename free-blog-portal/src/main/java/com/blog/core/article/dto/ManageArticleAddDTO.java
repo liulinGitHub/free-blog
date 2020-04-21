@@ -25,5 +25,5 @@ public class ManageArticleAddDTO {
     private String articleTag;
 
     @ApiModelProperty(name = "文章图片" )
-    private String articleImages;
+    private String articleImage;
 }

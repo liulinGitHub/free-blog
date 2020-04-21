@@ -4,6 +4,7 @@ import com.blog.core.comment.dao.PortalCommentMapper;
 import com.blog.core.comment.entity.domain.PortalArticleComment;
 import com.blog.core.comment.entity.dto.PortalArticleCommentAddDTO;
 import com.blog.core.comment.entity.vo.PortalArticleCommentVO;
+import com.blog.core.comment.entity.vo.PortalCommentTree;
 import com.blog.core.comment.service.PortalCommentService;
 import com.blog.core.common.aspect.RequestHolder;
 import com.blog.core.common.enums.IsEnableEnum;
@@ -13,13 +14,24 @@ import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
+/**
+ * @ClassName: PortalCommentServiceImpl
+ * @Description: 评论相关信息Service实现类
+ * @Author: liulin
+ * @Date: 2020/4/19 21:14
+ * @Version 1.0
+ */
 @Slf4j
 @Service("portalCommentService")
 public class PortalCommentServiceImpl implements PortalCommentService {
@@ -28,9 +40,24 @@ public class PortalCommentServiceImpl implements PortalCommentService {
     private PortalCommentMapper portalCommentMapper;
 
     @Override
-    public List<PortalArticleCommentVO> queryArticleCommentByPage() {
-        List<PortalArticleCommentVO> portalArticleCommentVOList = this.portalCommentMapper.selectCommentByPage();
-        return portalArticleCommentVOList;
+    public List<PortalCommentTree> queryPortalCommentTree(String articleId) {
+        List<PortalCommentTree> portalCommentTreeList = this.portalCommentMapper.selectPortalCommentTree(articleId);
+        if (CollectionUtils.isEmpty(portalCommentTreeList)) {
+            return new ArrayList<>();
+        }
+        List<PortalCommentTree> commentTreeList = portalCommentTreeList.stream()
+                .filter(portalCommentTree -> StringUtils.isBlank(portalCommentTree.getParentId()))
+                .collect(Collectors.toList());
+        commentTreeList.forEach(commentTree -> {
+            List<PortalCommentTree> childrenList = portalCommentTreeList.stream().filter(portalCommentTree ->
+                StringUtils.isNotBlank(portalCommentTree.getParentId())
+                    && portalCommentTree.getParentId().equals(commentTree.getCommentId())
+            ).collect(Collectors.toList());
+            if (CollectionUtils.isNotEmpty(childrenList)) {
+                commentTree.setChildren(childrenList);
+            }
+        });
+        return portalCommentTreeList;
     }
 
     @Override

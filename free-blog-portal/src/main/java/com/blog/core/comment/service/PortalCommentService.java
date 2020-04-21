@@ -2,12 +2,21 @@ package com.blog.core.comment.service;
 
 import com.blog.core.comment.entity.dto.PortalArticleCommentAddDTO;
 import com.blog.core.comment.entity.vo.PortalArticleCommentVO;
+import com.blog.core.comment.entity.vo.PortalCommentTree;
 
 import java.util.List;
 
+/**
+ * @ClassName: PortalCommentService
+ * @Description: 评论相关信息Service
+ * @Author: liulin
+ * @Date: 2020/4/19 21:14
+ * @Version 1.0
+ */
+
 public interface PortalCommentService {
 
-    List<PortalArticleCommentVO> queryArticleCommentByPage();
+    List<PortalCommentTree> queryPortalCommentTree(String articleId);
 
     /**
      * 根据id查询评论信息

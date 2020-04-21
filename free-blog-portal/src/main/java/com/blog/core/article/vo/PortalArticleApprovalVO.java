@@ -19,5 +19,5 @@ public class PortalArticleApprovalVO {
     private String articleTitle;
 
     @ApiModelProperty("文章图片" )
-    private String articleImages;
+    private String articleImage;
 }

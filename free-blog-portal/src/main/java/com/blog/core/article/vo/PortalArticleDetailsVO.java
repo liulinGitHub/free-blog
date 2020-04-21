@@ -38,7 +38,7 @@ public class PortalArticleDetailsVO {
     private String articleDesc;
 
     @ApiModelProperty("文章图片" )
-    private String articleImages;
+    private String articleImage;
 
     @ApiModelProperty("点赞数" )
     private Long approveNumber;

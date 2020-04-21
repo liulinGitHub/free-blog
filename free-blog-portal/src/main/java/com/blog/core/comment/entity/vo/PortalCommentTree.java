@@ -1,23 +1,24 @@
 package com.blog.core.comment.entity.vo;
 
+import com.blog.core.system.user.entity.PortalCommentUser;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import java.util.List;
+
 import java.util.Date;
+import java.util.List;
 
 /**
- * @program: PortalArticleCommentVO
+ * @program: PortalCommentTree
  * @description: 文章评论返回前端展示对象
  * @author: liulin
- * @create: 2019-10-09 17:30
- * @Version: 1.0
+ * @create: 2020-04-20 22:28
  */
 @Data
-public class PortalArticleCommentVO {
+public class PortalCommentTree {
 
     @ApiModelProperty( "评论id" )
-    private String id;
+    private String commentId;
 
     @ApiModelProperty( "评论内容" )
     private String commentContent;
@@ -27,9 +28,6 @@ public class PortalArticleCommentVO {
 
     @ApiModelProperty( "父id" )
     private String parentId;
-
-    @ApiModelProperty( "是否为父级" )
-    private String isParent;
 
     @ApiModelProperty( "评论时间" )
     @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
@@ -41,5 +39,8 @@ public class PortalArticleCommentVO {
     @ApiModelProperty( "作者头像图片" )
     private String avatarImage;
 
-    private List<PortalArticleCommentVO> articleCommentVOList;
+    @ApiModelProperty( "评论者的用户信息" )
+    private PortalCommentUser commentUser;
+
+    private List<PortalCommentTree> children;
 }

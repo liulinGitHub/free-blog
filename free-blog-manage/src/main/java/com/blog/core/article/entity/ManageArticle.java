@@ -42,7 +42,7 @@ public class ManageArticle extends BaseModel {
 	private ReleaseStatusEnum releaseStatus;
 
 	@ApiModelProperty("文章图片" )
-	private String articleImages;
+	private String articleImage;
 
    	@ApiModelProperty("点赞数" )
 	private Integer approvesNumber;

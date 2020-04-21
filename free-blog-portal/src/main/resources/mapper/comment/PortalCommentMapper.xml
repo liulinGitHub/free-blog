@@ -2,19 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.comment.dao.PortalCommentMapper">
 
-    <select id="selectCommentByPage" resultType="com.blog.core.comment.entity.vo.PortalArticleCommentVO">
+    <select id="selectPortalCommentTree" parameterType="java.lang.String"
+            resultType="com.blog.core.comment.entity.vo.PortalCommentTree">
         SELECT
-        `id`,
-        `comment_content`,
-        `comment_user_id`,
-        `parent_id`,
-        `article_id`,
-        `is_parent`,
-        `comment_time`,
-        `approves`,
-        `is_enable`
+            comment_id,
+            comment_content,
+            comment_user_id,
+            parent_id,
+            comment_time,
+            approves,
+            CASE WHEN pu.nick_name IS NOT NULL
+	        THEN  pu.nick_name
+            ELSE  user_name
+            END author,
+            pu.avatar AS avatarImage
         FROM
-        portal_comment
+            portal_comment pc
+            LEFT JOIN portal_user pu ON pc.comment_user_id = pu.user_id
+        WHERE
+            enable = '1'
+        AND
+            article_id = #{articleId}
+        ORDER BY
+            comment_time DESC
     </select>
 
     <select id="queryCommentById" resultType="com.blog.core.comment.entity.vo.PortalArticleCommentVO">
@@ -61,26 +71,25 @@
 
     <select id="queryCommentByArticleId" resultType="com.blog.core.comment.entity.vo.PortalArticleCommentVO" parameterType="java.lang.String">
         SELECT
-            comment.id AS id,
-            comment.comment_content AS commentContent,
-            comment.parent_id AS parentId,
-            comment.article_id AS articleId,
-            comment.is_parent AS isParent,
-            comment.comment_time AS commentTime,
-            comment.approves AS approves,
+            ccomment_id,
+            comment_content,
+            comment_user_id,
+            parent_id,
+            comment_time,
+            approves
         CASE
-            WHEN user.nick_name IS NOT NULL THEN
-            user.nick_name ELSE user_name
-            END AS author,
-            user.avatar AS avatar
+            WHEN pu.nick_name IS NOT NULL THEN
+            pu.nick_name ELSE user_name
+            END author,
+            pu.avatar avatar
         FROM
-            portal_comment AS comment
-            LEFT JOIN portal_user AS user ON comment.comment_user_id = user.id
+            portal_comment pc
+            LEFT JOIN portal_user pu ON pc.comment_user_id = pu.user_id
         WHERE
-            comment.article_id = #{articleId}
-            AND comment.is_parent = '1'
+            pc.article_id = #{articleId}
+            AND pc.is_parent = '1'
         ORDER BY
-        comment.comment_time DESC
+            pc.comment_time DESC
     </select>
 
     <!--auto generated Code-->

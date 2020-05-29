@@ -892,3 +892,14 @@ CREATE TABLE `portal_article_info`  (
   `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`article_info_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章相关信息表' ROW_FORMAT = Dynamic;
+
+
+CREATE TABLE `portal_user_attention`  (
+  `attention_id` varchar(32)  NOT NULL COMMENT '用户关注id',
+  `user_id` varchar(32) NOT NULL COMMENT '用户id',
+  `attention_user_id` varchar(32) NOT NULL COMMENT '关注的用户id',
+  `attention_time` datetime NOT NULL COMMENT '关注时间',
+	 `c_time` datetime default CURRENT_TIMESTAMP comment '创建时间（数据库自己维护）',
+  `u_time` datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间（数据库自己维护）',
+  PRIMARY KEY (`attention_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户关注信息表' ROW_FORMAT = Dynamic;

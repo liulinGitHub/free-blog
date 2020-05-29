@@ -42,6 +42,6 @@ public interface Constants {
     /**
      * 主键警告值
      */
-    Integer PRIMARY_WARN_VALUE = 10;
+    Integer PRIMARY_WARN_VALUE = 50;
 
 }

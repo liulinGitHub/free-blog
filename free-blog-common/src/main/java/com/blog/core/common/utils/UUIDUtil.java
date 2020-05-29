@@ -2,6 +2,7 @@ package com.blog.core.common.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 /**
@@ -49,8 +50,8 @@ public class UUIDUtil {
         String uuid = UUID.randomUUID().toString().replace("-", "");
         return uuid;
     }
-//    public static void main(String[] args) {
-//        String uuid = UUID.randomUUID().toString().replace("-", "");
-//        System.out.println(uuid);
-//    }
+    public static void main(String[] args) {
+        int[] a = {1,3,4,6,78,99,33,41,53};
+        System.out.println(Arrays.binarySearch(a, 78));
+    }
 }

@@ -37,7 +37,7 @@ public class EnumUtils {
             Method methodGetValue = clazz.getDeclaredMethod("getValue");
 
             for(Object obj : enumConstants) {
-                HashMap<String, String> enumMap = new HashMap<>();
+                HashMap<String, String> enumMap = new HashMap<>(2);
                 enumMap.put("name", (String) methodGetName.invoke(obj));
                 enumMap.put("value", (String) methodGetValue.invoke(obj));
                 valueNameList.add(enumMap);
@@ -73,13 +73,13 @@ public class EnumUtils {
                     //是否返回下拉列表
                     String enumIsReturn = (String) methodGetIsReturn.invoke(obj);
                     if((location.equals(enumLocation) || "3".equals(enumLocation) ) && "1".equals(enumIsReturn)){
-                        HashMap<String, String> enumMap = new HashMap<>();
+                        HashMap<String, String> enumMap = new HashMap<>(2);
                         enumMap.put("name", (String) methodGetName.invoke(obj));
                         enumMap.put("value", (String) methodGetValue.invoke(obj));
                         valueNameList.add(enumMap);
                     }
                 }else {
-                    HashMap<String, String> enumMap = new HashMap<>();
+                    HashMap<String, String> enumMap = new HashMap<>(2);
                     enumMap.put("name", (String) methodGetName.invoke(obj));
                     enumMap.put("value", (String) methodGetValue.invoke(obj));
                     valueNameList.add(enumMap);

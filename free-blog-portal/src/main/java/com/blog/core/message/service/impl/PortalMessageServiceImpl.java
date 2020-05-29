@@ -12,6 +12,8 @@ import com.blog.core.message.service.PortalMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.util.List;
 
@@ -28,9 +30,17 @@ public class PortalMessageServiceImpl implements PortalMessageService {
     @Autowired
     private PortalMessageMapper portalMessageMapper;
 
+    @Transactional
     @Override
     public List<PortalMessageVO> queryPortalMessageByPage(PortalMessageQueryDTO portalMessageQueryDTO) {
         List<PortalMessageVO> portalMessageVOList = this.portalMessageMapper.selectPortalMessageByPage(portalMessageQueryDTO);
+
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+            @Override
+            public void afterCommit() {
+                List<PortalMessageVO> portalMessageVOList = portalMessageMapper.selectPortalMessageByPage(portalMessageQueryDTO);
+            }
+        });
         return portalMessageVOList;
     }
 

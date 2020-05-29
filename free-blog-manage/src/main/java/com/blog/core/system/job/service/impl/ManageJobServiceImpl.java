@@ -35,7 +35,8 @@ public class ManageJobServiceImpl implements ManageJobService {
 
     @Override
     public List<ManageJobListVO> queryManageJobByPage() {
-        return null;
+        List<ManageJobListVO> manageJobListVOList = this.manageJobMapper.selectManageJobByPage();
+        return manageJobListVOList;
     }
 
     @Transactional

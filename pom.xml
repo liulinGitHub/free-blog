@@ -12,7 +12,6 @@
         <module>free-blog-portal</module>
         <module>free-blog-manage</module>
         <module>free-blog-logging</module>
-        <!--<module>free-blog-auth</module>-->
     </modules>
     <packaging>pom</packaging>
 

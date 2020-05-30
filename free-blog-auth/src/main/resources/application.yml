@@ -1,0 +1,22 @@
+#环境配置切换
+spring:
+  profiles:
+    active: test
+  freemarker:
+    check-template-location: false
+
+#server:
+#  servlet:
+#    context-path: /auth
+
+#日志
+logging:
+  level:
+    com.blog.core: DEBUG
+    org.springframework.security: DEBUG
+    com.blog.core.**.dao: DEBUG
+
+
+blog:
+  version: 1.0
+  showsql: true

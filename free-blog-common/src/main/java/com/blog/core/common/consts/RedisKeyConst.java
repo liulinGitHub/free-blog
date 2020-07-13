@@ -23,4 +23,14 @@ public interface RedisKeyConst {
      * 在线用户key
      **/
     String ONLINE_USER_ID_KEY = "ONLINE_USER_ID";
+
+    /**
+     * 前台访问IP KEY
+     */
+    String PORTAL_VISIT_IP_KEY = "PORTAL_VISIT_IP";
+
+    /**
+     * 前台访问人数 KEY
+     */
+    String PORTAL_VIEWS_COUNT = "PORTAL_VIEWS_COUNT";
 }

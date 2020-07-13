@@ -1,7 +1,7 @@
 package com.blog.core.comment.service;
 
-import com.blog.core.comment.entity.dto.PortalArticleCommentAddDTO;
-import com.blog.core.comment.entity.vo.PortalArticleCommentVO;
+import com.blog.core.comment.entity.dto.PortalCommentAddDTO;
+import com.blog.core.comment.entity.vo.PortalCommentVO;
 import com.blog.core.comment.entity.vo.PortalCommentTree;
 
 import java.util.List;
@@ -9,11 +9,10 @@ import java.util.List;
 /**
  * @ClassName: PortalCommentService
  * @Description: 评论相关信息Service
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 21:14
  * @Version 1.0
  */
-
 public interface PortalCommentService {
 
     List<PortalCommentTree> queryPortalCommentTree(String articleId);
@@ -23,14 +22,14 @@ public interface PortalCommentService {
      * @param commentId
      * @return
      */
-    PortalArticleCommentVO queryCommentById(String commentId);
+    PortalCommentVO queryCommentById(String commentId);
 
     /**
      * 根据父id查询评论信息
      * @param parentId
      * @return
      */
-    List<PortalArticleCommentVO> queryCommentByParentId(String parentId);
+    List<PortalCommentVO> queryCommentByParentId(String parentId);
 
 
     /**
@@ -38,12 +37,12 @@ public interface PortalCommentService {
      * @param articleId
      * @return
      */
-    List<PortalArticleCommentVO> queryCommentByArticleId(String articleId);
+    List<PortalCommentVO> queryCommentByArticleId(String articleId);
 
     /**
      * 保存评论信息
      * @param portalCommentAddDTO
      */
-    void saveArticleComment(PortalArticleCommentAddDTO portalCommentAddDTO);
+    void saveComment(PortalCommentAddDTO portalCommentAddDTO);
 
 }

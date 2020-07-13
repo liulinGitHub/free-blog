@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.category.dao.PortalCategoryMapper">
+
+    <select id="selectCategoryById" resultType="com.blog.core.category.vo.PortalCategoryVO">
+        SELECT
+        id,
+        category_name,
+        sort,
+        create_time,
+        update_time,
+        is_enable
+        FROM
+        portal_category
+        WHERE
+        id = #{CategoryId}
+    </select>
+</mapper>

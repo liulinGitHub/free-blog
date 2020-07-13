@@ -5,7 +5,7 @@ import com.blog.core.article.vo.PortalArticleInfoVO;
 /**
  * @ClassName: PortalArticleInfoService
  * @Description: 文章相关信息Service
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 21:13
  * @Version 1.0
  */

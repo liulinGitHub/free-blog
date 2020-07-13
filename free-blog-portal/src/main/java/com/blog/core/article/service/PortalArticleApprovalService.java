@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * @ClassNmae: PortalArticleApprovalService
  * @description: 文章点赞
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/3/25 11:08
  **/
 public interface PortalArticleApprovalService {

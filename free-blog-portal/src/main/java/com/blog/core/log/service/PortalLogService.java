@@ -2,7 +2,7 @@ package com.blog.core.log.service;
 
 import com.blog.core.log.entity.domain.PortalLog;
 import com.blog.core.log.entity.dto.PortalLogQueryDTO;
-import com.blog.core.log.entity.vo.PortalLogVO;
+import com.blog.core.log.vo.PortalLogVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import java.util.List;

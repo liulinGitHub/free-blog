@@ -1,8 +1,8 @@
 package com.blog.core.comment.dao;
 
 
-import com.blog.core.comment.entity.domain.PortalArticleComment;
-import com.blog.core.comment.entity.vo.PortalArticleCommentVO;
+import com.blog.core.comment.entity.domain.PortalComment;
+import com.blog.core.comment.entity.vo.PortalCommentVO;
 import com.blog.core.comment.entity.vo.PortalCommentTree;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @ClassName: PortalCommentMapper
  * @Description: 评论信息Mapper
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 21:14
  * @Version 1.0
  */
@@ -31,7 +31,7 @@ public interface PortalCommentMapper {
      * @param commentId
      * @return
      */
-    PortalArticleCommentVO queryCommentById(String commentId);
+    PortalCommentVO queryCommentById(String commentId);
 
     /**
      * 根据文章id查询文章所有评论信息
@@ -39,7 +39,7 @@ public interface PortalCommentMapper {
      * @param articleId
      * @return
      */
-    List<PortalArticleCommentVO> queryCommentByArticleId(String articleId);
+    List<PortalCommentVO> queryCommentByArticleId(String articleId);
 
     /**
      * 根据父id查询评论信息
@@ -47,13 +47,13 @@ public interface PortalCommentMapper {
      * @param parentId
      * @return
      */
-    List<PortalArticleCommentVO> queryCommentByParentId(String parentId);
+    List<PortalCommentVO> queryCommentByParentId(String parentId);
 
     /**
      * 保存评论信息
      *
-     * @param portalArticleComment
+     * @param portalComment
      * @return
      */
-    int insertComment(PortalArticleComment portalArticleComment);
+    int insertComment(PortalComment portalComment);
 }

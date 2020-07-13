@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * @ClassName: ArticleDetailsDTO
  * @Description: 文章查询详情参数
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 20:18
  * @Version 1.0
  */

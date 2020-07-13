@@ -8,7 +8,6 @@ import com.blog.core.article.vo.PortalArticleDetailsVO;
 import com.blog.core.article.vo.PortalArticleInfoVO;
 import com.blog.core.article.service.PortalArticleService;
 import com.blog.core.article.vo.PortalArticleListVO;
-import com.blog.core.articlecategory.service.PortalArticleCategoryService;
 import com.blog.core.common.aspect.RequestHolder;
 import com.blog.core.common.enums.ArticleStatusEnum;
 import com.blog.core.common.exceptions.BlogRuntimeException;
@@ -27,6 +26,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @ClassNmae: PortalArticleServiceImpl
+ * @description: 文章信息service
+ * @Author: 950103
+ * @Date: 2020/3/25 11:08
+ **/
 @Slf4j
 @Service("portalArticleService")
 public class PortalArticleServiceImpl implements PortalArticleService {
@@ -50,15 +55,15 @@ public class PortalArticleServiceImpl implements PortalArticleService {
                 if (CollectionUtils.isNotEmpty(portalTagVOList)) {
                     portalArticleListVO.setTags(portalTagVOList);
                 }
-                PortalArticleInfoVO portalArticleInfoVO = this.portalArticleInfoService.queryPortalArticleInfoDetails(articleId);
-                portalArticleListVO.setMeta(portalArticleInfoVO);
+                PortalArticleInfoVO meta = this.portalArticleInfoService.queryPortalArticleInfoDetails(articleId);
+                portalArticleListVO.setMeta(meta);
             });
         }
         return portalArticleListVOList;
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public PortalArticleDetailsVO queryArticleDetails(String articleId) {
         // 查询文章信息
         PortalArticleDetailsVO portalArticleDetailsVO = this.portalArticleMapper.selectArticleByArticleId(articleId);
@@ -71,35 +76,19 @@ public class PortalArticleServiceImpl implements PortalArticleService {
         PortalArticleInfoVO portalArticleInfoVO = this.portalArticleInfoService.queryPortalArticleInfoDetails(articleId);
         portalArticleDetailsVO.setMeta(portalArticleInfoVO);
 
-
-//        PortalArticleInfoVO sysBaseArticleInfoVO = new PortalArticleInfoVO();
-//        if (StringUtils.isNotEmpty(articleVO.getCategoryId())) {
-//            //文章分类信息
-//            CategoryVO categoryVO = this.categoryService.findCategoryById(articleVO.getCategoryId());
-//            sysBaseArticleInfoVO.setCategoryVO(categoryVO);
-//        }
-
- /*     if(StringUtils.isNotEmpty(articleVO.getArticleUserId())){
-            //文章用户信息
-            SysBaseUserVO userVO = this.userMapper.selectUserById(articleVO.getArticleUserId());
-            if(userVO != null){
-                sysBaseArticleInfoVO.setArticleUserVO(userVO);
-            }
-        }*/
-        // sysBaseArticleInfoVO.setArticleVO(articleVO);
         // 增加一次访问量
         // this.portalArticleInfoService.updateReadArticleByArticleId(articleId);
 
         return portalArticleDetailsVO;
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public void editArticleById(String articleId) {
         this.portalArticleMapper.selectArticleByArticleId(articleId);
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public void submitCheckArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
         PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
@@ -113,7 +102,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void saveDraft(PortalArticleCheckDTO portalArticleCheckDTO) {
         PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
         article.setArticleId(UUIDUtil.randomUUID32());
@@ -127,7 +116,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void deleteDraft(String articleId) {
         int result = this.portalArticleMapper.deleteDraft(articleId);
         if (result < 1) {
@@ -137,7 +126,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void updateApproves(String articleId) {
         int result = this.portalArticleMapper.updateApproves(articleId);
         if (result < 1) {
@@ -147,7 +136,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void updateComments(String articleId) {
         int result = this.portalArticleMapper.updateComments(articleId);
         if (result < 1) {
@@ -157,7 +146,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void updateTemperature(String articleId) {
         int result = this.portalArticleMapper.updateTemperature(articleId);
         if (result < 1) {

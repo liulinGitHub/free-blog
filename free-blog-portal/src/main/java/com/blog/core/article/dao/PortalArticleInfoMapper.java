@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @ClassName: PortalArticleInfoMapper
  * @Description: 文章相关信息Mapper
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 21:20
  * @Version 1.0
  */

@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 /**
- * @program: FreeBlogPortalApplication
+ * @ClassName: FreeBlogPortalApplication
  * @description: 前台页面展示系统启动类
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-09 16:51
  * @Version: 1.0
  */

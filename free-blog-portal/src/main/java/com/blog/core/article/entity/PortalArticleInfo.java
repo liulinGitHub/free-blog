@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * @ClassName: PortalArticleInfo
  * @Description: 文章相关信息实体
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 21:09
  * @Version 1.0
  */

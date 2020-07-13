@@ -9,9 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @program: PortalCommentTree
+ * @ClassName: PortalCommentTree
  * @description: 文章评论返回前端展示对象
- * @author: liulin
+ * @author: 950103
  * @create: 2020-04-20 22:28
  */
 @Data

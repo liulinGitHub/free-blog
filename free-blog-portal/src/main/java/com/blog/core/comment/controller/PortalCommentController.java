@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @ClassName: PortalCommentController
  * @Dscription: 文章评论服务Controller
- * @Author: liulin
+ * @Author: 950103
  * @Create: 2019-04-29 17:32
  */
 @Api(value = "文章评论服务Controller",tags = "文章评论服务")

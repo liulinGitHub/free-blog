@@ -4,9 +4,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @program: free-blog
+ * @ClassName: ArticleAddDTO
  * @description: 文章信息传参对象
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-06 09:42
  */
 @Data

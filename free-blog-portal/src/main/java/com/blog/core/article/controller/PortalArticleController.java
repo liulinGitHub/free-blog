@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: free-blog
+ * @ClassName: PortalArticleController
  * @description: 文章信息服务Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-29 17:32
  */
 @Api(value = "文章信息服务Controller",tags = "文章信息服务")
@@ -39,7 +39,7 @@ public class PortalArticleController extends BaseController {
         return ResponseBo.newDataResponse(this.portalArticleService.queryArticleDetails(articleId));
     }
 
-    @ApiOperation(value="查看文章详细信息", notes="")
+    @ApiOperation(value="编辑文章信息", notes="")
     @GetMapping("/edit/{articleId}")
     public ResponseBo editArticleById(@PathVariable String articleId){
         this.portalArticleService.editArticleById(articleId);

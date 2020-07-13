@@ -8,6 +8,12 @@ import com.blog.core.article.vo.PortalArticleListVO;
 
 import java.util.List;
 
+/**
+ * @ClassNmae: PortalArticleService
+ * @description: 文章信息service
+ * @Author: 950103
+ * @Date: 2020/4/19 11:26
+ **/
 public interface PortalArticleService {
 
     /**

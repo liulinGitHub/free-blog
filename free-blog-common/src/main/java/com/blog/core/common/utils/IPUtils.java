@@ -101,4 +101,8 @@ public class IPUtils {
         return browser.getName();
     }
 
+    public static void main(String[] args) {
+        String cityInfo = getCityInfo("127.0.0.1");
+        System.out.println(cityInfo);
+    }
 }

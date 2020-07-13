@@ -612,7 +612,7 @@ public class RedisUtil {
     }
 
     /**
-     *
+     * 存储在list尾部，单个
      * @param key
      * @param value
      * @return
@@ -622,7 +622,7 @@ public class RedisUtil {
     }
 
     /**
-     *
+     * 存储在list尾部，单个或者多个
      * @param key
      * @param value
      * @return

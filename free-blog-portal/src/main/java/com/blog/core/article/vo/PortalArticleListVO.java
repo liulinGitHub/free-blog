@@ -34,18 +34,6 @@ public class PortalArticleListVO {
     @ApiModelProperty(name = "文章图片" )
     private String articleImage;
 
-    @ApiModelProperty("点赞数" )
-    private Long approveNumber;
-
-    @ApiModelProperty("评论数" )
-    private Long commentsNumber;
-
-    @ApiModelProperty("热度" )
-    private Long likeNumber;
-
-    @ApiModelProperty("浏览人数" )
-    private Long readNumber;
-
     @ApiModelProperty("置顶状态 0 未置顶 1 已置顶" )
     private String articleTopStatus;
 

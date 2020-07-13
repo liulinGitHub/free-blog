@@ -27,7 +27,7 @@
             comment_time DESC
     </select>
 
-    <select id="queryCommentById" resultType="com.blog.core.comment.entity.vo.PortalArticleCommentVO">
+    <select id="queryCommentById" resultType="com.blog.core.comment.entity.vo.PortalCommentVO">
         SELECT
             comment .id AS id,
             comment .comment_content AS commentContent,
@@ -48,7 +48,7 @@
         ORDER BY comment.comment_time desc
     </select>
 
-    <select id="queryCommentByParentId" resultType="com.blog.core.comment.entity.vo.PortalArticleCommentVO">
+    <select id="queryCommentByParentId" resultType="com.blog.core.comment.entity.vo.PortalCommentVO">
         SELECT
             comment .id AS id,
             comment .comment_content AS commentContent,
@@ -69,7 +69,7 @@
         ORDER BY comment.comment_time desc
     </select>
 
-    <select id="queryCommentByArticleId" resultType="com.blog.core.comment.entity.vo.PortalArticleCommentVO" parameterType="java.lang.String">
+    <select id="queryCommentByArticleId" resultType="com.blog.core.comment.entity.vo.PortalCommentVO" parameterType="java.lang.String">
         SELECT
             ccomment_id,
             comment_content,
@@ -93,7 +93,7 @@
     </select>
 
     <!--auto generated Code-->
-    <insert id="insertComment" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.comment.entity.domain.PortalArticleComment">
+    <insert id="insertComment" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.comment.entity.domain.PortalComment">
         INSERT INTO portal_comment (
             `id`,
             `comment_content`,

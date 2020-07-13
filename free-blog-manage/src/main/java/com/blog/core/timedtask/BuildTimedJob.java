@@ -55,4 +55,11 @@ public class BuildTimedJob {
             redisUtil.sAdd(RedisKeyConst.PIMARY_KEY_LIST, key);
         }
     }
+
+    private static int i = -1;
+    @Scheduled(cron = "*/10 * * * * ?")
+    public void test() {
+        i++;
+        System.out.println(i);
+    }
 }

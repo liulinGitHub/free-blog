@@ -51,7 +51,8 @@ public class UUIDUtil {
         return uuid;
     }
     public static void main(String[] args) {
-        int[] a = {1,3,4,6,78,99,33,41,53};
-        System.out.println(Arrays.binarySearch(a, 78));
+        String a = " abcdefg";
+        String substring = a.substring(2, 3);
+        System.out.println(substring);
     }
 }

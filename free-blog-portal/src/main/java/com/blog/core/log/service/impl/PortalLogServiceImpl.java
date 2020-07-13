@@ -5,7 +5,7 @@ import com.blog.core.common.utils.*;
 import com.blog.core.log.dao.PortalLogMapper;
 import com.blog.core.log.entity.domain.PortalLog;
 import com.blog.core.log.entity.dto.PortalLogQueryDTO;
-import com.blog.core.log.entity.vo.PortalLogVO;
+import com.blog.core.log.vo.PortalLogVO;
 import com.blog.core.log.service.PortalLogService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

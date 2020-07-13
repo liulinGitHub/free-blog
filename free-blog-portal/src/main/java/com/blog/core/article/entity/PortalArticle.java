@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * @ClassNmae: PortalArticle
  * @description: 文章实体
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 11:26
  **/
 @Data

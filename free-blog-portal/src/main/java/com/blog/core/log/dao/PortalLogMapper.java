@@ -2,7 +2,7 @@ package com.blog.core.log.dao;
 
 import com.blog.core.log.entity.domain.PortalLog;
 import com.blog.core.log.entity.dto.PortalLogQueryDTO;
-import com.blog.core.log.entity.vo.PortalLogVO;
+import com.blog.core.log.vo.PortalLogVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

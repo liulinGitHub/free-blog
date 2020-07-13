@@ -9,6 +9,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @ClassName: PortalArticleMapper
+ * @Description: 文章信息Mapper
+ * @Author: 950103
+ * @Date: 2020/4/19 21:20
+ * @Version 1.0
+ */
 @Repository("portalArticleMapper")
 public interface PortalArticleMapper {
 

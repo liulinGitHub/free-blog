@@ -55,7 +55,7 @@ public class PortalArticleController extends BaseController {
 
     @ApiOperation(value="文章保存草稿", notes="")
     @PutMapping("/save_draft")
-    public ResponseBo saveDraft(PortalArticleCheckDTO portalArticleCheckDTO){
+    public ResponseBo saveDraft(@RequestBody PortalArticleCheckDTO portalArticleCheckDTO){
         this.portalArticleService.saveDraft(portalArticleCheckDTO);
         return ResponseBo.ok("保存草稿成功！");
     }

@@ -6,9 +6,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @program: ManageTag
+ * @ClassName: PortalTag
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-07-23 17:58
  * @Version: 1.0
  */

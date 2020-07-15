@@ -7,9 +7,9 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @program: PortalTagVO
+ * @ClassName: PortalTagVO
  * @description: 页面标签表VO
- * @author: liulin
+ * @author: 950103Scheduler
  * @create: 2019-07-23 17:41
  * @Version: 1.0
  */

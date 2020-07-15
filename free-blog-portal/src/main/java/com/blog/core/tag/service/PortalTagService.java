@@ -6,9 +6,9 @@ import com.blog.core.tag.entity.vo.PortalTagVO;
 import java.util.List;
 
 /**
- * @program: ManageTagService
+ * @ClassName: PortalTagService
  * @description: 标签Service
- * @author: liulin
+ * @author: 950103
  * @create: 2019-07-23 17:39
  * @Version: 1.0
  */

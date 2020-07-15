@@ -19,7 +19,7 @@ public class ArticleTask {
     //@Autowired
     //private ArticleService articleService;
 
-    //@Scheduled(cron = "*/3 * * * * *")
+    @Scheduled(cron = "*/3 * * * * *")
     public void task() {
         log.info("执行一次，");
 //        ArticleCheckDTO articleCheckDTO = new ArticleCheckDTO();

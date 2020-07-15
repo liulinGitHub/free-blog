@@ -11,9 +11,6 @@
     <packaging>pom</packaging>
 
     <description>free-blog 前台展示页面模块</description>
-    <modules>
-        <module>free-blog-article</module>
-    </modules>
 
     <artifactId>free-blog-portal</artifactId>
 

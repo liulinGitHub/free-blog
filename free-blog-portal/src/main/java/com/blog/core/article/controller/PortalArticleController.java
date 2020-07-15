@@ -35,7 +35,7 @@ public class PortalArticleController extends BaseController {
     @LogPortal
     @ApiOperation(value="查看文章详细信息", notes="")
     @GetMapping("/details/{articleId}")
-    public ResponseBo queryArticleDetails(@PathVariable String articleId){
+    public ResponseBo queryArticleDetails(@PathVariable("articleId") String articleId){
         return ResponseBo.newDataResponse(this.portalArticleService.queryArticleDetails(articleId));
     }
 

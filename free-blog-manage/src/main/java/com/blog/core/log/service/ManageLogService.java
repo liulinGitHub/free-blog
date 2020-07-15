@@ -8,7 +8,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import java.util.List;
 
 /**
- * @ClassNmae: SysBaseLogService
+ * @ClassNmae: ManageLogService
  * @description:
  * @Author: liulin
  * @Date: 2019/4/14 23:54
@@ -17,6 +17,7 @@ public interface ManageLogService {
 
     /**
      * 查询日志
+     *
      * @param manageLogQueryDTO
      * @return
      */
@@ -24,6 +25,7 @@ public interface ManageLogService {
 
     /**
      * 保存日志
+     *
      * @param joinPoint
      * @param manageLog
      * @throws JsonProcessingException

@@ -62,8 +62,8 @@ public class PortalArticleServiceImpl implements PortalArticleService {
         return portalArticleListVOList;
     }
 
-    @Override
     @Transactional
+    @Override
     public PortalArticleDetailsVO queryArticleDetails(String articleId) {
         // 查询文章信息
         PortalArticleDetailsVO portalArticleDetailsVO = this.portalArticleMapper.selectArticleByArticleId(articleId);

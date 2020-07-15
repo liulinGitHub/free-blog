@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * @program: ResponseResultHandler
+ * @CalssName: ResponseResultHandler
  * @description: 结果返回处理器
  * @author: liulin
  * @create: 2020-04-08 17:09

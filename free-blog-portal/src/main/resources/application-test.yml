@@ -4,6 +4,8 @@ server:
     uri-encoding: utf-8
 
 spring:
+  application:
+    name: @artifactId@
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -13,7 +15,7 @@ spring:
     # 连接池配置
     initial-size: 5
     min-idle: 5
-    max-active: 100
+    max-active: 10
     # 连接等待超时时间
     max-wait: 30000
 
@@ -26,7 +28,7 @@ spring:
     port: 6379
     # Redis 密码
     password:
-    timeout: 1000
+    timeout: 5000
     lettuce:
       pool:
         # 连接池中的最小空闲连接
@@ -38,19 +40,12 @@ spring:
         # 连接池最大阻塞等待时间（使用负值表示没有限制）
         max-wait: 10000
       # 关闭超时时间
-      shutdown-timeout: 100
+      shutdown-timeout: 1000
 
-#  security:
-#    auth:
-#      server: http://localhost:8680
-#    oauth2:
-#      client:
-#          client-id: free
-#          client-secret: blog
 
 #mybatis
 mybatis:
-  mapper-locations: mapper/*/*.xml
+  mapper-locations: mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
   type-aliases-package: com.blog.core.**.dao
@@ -60,6 +55,13 @@ pagehelper:
   reasonable: false
   supportMethodsArguments: true
   params: count = countSql
+
+# elasticsearch配置
+#  data:
+#    elasticsearch:
+#      cluster-name: free-elasticsearch
+#      cluster-nodes: 127.0.0.1:9200
+
 
 rocketmq:
   name-server: localhost:9876

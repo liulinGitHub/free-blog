@@ -43,7 +43,7 @@ public class ManageOnlineUserServiceImpl implements ManageOnlineUserService {
                 .nickName(securityUser.getNickName())
                 .sex(securityUser.getSex())
                 .ipAddress(IPUtils.getIpAddr(request))
-                .address(IPUtils.getCityInfo(IPUtils.getIpAddr(request)))
+                .address(IPUtils.getIpSource(IPUtils.getIpAddr(request)))
                 .browser(IPUtils.getBrowser(request))
                 .build();
         redisUtil.sAdd(onlineUserKey, manageOnlineUser);

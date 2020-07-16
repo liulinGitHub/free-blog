@@ -2,7 +2,6 @@ package com.blog.core.common.redis;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Component;
  * @Date: 2020/7/16 0:00
  * @Version 1.0
  */
-@Data
 @Component
 @ConfigurationProperties(prefix = "spring.redis")
 public class RedisConfigProperties {
@@ -47,4 +45,83 @@ public class RedisConfigProperties {
     // 关闭超时时间
     private Integer shutdown;
 
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public Integer getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(Integer database) {
+        this.database = database;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(Integer timeout) {
+        this.timeout = timeout;
+    }
+
+    public Integer getMaxTotal() {
+        return maxTotal;
+    }
+
+    public void setMaxTotal(Integer maxTotal) {
+        this.maxTotal = maxTotal;
+    }
+
+    public Integer getMaxWait() {
+        return maxWait;
+    }
+
+    public void setMaxWait(Integer maxWait) {
+        this.maxWait = maxWait;
+    }
+
+    public Integer getMaxIdle() {
+        return maxIdle;
+    }
+
+    public void setMaxIdle(Integer maxIdle) {
+        this.maxIdle = maxIdle;
+    }
+
+    public Integer getMinIdle() {
+        return minIdle;
+    }
+
+    public void setMinIdle(Integer minIdle) {
+        this.minIdle = minIdle;
+    }
+
+    public Integer getShutdown() {
+        return shutdown;
+    }
+
+    public void setShutdown(Integer shutdown) {
+        this.shutdown = shutdown;
+    }
 }

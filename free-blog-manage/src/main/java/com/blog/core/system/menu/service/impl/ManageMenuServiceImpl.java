@@ -117,47 +117,6 @@ public class ManageMenuServiceImpl implements ManageMenuService {
             trees = manageMenuListVOList.stream().filter(s -> !ids.contains(s.getId())).collect(Collectors.toList());
         }
         return trees;
-
-//        List<ManageMenuListVO> manageMenuListVOS = new ArrayList<>();
-//        List<ManageMenuTree> manageMenuTreeList = new ArrayList<>();
-//        SecurityUser user = SecurityUtils.getUser();
-//        //如果是超级管理员就获得所有菜单
-//        //TODO 记得修改判断
-//        if(SupperEnum.SUPPER.getValue().equals("1")){
-//            manageMenuListVOS = this.manageMenuMapper.selectManageMenuList();
-//        }else {
-//            manageMenuListVOS = this.manageMenuMapper.selectManageMenuByUserId(user.getUserId());
-//        }
-//        if(CollectionUtils.isEmpty(manageMenuListVOS)){
-//            return manageMenuTreeList;
-//        }
-//        manageMenuListVOS.forEach(manageMenuListVO -> {
-//            List<ManageMenuListVO> children = manageMenuListVO.getChildren();
-//            ManageMenuTree manageMenuTree = new ManageMenuTree(manageMenuListVO);
-//            manageMenuTree.setMeta(new ManageMenuMetaVO(manageMenuListVO.getName(),manageMenuListVO.getIcon(),!manageMenuListVO.getCache()));
-//            if (CollectionUtils.isNotEmpty(children)) {
-//                manageMenuTree.setAlwaysShow(true);
-//                manageMenuTree.setRedirect("noredirect");
-//                manageMenuTree.setChildren(buildMenus(children));
-//            }
-//        });
-//
-//
-//        //按照父ID分组，找出所有子节点
-//        Map<String, List<ManageMenuListVO>> groupMap = manageMenuListVOS.stream()
-//                .filter(b -> null != b.getParentId())
-//                .collect(Collectors.groupingBy(ManageMenuListVO::getParentId));
-//        if(Objects.nonNull(groupMap) && groupMap.size() > 0){
-//            manageMenuTreeList = manageMenuListVOS.stream()
-//                    .filter(menu ->
-//                            null == menu.getParentId() && groupMap.containsKey(menu.getId()))
-//                    .map(menu -> this.getChildMenuTree(groupMap, menu))
-//                    .sorted(Comparator.comparingInt(ManageMenuTree::getSort))
-//                    .collect(Collectors.toList());
-//            return manageMenuTreeList;
-//        } else {
-//            return MapperUtils.mapperList(manageMenuListVOS, ManageMenuTree.class);
-//        }
     }
 
     @Override

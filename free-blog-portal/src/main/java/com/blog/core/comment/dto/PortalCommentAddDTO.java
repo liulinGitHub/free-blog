@@ -1,4 +1,4 @@
-package com.blog.core.comment.entity.dto;
+package com.blog.core.comment.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -12,21 +12,12 @@ import lombok.Data;
 @Data
 public class PortalCommentAddDTO {
 
-    /**
-     * 评论内容
-     */
-    @ApiModelProperty(name = "comment_content" )
+    @ApiModelProperty("评论内容" )
     private String commentContent;
 
-    /**
-     * 所属文章id
-     */
-    @ApiModelProperty(name = "article_id" )
+    @ApiModelProperty("所属文章id" )
     private String articleId;
 
-    /**
-     * 父id
-     */
-    @ApiModelProperty(name = "parent_id" )
+    @ApiModelProperty("parent_id" )
     private String parentId;
 }

@@ -2,8 +2,8 @@ package com.blog.core.aspect;
 
 import com.blog.core.common.enums.ResultTypeEnum;
 import com.blog.core.common.utils.HttpContextUtils;
-import com.blog.core.entity.ManageLog;
-import com.blog.core.service.ManageLogService;
+import com.blog.core.entity.ServerLog;
+import com.blog.core.service.ServerLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,30 +14,28 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @ClassNmae: ManageLogAspect
+ * @ClassNmae: ServerLogAspect
  * @description: 后台日志AOP
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/4 14:31
  **/
 @Slf4j
 @Aspect
 @Component
-public class ManageLogAspect {
+public class ServerLogAspect {
 
     @Value("${freeBlog.isOpenManageAopLog}")
     private Boolean isOpenManageAopLog;
 
     @Autowired
-    private ManageLogService manageLogService;
+    private ServerLogService manageLogService;
 
     ThreadLocal<Long> currentTime = new ThreadLocal<>();
 
-    @Pointcut("@annotation(com.blog.core.annotation.LogManage)")
+    @Pointcut("@annotation(com.blog.core.annotation.LogServer)")
     public void logPointcut() {
 
     }
@@ -48,24 +46,24 @@ public class ManageLogAspect {
         if (isOpenManageAopLog) {
             currentTime.set(System.currentTimeMillis());
             result = joinPoint.proceed();
-            ManageLog manageLog = new ManageLog();
-            manageLog.setTimeConsuming(System.currentTimeMillis() - currentTime.get());
+            ServerLog serverLog = new ServerLog();
+            serverLog.setTimeConsuming(System.currentTimeMillis() - currentTime.get());
             currentTime.remove();
-            manageLog.setResultType(ResultTypeEnum.SUCCESS.getValue());
+            serverLog.setResultType(ResultTypeEnum.SUCCESS.getValue());
             HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
 
-            manageLogService.addLog(joinPoint, request, manageLog);
+            manageLogService.addServerLog(joinPoint, request, serverLog);
         }
         return result;
     }
 
     @AfterThrowing(pointcut = "logPointcut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) throws Throwable {
-        ManageLog manageLog = new ManageLog();
-        manageLog.setTimeConsuming(System.currentTimeMillis() - currentTime.get());
+        ServerLog serverLog = new ServerLog();
+        serverLog.setTimeConsuming(System.currentTimeMillis() - currentTime.get());
         currentTime.remove();
-        manageLog.setResultType(ResultTypeEnum.ERROR.getValue());
+        serverLog.setResultType(ResultTypeEnum.ERROR.getValue());
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
-        manageLogService.addLog((ProceedingJoinPoint)joinPoint, request, manageLog);
+        manageLogService.addServerLog((ProceedingJoinPoint)joinPoint, request, serverLog);
     }
 }

@@ -1,10 +1,10 @@
 package com.blog.core.comment.service.impl;
 
 import com.blog.core.comment.dao.PortalCommentMapper;
-import com.blog.core.comment.entity.domain.PortalComment;
-import com.blog.core.comment.entity.dto.PortalCommentAddDTO;
-import com.blog.core.comment.entity.vo.PortalCommentVO;
-import com.blog.core.comment.entity.vo.PortalCommentTree;
+import com.blog.core.comment.dto.PortalCommentAddDTO;
+import com.blog.core.comment.entity.PortalComment;
+import com.blog.core.comment.vo.PortalCommentVO;
+import com.blog.core.comment.vo.PortalCommentTree;
 import com.blog.core.comment.service.PortalCommentService;
 import com.blog.core.common.aspect.RequestHolder;
 import com.blog.core.common.enums.IsEnableEnum;
@@ -48,22 +48,21 @@ public class PortalCommentServiceImpl implements PortalCommentService {
         List<PortalCommentTree> commentTreeList = portalCommentTreeList.stream()
                 .filter(portalCommentTree -> StringUtils.isBlank(portalCommentTree.getParentId()))
                 .collect(Collectors.toList());
-        commentTreeList.forEach(commentTree -> {
+        for (PortalCommentTree commentTree : commentTreeList) {
             List<PortalCommentTree> childrenList = portalCommentTreeList.stream().filter(portalCommentTree ->
-                StringUtils.isNotBlank(portalCommentTree.getParentId())
-                    && portalCommentTree.getParentId().equals(commentTree.getCommentId())
+                    StringUtils.isNotBlank(portalCommentTree.getParentId())
+                            && portalCommentTree.getParentId().equals(commentTree.getCommentId())
             ).collect(Collectors.toList());
             if (CollectionUtils.isNotEmpty(childrenList)) {
-                commentTree.setChildren(childrenList);
+                for (PortalCommentTree portalCommentTree : childrenList) {
+                    if (commentTree.getChildren() == null) {
+                        commentTree.setChildren(new ArrayList<>());
+                    }
+                    commentTree.getChildren().add(portalCommentTree);
+                }
             }
-        });
-        return portalCommentTreeList;
-    }
-
-    @Override
-    public PortalCommentVO queryCommentById(String commentId) {
-        PortalCommentVO portalCommentVO = this.portalCommentMapper.queryCommentById(commentId);
-        return portalCommentVO;
+        }
+        return commentTreeList;
     }
 
     @Override
@@ -73,22 +72,8 @@ public class PortalCommentServiceImpl implements PortalCommentService {
     }
 
     @Override
-    public List<PortalCommentVO> queryCommentByArticleId(String articleId) {
-        List<PortalCommentVO> portalCommentVOList = this.portalCommentMapper.queryCommentByArticleId(articleId);
-        if (CollectionUtils.isNotEmpty(portalCommentVOList)) {
-            portalCommentVOList.forEach(portalCommentVO -> {
-                List<PortalCommentVO> portalCommentVOS = this.queryCommentByParentId(portalCommentVO.getId());
-                if (CollectionUtils.isNotEmpty(portalCommentVOS)) {
-                    portalCommentVO.setCommentVOList(portalCommentVOS);
-                }
-            });
-        }
-        return portalCommentVOList;
-    }
-
-    @Override
     @Transactional
-    public void saveComment(PortalCommentAddDTO portalCommentAddDTO) {
+    public void     savePortalComment(PortalCommentAddDTO portalCommentAddDTO) {
         PortalComment portalComment = MapperUtils.mapperBean(portalCommentAddDTO, PortalComment.class);
         portalComment.setCommentId(UUIDUtil.randomUUID32());
         portalComment.setCommentUserId(RequestHolder.get()+"");
@@ -102,7 +87,7 @@ public class PortalCommentServiceImpl implements PortalCommentService {
             portalComment.setParentId("0");
             portalComment.setIsParent(IsParentEnum.PARENT_YES.getValue());
         }
-        int result = this.portalCommentMapper.insertComment(portalComment);
+        int result = this.portalCommentMapper.insertPortalComment(portalComment);
         if (result < 1) {
             log.error("评论失败!【{}】", "commentUserId");
             throw new BlogRuntimeException("评论失败！");

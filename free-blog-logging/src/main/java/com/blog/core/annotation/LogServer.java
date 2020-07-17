@@ -6,14 +6,17 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @program: LogPortal
+ * @ClassName: ServerLog
  * @description: 自定义日志注解
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-08 19:35
- */
+ **/
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface LogPortal {
+public @interface LogServer {
+
     String value() default "";
+
+    String type() default "";
 }

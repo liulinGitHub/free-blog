@@ -1,13 +1,13 @@
 package com.blog.core.service.impl;
 
-import com.blog.core.annotation.LogManage;
+import com.blog.core.annotation.LogServer;
 import com.blog.core.common.utils.IPUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
-import com.blog.core.dao.ManageLogMapper;
-import com.blog.core.dto.ManageLogQueryDTO;
-import com.blog.core.entity.ManageLog;
-import com.blog.core.service.ManageLogService;
-import com.blog.core.vo.ManageLogVO;
+import com.blog.core.dao.ServerLogMapper;
+import com.blog.core.dto.ServerLogQueryDTO;
+import com.blog.core.entity.ServerLog;
+import com.blog.core.service.ServerLogService;
+import com.blog.core.vo.ServerLogVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -25,11 +25,11 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 @Slf4j
-@Service("manageLogService")
-public class ManageLogServiceImpl implements ManageLogService {
+@Service("serverLogService")
+public class ServerLogServiceImpl implements ServerLogService {
 
     @Autowired
-    private ManageLogMapper manageLogMapper;
+    private ServerLogMapper serverLogMapper;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -38,26 +38,25 @@ public class ManageLogServiceImpl implements ManageLogService {
     private PrimarykeyUtil primarykeyUtil;
 
     @Override
-    public List<ManageLogVO> queryLogByPage(ManageLogQueryDTO manageLogQueryDTO){
-        List<ManageLogVO> portalLogList = this.manageLogMapper.selectLogByPage(manageLogQueryDTO);
-        return portalLogList;
+    public List<ServerLogVO> queryServerLogByPage(ServerLogQueryDTO serverLogQueryDTO) {
+        return this.serverLogMapper.selectPortalLogByPage(serverLogQueryDTO);
     }
 
     @Async
     @Override
-    public void addLog(ProceedingJoinPoint joinPoint, HttpServletRequest request, ManageLog manageLog) throws JsonProcessingException {
+    public void addServerLog(ProceedingJoinPoint joinPoint, HttpServletRequest request, ServerLog serverLog) throws JsonProcessingException {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-        LogManage logAnnotation = method.getAnnotation(LogManage.class);
+        LogServer logAnnotation = method.getAnnotation(LogServer.class);
         if (logAnnotation != null) {
             // 注解上的描述
-            manageLog.setDescription(logAnnotation.value());
+            serverLog.setDescription(logAnnotation.value());
         }
         // 请求的类名
         String className = joinPoint.getTarget().getClass().getName();
         // 请求的方法名
         String methodName = signature.getName();
-        manageLog.setMethodName(className + "." + methodName + "()");
+        serverLog.setMethodName(className + "." + methodName + "()");
         // 请求的方法参数值
         Object[] args = joinPoint.getArgs();
         // 请求的方法参数名称
@@ -66,21 +65,21 @@ public class ManageLogServiceImpl implements ManageLogService {
         if (args != null && paramNames != null) {
             StringBuilder params = new StringBuilder();
             params = handleParams(params, args, Arrays.asList(paramNames));
-            manageLog.setRequestParams(params.toString());
+            serverLog.setRequestParams(params.toString());
         }
-        manageLog.setOperatingTime(new Date());
-        manageLog.setLogId(primarykeyUtil.getPimaryKey());
-        manageLog.setIpAddress(IPUtils.getIpAddr(request));
-        manageLog.setAddress(IPUtils.getCityInfo(IPUtils.getIpAddr(request)));
-        manageLog.setBrowser(IPUtils.getBrowser(request));
-        manageLog.setRequestPath(request.getRequestURI());
-        manageLog.setRequestMethod(request.getMethod());
+        serverLog.setOperatingTime(new Date());
+        serverLog.setLogId(primarykeyUtil.getPimaryKey());
+        serverLog.setIpAddress(IPUtils.getIpAddr(request));
+        serverLog.setAddress(IPUtils.getCityInfo(IPUtils.getIpAddr(request)));
+        serverLog.setBrowser(IPUtils.getBrowser(request));
+        serverLog.setRequestPath(request.getRequestURI());
+        serverLog.setRequestMethod(request.getMethod());
 //        SecurityUser user = SecurityUtils.getUser();
 //        if (Objects.nonNull(user)) {
 //            manageLog.setOperatingId(user.getUserId());
 //        }
         try {
-            this.manageLogMapper.saveLog(manageLog);
+            this.serverLogMapper.insertServerLog(serverLog);
         }catch (Exception e){
             log.error("保存系统日志失败:", e.getMessage());
         }

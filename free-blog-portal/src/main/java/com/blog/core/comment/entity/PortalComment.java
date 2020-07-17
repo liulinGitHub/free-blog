@@ -1,4 +1,4 @@
-package com.blog.core.comment.entity.domain;
+package com.blog.core.comment.entity;
 
 import com.blog.core.common.entity.BaseModel;
 import io.swagger.annotations.Api;

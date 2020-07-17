@@ -1,5 +1,6 @@
 package com.blog.core.comment.controller;
 
+import com.blog.core.comment.dto.PortalCommentAddDTO;
 import com.blog.core.comment.service.PortalCommentService;
 import com.blog.core.common.annotation.LogPortal;
 import com.blog.core.common.utils.BaseController;
@@ -26,9 +27,17 @@ public class PortalCommentController extends BaseController {
 
     @LogPortal
     @ApiOperation(value="分页查询评论信息", notes="")
+    @ApiOperation(value="分页查询文章评论信息", notes="")
     @GetMapping("/query/{articleId}")
     public ResponseBo queryCommentByPage(@PathVariable String articleId, QueryRequest queryRequest){
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->
                 this.portalCommentService.queryPortalCommentTree(articleId)));
+    }
+
+    @ApiOperation(value="添加评论", notes="")
+    @PostMapping("/save")
+    public ResponseBo savePortalComment(@RequestBody PortalCommentAddDTO portalCommentAddDTO) {
+        this.portalCommentService.savePortalComment(portalCommentAddDTO);
+        return ResponseBo.ok("评论成功！");
     }
 }

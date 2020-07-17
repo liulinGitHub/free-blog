@@ -4,6 +4,7 @@ import com.blog.core.dao.NoticeMapper;
 import com.blog.core.dao.RocketmqTransactionLogMapper;
 import com.blog.core.entity.Notice;
 import com.blog.core.entity.RocketmqTransactionLog;
+import com.blog.core.entity.TaskHandHandler;
 import com.blog.core.service.TestProducerService;
 import lombok.RequiredArgsConstructor;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -13,6 +14,8 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -45,7 +48,7 @@ public class TestProducerServiceImpl implements TestProducerService {
 
 		rocketMQTemplate.sendMessageInTransaction(txProducerGroup, topic,
 				MessageBuilder.withPayload("事物消息")
-						.setHeader(RocketMQHeaders.TRANSACTION_ID, transactionId)
+ 						.setHeader(RocketMQHeaders.TRANSACTION_ID, transactionId)
 						.setHeader("notice_id", notice.getId())
 						.build(),
 				notice
@@ -74,5 +77,43 @@ public class TestProducerServiceImpl implements TestProducerService {
 						.log("updateNotice")
 						.build()
 		);
+	}
+
+	@Override
+	public List<Notice> query() {
+		return this.noticeMapper.query();
+	}
+
+	@TaskHandHandler(type = "dasd")
+	@Override
+	public List<Notice> query(Notice notice) {
+		return this.noticeMapper.query();
+	}
+
+	@Transactional
+	@Override
+	public void insert() {
+		System.out.println("====");
+		List<Notice> list = new ArrayList<>(5000000);
+		for(int i= 5000000;i< 10000000;i++) {
+			Notice notice = new Notice();
+			notice.setId(i);
+			notice.setContent("测试"+i);
+			list.add(notice);
+		}
+		System.out.println("构造完成");
+		int count = list.size() / 100;
+		for (int i = 0; i <= count; i++) {
+			List<Notice> paramList = null;
+			if (i == count) {
+				paramList = list.subList(100 * i, list.size());
+			} else {
+				paramList = list.subList(100 * i, (100 * (i + 1)));
+			}
+			if (paramList.size() > 0) {
+				System.out.println("插入");
+				this.noticeMapper.insert(paramList);
+			}
+		}
 	}
 }

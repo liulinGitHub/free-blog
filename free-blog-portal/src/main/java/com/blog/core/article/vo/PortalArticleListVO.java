@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @ClassNmae: PortalArticleListVO
  * @Description: 文章列表 主页面展示参数
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/4/7 9：55
  **/
 

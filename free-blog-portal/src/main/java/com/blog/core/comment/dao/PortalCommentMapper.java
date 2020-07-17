@@ -1,9 +1,9 @@
 package com.blog.core.comment.dao;
 
 
-import com.blog.core.comment.entity.domain.PortalComment;
-import com.blog.core.comment.entity.vo.PortalCommentVO;
-import com.blog.core.comment.entity.vo.PortalCommentTree;
+import com.blog.core.comment.entity.PortalComment;
+import com.blog.core.comment.vo.PortalCommentTree;
+import com.blog.core.comment.vo.PortalCommentVO;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -55,5 +55,5 @@ public interface PortalCommentMapper {
      * @param portalComment
      * @return
      */
-    int insertComment(PortalComment portalComment);
+    int insertPortalComment(PortalComment portalComment);
 }

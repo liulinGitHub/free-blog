@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 02/04/2020 00:10:45
+ Date: 20/07/2020 01:10:36
 */
 
 SET NAMES utf8mb4;
@@ -23,11 +23,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `manage_article`;
 CREATE TABLE `manage_article`  (
   `article_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0',
-  `article_title` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章标题',
+  `article_title` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '文章标题',
   `article_release_date` datetime(6) DEFAULT NULL COMMENT '发布日期',
   `article_content_html` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '文章内容-html',
   `article_content_markdown` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '文章内容-markdown',
-  `article_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '发表文章的作者ID',
+  `article_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章描述',
+  `article_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '发表文章的作者ID',
   `article_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '文章状态（0 草稿 2 待审核 4 审核中 6 审核成功）',
   `article_release_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '发布状态（0 未发布 1 已发布）',
   `article_images` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章图片',
@@ -39,7 +40,7 @@ CREATE TABLE `manage_article`  (
   `approves_number` bigint(20) DEFAULT 0 COMMENT '点赞数',
   `like_number` bigint(20) DEFAULT 0 COMMENT '喜欢数',
   `read_number` bigint(20) DEFAULT 0 COMMENT '浏览数',
-  `is_enable` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '1' COMMENT '停用/启用 0 停用 1 启用',
+  `enable` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '停用/启用 0 停用 1 启用',
   `create_time` datetime(6) DEFAULT NULL COMMENT '创建时间',
   `create_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人id',
   `update_time` datetime(6) DEFAULT NULL COMMENT '修改时间',
@@ -50,7 +51,7 @@ CREATE TABLE `manage_article`  (
 -- ----------------------------
 -- Records of manage_article
 -- ----------------------------
-INSERT INTO `manage_article` VALUES ('1', '当爱情只剩下一百步', '2020-02-10 17:51:37.000000', '<blockquote><p><i>当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。我们竟哈哈大笑。</i></p></blockquote>\\r\\n', NULL, '1', '0', '0', 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', '0', '0', '0', '0', 0, 0, 0, 0, '1', '2020-02-10 17:52:23.000000', '8e20ed1dc3084825800957a89d2061d2', NULL, NULL);
+INSERT INTO `manage_article` VALUES ('1', '当爱情只剩下一百步', '2020-02-10 17:51:37.000000', '<blockquote><p><i>当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。我们竟哈哈大笑。</i></p></blockquote>\\r\\n', NULL, NULL, '1', '0', '0', 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', '0', '0', '0', '0', 0, 0, 0, 0, '1', '2020-02-10 17:52:23.000000', '8e20ed1dc3084825800957a89d2061d2', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for manage_article_label
@@ -162,6 +163,40 @@ INSERT INTO `manage_comment` VALUES ('fb1c6d7c0fc94d19a4cc05db9d079c5b', '参差
 INSERT INTO `manage_comment` VALUES ('fb47aae25b0f41f08ac020024469496f', '秦以攻取之外，小则获邑，大则得城。较秦之所得，与战胜而得者，其实百倍；诸侯之所亡，与战败而亡者，其实亦百倍。则秦之所大欲，诸侯之所大患，固不在战矣。思厥先祖父，暴霜露，斩荆棘，以有尺寸之地。子孙视之不甚惜，举以予人，如弃草芥。今日割五城，明日割十城，然后得一夕安寝。起视四境，而秦兵又至矣。然则诸侯之地有限，暴秦之欲无厌，奉之弥繁，侵之愈急。故不战而强弱胜负已判矣。至于颠覆，理固宜然。古人云：“以地事秦，犹抱薪救火，薪不尽，火不灭。”此言得之。', '8e20ed1dc3084825800957a89d2061d2', '95d7bfb9bee94e34b1c0509b5d6b8cac', '1', '1', '2019-05-12 18:17:20', 0, '1', NULL, NULL);
 
 -- ----------------------------
+-- Table structure for manage_dept
+-- ----------------------------
+DROP TABLE IF EXISTS `manage_dept`;
+CREATE TABLE `manage_dept`  (
+  `dept_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '部门id',
+  `dept_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '部门名称',
+  `parent_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '上级部门名称',
+  `is_enable` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '启用/停用',
+  `create_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '修改人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`dept_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '员工部门表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of manage_dept
+-- ----------------------------
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004945', '华中分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:21', NULL, '2020-04-12 20:10:21', '2020-04-12 20:10:21');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004946', '华东分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:39', NULL, '2020-04-12 20:10:38', '2020-04-12 20:10:38');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004949', '销售部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:54', NULL, '2020-04-12 20:14:54', '2020-04-12 20:14:54');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004952', '华南分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:35', NULL, '2020-04-12 20:10:34', '2020-04-12 20:10:34');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004981', '华北分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:30', NULL, '2020-04-12 20:10:29', '2020-04-12 20:10:29');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004987', '技术部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:45', NULL, '2020-04-12 20:14:44', '2020-04-12 20:14:44');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004995', '人事部', '20200304230000000000000000004946', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:15:17', NULL, '2020-04-12 20:15:17', '2020-04-12 20:15:17');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004997', '人事部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:13:55', NULL, '2020-04-12 20:13:55', '2020-04-12 20:13:55');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000004998', '财务部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:33', NULL, '2020-04-12 20:14:33', '2020-04-12 20:14:33');
+INSERT INTO `manage_dept` VALUES ('20200304230000000000000000005008', '人事部', '20200304230000000000000000004952', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:15:24', NULL, '2020-04-12 20:15:24', '2020-04-12 20:15:24');
+INSERT INTO `manage_dept` VALUES ('20200312200000000000000000005034', '财务部', '20200304230000000000000000004981', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:20:37', NULL, '2020-04-12 20:20:37', '2020-04-12 20:20:37');
+INSERT INTO `manage_dept` VALUES ('20200312200000000000000000005086', '公司总部', NULL, '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:27:10', NULL, '2020-04-12 20:27:10', '2020-04-12 20:27:10');
+
+-- ----------------------------
 -- Table structure for manage_iamge
 -- ----------------------------
 DROP TABLE IF EXISTS `manage_iamge`;
@@ -190,6 +225,36 @@ CREATE TABLE `manage_im_message`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for manage_job
+-- ----------------------------
+DROP TABLE IF EXISTS `manage_job`;
+CREATE TABLE `manage_job`  (
+  `job_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '岗位id',
+  `job_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '岗位名称',
+  `dept_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '部门id',
+  `is_enable` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '启用/停用',
+  `create_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '修改人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`job_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '员工岗位表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of manage_job
+-- ----------------------------
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005025', '后端开发', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:17', NULL, '2020-04-13 00:30:16', '2020-04-13 00:30:16');
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005053', '招聘专员', '20200304230000000000000000004995', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:04', NULL, '2020-04-13 00:32:03', '2020-04-13 00:32:03');
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005060', '前端开发', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:10', NULL, '2020-04-13 00:30:10', '2020-04-13 00:30:10');
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005061', '人工客服', '20200304230000000000000000004949', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:31:04', NULL, '2020-04-13 00:31:03', '2020-04-13 00:31:03');
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005067', '招聘专员', '20200304230000000000000000004997', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:09', NULL, '2020-04-13 00:32:09', '2020-04-13 00:32:09');
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005082', '电话销售', '20200304230000000000000000004949', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:50', NULL, '2020-04-13 00:30:50', '2020-04-13 00:30:50');
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005085', '招聘专员', '20200304230000000000000000005008', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:14', NULL, '2020-04-13 00:32:14', '2020-04-13 00:32:14');
+INSERT INTO `manage_job` VALUES ('20200312200000000000000000005095', '产品经理', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:29:43', NULL, '2020-04-13 00:29:43', '2020-04-13 00:29:43');
+
+-- ----------------------------
 -- Table structure for manage_log
 -- ----------------------------
 DROP TABLE IF EXISTS `manage_log`;
@@ -204,12 +269,104 @@ CREATE TABLE `manage_log`  (
   `address` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '请求地址',
   `operating_time` datetime(0) DEFAULT NULL COMMENT '操作时间',
   `result_type` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '结果（1： 成功 ；0：失败）',
+  `browser` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '浏览器',
   `result_operation` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '结果描述',
   `time_consuming` int(11) DEFAULT NULL COMMENT '消耗时间',
   `operating_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '操作人',
   PRIMARY KEY (`log_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台系统操作日志表' ROW_FORMAT = Dynamic;
 
+-- ----------------------------
+-- Records of manage_log
+-- ----------------------------
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004918', '分页查询角色信息', 'GET', '/api/role/all', 'com.blog.core.system.role.controller.ManageRoleController.queryRoleByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:55:05', '1', 'Chrome 8', '成功返回', 40, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004919', '获取用户信息', 'GET', '/auth/info', 'com.blog.core.system.auth.controller.AuthController.queryUserInfo()', '  request: SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@2f31cf62]', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:00:49', '1', 'Chrome 8', '成功返回', 1456, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004920', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:55:23', '1', 'Chrome 8', '成功返回', 97, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004922', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:27:28', '1', 'Chrome 8', '成功返回', 53, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004923', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:44:18', '1', 'Chrome 8', '成功返回', 16, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004924', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:05:56', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,java.lang.String,java.lang.String)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004926', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:26:47', '1', 'Chrome 8', '成功返回', 138, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004928', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:46:40', '1', 'Chrome 8', '成功返回', 23, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004929', '分页查询角色信息', 'GET', '/api/role/all', 'com.blog.core.system.role.controller.ManageRoleController.queryRoleByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:03:17', '1', 'Chrome 8', '成功返回', 12, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004933', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:48:54', '1', 'Chrome 8', '成功返回', 48, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004934', '分页查询角色信息', 'GET', '/api/role/all', 'com.blog.core.system.role.controller.ManageRoleController.queryRoleByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:03:17', '1', 'Chrome 8', '成功返回', 16, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004935', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004945, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:12:43', '0', 'Unknown', '\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\r\n### The error may exist in file [E:\\Users\\blog\\free\\free-blog\\free-blog-manage\\target\\classes\\mapper\\system\\dept\\ManageDeptMapper.xml]\r\n### The error may involve com.blog.core.system.dept.dao.ManageDeptMapper.insertManageDept-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO manage_dept         (dept_id,         dept_name,         parent_id,         is_enable,         create_id,         create_time         )         VALUES         (?,         ?,         ?,         ?,         ?,         ?)\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\n; Column \'dept_id\' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004936', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=销售部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:09:00', '1', 'Unknown', '添加岗位信息成功！', 112, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004937', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:55:23', '1', 'Chrome 8', '成功返回', 117, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004938', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:44:13', '1', 'Chrome 8', '成功返回', 22, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004940', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:27:21', '1', 'Chrome 8', '成功返回', 62, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004943', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 19:40:38', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004947', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=华北分部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:10:30', '1', 'Unknown', '添加岗位信息成功！', 187, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004948', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:01:04', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004951', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:00:39', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004953', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:44:53', '1', 'Chrome 8', '成功返回', 17, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004954', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=华东分部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:10:39', '1', 'Unknown', '添加岗位信息成功！', 121, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004956', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004945, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:13:56', '1', 'Unknown', '添加岗位信息成功！', 12484, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004958', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:04:24', '1', 'Chrome 8', '成功返回', 59, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004959', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004945, deptName=技术部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:14:45', '1', 'Unknown', '添加岗位信息成功！', 158, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004961', '获取用户信息', 'GET', '/auth/info', 'com.blog.core.system.auth.controller.AuthController.queryUserInfo()', '  request: SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@66ce1c3e]', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:46:39', '1', 'Chrome 8', '成功返回', 14119, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004962', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=华南分部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:10:35', '1', 'Unknown', '添加岗位信息成功！', 76, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004964', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:02:54', '1', 'Chrome 8', '成功返回', 64, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004965', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:46:40', '1', 'Chrome 8', '成功返回', 213, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004966', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:26:48', '1', 'Chrome 8', '成功返回', 48, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004968', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004945, deptName=销售部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:14:55', '1', 'Unknown', '添加岗位信息成功！', 172, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004969', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:27:28', '1', 'Chrome 8', '成功返回', 33, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004970', '分页查询菜单信息', 'GET', '/api/menu/all', 'com.blog.core.system.menu.controller.ManageMenuController.queryManageMenuByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:02:48', '1', 'Chrome 8', '成功返回', 7, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004971', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:04:13', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004972', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004946, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:15:17', '1', 'Unknown', '添加岗位信息成功！', 160, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004973', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:08:17', '1', 'Unknown', '添加岗位信息成功！', 72871, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004974', '分页查询角色信息', 'GET', '/api/role/all', 'com.blog.core.system.role.controller.ManageRoleController.queryRoleByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:55:05', '1', 'Chrome 8', '成功返回', 13, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004975', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:44:17', '1', 'Chrome 8', '成功返回', 17, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004976', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:44:53', '1', 'Chrome 8', '成功返回', 14, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004978', '分页查询菜单信息', 'GET', '/api/menu/all', 'com.blog.core.system.menu.controller.ManageMenuController.queryManageMenuByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:55:36', '1', 'Chrome 8', '成功返回', 6, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004979', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:02:55', '1', 'Chrome 8', '成功返回', 63, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004982', '分页查询菜单信息', 'GET', '/api/menu/all', 'com.blog.core.system.menu.controller.ManageMenuController.queryManageMenuByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:55:28', '1', 'Chrome 8', '成功返回', 62, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004983', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=技术部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:09:08', '1', 'Unknown', '添加岗位信息成功！', 138, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004985', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 19:41:43', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004988', '获取验证码', 'GET', '/auth/code', 'com.blog.core.system.auth.controller.AuthController.getCode()', '', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:00:41', '1', 'Chrome 8', '成功返回', 12766, NULL);
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004989', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 19:52:38', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004990', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:04:23', '1', 'Chrome 8', '成功返回', 42, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004991', '分页查询角色信息', 'GET', '/api/role/all', 'com.blog.core.system.role.controller.ManageRoleController.queryRoleByPage()', '  queryRequest: \"QueryRequest{pageSize=0, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:49:18', '1', 'Chrome 8', '成功返回', 24, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004993', '分页查询菜单信息', 'GET', '/api/menu/all', 'com.blog.core.system.menu.controller.ManageMenuController.queryManageMenuByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:03:57', '1', 'Chrome 8', '成功返回', 5, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004994', '分页查询菜单信息', 'GET', '/api/menu/all', 'com.blog.core.system.menu.controller.ManageMenuController.queryManageMenuByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:00:50', '1', 'Chrome 8', '成功返回', 30, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004996', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:27:21', '1', 'Chrome 8', '成功返回', 38, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000004999', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:02:01', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005001', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004945, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:11:08', '0', 'Unknown', '\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\r\n### The error may exist in file [E:\\Users\\blog\\free\\free-blog\\free-blog-manage\\target\\classes\\mapper\\system\\dept\\ManageDeptMapper.xml]\r\n### The error may involve com.blog.core.system.dept.dao.ManageDeptMapper.insertManageDept-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO manage_dept         (dept_id,         dept_name,         parent_id,         is_enable,         create_id,         create_time         )         VALUES         (?,         ?,         ?,         ?,         ?,         ?)\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\n; Column \'dept_id\' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005002', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004952, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:15:24', '1', 'Unknown', '添加岗位信息成功！', 183, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005004', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=华中分部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:10:22', '1', 'Unknown', '添加岗位信息成功！', 429, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005005', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:49:47', '1', 'Chrome 8', '成功返回', 19, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005006', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 19:55:40', '0', 'Unknown', 'While attempting to generate ObjectFactory using constructor \'com.blog.core.system.dept.entity.ManageDept(java.lang.String,java.lang.String,java.lang.String,com.blog.core.common.enums.IsEnableEnum)\', an automatic mapping of the source type (\'ManageDeptAddDTO\') to this constructor call could not be determined. Please register a custom ObjectFactory implementation which is able to create an instance of \'ManageDept\' from an instance of \'ManageDeptAddDTO\'.', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005007', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:49:47', '1', 'Chrome 8', '成功返回', 25, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005009', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:50:08', '1', 'Chrome 8', '成功返回', 21, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005011', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:49:06', '1', 'Chrome 8', '成功返回', 24, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005012', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:27:14', '1', 'Chrome 8', '成功返回', 43, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005013', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004945, deptName=财务部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:14:33', '1', 'Unknown', '添加岗位信息成功！', 244, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005014', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 17:44:12', '1', 'Chrome 8', '成功返回', 358, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005015', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=财务部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:08:52', '1', 'Unknown', '添加岗位信息成功！', 4592, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005016', '分页查询用户信息', 'GET', '/api/user/all', 'com.blog.core.system.user.controller.ManageUserController.queryUserByPage()', '  queryRequest: \"QueryRequest{pageSize=10, pageNum=0}\"', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-05 15:27:14', '1', 'Chrome 8', '成功返回', 46, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200304230000000000000000005017', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004945, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:11:59', '0', 'Unknown', '\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\r\n### The error may exist in file [E:\\Users\\blog\\free\\free-blog\\free-blog-manage\\target\\classes\\mapper\\system\\dept\\ManageDeptMapper.xml]\r\n### The error may involve com.blog.core.system.dept.dao.ManageDeptMapper.insertManageDept-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO manage_dept         (dept_id,         dept_name,         parent_id,         is_enable,         create_id,         create_time         )         VALUES         (?,         ?,         ?,         ?,         ?,         ?)\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\n; Column \'dept_id\' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null', 0, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005018', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=招聘专员, deptId=20200304230000000000000000005008)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:32:14', '1', 'Unknown', '添加岗位信息成功！', 123, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005021', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:19:58', '1', 'Unknown', '添加岗位信息成功！', 2000, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005033', '获取用户信息', 'GET', '/auth/info', 'com.blog.core.system.auth.controller.AuthController.queryUserInfo()', '  request: SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@30ecaae3]', '0:0:0:0:0:0:0:1', '内网IP', '2020-06-17 22:25:36', '1', 'Unknown', '成功返回', 28749, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005035', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:13', '1', 'Unknown', '添加岗位信息成功！', 85, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005037', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:14', '1', 'Unknown', '添加岗位信息成功！', 84, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005039', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=财务部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:37', '1', 'Unknown', '添加岗位信息成功！', 137, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005044', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=人工客服, deptId=20200304230000000000000000004949)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:31:04', '1', 'Unknown', '添加岗位信息成功！', 104, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005048', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:09', '1', 'Unknown', '添加岗位信息成功！', 109, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005051', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:12', '1', 'Unknown', '添加岗位信息成功！', 68, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005059', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:10', '1', 'Unknown', '添加岗位信息成功！', 58, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005069', '获取用户信息', 'GET', '/auth/info', 'com.blog.core.system.auth.controller.AuthController.queryUserInfo()', '  request: SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@4c2bf67c]', '0:0:0:0:0:0:0:1', '内网IP', '2020-06-17 22:21:04', '1', 'Unknown', '成功返回', 1124, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005071', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=招聘专员, deptId=20200304230000000000000000004995)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:32:04', '1', 'Unknown', '添加岗位信息成功！', 89, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005074', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:11', '1', 'Unknown', '添加岗位信息成功！', 80, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005077', '获取用户信息', 'GET', '/auth/info', 'com.blog.core.system.auth.controller.AuthController.queryUserInfo()', '  request: SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@6147ed65]', '0:0:0:0:0:0:0:1', '内网IP', '2020-06-17 22:47:52', '1', 'Unknown', '成功返回', 3729, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005079', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=null, deptName=公司总部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:27:11', '1', 'Unknown', '添加岗位信息成功！', 2367, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005084', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:04', '1', 'Unknown', '添加岗位信息成功！', 140, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005090', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=前端开发, deptId=20200304230000000000000000004987)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:30:10', '1', 'Unknown', '添加岗位信息成功！', 104, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005101', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=产品经理, deptId=20200304230000000000000000004987)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:29:43', '1', 'Unknown', '添加岗位信息成功！', 758, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005102', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=招聘专员, deptId=20200304230000000000000000004997)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:32:09', '1', 'Unknown', '添加岗位信息成功！', 115, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005105', '添加部门信息', 'POST', '/api/dept/add', 'com.blog.core.system.dept.controller.ManageDeptController.addManageDept()', '  manageDeptAddDTO: ManageDeptAddDTO(parentId=20200304230000000000000000004981, deptName=人事部)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-12 20:20:10', '1', 'Unknown', '添加岗位信息成功！', 130, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005113', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=电话销售, deptId=20200304230000000000000000004949)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:30:50', '1', 'Unknown', '添加岗位信息成功！', 126, '8e20ed1dc3084825800957a89d2061d2');
+INSERT INTO `manage_log` VALUES ('20200312200000000000000000005114', '添加岗位信息', 'POST', '/api/job/add', 'com.blog.core.system.job.controller.ManageJobController.addManageJob()', '  manageJobAddDTO: ManageJobAddDTO(jobName=后端开发, deptId=20200304230000000000000000004987)', '0:0:0:0:0:0:0:1', '内网IP', '2020-04-13 00:30:17', '1', 'Unknown', '添加岗位信息成功！', 123, '8e20ed1dc3084825800957a89d2061d2');
 
 -- ----------------------------
 -- Table structure for manage_menu
@@ -272,6 +429,23 @@ INSERT INTO `manage_role` VALUES ('36c9ae4c53ed41519aa6a67f36d5565a', '超级管
 INSERT INTO `manage_role` VALUES ('86548586a46f422aa6f9e702bbbd04c5', '游客', '123', '123', '1', '2020-04-01 12:28:17', '2020-04-01 12:28:17', '0c3740672f6a4afbaa1af705e4b66c47', NULL);
 
 -- ----------------------------
+-- Table structure for manage_role_dept
+-- ----------------------------
+DROP TABLE IF EXISTS `manage_role_dept`;
+CREATE TABLE `manage_role_dept`  (
+  `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色部门关联id',
+  `role_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '角色id',
+  `dept_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '部门id',
+  `create_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '修改人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '角色部门关联表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for manage_role_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `manage_role_menu`;
@@ -326,34 +500,31 @@ INSERT INTO `manage_tag` VALUES ('b6ccb2bb7efb4d73b7466fd4d1521820', 'Java', NUL
 DROP TABLE IF EXISTS `manage_user`;
 CREATE TABLE `manage_user`  (
   `user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
-  `user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '登陆用户名',
-  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '登陆密码',
-  `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '盐',
+  `user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登陆用户名',
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登陆密码',
   `nick_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '昵称',
+  `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '性别',
   `avatar` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '头像',
   `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '电话号码',
   `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '邮箱',
-  `is_enable` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '停用/启用（0，停用；1，启用）',
+  `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '个性签名',
+  `dept_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '部门id',
+  `job_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '岗位id',
   `login_ip` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '登陆ip',
   `last_login_time` datetime(0) DEFAULT NULL COMMENT '上一次登陆时间',
-  `create_time` datetime(0) DEFAULT NULL COMMENT '创建日期',
-  `update_time` datetime(0) DEFAULT NULL COMMENT '修改日期',
+  `is_enable` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '停用/启用（0，停用；1，启用）',
   `create_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建日期',
   `update_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人',
-  `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '个性签名',
-  `comments` bigint(200) DEFAULT 0 COMMENT '发布评论数',
-  `article_total` bigint(200) DEFAULT 0 COMMENT '文章数',
-  `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '性别',
-  `attention_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '关注的用户id',
-  `is_supper` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '是否超级管理员',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改日期',
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of manage_user
 -- ----------------------------
-INSERT INTO `manage_user` VALUES ('8e20ed1dc3084825800957a89d2061d2', 'admin', '$2a$10$RJxDZ4bZaelml3Kfzjnv9ep110tbKE4BD5Zmi5kSUj5Vn1fwvHTGq', 'PiMMmezOxBmDa2zvWF4E', '超级管理员', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', 'string', 'string@163.com', '1', NULL, NULL, '2019-07-22 13:42:54', NULL, 'null', NULL, 'string', 0, 0, '1', NULL, '1');
-INSERT INTO `manage_user` VALUES ('8e20ed1dc3084825800957a89d2061d3', 'test', '$2a$10$RJxDZ4bZaelml3Kfzjnv9ep110tbKE4BD5Zmi5kSUj5Vn1fwvHTGq', NULL, NULL, 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', NULL, 'string@163.com', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL);
+INSERT INTO `manage_user` VALUES ('8e20ed1dc3084825800957a89d2061d2', 'admin', '$2a$10$RJxDZ4bZaelml3Kfzjnv9ep110tbKE4BD5Zmi5kSUj5Vn1fwvHTGq', '超级管理员', '1', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', 'string', 'string@163.com', 'string', NULL, NULL, '0:0:0:0:0:0:0:1', '2020-06-17 22:47:52', '1', 'null', '2019-07-22 13:42:54', '8e20ed1dc3084825800957a89d2061d2', '2020-06-17 22:47:52');
+INSERT INTO `manage_user` VALUES ('8e20ed1dc3084825800957a89d2061d3', 'test', '$2a$10$RJxDZ4bZaelml3Kfzjnv9ep110tbKE4BD5Zmi5kSUj5Vn1fwvHTGq', '123', '2', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', '123', 'string@163.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '8e20ed1dc3084825800957a89d2061d2', '2020-04-04 23:30:02');
 
 -- ----------------------------
 -- Table structure for manage_user_role
@@ -373,6 +544,8 @@ CREATE TABLE `manage_user_role`  (
 -- ----------------------------
 -- Records of manage_user_role
 -- ----------------------------
+INSERT INTO `manage_user_role` VALUES ('20200304220000000000000000004950', '86548586a46f422aa6f9e702bbbd04c5', '8e20ed1dc3084825800957a89d2061d3', '8e20ed1dc3084825800957a89d2061d2', '2020-04-04 23:50:03', NULL, NULL);
+INSERT INTO `manage_user_role` VALUES ('20200304230000000000000000004950', '36c9ae4c53ed41519aa6a67f36d55654', '8e20ed1dc3084825800957a89d2061d3', '8e20ed1dc3084825800957a89d2061d2', '2020-04-04 23:30:02', NULL, NULL);
 INSERT INTO `manage_user_role` VALUES ('50d2aba60d004998bb8bd1295fae6d33', '36c9ae4c53ed41519aa6a67f36d5565a', '8e20ed1dc3084825800957a89d2061d2', '0c3740672f6a4afbaa1af705e4b66c47', '2019-07-17 18:00:39', NULL, NULL);
 
 -- ----------------------------
@@ -380,82 +553,79 @@ INSERT INTO `manage_user_role` VALUES ('50d2aba60d004998bb8bd1295fae6d33', '36c9
 -- ----------------------------
 DROP TABLE IF EXISTS `portal_article`;
 CREATE TABLE `portal_article`  (
-  `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0',
-  `ARTICLE_TITLE` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '标题',
-  `RELEASE_DATE` datetime(6) DEFAULT NULL COMMENT '发布日期',
-  `ARTICLE_CONTENT_HTML` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '文章内容-html',
-  `ARTICLE_CONTENT` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '文章内容-markdown',
-  `ARTICLE_USER_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '发表文章的作者ID',
-  `IS_ENABLE` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '1' COMMENT '删除标识',
-  `article_status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章状态',
-  `RELEASE_STATUS` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '发布状态',
-  `article_tag` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `ARTICLE_IMAGES` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章图片',
-  `COMMENTS` bigint(20) DEFAULT 0 COMMENT '评论数',
-  `APPROVES` bigint(20) DEFAULT 0 COMMENT '点赞数',
-  `LIKE_number` bigint(20) DEFAULT NULL COMMENT '喜欢',
-  `read_number` bigint(20) DEFAULT 0 COMMENT '浏览人数',
-  `category_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '所属分类ID',
-  `ARTICLE_TYPE` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章的模式',
-  `ARTICLE_TOP` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否置顶',
-  `COMMENT_STATUS` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否开启评论',
-  `ARTICLE_FINE_NOTE` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否精帖',
-  `tag_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '标签ID',
-  `COMMENT_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '评论id',
-  `recommend_Status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `CREATE_TIME` datetime(6) DEFAULT NULL COMMENT '创建时间',
-  `CREATE_NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人',
-  `UPDATE_TIME` datetime(6) DEFAULT NULL COMMENT '修改时间',
-  `UPDATE_NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人',
-  PRIMARY KEY (`id`) USING BTREE
+  `article_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article_title` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章标题',
+  `article_release_date` datetime(0) DEFAULT NULL COMMENT '发布日期',
+  `article_content_html` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '文章内容-html',
+  `article_content_markdown` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '文章内容-markdown',
+  `article_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章描述',
+  `article_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '发表文章的作者ID',
+  `article_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '文章状态',
+  `article_release_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '发布状态（0 未发布 1 已发布）',
+  `article_image` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '文章图片',
+  `article_type` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '文章类型',
+  `audit_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '审核状态 0 未审核 2 审核中 4 已审核',
+  `top_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '置顶状态 0 未置顶 1 已置顶',
+  `draft_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '是否草稿 0 是草稿 1 不是草稿',
+  `comment_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '评论开启状态 0 未开启 1 已开启',
+  `fine_note_status` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否精帖 0 不是精帖 1 是精帖',
+  `enable` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '1' COMMENT '停用/启用 0 停用 1 启用',
+  `create_time` datetime(6) DEFAULT NULL COMMENT '创建时间',
+  `create_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人id',
+  `update_time` datetime(6) DEFAULT NULL COMMENT '修改时间',
+  `update_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人id',
+  PRIMARY KEY (`article_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of portal_article
 -- ----------------------------
-INSERT INTO `portal_article` VALUES ('02da9663f04646a2a3fc6868be920c65', 'Spring Boot 实战', '2019-07-27 15:02:05.000000', NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 23, 3, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:03.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('06b71ff5cb46438ca38e9b5e9a155779', 'Spring Boot 实战', '2019-07-27 15:02:28.000000', NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 13, 7, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:30.000000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('1', '当爱情只剩下一百步', '2019-05-09 21:58:40.000000', NULL, '<blockquote><p><i>当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。我们竟哈哈大笑。</i></p></blockquote>\r\n', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', 0, NULL, 112, 117, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:48.000000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('121a6ea1ab3f4adaae5498848346737b', 'Spring Boot 实战', '2019-07-27 15:02:18.000000', NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:33.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('14d40bc539a84865ba79805d76c131c9', 'Spring Boot 实战', '2019-07-27 15:02:21.000000', NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:12.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('1b19468a6c734de6bca20c90ae1d5b1a', 'Spring Boot 实战', '2019-07-27 15:02:25.000000', NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:42.000000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('281c3db87a414340bf1ca5330de5b9b1', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:24.000000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('3367198e68704d67a3844accd58e87b7', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:27.000000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('39624834dd314c7390b25c6b71e22bcb', 'Spring Boot 实战1', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:30.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('3e60f2ec9eea4c9f84187581693bb74a', 'Spring Boot 实战2', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:18.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('3f04a1a33cda4b529baa40f12cf9d5f9', 'Spring Boot 实战3', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:36.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('4b6d9ed4962e427f8ea429c28853edb0', 'Spring Boot 实战4', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:15.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('504f26b4a4f5447ba3bef94ae1a68e96', 'Spring Boot 实战5', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:27.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('620385314da24ea3b865bba8881fcae6', 'Spring Boot 实战6', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:48.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('642a6b9f77824853a244eb4d4a7f6bf3', 'Spring Boot 实战7', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:21.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('7a604fe2f6ef49c1957a321ca75c05a8', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:57.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('872ac2e25e1740aebaedb025b0c657fa', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:12.000000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('8ee4d90cc8e24ebeb694e4ec0d526d0e', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:21.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('93905e17980a4454baa584b10826ccd9', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:39.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('9fcb3596b29f4b04b631d8b4065b87d4', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:15.000000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('a1a8c9458e634778911a6e01dab42f14', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:51.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('b9322f49089940b4af7b69a249f12222', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:18.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('b9c755410928497eb104de14ffa1c1f8', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:45.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('bb5aa335593f413a95e72bd2b9ce088b', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:33.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('d1b554b5d8eb43ea8ef034e7d0a515c3', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:09.002000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('dc6e4761a5bf403699c14c7c5cfa7840', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:54.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('df81b36cecd54ac5946e70535dffc192', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:06.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('e8975e147a63439aaa1714c42114d5de', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:24.001000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('ec977e50a4c844679d9283d105d9ce04', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:24:09.934000', NULL, NULL, NULL);
-INSERT INTO `portal_article` VALUES ('f4da31dedf254c98833da552b991e257', 'Spring Boot 实战', NULL, NULL, '这是关于Spring Boot 实战的文章！', '8e20ed1dc3084825800957a89d2061d2', '1', '0', '1', NULL, 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png', NULL, NULL, 10, 0, NULL, NULL, '0', '0', '1', NULL, NULL, NULL, '2019-05-11 00:25:00.002000', NULL, NULL, NULL);
+INSERT INTO `portal_article` VALUES ('1', 'Spring Boot 实战', '2020-04-19 02:22:54', '<blockquote><p><i>当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。我们竟哈哈大笑。</i></p></blockquote>\\r\\n', '## 当我走出第一步，有一种叫悲哀的东西漫过心底；\r\n```\r\n我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？<br/>\r\n曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，\r\n```\r\n> 曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。<br/>\r\n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？<br/>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，\r\n## 有一种叫悲哀的东西漫过心底\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。<br/>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当我走出第一步，有一种叫悲哀的东西漫过心底；我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？<br/>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷，曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑。我们竟哈哈大笑。', '这是一段描述', '8e20ed1dc3084825800957a89d2061d2', '0', '1', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', '0', NULL, '0', NULL, '0', '0', '1', '2020-04-19 02:23:34.000000', '8e20ed1dc3084825800957a89d2061d2', NULL, NULL);
 
 -- ----------------------------
--- Table structure for portal_article_label
+-- Table structure for portal_article_category
 -- ----------------------------
-DROP TABLE IF EXISTS `portal_article_label`;
-CREATE TABLE `portal_article_label`  (
+DROP TABLE IF EXISTS `portal_article_category`;
+CREATE TABLE `portal_article_category`  (
   `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `article_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文章id',
-  `label_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标签id',
+  `category_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '分类id',
   `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
   `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章标签中间表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章分类中间表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of portal_article_category
+-- ----------------------------
+INSERT INTO `portal_article_category` VALUES ('1', '1', '1', '2020-07-20 00:01:27', '2020-07-20 00:01:27');
+INSERT INTO `portal_article_category` VALUES ('2', '1', '2', '2020-07-20 00:01:31', '2020-07-20 00:01:31');
+
+-- ----------------------------
+-- Table structure for portal_article_info
+-- ----------------------------
+DROP TABLE IF EXISTS `portal_article_info`;
+CREATE TABLE `portal_article_info`  (
+  `article_info_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文章相关信息id',
+  `article_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文章id',
+  `approve_number` bigint(20) DEFAULT 0 COMMENT '点赞数',
+  `comments_number` bigint(20) DEFAULT 0 COMMENT '评论数',
+  `like_number` bigint(20) DEFAULT 0 COMMENT '热度',
+  `read_number` bigint(20) DEFAULT 0 COMMENT '浏览人数',
+  `create_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '修改人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`article_info_id`) USING BTREE,
+  INDEX `inde_article_id`(`article_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章相关信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of portal_article_info
+-- ----------------------------
+INSERT INTO `portal_article_info` VALUES ('02da9663f04646a2a3fc6868be920c60', '1', 11, 12, 13, 14, NULL, NULL, '2020-04-19 21:38:55', NULL, '2020-04-19 21:38:49', '2020-04-19 21:38:49');
 
 -- ----------------------------
 -- Table structure for portal_article_tag
@@ -483,66 +653,77 @@ INSERT INTO `portal_article_tag` VALUES ('2', '1', '851c42c8507145b5a69bc743feef
 -- ----------------------------
 DROP TABLE IF EXISTS `portal_category`;
 CREATE TABLE `portal_category`  (
-  `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `category_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `sort` int(10) DEFAULT NULL,
+  `category_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `category_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `sort` int(10) NOT NULL,
+  `category_type` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `create_time` datetime(0) DEFAULT NULL,
-  `create_by` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `create_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `update_time` datetime(0) DEFAULT NULL,
-  `update_by` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `is_enable` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  `update_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `enable` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`category_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '分类信息' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of portal_category
+-- ----------------------------
+INSERT INTO `portal_category` VALUES ('1', '文章', 1, '1', '2020-07-20 00:00:39', '1', NULL, NULL, '1');
+INSERT INTO `portal_category` VALUES ('2', '随心', 2, '2', '2020-07-20 00:01:10', '1', NULL, NULL, '1');
 
 -- ----------------------------
 -- Table structure for portal_comment
 -- ----------------------------
 DROP TABLE IF EXISTS `portal_comment`;
 CREATE TABLE `portal_comment`  (
-  `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `comment_content` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '评论内容',
-  `comment_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '评论者的用户id',
+  `comment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `comment_content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '评论内容',
+  `comment_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '评论者的用户id',
   `parent_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '父id',
-  `article_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '所属文章id',
-  `is_parent` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '是否为父级',
-  `comment_time` datetime(0) DEFAULT NULL COMMENT '评论时间',
+  `article_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '所属文章id',
+  `comment_time` datetime(0) NOT NULL COMMENT '评论时间',
   `approves` bigint(20) DEFAULT 0 COMMENT '点赞数',
-  `is_enable` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否删除',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '文章评论表' ROW_FORMAT = Dynamic;
+  `enable` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '启用/禁用',
+  `create_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `update_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`comment_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '评论表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of portal_comment
 -- ----------------------------
-INSERT INTO `portal_comment` VALUES ('04591d96601f4b3cbf10bb55c975437f', '齐人未尝赂秦，终继五国迁灭，何哉？与嬴而不助五国也。五国既丧，齐亦不免矣。燕赵之君，始有远略，能守其土，义不赂秦。是故燕虽小国而后亡，斯用兵之效也。至丹以荆卿为计，始速祸焉。赵尝五战于秦，二败而三胜。后秦击赵者再，李牧连却之。洎牧以谗诛，邯郸为郡，惜其用武而不终也。且燕赵处秦革灭殆尽之际，可谓智力孤危，战败而亡，诚不得已。向使三国各爱其地，齐人勿附于秦，刺客不行，良将犹在，则胜负之数，存亡之理，当与秦相较，或未易量。', '8e20ed1dc3084825800957a89d2061d2', '1', '1', '1', '2019-05-12 18:26:10', 0, '1');
-INSERT INTO `portal_comment` VALUES ('1', '当我走出第一步，有一种叫悲哀的东西漫过心底', '8e20ed1dc3084825800957a89d2061d2', '', '1', '0', '2019-05-11 23:28:40', 10, '1');
-INSERT INTO `portal_comment` VALUES ('1a4d47163a5a486b88cd8648205a21e0', '我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？', '8e20ed1dc3084825800957a89d2061d2', NULL, '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-05-12 00:49:08', 20, '1');
-INSERT INTO `portal_comment` VALUES ('20d5fe3c2cba410780a5f2299cc420f5', '123123', 'null', '04591d96601f4b3cbf10bb55c975437f', '1', '0', '2019-07-31 17:17:15', 0, '1');
-INSERT INTO `portal_comment` VALUES ('30901f28494049d8b8705b4dcf536571', '关关雎鸠，在河之洲。窈窕淑女，君子好逑。', '8e20ed1dc3084825800957a89d2061d2', NULL, '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-05-12 00:50:51', 30, '1');
-INSERT INTO `portal_comment` VALUES ('3950cc3e519b445b8c85aedd60c388f2', '这个是回复', 'null', '04591d96601f4b3cbf10bb55c975437f', '1', '0', '2019-07-31 16:42:22', 0, '1');
-INSERT INTO `portal_comment` VALUES ('3b0732c1644e4e098e697cc164946515', '123', 'null', 'fb1c6d7c0fc94d1', '1', '0', '2019-07-31 17:48:32', 0, '1');
-INSERT INTO `portal_comment` VALUES ('49b2e394839b4f9d95ea38ed8536da51', '123', 'null', 'fb1c6d7c0fc94d1', '1', '0', '2019-07-31 16:44:23', 0, '1');
-INSERT INTO `portal_comment` VALUES ('5d5135dd339647c88836a2f4683eaabc', '是日也，天朗气清，惠风和畅，仰观宇宙之大，俯察品类之盛，所以游目骋怀，足以极视听之娱，信可乐也。', '8e20ed1dc3084825800957a89d2061d2', '8e914e14e2774172bac35bcac20fec1d', '1', '1', '2019-05-12 18:31:47', 0, '1');
-INSERT INTO `portal_comment` VALUES ('5e4e6906582f45b5932e5b1c6dbb2bb9', '123', 'null', '887844d7ae3649589339042b04287583', '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-07-31 17:06:16', 0, '1');
-INSERT INTO `portal_comment` VALUES ('5fb5b8922e8844d8bb9b8d1bef093cc5', '曾几何时', 'null', 'fb1c6d7c0fc94d1', '1', '0', '2019-07-31 17:48:38', 0, '1');
-INSERT INTO `portal_comment` VALUES ('6a6eda7bdf7542f386a7fbddd6e75ded', '参差荇菜，左右采之。窈窕淑女，琴瑟友之。', '8e20ed1dc3084825800957a89d2061d2', NULL, '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-05-12 00:51:32', 0, '1');
-INSERT INTO `portal_comment` VALUES ('6b5fd9c23ebb4cbb8b6155c9d3e9f6fd', '永和九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，修禊事也。群贤毕至，少长咸集。此地有崇山峻岭，茂林修竹；又有清流激湍，映带左右，引以为流觞曲水，列坐其次。虽无丝竹管弦之盛，一觞一咏，亦足以畅叙幽情。', '8e20ed1dc3084825800957a89d2061d2', '8e914e14e2774172bac35bcac20fec1d', '1', '1', '2019-05-12 18:30:21', 0, '1');
-INSERT INTO `portal_comment` VALUES ('82d7a8ed2b8a4d3d94ef14b4bd98da3e', '夫人之相与，俯仰一世，或取诸怀抱，悟言一室之内；或因寄所托，放浪形骸之外。虽趣舍万殊，静躁不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。向之所欣，俯仰之间，已为陈迹，犹不能不以之兴怀。况修短随化，终期于尽。古人云：“死生亦大矣。”岂不痛哉！(不知老之将至 一作：曾不知老之将至)', '8e20ed1dc3084825800957a89d2061d2', '8e914e14e2774172bac35bcac20fec1d', '1', '1', '2019-05-12 18:38:55', 0, '1');
-INSERT INTO `portal_comment` VALUES ('887844d7ae3649589339042b04287583', '六国破灭，非兵不利 ，战不善，弊在赂秦。赂秦而力亏，破灭之道也。或曰：六国互丧，率赂秦耶？曰：不赂者以赂者丧，盖失强援，不能独完。故曰：弊在赂秦也。', '8e20ed1dc3084825800957a89d2061d2', 'a996e5be251a4d578806bac22739b1a7', '06b71ff5cb46438ca38e9b5e9a155779', '1', '2019-05-12 17:57:34', 0, '1');
-INSERT INTO `portal_comment` VALUES ('8e914e14e2774172bac35bcac20fec1d', '我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？', '8e20ed1dc3084825800957a89d2061d2', NULL, '1', '0', '2019-05-12 00:47:09', 40, '1');
-INSERT INTO `portal_comment` VALUES ('90ddedd3708049c28617e7b8074e44e5', '123', 'null', '887844d7ae3649589339042b04287583', '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-07-31 17:06:04', 0, '1');
-INSERT INTO `portal_comment` VALUES ('95d7bfb9bee94e34b1c0509b5d6b8cac', '我们的爱情路只剩下九十九步', '8e20ed1dc3084825800957a89d2061d2', NULL, '1', '0', '2019-05-12 00:47:44', 50, '1');
-INSERT INTO `portal_comment` VALUES ('9a4cc05db9d079c5b', '曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑', '8e20ed1dc3084825800957a89d2061d2', '1', '1', '1', '2019-05-12 16:30:49', 10, '1');
-INSERT INTO `portal_comment` VALUES ('a47cc3f39c7544ddbc8fe24b1de59056', '求之不得，寤寐思服。悠哉悠哉，辗转反侧。', '8e20ed1dc3084825800957a89d2061d2', NULL, '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-05-12 00:48:22', 60, '1');
-INSERT INTO `portal_comment` VALUES ('a7ba01cf7a204864a43b2999cfd85833', '参差荇菜，左右芼之。窈窕淑女，钟鼓乐之。', '8e20ed1dc3084825800957a89d2061d2', NULL, '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-05-12 00:59:37', 0, '1');
-INSERT INTO `portal_comment` VALUES ('a7d871d575df403898d0603292f16d5c', '123123', 'null', '04591d96601f4b3cbf10bb55c975437f', '1', '0', '2019-07-31 17:23:15', 0, '1');
-INSERT INTO `portal_comment` VALUES ('a996e5be251a4d578806bac22739b1a7', '123', '8e20ed1dc3084825800957a89d2061d2', '95d7bfb9bee94e34b1c0509b5d6b8cac', '1', '1', '2019-05-12 17:47:43', 0, '1');
-INSERT INTO `portal_comment` VALUES ('b7624fbf3c894da0bdb54856dedbb035', '六国破灭，非兵不利 ，战不善，弊在赂秦。赂秦而力亏，破灭之道也。或曰：六国互丧，率赂秦耶？曰：不赂者以赂者丧，盖失强援，不能独完。故曰：弊在赂秦也。', '8e20ed1dc3084825800957a89d2061d2', '95d7bfb9bee94e34b1c0509b5d6b8cac', '1', '1', '2019-05-12 18:08:12', 0, '1');
-INSERT INTO `portal_comment` VALUES ('c7261c9948c84abeb9fbd688b2f02b62', '123', 'null', '887844d7ae3649589339042b04287583', '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-07-31 17:07:09', 0, '1');
-INSERT INTO `portal_comment` VALUES ('c8e53a11f5aa4dc4879eed4ce62671c9', '12', 'null', '3950cc3e519b445b8c85aedd60c388f2', '1', '0', '2019-07-31 17:01:51', 0, '1');
-INSERT INTO `portal_comment` VALUES ('fb1c6d7c0fc94d1', '曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷', '8e20ed1dc3084825800957a89d2061d2', '1', '1', '1', '2019-05-12 16:30:11', 20, '1');
-INSERT INTO `portal_comment` VALUES ('fb1c6d7c0fc94d19a4cc05db9d079c5b', '参差荇菜，左右流之。窈窕淑女，寤寐求之。', '8e20ed1dc3084825800957a89d2061d2', NULL, '06b71ff5cb46438ca38e9b5e9a155779', '0', '2019-05-12 00:51:04', 70, '1');
-INSERT INTO `portal_comment` VALUES ('fb47aae25b0f41f08ac020024469496f', '秦以攻取之外，小则获邑，大则得城。较秦之所得，与战胜而得者，其实百倍；诸侯之所亡，与战败而亡者，其实亦百倍。则秦之所大欲，诸侯之所大患，固不在战矣。思厥先祖父，暴霜露，斩荆棘，以有尺寸之地。子孙视之不甚惜，举以予人，如弃草芥。今日割五城，明日割十城，然后得一夕安寝。起视四境，而秦兵又至矣。然则诸侯之地有限，暴秦之欲无厌，奉之弥繁，侵之愈急。故不战而强弱胜负已判矣。至于颠覆，理固宜然。古人云：“以地事秦，犹抱薪救火，薪不尽，火不灭。”此言得之。', '8e20ed1dc3084825800957a89d2061d2', '95d7bfb9bee94e34b1c0509b5d6b8cac', '1', '1', '2019-05-12 18:17:20', 0, '1');
+INSERT INTO `portal_comment` VALUES ('04591d96601f4b3cbf10bb55c975437f', '齐人未尝赂秦，终继五国迁灭，何哉？与嬴而不助五国也。五国既丧，齐亦不免矣。燕赵之君，始有远略，能守其土，义不赂秦。是故燕虽小国而后亡，斯用兵之效也。至丹以荆卿为计，始速祸焉。赵尝五战于秦，二败而三胜。后秦击赵者再，李牧连却之。洎牧以谗诛，邯郸为郡，惜其用武而不终也。且燕赵处秦革灭殆尽之际，可谓智力孤危，战败而亡，诚不得已。向使三国各爱其地，齐人勿附于秦，刺客不行，良将犹在，则胜负之数，存亡之理，当与秦相较，或未易量。', '8e20ed1dc3084825800957a89d2061d2', '1', '1', '2019-05-12 18:26:10', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('1', '当我走出第一步，有一种叫悲哀的东西漫过心底', '8e20ed1dc3084825800957a89d2061d2', '', '1', '2019-05-11 23:28:40', 10, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('1a4d47163a5a486b88cd8648205a21e0', '我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？', '8e20ed1dc3084825800957a89d2061d2', NULL, '02da9663f04646a2a3fc6868be920c65', '2019-05-12 00:49:08', 20, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('20d5fe3c2cba410780a5f2299cc420f5', '123123', '8e20ed1dc3084825800957a89d2061d2', '04591d96601f4b3cbf10bb55c975437f', '1', '2019-07-31 17:17:15', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('30901f28494049d8b8705b4dcf536571', '关关雎鸠，在河之洲。窈窕淑女，君子好逑。', '8e20ed1dc3084825800957a89d2061d2', NULL, '02da9663f04646a2a3fc6868be920c65', '2019-05-12 00:50:51', 30, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('3950cc3e519b445b8c85aedd60c388f2', '这个是回复', '8e20ed1dc3084825800957a89d2061d2', '04591d96601f4b3cbf10bb55c975437f', '1', '2019-07-31 16:42:22', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('3b0732c1644e4e098e697cc164946515', '123', '8e20ed1dc3084825800957a89d2061d2', 'fb1c6d7c0fc94d1', '1', '2019-07-31 17:48:32', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('49b2e394839b4f9d95ea38ed8536da51', '123', '8e20ed1dc3084825800957a89d2061d2', 'fb1c6d7c0fc94d1', '1', '2019-07-31 16:44:23', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('5d5135dd339647c88836a2f4683eaabc', '是日也，天朗气清，惠风和畅，仰观宇宙之大，俯察品类之盛，所以游目骋怀，足以极视听之娱，信可乐也。', '8e20ed1dc3084825800957a89d2061d2', '8e914e14e2774172bac35bcac20fec1d', '1', '2019-05-12 18:31:47', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('5e4e6906582f45b5932e5b1c6dbb2bb9', '123', '8e20ed1dc3084825800957a89d2061d2', '887844d7ae3649589339042b04287583', '02da9663f04646a2a3fc6868be920c65', '2019-07-31 17:06:16', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('5fb5b8922e8844d8bb9b8d1bef093cc5', '曾几何时', '8e20ed1dc3084825800957a89d2061d2', 'fb1c6d7c0fc94d1', '1', '2019-07-31 17:48:38', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('6a6eda7bdf7542f386a7fbddd6e75ded', '参差荇菜，左右采之。窈窕淑女，琴瑟友之。', '8e20ed1dc3084825800957a89d2061d2', NULL, '02da9663f04646a2a3fc6868be920c65', '2019-05-12 00:51:32', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('6b5fd9c23ebb4cbb8b6155c9d3e9f6fd', '永和九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，修禊事也。群贤毕至，少长咸集。此地有崇山峻岭，茂林修竹；又有清流激湍，映带左右，引以为流觞曲水，列坐其次。虽无丝竹管弦之盛，一觞一咏，亦足以畅叙幽情。', '8e20ed1dc3084825800957a89d2061d2', '8e914e14e2774172bac35bcac20fec1d', '1', '2019-05-12 18:30:21', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('82d7a8ed2b8a4d3d94ef14b4bd98da3e', '夫人之相与，俯仰一世，或取诸怀抱，悟言一室之内；或因寄所托，放浪形骸之外。虽趣舍万殊，静躁不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。向之所欣，俯仰之间，已为陈迹，犹不能不以之兴怀。况修短随化，终期于尽。古人云：“死生亦大矣。”岂不痛哉！(不知老之将至 一作：曾不知老之将至)', '8e20ed1dc3084825800957a89d2061d2', '8e914e14e2774172bac35bcac20fec1d', '1', '2019-05-12 18:38:55', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('887844d7ae3649589339042b04287583', '六国破灭，非兵不利 ，战不善，弊在赂秦。赂秦而力亏，破灭之道也。或曰：六国互丧，率赂秦耶？曰：不赂者以赂者丧，盖失强援，不能独完。故曰：弊在赂秦也。', '8e20ed1dc3084825800957a89d2061d2', 'a996e5be251a4d578806bac22739b1a7', '02da9663f04646a2a3fc6868be920c65', '2019-05-12 17:57:34', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('8e914e14e2774172bac35bcac20fec1d', '我们的爱情路只剩下九十九步，我们怎么走到了今天这一步？', '8e20ed1dc3084825800957a89d2061d2', NULL, '1', '2019-05-12 00:47:09', 40, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('90ddedd3708049c28617e7b8074e44e5', '123', '8e20ed1dc3084825800957a89d2061d2', '887844d7ae3649589339042b04287583', '02da9663f04646a2a3fc6868be920c65', '2019-07-31 17:06:04', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('95d7bfb9bee94e34b1c0509b5d6b8cac', '我们的爱情路只剩下九十九步', '8e20ed1dc3084825800957a89d2061d2', NULL, '1', '2019-05-12 00:47:44', 50, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('9a4cc05db9d079c5b', '曾几何时，我们在雪天里呼着热气吃冰淇凌，当人们投来惊异的目光时，我们竟哈哈大笑', '8e20ed1dc3084825800957a89d2061d2', '1', '1', '2019-05-12 16:30:49', 10, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('a47cc3f39c7544ddbc8fe24b1de59056', '求之不得，寤寐思服。悠哉悠哉，辗转反侧。', '8e20ed1dc3084825800957a89d2061d2', NULL, '02da9663f04646a2a3fc6868be920c65', '2019-05-12 00:48:22', 60, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('a5fcd52ac3a1480ca58d9ec7b215e412', '测试评论1', '8e20ed1dc3084825800957a89d2061d2', NULL, '1', '2020-07-19 01:33:09', 0, '0', '1', '2020-07-19 01:33:09', NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('a7ba01cf7a204864a43b2999cfd85833', '参差荇菜，左右芼之。窈窕淑女，钟鼓乐之。', '8e20ed1dc3084825800957a89d2061d2', NULL, '02da9663f04646a2a3fc6868be920c65', '2019-05-12 00:59:37', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('a7d871d575df403898d0603292f16d5c', '123123', '8e20ed1dc3084825800957a89d2061d2', '04591d96601f4b3cbf10bb55c975437f', '1', '2019-07-31 17:23:15', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('a996e5be251a4d578806bac22739b1a7', '123', '8e20ed1dc3084825800957a89d2061d2', '95d7bfb9bee94e34b1c0509b5d6b8cac', '1', '2019-05-12 17:47:43', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('b7624fbf3c894da0bdb54856dedbb035', '六国破灭，非兵不利 ，战不善，弊在赂秦。赂秦而力亏，破灭之道也。或曰：六国互丧，率赂秦耶？曰：不赂者以赂者丧，盖失强援，不能独完。故曰：弊在赂秦也。', '8e20ed1dc3084825800957a89d2061d2', '95d7bfb9bee94e34b1c0509b5d6b8cac', '1', '2019-05-12 18:08:12', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('c7261c9948c84abeb9fbd688b2f02b62', '123', '8e20ed1dc3084825800957a89d2061d2', '887844d7ae3649589339042b04287583', '02da9663f04646a2a3fc6868be920c65', '2019-07-31 17:07:09', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('c8e53a11f5aa4dc4879eed4ce62671c9', '12', '8e20ed1dc3084825800957a89d2061d2', '3950cc3e519b445b8c85aedd60c388f2', '1', '2019-07-31 17:01:51', 0, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('fb1c6d7c0fc94d1', '曾几何时，我们一起在雨中漫步，衣服湿了也不觉得冷', '8e20ed1dc3084825800957a89d2061d2', '', '1', '2019-05-12 16:30:11', 20, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('fb1c6d7c0fc94d19a4cc05db9d079c5b', '参差荇菜，左右流之。窈窕淑女，寤寐求之。', '8e20ed1dc3084825800957a89d2061d2', NULL, '02da9663f04646a2a3fc6868be920c65', '2019-05-12 00:51:04', 70, '1', NULL, NULL, NULL, NULL);
+INSERT INTO `portal_comment` VALUES ('fb47aae25b0f41f08ac020024469496f', '秦以攻取之外，小则获邑，大则得城。较秦之所得，与战胜而得者，其实百倍；诸侯之所亡，与战败而亡者，其实亦百倍。则秦之所大欲，诸侯之所大患，固不在战矣。思厥先祖父，暴霜露，斩荆棘，以有尺寸之地。子孙视之不甚惜，举以予人，如弃草芥。今日割五城，明日割十城，然后得一夕安寝。起视四境，而秦兵又至矣。然则诸侯之地有限，暴秦之欲无厌，奉之弥繁，侵之愈急。故不战而强弱胜负已判矣。至于颠覆，理固宜然。古人云：“以地事秦，犹抱薪救火，薪不尽，火不灭。”此言得之。', '8e20ed1dc3084825800957a89d2061d2', '95d7bfb9bee94e34b1c0509b5d6b8cac', '1', '2020-04-22 18:17:20', 0, '1', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for portal_iamge
@@ -710,15 +891,15 @@ INSERT INTO `portal_role_menu` VALUES ('fc79b1191ad044d8acc27e0v5160cb2e', '36c9
 -- ----------------------------
 DROP TABLE IF EXISTS `portal_tag`;
 CREATE TABLE `portal_tag`  (
-  `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `tag_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `tag_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标签名称',
   `tag_category_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标签所属类别',
-  `is_enable` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '启用/禁用',
-  `create_time` datetime(0) DEFAULT NULL,
+  `enable` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '启用/禁用',
+  `create_time` datetime(0) DEFAULT NULL COMMENT '創建時間',
   `create_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `update_time` datetime(0) DEFAULT NULL,
   `update_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`tag_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '标签表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -733,7 +914,7 @@ INSERT INTO `portal_tag` VALUES ('b6ccb2bb7efb4d73b7466fd4d1521820', 'Java', NUL
 -- ----------------------------
 DROP TABLE IF EXISTS `portal_user`;
 CREATE TABLE `portal_user`  (
-  `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
+  `user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
   `user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '登陆用户名',
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '登陆密码',
   `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '盐',
@@ -741,7 +922,7 @@ CREATE TABLE `portal_user`  (
   `avatar` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '头像',
   `telephone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '电话号码',
   `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '邮箱',
-  `is_enable` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '停用/启用（0，停用；1，启用）',
+  `enable` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '停用/启用（0，停用；1，启用）',
   `last_login_ip` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '登陆ip',
   `last_login_time` datetime(0) DEFAULT NULL COMMENT '上一次登陆时间',
   `create_time` datetime(0) DEFAULT NULL COMMENT '创建日期',
@@ -753,14 +934,13 @@ CREATE TABLE `portal_user`  (
   `article_total` bigint(200) DEFAULT 0 COMMENT '文章数',
   `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '性别',
   `attention_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '关注的用户id',
-  `is_supper` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '是否超级管理员',
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of portal_user
 -- ----------------------------
-INSERT INTO `portal_user` VALUES ('8e20ed1dc3084825800957a89d2061d2', 'admin', '$2a$10$Q2ky3hZ8o92f0RhgHGC8RumuaOvKxevSR7HFpjxCYIRe7D0z/7Gvu', 'PiMMmezOxBmDa2zvWF4E', '超级管理员', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', 'string', 'string', '1', NULL, NULL, '2019-07-22 13:42:54', NULL, 'null', NULL, 'string', 0, 0, '1', NULL, '1');
+INSERT INTO `portal_user` VALUES ('8e20ed1dc3084825800957a89d2061d2', 'admin', '$2a$10$Q2ky3hZ8o92f0RhgHGC8RumuaOvKxevSR7HFpjxCYIRe7D0z/7Gvu', 'PiMMmezOxBmDa2zvWF4E', '超级管理员', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', 'string', 'string', '1', NULL, NULL, '2019-07-22 13:42:54', NULL, 'null', NULL, 'string', 0, 0, '1', NULL);
 
 -- ----------------------------
 -- Table structure for portal_user_role
@@ -807,99 +987,3 @@ CREATE TABLE `sys_oauth_client_details`  (
 INSERT INTO `sys_oauth_client_details` VALUES ('freeBlog', NULL, '$2a$10$CwIutywnbs9bifHaY3Ezu.gYkWi4Zano8gVPq08hXjal6.uj.Yzuy', 'sever', 'password,refresh_token,authorization_code,implicit,mobile', NULL, NULL, NULL, NULL, NULL, 'true');
 
 SET FOREIGN_KEY_CHECKS = 1;
-
-
-CREATE TABLE `manage_dept`  (
-  `dept_id` varchar(32)  NOT NULL COMMENT '部门id',
-  `dept_name` varchar(32) DEFAULT NULL COMMENT '部门名称',
-  `parent_id` varchar(32) DEFAULT NULL COMMENT '上级部门名称',
-  `is_enable` varchar(32) DEFAULT '1' COMMENT '启用/停用',
-  `create_id` varchar(32) DEFAULT NULL COMMENT '创建人',
-  `update_id` varchar(32) DEFAULT NULL COMMENT '修改人',
-  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
-  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '员工部门表' ROW_FORMAT = Dynamic;
-
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004945', '华中分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:21', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004946', '华东分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:39', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004949', '销售部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:54', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004952', '华南分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:35', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004981', '华北分部', '20200312200000000000000000005086', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:10:30', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004987', '技术部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:45', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004995', '人事部', '20200304230000000000000000004946', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:15:17', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004997', '人事部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:13:55', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000004998', '财务部', '20200304230000000000000000004945', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:14:33', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200304230000000000000000005008', '人事部', '20200304230000000000000000004952', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:15:24', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005034', '财务部', '20200304230000000000000000004981', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:20:37', NULL);
-INSERT INTO `blog`.`manage_dept`(`dept_id`, `dept_name`, `parent_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005086', '公司总部', NULL, '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-12 20:27:10', NULL);
-
-
-
-CREATE TABLE `manage_job`  (
-  `job_id` varchar(32)  NOT NULL COMMENT '岗位id',
-  `job_name` varchar(32) DEFAULT NULL COMMENT '岗位名称',
-  `dept_id` varchar(32) DEFAULT NULL COMMENT '部门id',
-  `is_enable` varchar(32) DEFAULT '1' COMMENT '启用/停用',
-  `create_id` varchar(32) DEFAULT NULL COMMENT '创建人',
-  `update_id` varchar(32) DEFAULT NULL COMMENT '修改人',
-  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
-  `c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`job_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '员工岗位表' ROW_FORMAT = Dynamic;
-
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005025', '后端开发', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:17', NULL);
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005053', '招聘专员', '20200304230000000000000000004995', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:04', NULL);
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005060', '前端开发', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:10', NULL);
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005061', '人工客服', '20200304230000000000000000004949', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:31:04', NULL);
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005067', '招聘专员', '20200304230000000000000000004997', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:09', NULL);
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005082', '电话销售', '20200304230000000000000000004949', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:30:50', NULL);
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005085', '招聘专员', '20200304230000000000000000005008', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:32:14', NULL);
-INSERT INTO `blog`.`manage_job`(`job_id`, `job_name`, `dept_id`, `is_enable`, `create_id`, `update_id`, `create_time`, `update_time`) VALUES ('20200312200000000000000000005095', '产品经理', '20200304230000000000000000004987', '1', '8e20ed1dc3084825800957a89d2061d2', NULL, '2020-04-13 00:29:43', NULL);
-
-
-
-CREATE TABLE `manage_role_dept`  (
-  `id` varchar(32)  NOT NULL COMMENT '角色部门关联id',
-  `role_id` varchar(32) DEFAULT NULL COMMENT '角色id',
-	`dept_id` varchar(32) DEFAULT '1' COMMENT '部门id',
-	`create_id` varchar(32) DEFAULT NULL COMMENT '创建人',
-  `update_id` varchar(32) DEFAULT NULL COMMENT '修改人',
-  `create_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
-	`c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '角色部门关联表' ROW_FORMAT = Dynamic;
-
-
-CREATE TABLE `portal_article_info`  (
-  `article_info_id` varchar(32)  NOT NULL COMMENT '文章相关信息id',
-  `article_id` varchar(32) DEFAULT NULL COMMENT '文章id',
-  `approve_number` bigint(20) DEFAULT '0' COMMENT '点赞数',
-	`comments_number` bigint(20) DEFAULT '0' COMMENT '评论数',
-	`like_number` bigint(20) DEFAULT '0' COMMENT '热度',
-	`read_number` bigint(20) DEFAULT '0' COMMENT '浏览人数',
-	`create_id` varchar(32) DEFAULT NULL COMMENT '创建人',
-  `update_id` varchar(32) DEFAULT NULL COMMENT '修改人',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-	`c_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  `u_time` datetime(0) DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`article_info_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章相关信息表' ROW_FORMAT = Dynamic;
-
-
-CREATE TABLE `portal_user_attention`  (
-  `attention_id` varchar(32)  NOT NULL COMMENT '用户关注id',
-  `user_id` varchar(32) NOT NULL COMMENT '用户id',
-  `attention_user_id` varchar(32) NOT NULL COMMENT '关注的用户id',
-  `attention_time` datetime NOT NULL COMMENT '关注时间',
-	 `c_time` datetime default CURRENT_TIMESTAMP comment '创建时间（数据库自己维护）',
-  `u_time` datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间（数据库自己维护）',
-  PRIMARY KEY (`attention_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户关注信息表' ROW_FORMAT = Dynamic;

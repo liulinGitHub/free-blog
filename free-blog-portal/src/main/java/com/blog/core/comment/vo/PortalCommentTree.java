@@ -1,6 +1,6 @@
 package com.blog.core.comment.vo;
 
-import com.blog.core.system.user.entity.PortalCommentUser;
+import com.blog.core.system.user.entity.PortalCommonUser;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -24,9 +24,6 @@ public class PortalCommentTree {
 	@ApiModelProperty( "评论内容" )
 	private String commentContent;
 
-	@ApiModelProperty( "评论者的作者名称" )
-	private String author;
-
 	@ApiModelProperty( "父id" )
 	private String parentId;
 
@@ -37,11 +34,9 @@ public class PortalCommentTree {
 	@ApiModelProperty( "点赞数" )
 	private Long approves;
 
-	@ApiModelProperty( "作者头像图片" )
-	private String avatarImage;
-
 	@ApiModelProperty( "评论者的用户信息" )
-	private PortalCommentUser commentUser;
+	private PortalCommonUser commentUser;
 
-	private List<PortalCommentTree> children;
+	@ApiModelProperty( "评论者回复信息" )
+	private List<PortalCommentTree> replyChildren;
 }

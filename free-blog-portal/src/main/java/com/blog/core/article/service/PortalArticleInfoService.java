@@ -18,4 +18,12 @@ public interface PortalArticleInfoService {
      * @return
      */
     PortalArticleInfoVO queryPortalArticleInfoDetails(String articleId);
+
+    /**
+     * 添加文章评论数
+     * 可以考虑做成异步处理
+     *
+     * @param articleId
+     */
+    void editArticleCommentNumber(String articleId);
 }

@@ -3,6 +3,7 @@ package com.blog.core.category.service.impl;
 import com.blog.core.category.dao.PortalCategoryMapper;
 import com.blog.core.category.vo.PortalCategoryVO;
 import com.blog.core.category.service.PortalCategoryService;
+import com.blog.core.common.enums.CategoryTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import java.util.List;
 
 /**
  * @ClassNmae: PortalCategoryServiceImpl
- * @description:
+ * @description: 分类Service
  * @author: 950103
  * @create: 2019-05-05 15:49
  */
@@ -23,14 +24,13 @@ public class PortalCategoryServiceImpl implements PortalCategoryService {
 
 
     @Override
-    public List<PortalCategoryVO> queryCategoryByPage() {
-        return null;
+    public List<PortalCategoryVO> queryCategoryByCategoryType(CategoryTypeEnum categoryTypeEnum) {
+        return this.portalCategoryMapper.selectCategoryByCategoryType(categoryTypeEnum);
     }
 
     @Override
-    public PortalCategoryVO findCategoryById(String categoryId) {
-        PortalCategoryVO CategoryVO = this.portalCategoryMapper.selectCategoryById(categoryId);
-        return CategoryVO;
+    public List<PortalCategoryVO> queryCategoryByArticleId(String articleId) {
+        return this.portalCategoryMapper.selectCategoryByArticleId(articleId);
     }
 
 }

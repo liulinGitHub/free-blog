@@ -1,24 +1,26 @@
 package com.blog.core.comment.service.impl;
 
+import com.blog.core.approva.service.PortalApprovalService;
+import com.blog.core.article.service.PortalArticleInfoService;
 import com.blog.core.comment.dao.PortalCommentMapper;
+import com.blog.core.comment.dto.PortalApprovalCommentDTO;
 import com.blog.core.comment.dto.PortalCommentAddDTO;
 import com.blog.core.comment.entity.PortalComment;
-import com.blog.core.comment.vo.PortalCommentVO;
 import com.blog.core.comment.vo.PortalCommentTree;
 import com.blog.core.comment.service.PortalCommentService;
-import com.blog.core.common.aspect.RequestHolder;
+import com.blog.core.common.consts.Constants;
+import com.blog.core.common.enums.ApprovalTypeEnum;
 import com.blog.core.common.enums.IsEnableEnum;
-import com.blog.core.common.enums.IsParentEnum;
-import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
+import com.blog.core.system.user.entity.PortalCommonUser;
+import com.blog.core.system.user.service.PortalCommonUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,9 +41,18 @@ public class PortalCommentServiceImpl implements PortalCommentService {
     @Autowired
     private PortalCommentMapper portalCommentMapper;
 
+    @Autowired
+    private PortalCommonUserService portalCommonUserService;
+
+    @Autowired
+    private PortalApprovalService portalApprovalService;
+
+    @Autowired
+    private PortalArticleInfoService portalArticleInfoService;
+
     @Override
-    public List<PortalCommentTree> queryPortalCommentTree(String id) {
-        List<PortalCommentTree> portalCommentTreeList = this.portalCommentMapper.selectPortalCommentTree(id);
+    public List<PortalCommentTree> queryPortalCommentTree(String articleId) {
+        List<PortalCommentTree> portalCommentTreeList = this.portalCommentMapper.selectPortalCommentTree(articleId);
         if (CollectionUtils.isEmpty(portalCommentTreeList)) {
             return new ArrayList<>();
         }
@@ -49,51 +60,49 @@ public class PortalCommentServiceImpl implements PortalCommentService {
                 .filter(portalCommentTree -> StringUtils.isBlank(portalCommentTree.getParentId()))
                 .collect(Collectors.toList());
         for (PortalCommentTree commentTree : commentTreeList) {
-            List<PortalCommentTree> childrenList = portalCommentTreeList.stream().filter(portalCommentTree ->
+            List<PortalCommentTree> replyChildrenList = portalCommentTreeList.stream().filter(portalCommentTree ->
                     StringUtils.isNotBlank(portalCommentTree.getParentId())
                             && portalCommentTree.getParentId().equals(commentTree.getCommentId())
             ).collect(Collectors.toList());
-            if (CollectionUtils.isNotEmpty(childrenList)) {
-                for (PortalCommentTree portalCommentTree : childrenList) {
-                    if (commentTree.getChildren() == null) {
-                        commentTree.setChildren(new ArrayList<>());
+            if (CollectionUtils.isNotEmpty(replyChildrenList)) {
+                for (PortalCommentTree replyChildrenTree : replyChildrenList) {
+                    if (commentTree.getReplyChildren() == null) {
+                        commentTree.setReplyChildren(new ArrayList<>());
                     }
-                    commentTree.getChildren().add(portalCommentTree);
+                    commentTree.getReplyChildren().add(replyChildrenTree);
                 }
             }
         }
         return commentTreeList;
     }
 
+    @Transactional
     @Override
-    public List<PortalCommentVO> queryCommentByParentId(String parentId) {
-        List<PortalCommentVO> portalCommentVOList = this.portalCommentMapper.queryCommentByParentId(parentId);
-        return portalCommentVOList;
+    public void  savePortalComment(PortalCommentAddDTO portalCommentAddDTO) {
+        PortalComment portalComment = MapperUtils.mapperBean(portalCommentAddDTO, PortalComment.class);
+        portalComment.setCommentId(UUIDUtil.randomUUID32());
+        portalComment.setCommentUserId(Constants.USER_ID);
+        portalComment.setCommentTime(new Date());
+        portalComment.setEnable(IsEnableEnum.Enable_NO.getValue());
+        portalComment.setArticleId(portalCommentAddDTO.getArticleId());
+        if (Objects.nonNull(portalComment.getParentId())) {
+            portalComment.setParentId(portalComment.getParentId());
+        }
+        portalComment.setApproves(0L);
+        portalComment.setCreateId(Constants.USER_ID);
+        portalComment.setCreateTime(new Date());
+        this.portalCommentMapper.insertPortalComment(portalComment);
+        //增加文章评论数 后置事件
+        this.portalArticleInfoService.editArticleCommentNumber(portalCommentAddDTO.getArticleId());
     }
 
     @Override
-    @Transactional
-    public void     savePortalComment(PortalCommentAddDTO portalCommentAddDTO) {
-        PortalComment portalComment = MapperUtils.mapperBean(portalCommentAddDTO, PortalComment.class);
-        portalComment.setCommentId(UUIDUtil.randomUUID32());
-        portalComment.setCommentUserId(RequestHolder.get()+"");
-        portalComment.setCommentTime(new Date());
-        portalComment.setIsEnable(IsEnableEnum.Enable_NO.getValue());
-        portalComment.setArticleId(portalCommentAddDTO.getArticleId());
-        if(Objects.nonNull(portalComment.getParentId())){
-            portalComment.setParentId(portalComment.getParentId());
-            portalComment.setIsParent(IsParentEnum.PARENT_NO.getValue());
-        }else {
-            portalComment.setParentId("0");
-            portalComment.setIsParent(IsParentEnum.PARENT_YES.getValue());
-        }
-        int result = this.portalCommentMapper.insertPortalComment(portalComment);
-        if (result < 1) {
-            log.error("评论失败!【{}】", "commentUserId");
-            throw new BlogRuntimeException("评论失败！");
-        }
-        //增加文章评论数 后置事件
-        //this.Service.updateComments(Id);
-        //publisher.publish(new Event(Id));
+    public void approvalPortalComment(PortalApprovalCommentDTO portalApprovalCommentDTO) {
+        PortalCommonUser portalCommonUser = this.portalCommonUserService.queryPortalCommonUserByUserId(portalApprovalCommentDTO.getPostUserId());
+        this.portalApprovalService.approval(ApprovalTypeEnum.APPROVAL_COMMENT,
+                portalApprovalCommentDTO.getSubjectCommentId(),
+                portalApprovalCommentDTO,
+                portalApprovalCommentDTO.getPostUserId(),
+                portalCommonUser);
     }
 }

@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @program: PortalUserMapper
+ * @ClassName: PortalUserMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-09 17:50
  * @Version: 1.0
  */

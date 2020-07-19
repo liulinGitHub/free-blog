@@ -30,9 +30,13 @@ public interface Constants {
         switch (approvalType) {
             case APPROVAL_ARTICLE:
                 type = ApprovalTypeEnum.LIKED_ARTICLE_REPORT;
+            case APPROVAL_COMMENT:
+                type = ApprovalTypeEnum.LIKED_COMMENT_REPORT;
         }
         return type + "";
     }
+
+    String USER_ID = "1";
 
     /**
      * 用于IP定位转换

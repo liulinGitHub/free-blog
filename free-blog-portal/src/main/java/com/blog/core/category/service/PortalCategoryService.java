@@ -1,22 +1,31 @@
 package com.blog.core.category.service;
 
 import com.blog.core.category.vo.PortalCategoryVO;
+import com.blog.core.common.enums.CategoryTypeEnum;
+
 import java.util.List;
 
 /**
  * @ClassNmae: PortalCategoryService
- * @description:
+ * @description: 分类Service
  * @author: 950103
  * @create: 2019-05-05 15:47
  */
 public interface PortalCategoryService {
 
-    List<PortalCategoryVO> queryCategoryByPage();
-
     /**
-     * 根据文章分类id查询
-     * @param CategoryId
+     * 根据分类类型查询分类
+     *
+     * @param categoryTypeEnum
      * @return
      */
-    PortalCategoryVO findCategoryById(String CategoryId);
+    List<PortalCategoryVO> queryCategoryByCategoryType(CategoryTypeEnum categoryTypeEnum);
+
+    /**
+     * 根据文章id查询所属分类
+     *
+     * @param articleId
+     * @return
+     */
+    List<PortalCategoryVO> queryCategoryByArticleId(String articleId);
 }

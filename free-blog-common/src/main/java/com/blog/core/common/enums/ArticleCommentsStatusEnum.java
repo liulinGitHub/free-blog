@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * @ClassNmae: ArticleCommentsStatusEnum
  * @description: 文章是否开启评论枚举
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/2/10 16:31
  **/
-public enum  ArticleCommentsStatusEnum implements BaseEnum {
+public enum ArticleCommentsStatusEnum implements BaseEnum {
 
     COMMENTS_NO("0", "未开启评论"),
-    COMMENTS_YES("2", "已开启评论");
+    COMMENTS_YES("2", "开启评论");
 
     private String value;
     private String name;

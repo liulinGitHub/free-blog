@@ -20,4 +20,6 @@ public interface PortalArticleInfoMapper {
      * @return PortalArticleInfoVO
      */
     PortalArticleInfoVO selectPortalArticleInfoDetails(String articleId);
+
+    void updateArticleCommentNumber(String articleId, Long commentsNumber);
 }

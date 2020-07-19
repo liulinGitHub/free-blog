@@ -1,18 +1,14 @@
 package com.blog.core.article.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blog.core.article.service.PortalArticleApprovalService;
 import com.blog.core.article.vo.PortalArticleApprovalVO;
 import com.blog.core.common.enums.ApprovalTypeEnum;
-import com.blog.core.common.redis.RedisUtil;
-import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.system.user.vo.PortalUserApprovalVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.tio.utils.jfinal.P;
 
 import java.util.List;
 import java.util.Set;

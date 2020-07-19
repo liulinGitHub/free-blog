@@ -9,6 +9,5 @@
                                   |___/
 ------------------------------------------------------------
 Spring Boot   :    ${spring-boot.version}
-blog         :     ${blog.version}
-blog storage :     ${site.location}
+blog version  :    ${blog.version}
 ------------------------------------------------------------

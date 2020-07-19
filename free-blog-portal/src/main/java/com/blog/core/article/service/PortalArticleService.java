@@ -1,6 +1,8 @@
 package com.blog.core.article.service;
 
 
+import com.blog.core.article.dto.PortalArticleAddDTO;
+import com.blog.core.article.dto.PortalArticleApprovalDTO;
 import com.blog.core.article.dto.PortalArticleCheckDTO;
 import com.blog.core.article.vo.PortalArticleDetailsVO;
 import com.blog.core.article.vo.PortalArticleInfoVO;
@@ -50,38 +52,23 @@ public interface PortalArticleService {
     /**
      * 保存文章草稿
      *
-     * @param portalArticleCheckDTO
+     * @param portalArticleAddDTO
      */
-    void saveDraft(PortalArticleCheckDTO portalArticleCheckDTO);
+    void savePortalArticleDraft(PortalArticleAddDTO portalArticleAddDTO);
 
     /**
      * 删除文章草稿
      *
      * @param articleId
      */
-    void deleteDraft(String articleId);
+    void deletePortalArticleDraft(String articleId);
 
     /**
      * 文章点赞
      *
-     * @param articleId
+     * @param portalArticleApprovalDTO
      * @return
      */
-    void updateApproves(String articleId);
-
-    /**
-     * 增加评论数
-     *
-     * @param articleId
-     * @return
-     */
-    void updateComments(String articleId);
-
-    /**
-     * 文章热度修改
-     *
-     * @param articleId
-     */
-    void updateTemperature(String articleId);
+    void approvesPortalArticle(PortalArticleApprovalDTO portalArticleApprovalDTO);
 
 }

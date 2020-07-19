@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * @ClassNmae: ApprovalStatusEnum
  * @description: 点赞状态枚举
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/3/28 14:07
  **/
 public enum ApprovalStatusEnum {

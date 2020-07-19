@@ -31,9 +31,6 @@ public class PortalComment extends BaseModel {
    	@ApiModelProperty("所属文章id" )
 	private String articleId;
 
-   	@ApiModelProperty("是否为父级" )
-	private String isParent;
-
    	@ApiModelProperty("评论时间" )
 	private Date commentTime;
 
@@ -41,5 +38,5 @@ public class PortalComment extends BaseModel {
 	private Long approves;
 
    	@ApiModelProperty("是否删除" )
-	private String isEnable;
+	private String enable;
 }

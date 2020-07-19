@@ -2,25 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.comment.dao.PortalCommentMapper">
 
+    <resultMap id="portalCommentTreeList" type="com.blog.core.comment.vo.PortalCommentTree">
+        <id property="commentId" column="commentId"/>
+        <result property="commentContent" column="commentContent"/>
+        <result property="parentId" column="parentId"/>
+        <result property="commentTime" column="commentTime"/>
+        <result property="approves" column="approves"/>
+        <collection property="commentUser" ofType="com.blog.core.system.user.entity.PortalCommonUser">
+            <id property="userId" column="userId"/>
+            <result property="nickName" column="nickName"/>
+            <result property="avatar" column="avatar"/>
+        </collection>
+    </resultMap>
+
     <select id="selectPortalCommentTree" parameterType="java.lang.String"
-            resultType="com.blog.core.comment.vo.PortalCommentTree">
+            resultMap="portalCommentTreeList">
         SELECT
-            comment_id commentId,
-            comment_content commentContent,
-            comment_user_id,
-            parent_id parentId,
-            comment_time commentTime,
-            approves,
-            CASE WHEN pu.nick_name IS NOT NULL
-	        THEN  pu.nick_name
-            ELSE  user_name
-            END author,
-            pu.avatar AS avatarImage
+            pc.comment_id commentId,
+            pc.comment_content commentContent,
+            pc.comment_user_id,
+            pc.parent_id parentId,
+            pc.comment_time commentTime,
+            pc.approves approves,
+            pu.nick_name nickName,
+            pu.avatar avatar,
+            pu.user_id userId
         FROM
             portal_comment pc
             LEFT JOIN portal_user pu ON pc.comment_user_id = pu.user_id
         WHERE
-            enable = '1'
+            pc.enable = '1'
         AND
             article_id = #{articleId}
         ORDER BY
@@ -95,23 +106,25 @@
     <!--auto generated Code-->
     <insert id="insertPortalComment" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.comment.entity.PortalComment">
         INSERT INTO portal_comment (
-            `comment_id`,
-            `comment_content`,
-            `comment_user_id`,
-            `parent_id`,
-            `article_id`,
-            `is_parent`,
-            `comment_time`,
-            `is_enable`
+            comment_id,
+            comment_content,
+            comment_user_id,
+            parent_id,
+            article_id,
+            comment_time,
+            enable,
+            create_id,
+            create_time
         ) VALUES (
             #{commentId},
             #{commentContent},
             #{commentUserId},
             #{parentId},
             #{articleId},
-            #{isParent},
             #{commentTime},
-            #{isEnable}
+            #{enable},
+            #{createId},
+            #{createTime}
         )
     </insert>
 </mapper>

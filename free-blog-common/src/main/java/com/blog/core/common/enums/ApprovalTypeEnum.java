@@ -1,19 +1,19 @@
 package com.blog.core.common.enums;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 /**
  * @ClassNmae: ArticleApprovalEnum
- * @description: 文章点赞枚举
- * @Author: liulin
+ * @description: 点赞枚举
+ * @Author: 950103
  * @Date: 2020/3/25 11:15
  **/
 
 public enum ApprovalTypeEnum {
 
     APPROVAL_ARTICLE("文章点赞"),
-    LIKED_ARTICLE_REPORT("文章点赞统计");
+    LIKED_ARTICLE_REPORT("文章点赞统计"),
+    APPROVAL_COMMENT("文章评论"),
+    LIKED_COMMENT_REPORT("文章评论统计"),
+    ;
 
     private String value;
 

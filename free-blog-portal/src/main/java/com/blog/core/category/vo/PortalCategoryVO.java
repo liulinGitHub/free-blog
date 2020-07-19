@@ -1,10 +1,7 @@
 package com.blog.core.category.vo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * @ClassNmae: PortalCategoryVO
@@ -16,24 +13,8 @@ import java.util.Date;
 public class PortalCategoryVO {
 
     @ApiModelProperty(name = "分类id" )
-    private String id;
+    private String categoryId;
 
     @ApiModelProperty(name = "类别名称" )
     private String categoryName;
-
-    @ApiModelProperty(name = "类别父名称id" )
-    private String parentCategoryId;
-
-    @ApiModelProperty(name = "排序" )
-    private Integer sort;
-
-    @ApiModelProperty(name = "删除标识" )
-    private String isEnable;
-
-    @ApiModelProperty("创建人")
-    private String createId;
-
-    @ApiModelProperty("创建时间")
-    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
-    private Date createTime;
 }

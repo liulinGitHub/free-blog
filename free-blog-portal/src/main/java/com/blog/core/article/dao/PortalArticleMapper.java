@@ -5,6 +5,8 @@ import com.blog.core.article.entity.PortalArticle;
 import com.blog.core.article.vo.PortalArticleDetailsVO;
 import com.blog.core.article.vo.PortalArticleInfoVO;
 import com.blog.core.article.vo.PortalArticleListVO;
+import com.blog.core.common.enums.EnableEnum;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -62,9 +64,10 @@ public interface PortalArticleMapper {
      * 删除文章草稿
      *
      * @param articleId
+     * @param enableEnum
      * @return
      */
-    int deleteDraft(String articleId);
+    int deletePortalArticleDraft(@Param("articleId") String articleId, @Param("EnableEnum") EnableEnum enableEnum);
 
     /**
      * 文章已经升温
@@ -80,7 +83,7 @@ public interface PortalArticleMapper {
      * @param article
      * @return
      */
-    int saveDraft(PortalArticle article);
+    int insertPortalArticleDraft(PortalArticle article);
 
     /**
      * 文章审核

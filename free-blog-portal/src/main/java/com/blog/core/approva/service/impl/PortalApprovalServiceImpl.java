@@ -1,6 +1,6 @@
-package com.blog.core.article.service.impl;
+package com.blog.core.approva.service.impl;
 
-import com.blog.core.article.service.PortalArticleApprovalService;
+import com.blog.core.approva.service.PortalApprovalService;
 import com.blog.core.common.consts.Constants;
 import com.blog.core.common.enums.ApprovalStatusEnum;
 import com.blog.core.common.enums.ApprovalTypeEnum;
@@ -12,13 +12,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @ClassNmae: PortalArticleAprovalServiceImpl
- * @description:
- * @Author: liulin
- * @Date: 2020/3/25 11:21
- **/
+ * @ClassName: PortalApprovalServiceImpl
+ * @Description: 点赞Service
+ * @date: 2020/7/19 1:54
+ * @author: 950103
+ * @Version 1.0
+ */
 @Service
-public class PortalArticleApprovalServiceImpl implements PortalArticleApprovalService {
+public class PortalApprovalServiceImpl implements PortalApprovalService {
 
     @Autowired
     private RedisUtil redisUtil;
@@ -37,7 +38,7 @@ public class PortalArticleApprovalServiceImpl implements PortalArticleApprovalSe
         //判断点赞用户是否已经点赞
         Boolean isApproval = redisUtil.sIsMember(approvalKey, userId);
         if (isApproval) {
-           //如果存在，说明重复调用，则是取消点赞
+            //如果存在，说明重复调用，则是取消点赞
             redisUtil.delete(approvalKey);
         } else {
             //如果存在，则点赞成功
@@ -132,6 +133,4 @@ public class PortalArticleApprovalServiceImpl implements PortalArticleApprovalSe
         Set<Object> set = redisUtil.zReverseRange(reportKey, 0, top);
         return set;
     }
-
-
 }

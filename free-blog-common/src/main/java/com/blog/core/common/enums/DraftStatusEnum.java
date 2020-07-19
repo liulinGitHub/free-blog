@@ -4,19 +4,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @ClassNmae: ArticleTypeEnum
- * @description: 文章类型枚举
- * @Author: liulin
- * @Date: 2020/2/10 16:26
- **/
-public enum  ArticleTypeEnum implements BaseEnum{
+ * @ClassName: DraftStatus
+ * @Description: 是否草稿枚举 0 是草稿 1 不是草稿
+ * @date: 2020/7/20 0:58
+ * @author: 950103
+ * @Version 1.0
+ */
+public enum DraftStatusEnum implements BaseEnum {
 
-    TECHNOLOGY_SHARE("0", "技术分享");
+    DRAFT_NO("0", "是草稿"),
+    DRAFT_YES("1", "不是草稿");
 
     private String value;
     private String name;
 
-    ArticleTypeEnum(String value, String name) {
+    DraftStatusEnum(String value, String name) {
         this.value = value;
         this.name = name;
     }

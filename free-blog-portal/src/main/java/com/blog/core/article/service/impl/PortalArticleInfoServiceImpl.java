@@ -23,4 +23,9 @@ public class PortalArticleInfoServiceImpl implements PortalArticleInfoService {
     public PortalArticleInfoVO queryPortalArticleInfoDetails(String articleId) {
         return this.portalArticleInfoMapper.selectPortalArticleInfoDetails(articleId);
     }
+
+    @Override
+    public void editArticleCommentNumber(String articleId) {
+        this.portalArticleInfoMapper.updateArticleCommentNumber(articleId);
+    }
 }

@@ -2,17 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.category.dao.PortalCategoryMapper">
 
-    <select id="selectCategoryById" resultType="com.blog.core.category.vo.PortalCategoryVO">
+    <select id="selectCategoryByCategoryType" resultType="com.blog.core.category.vo.PortalCategoryVO">
         SELECT
-        id,
-        category_name,
-        sort,
-        create_time,
-        update_time,
-        is_enable
+            category_id categoryId,
+            category_name categoryName
         FROM
-        portal_category
+            portal_category
         WHERE
-        id = #{CategoryId}
+            category_type = #{categoryTypeEnum.value}
+        AND
+            enable = '1'
+        ORDER BY sort
+    </select>
+
+    <select id="selectCategoryByArticleId" parameterType="java.lang.String" resultType="com.blog.core.category.vo.PortalCategoryVO">
+        SELECT
+            pc.category_id,
+            pc.category_name
+        FROM
+            portal_article_category pac
+            LEFT JOIN portal_category pc ON pac.category_id = pc.category_id
+        WHERE
+            pac.article_id = #{articleId}
+        AND
+            pc.enable = '1'
+        ORDER BY
+	        pc.sort
     </select>
 </mapper>

@@ -4,20 +4,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @program: free-blog
- * @description: 启用停用枚举
- * @author: liulin
- * @create: 2019-04-27 14:34
- */
-public enum IsEnableEnum implements BaseEnum {
+ * @ClassNmae: ArticleTopStatusEnum
+ * @description: 文章置顶状态枚举
+ * @Author: 950103
+ * @Date: 2020/2/10 16:30
+ **/
+public enum TopStatusEnum implements BaseEnum {
 
-    Enable_NO("0", "停用"),
-    Enable_YES("1", "启用");
+    TOP_NO("0", "未置顶"),
+    TOP_YES("2", "已置顶");
 
     private String value;
     private String name;
 
-    IsEnableEnum(String value, String name) {
+    TopStatusEnum(String value, String name) {
         this.value = value;
         this.name = name;
     }
@@ -28,6 +28,7 @@ public enum IsEnableEnum implements BaseEnum {
         return value;
     }
 
+    @Override
     public String getName() {
         return name;
     }

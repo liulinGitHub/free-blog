@@ -14,20 +14,13 @@
             pa.article_top_status articleTopStatus,
             pa.article_comment_status articleCommentStatus,
             pa.article_fine_note_status articleFineNoteStatus,
-            pa.article_user_id articleUserId,
-            CASE
-            WHEN pu.nick_name IS NOT NULL THEN
-                pu.nick_name
-            ELSE
-                pu.user_name
-            END articleAuthor,
-            pu.avatar articleAuthorImage
+            pa.article_user_id articleUserId
         FROM
             portal_article pa
-        LEFT JOIN portal_user pu ON pa.article_user_id = pu.user_id
         WHERE
-          pa.enable = '1'
-          AND pa.article_release_status = '1'
+            pa.enable = '1'
+        AND
+            pa.article_release_status = '1'
     </select>
 
     <select id="selectArticleByArticleId" parameterType="java.lang.String"
@@ -44,12 +37,7 @@
             pa.article_comment_status articleCommentStatus,
             pa.article_fine_note_status articleFineNoteStatus,
             pa.article_user_id articleUserId,
-            CASE
-            WHEN pu.nick_name IS NOT NULL THEN
-                pu.nick_name
-            ELSE
-                pu.user_name
-            END articleAuthor,
+            pu.nick_name articleAuthor,
             pu.avatar articleAuthorImage
         FROM
             portal_article pa
@@ -100,7 +88,7 @@
         WHERE id = #{articleId}
     </update>
 
-    <insert id="saveDraft" parameterType="com.blog.core.article.entity.PortalArticle">
+    <insert id="insertPortalArticleDraft" parameterType="com.blog.core.article.entity.PortalArticle">
         INSERT INTO
         portal_article
         (
@@ -129,7 +117,12 @@
 
     </insert>
 
-    <delete id="deleteDraft" parameterType="java.lang.String">
-        DELETE FROM portal_article WHERE id = #{articleId}
-    </delete>
+    <update id="deletePortalArticleDraft">
+        UPDATE
+            portal_article
+        SET
+            enable = #{enableEnum.value}
+        WHERE
+            article_id = #{articleId}
+    </update>
 </mapper>

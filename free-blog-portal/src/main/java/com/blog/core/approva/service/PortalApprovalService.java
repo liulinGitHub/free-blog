@@ -1,21 +1,20 @@
-package com.blog.core.article.service;
+package com.blog.core.approva.service;
 
 import com.blog.core.common.enums.ApprovalStatusEnum;
 import com.blog.core.common.enums.ApprovalTypeEnum;
-import com.blog.core.system.user.vo.PortalUserApprovalVO;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * @ClassNmae: PortalArticleApprovalService
- * @description: 文章点赞
+ * @ClassNmae: PortalApprovalService
+ * @description: 点赞Service
  * @Author: 950103
- * @Date: 2020/3/25 11:08
+ * @Date: 2020/07/19 01:54
  **/
-public interface PortalArticleApprovalService {
+public interface PortalApprovalService {
 
-    void approval(ApprovalTypeEnum approvalType, Object subjectId,  Object userId);
+    void approval(ApprovalTypeEnum approvalType, Object subjectId, Object userId);
 
     void approval(ApprovalTypeEnum approvalType, Object subjectId, Object userId, Object userApprovalVO);
 
@@ -29,7 +28,7 @@ public interface PortalArticleApprovalService {
      * @param postId       点赞对象id
      * @param postUser     点赞对象详细信息
      */
-    void approval(ApprovalTypeEnum approvalType, Object subjectId,  Object subject, Object postId, Object postUser);
+    void approval(ApprovalTypeEnum approvalType, Object subjectId, Object subject, Object postId, Object postUser);
 
     /**
      * 获取点赞数量

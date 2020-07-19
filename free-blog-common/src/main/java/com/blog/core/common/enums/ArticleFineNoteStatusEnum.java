@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * @ClassNmae: ArticleFineNoteStatusEnum
  * @description: 文章是否精帖状态
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/2/10 16:41
  **/
 public enum ArticleFineNoteStatusEnum implements BaseEnum{

@@ -15,4 +15,13 @@
         WHERE
             article_id = #{articleId}
     </select>
+
+    <update id="updateArticleCommentNumber">
+        UPDATE
+            portal_article_info
+        SET
+            comments_number = #{commentsNumber}
+        WHERE
+            article_id = #{articleId}
+    </update>
 </mapper>

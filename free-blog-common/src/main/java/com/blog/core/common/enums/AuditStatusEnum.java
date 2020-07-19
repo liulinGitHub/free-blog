@@ -4,20 +4,23 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @ClassNmae: ArticleTopStatusEnum
- * @description: 文章置顶状态枚举
- * @Author: liulin
- * @Date: 2020/2/10 16:30
- **/
-public enum ArticleTopStatusEnum implements BaseEnum{
+ * @ClassName: AuditStatusEnum
+ * @Description: 审核状态 0 未审核 2 审核中 4 已审核
+ * @date: 2020/7/20 1:00
+ * @author: 950103
+ * @Version 1.0
+ */
+public enum AuditStatusEnum implements BaseEnum {
 
-    TOP_NO("0", "未置顶"),
-    TOP_YES("2", "已置顶");
+    AUDIT_NO("0", "未审核"),
+    AUDIT_IN("1", "审核中"),
+    AUDIT_YES("1", "审核中"),
+    ;
 
     private String value;
     private String name;
 
-    ArticleTopStatusEnum(String value, String name) {
+    AuditStatusEnum(String value, String name) {
         this.value = value;
         this.name = name;
     }

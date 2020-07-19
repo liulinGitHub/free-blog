@@ -1,6 +1,5 @@
 package com.blog.core.article.dto;
 
-import com.blog.core.common.enums.ArticleUpdateStatusEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

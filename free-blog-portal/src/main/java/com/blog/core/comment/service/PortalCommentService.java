@@ -1,10 +1,9 @@
 package com.blog.core.comment.service;
 
 
+import com.blog.core.comment.dto.PortalApprovalCommentDTO;
 import com.blog.core.comment.dto.PortalCommentAddDTO;
 import com.blog.core.comment.vo.PortalCommentTree;
-import com.blog.core.comment.vo.PortalCommentVO;
-
 import java.util.List;
 
 /**
@@ -16,19 +15,26 @@ import java.util.List;
  */
 public interface PortalCommentService {
 
+    /**
+     * 查询评论信息
+     *
+     * @param articleId
+     * @return
+     */
     List<PortalCommentTree> queryPortalCommentTree(String articleId);
 
     /**
-     * 根据父id查询评论信息
-     * @param parentId
-     * @return
-     */
-    List<PortalCommentVO> queryCommentByParentId(String parentId);
-
-    /**
      * 保存评论信息
+     *
      * @param portalCommentAddDTO
      */
     void savePortalComment(PortalCommentAddDTO portalCommentAddDTO);
 
+    /**
+     * 评论点赞
+     * 取消赞
+     *
+     * @param portalApprovalCommentDTO
+     */
+    void approvalPortalComment(PortalApprovalCommentDTO portalApprovalCommentDTO);
 }

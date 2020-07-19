@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @program: ArticleStatusEnum
+ * @ClassName: ArticleStatusEnum
  * @description: 文章状态枚举 0,草稿 1 未审核 2 审核通过
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-06 18:12
  * @Version: 1.0
  */

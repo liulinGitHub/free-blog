@@ -1,5 +1,6 @@
 package com.blog.core.article.vo;
 
+import com.blog.core.system.user.entity.PortalCommonUser;
 import com.blog.core.tag.entity.vo.PortalTagVO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,6 +14,7 @@ import java.util.List;
  * @Description: 文章列表 主页面展示参数
  * @Author: 950103
  * @Date: 2019/4/7 9：55
+ * @Version: 1.0
  **/
 
 @Data
@@ -47,11 +49,8 @@ public class PortalArticleListVO {
     @ApiModelProperty(name = "发表文章的作者ID" )
     private String articleUserId;
 
-    @ApiModelProperty(name = "发表文章的作者" )
-    private String articleAuthor;
-
-    @ApiModelProperty(name = "发表文章的作者的头像" )
-    private String articleAuthorImage;
+    @ApiModelProperty(name = "文章用户信息" )
+    private PortalCommonUser articleUser;
 
     @ApiModelProperty(name = "文章标签" )
     private List<PortalTagVO> tags;

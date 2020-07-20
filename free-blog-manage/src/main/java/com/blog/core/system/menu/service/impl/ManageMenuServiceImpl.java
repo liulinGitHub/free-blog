@@ -1,7 +1,6 @@
 package com.blog.core.system.menu.service.impl;
 
-import com.blog.core.common.enums.IsEnableEnum;
-import com.blog.core.common.enums.SupperEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.entity.SecurityUser;
@@ -132,7 +131,7 @@ public class ManageMenuServiceImpl implements ManageMenuService {
         manageMenu.setId(primarykeyUtil.getPimaryKey());
         manageMenu.setCreateId(user.getUserId());
         manageMenu.setCreateTime(new Date());
-        manageMenu.setIsEnable(IsEnableEnum.Enable_YES);
+        manageMenu.setEnable(EnableEnum.Enable_YES);
         this.manageMenuMapper.insertManageMenu(manageMenu);
     }
 

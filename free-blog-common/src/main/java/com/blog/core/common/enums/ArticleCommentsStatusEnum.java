@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @ClassNmae: ArticleCommentsStatusEnum
+ * @ClassName: ArticleCommentsStatusEnum
  * @description: 文章是否开启评论枚举
  * @Author: 950103
  * @Date: 2020/2/10 16:31

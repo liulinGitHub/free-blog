@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * @ClassNmae: AnonymousAccess
  * @description: 匿名访问
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/3/31 21:37
  **/
 @Target(ElementType.METHOD)

@@ -6,9 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @program: ResponseResult
+ * @ClassName: ResponseResult
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-04-08 17:36
  * @Version: 1.0
  */

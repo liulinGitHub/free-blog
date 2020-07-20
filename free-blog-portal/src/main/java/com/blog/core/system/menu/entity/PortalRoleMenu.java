@@ -5,9 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @program: UserRole
+ * @ClassName: PortalRoleMenu
  * @description: 角色菜单关联信息
- * @author: liulin
+ * @author: 950103
  * @create: 2019-06-28 15:54
  * @Version: 1.0
  */
@@ -15,11 +15,11 @@ import lombok.Data;
 public class PortalRoleMenu extends BaseModel {
 
     @ApiModelProperty("角色ID")
-    private String id;
+    private String roleMenuId;
 
     @ApiModelProperty("角色ID")
     private String roleId;
 
-    @ApiModelProperty("菜单ID")
-    private String menuId;
+    @ApiModelProperty("菜单Code")
+    private String menuCode;
 }

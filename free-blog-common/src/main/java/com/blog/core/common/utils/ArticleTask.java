@@ -6,9 +6,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * @program: nbbolg
+ * @ClassName: ArticleTask
  * @description: 定时器执行
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-09 11:01
  */
 @Slf4j

@@ -4,35 +4,17 @@
 
     <select id="selectMenuByPage" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
-            id AS menuId,
-            parent_id AS parentId,
-            menu_name AS menuName,
-            web_code AS webCode,
-            menu_url AS menuUrl,
-            icon AS icon,
-            menu_sort AS menuSort,
-            menu_type AS menuType,
-            perms AS perms,
-            is_enable AS isEnable,
-            create_time AS createTime
-        FROM
-            portal_menu
-        ORDER BY menu_sort
-    </select>
-
-    <select id="selectMenu" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
-        SELECT
-            id AS menuId,
-            parent_id AS parentId,
-            menu_name AS menuName,
-            web_code AS webCode,
-            menu_url AS menuUrl,
-            icon AS icon,
-            menu_sort AS menuSort,
-            menu_type AS menuType,
-            perms AS perms,
-            is_enable AS isEnable,
-            create_time AS createTime
+            menu_code  menuCode,
+            parent_code  parentCode,
+            menu_name  menuName,
+            web_code  webCode,
+            menu_url  menuUrl,
+            icon  icon,
+            menu_sort  menuSort,
+            menu_type  menuType,
+            perms  perms,
+            enable  enable,
+            create_time  createTime
         FROM
             portal_menu
         ORDER BY menu_sort
@@ -40,29 +22,29 @@
 
     <select id="selectMenuByMenuId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
-            id AS menuId,
-            parent_id AS parentId,
-            menu_name AS menuName,
-            web_code AS webCode,
-            menu_url AS menuUrl,
-            icon AS icon,
-            menu_sort AS menuSort,
-            menu_type AS menuType,
-            perms AS perms,
-            is_enable AS isEnable,
-            create_time AS createTime
+            menu_code  menuCode,
+            parent_code  parentCode,
+            menu_name  menuName,
+            web_code  webCode,
+            menu_url  menuUrl,
+            icon  icon,
+            menu_sort  menuSort,
+            menu_type  menuType,
+            perms  perms,
+            enable  enable,
+            create_time  createTime
         FROM
             portal_menu
         WHERE
-           id = #{id}
+           menu_code = #{menuCode}
     </select>
 
     <insert id="addMenu" parameterType="com.blog.core.system.menu.entity.PortalMenu">
         INSERT INTO
          portal_menu
          (
-          id,
-          parent_id,
+          menu_code,
+          parent_code,
           menu_name,
           web_code,
           menu_url,
@@ -70,14 +52,14 @@
           menu_sort,
           menu_type,
           perms,
-          is_enable,
+          enable,
           create_id,
           create_time
          )
          VALUES
          (
-            #{id},
-            #{parentId},
+            #{menuCode},
+            #{parentCode},
             #{menuName},
             #{webCode},
             #{menuUrl},
@@ -85,7 +67,7 @@
             #{menuSort},
             #{menuType.value},
             #{perms},
-            #{isEnable.value},
+            #{enable.value},
             #{createId},
             #{createTime}
          )
@@ -95,7 +77,7 @@
         UPDATE
             portal_menu
         SET
-            parent_id = #{parentId},
+            parent_code = #{parentCode},
             menu_name = #{menuName},
             web_code = #{webCode},
             menu_url = #{menuUrl},
@@ -106,49 +88,49 @@
             update_id = #{updateId},
             update_time = #{updateTime}
         WHERE
-            id = #{id}
+            menu_code = #{menuCode}
     </update>
 
     <delete id="deleteMenu" parameterType="java.lang.String">
         DELETE
             portal_menu
         WHERE
-            id = #{id}
+            menu_code = #{menuCode}
     </delete>
 
     <update id="enableMenu" parameterType="java.lang.String">
         UPDATE
             portal_menu
         SET
-            is_enable = '1'
+            enable = '1'
         WHERE
-            id = #{menuId}
+            menu_code = #{menuCode}
     </update>
 
     <update id="disabledMenu" parameterType="java.lang.String">
         UPDATE
             portal_menu
         SET
-            is_enable = '0'
+            enable = '0'
         WHERE
-            id = #{menuId}
+            menu_code = #{menuCode}
     </update>
 
     <insert id="addRoleMenu" parameterType="com.blog.core.system.menu.entity.PortalRoleMenu">
         INSERT
-            portal_menu
+            portal_role_menu
           (
-            id,
+            role_menu_id,
             role_id,
-            menu_id,
+            menu_code,
             create_id,
             create_time
           )
          VALUES
          (
-            #{id},
+            #{roleMenuId},
             #{roleId},
-            #{menuId},
+            #{menuCode},
             #{createId},
             #{createTime}
          )
@@ -156,94 +138,60 @@
 
     <select id="selectMenuByRoleId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
-            menu.id AS menuId,
-            menu.parent_id AS parentId,
-            menu.menu_name AS menuName,
-            menu.web_code AS webCode,
-            menu.menu_url AS menuUrl,
-            menu.icon AS icon,
-            menu.menu_sort AS menuSort,
-            menu.menu_type AS menuType,
-            menu.perms AS perms,
-            menu.is_enable AS isEnable,
-            menu.create_time AS createTime
+            menu.menu_code  menuCode,
+            menu.parent_code  parentCode,
+            menu.menu_name  menuName,
+            menu.web_code  webCode,
+            menu.menu_url  menuUrl,
+            menu.icon  icon,
+            menu.menu_sort  menuSort,
+            menu.menu_type  menuType,
+            menu.perms  perms,
+            menu.enable  enable,
+            menu.create_time  createTime
         FROM
-            portal_menu AS menu
-            LEFT JOIN portal_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
+            portal_menu  menu
+            LEFT JOIN portal_role_menu  roleMenu ON menu.menu_code = roleMenu.menu_code
         WHERE
 	        roleMenu.role_id = #{roleId}
     </select>
 
     <select id="selectMenuList" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
-            menu.id AS menuId,
-            menu.parent_id AS parentId,
-            menu.menu_name AS menuName,
-            menu.web_code AS webCode,
-            menu.menu_url AS menuUrl,
-            menu.icon AS icon,
-            menu.menu_sort AS menuSort,
-            menu.menu_type AS menuType,
-            menu.perms AS perms,
-            menu.is_enable AS isEnable,
-            menu.create_time AS createTime,
-            menu.is_web AS isWeb
+            menu.menu_code  menuCode,
+            menu.parent_code  parentCode,
+            menu.menu_name  menuName,
+            menu.web_code  webCode,
+            menu.menu_url  menuUrl,
+            menu.icon  icon,
+            menu.menu_sort  menuSort,
+            menu.menu_type  menuType,
+            menu.perms  perms,
+            menu.enable enable,
+            menu.create_time  createTime
         FROM
-            portal_menu AS menu
+            portal_menu  menu
     </select>
 
     <select id="selectUserMenuByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
-            menu.id AS menuId,
-            menu.parent_id AS parentId,
-            menu.menu_name AS menuName,
-            menu.web_code AS webCode,
-            menu.menu_url AS menuUrl,
-            menu.icon AS icon,
-            menu.menu_sort AS menuSort,
-            menu.menu_type AS menuType,
-            menu.perms AS perms,
-            menu.is_enable AS isEnable,
-            menu.create_time AS createTime,
-            menu.is_web AS isWeb
+            menu.menu_code  menuCode,
+            menu.parent_code  parentCode,
+            menu.menu_name  menuName,
+            menu.web_code  webCode,
+            menu.menu_url  menuUrl,
+            menu.icon  icon,
+            menu.menu_sort  menuSort,
+            menu.menu_type  menuType,
+            menu.perms  perms,
+            menu.enable  enable,
+            menu.create_time  createTime
         FROM
-            portal_menu AS menu
-            LEFT JOIN portal_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
-            LEFT JOIN portal_role AS role ON role.id = roleMenu.role_id
-            LEFT JOIN portal_user_role AS userRole ON userRole.role_id = role.id
+            portal_menu  menu
+            LEFT JOIN portal_role_menu  roleMenu ON menu.menu_code = roleMenu.menu_code
+            LEFT JOIN portal_role  role ON role.role_id = roleMenu.role_id
+            LEFT JOIN portal_user_role  userRole ON userRole.role_id = role.role_id
         WHERE
             userRole.user_id = #{userId}
-    </select>
-
-    <select id="queryAllMenuId" resultType="java.lang.String" parameterType="java.lang.String">
-        SELECT
-            menu.id
-        FROM
-            portal_menu AS menu
-            LEFT JOIN portal_role_menu AS roleMenu ON menu.id = roleMenu.menu_id
-            LEFT JOIN portal_role AS role ON role.id = roleMenu.role_id
-            LEFT JOIN portal_user_role AS userRole ON userRole.role_id = role.id
-        WHERE
-            userRole.user_id = #{userId}
-    </select>
-
-    <select id="selectMenuByParentId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
-        SELECT
-            menu.id AS menuId,
-            menu.parent_id AS parentId,
-            menu.menu_name AS menuName,
-            menu.web_code AS webCode,
-            menu.menu_url AS menuUrl,
-            menu.icon AS icon,
-            menu.menu_sort AS menuSort,
-            menu.menu_type AS menuType,
-            menu.perms AS perms,
-            menu.is_enable AS isEnable,
-            menu.create_time AS createTime,
-            menu.is_web AS isWeb
-        FROM
-            portal_menu AS menu
-        WHERE
-            menu.parent_id = #{parentId}
     </select>
 </mapper>

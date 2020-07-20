@@ -15,4 +15,18 @@
         AND
             enable = '1'
     </select>
+
+    <select id="selectPortalAttentionUserInfo" resultType="com.blog.core.attentioninfo.vo.AttentionUserVO">
+        SELECT
+            user_id userId,
+            nick_name nickName,
+            avatar avatar
+        FROM
+            portal_user
+        WHERE
+            user_id IN
+        <foreach collection="userIdList" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

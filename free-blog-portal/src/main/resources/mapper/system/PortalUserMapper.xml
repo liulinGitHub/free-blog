@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blog.core.system.user.dao.PortalUserMapper">
 
-    <select id="queryUser" resultType="com.blog.core.system.user.entity.vo.PortalUserVO"
-            parameterType="com.blog.core.system.user.entity.dto.PortalUserQueryDTO">
+    <select id="queryUser" resultType="com.blog.core.system.user.vo.PortalUserVO"
+            parameterType="com.blog.core.system.user.dto.PortalUserQueryDTO">
         SELECT
             id,
             user_name,
@@ -34,7 +34,7 @@
         ORDER BY is_enable DESC, create_time DESC
     </select>
 
-    <select id="selectUserById" resultType="com.blog.core.system.user.entity.vo.PortalUserVO" parameterType="java.lang.String">
+    <select id="selectUserById" resultType="com.blog.core.system.user.vo.PortalUserVO" parameterType="java.lang.String">
         SELECT
             id,
             user_name userName,
@@ -65,7 +65,7 @@
         </where>
     </select>
 
-    <select id="login" parameterType="com.blog.core.system.user.entity.dto.PortalUserLoginDTO"
+    <select id="login" parameterType="com.blog.core.system.user.dto.PortalUserLoginDTO"
             resultType="com.blog.core.system.user.vo.PortalUserLoginVO" >
         SELECT
             id,
@@ -129,7 +129,7 @@
             is_enable = '1'
     </select>
 
-    <select id="selectUserInfo" resultType="com.blog.core.system.user.entity.vo.PortalUserInfoVO" parameterType="java.lang.String">
+    <select id="selectUserInfo" resultType="com.blog.core.system.user.vo.PortalUserInfoVO" parameterType="java.lang.String">
         SELECT
             id AS userId,
             user_name AS userName,
@@ -149,7 +149,7 @@
     </select>
 
     <!--auto generated Code-->
-    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.system.user.entity.PortalUser">
         INSERT INTO portal_user (
             id,
             user_name,
@@ -181,7 +181,7 @@
         )
     </insert>
 
-    <update id="updateUser" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
+    <update id="updateUser" parameterType="com.blog.core.system.user.entity.PortalUser">
         UPDATE portal_user
         <set>
             <if test="id != null"> id = #{id}, </if>
@@ -199,7 +199,7 @@
         WHERE id = #{id}
     </update>
 
-    <update id="updateIsEnable" parameterType="com.blog.core.system.user.entity.domain.PortalUser">
+    <update id="updateIsEnable" parameterType="com.blog.core.system.user.entity.PortalUser">
         UPDATE
         portal_user
         SET

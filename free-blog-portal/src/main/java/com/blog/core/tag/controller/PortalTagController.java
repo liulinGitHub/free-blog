@@ -3,7 +3,7 @@ package com.blog.core.tag.controller;
 import com.blog.core.common.utils.BaseController;
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
-import com.blog.core.tag.entity.qo.PortalTagQueryDTO;
+import com.blog.core.tag.dto.PortalTagQueryDTO;
 import com.blog.core.tag.service.PortalTagService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
- * @program: ManageTag
+ * @ClassName: ManageTag
  * @description: 标签Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-07-23 17:35
  * @Version: 1.0
  */

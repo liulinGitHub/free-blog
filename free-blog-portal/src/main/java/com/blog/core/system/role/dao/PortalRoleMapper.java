@@ -1,18 +1,17 @@
 package com.blog.core.system.role.dao;
 
-import com.blog.core.system.role.entity.domain.PortalRole;
-import com.blog.core.system.role.entity.domain.PortalUserRole;
-import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
-import com.blog.core.system.role.entity.vo.PortalRoleVO;
+
+import com.blog.core.system.role.entity.PortalRole;
+import com.blog.core.system.role.entity.PortalUserRole;
+import com.blog.core.system.role.vo.PortalRoleVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 /**
- * @program: PortalRoleMapper
+ * @ClassName: PortalRoleMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-09 18:02
  * @Version: 1.0
  */

@@ -10,11 +10,11 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
- * @Describe
- * @Author:
- * @Date: 2019/3/20 9:35
- * @Version 1.0
- */
+ * @ClassName: EnumConverterConfig
+ * @description:
+ * @Author: 950103
+ * @Date: 2019/12/19 23:43
+ **/
 @Configuration
 public class EnumConverterConfig extends WebMvcConfigurationSupport {
 

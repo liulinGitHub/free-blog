@@ -8,8 +8,11 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Jie
- * @date 2019-01-07
+ * @ClassName: SpringContextHolder
+ * @description:
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
  */
 @Slf4j
 @Component

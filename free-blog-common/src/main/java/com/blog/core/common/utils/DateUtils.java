@@ -5,10 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @Describe 时间工具
- * @Author: liulin
- * @Date: 2019/3/14 11:39
- * @Version 1.0
+ * @ClassName: DateUtils
+ * @description: 时间工具
+ * @author: 950103
+ * @create: 2019-04-27 13:43
  */
 public class DateUtils {
 

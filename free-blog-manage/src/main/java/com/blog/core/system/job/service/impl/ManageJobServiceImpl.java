@@ -1,10 +1,9 @@
 package com.blog.core.system.job.service.impl;
 
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.utils.SecurityUtils;
-import com.blog.core.system.dept.entity.ManageDept;
 import com.blog.core.system.job.dao.ManageJobMapper;
 import com.blog.core.system.job.dto.ManageJobAddDTO;
 import com.blog.core.system.job.dto.ManageJobEditDTO;
@@ -45,7 +44,7 @@ public class ManageJobServiceImpl implements ManageJobService {
         String userId = SecurityUtils.getUserId();
         ManageJob manageJob = MapperUtils.mapperBean(manageJobAddDTO, ManageJob.class);
         manageJob.setJobId(primarykeyUtil.getPimaryKey());
-        manageJob.setIsEnable(IsEnableEnum.Enable_YES);
+        manageJob.setEnable(EnableEnum.Enable_YES);
         manageJob.setCreateId(userId);
         manageJob.setCreateTime(new Date());
         this.manageJobMapper.insertManageJob(manageJob);

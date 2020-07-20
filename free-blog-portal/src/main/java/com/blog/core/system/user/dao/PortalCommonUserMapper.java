@@ -1,7 +1,11 @@
 package com.blog.core.system.user.dao;
 
+import com.blog.core.attentioninfo.vo.AttentionUserVO;
 import com.blog.core.system.user.entity.PortalCommonUser;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @ClassName: PortalCommonUserMapper
@@ -20,4 +24,12 @@ public interface PortalCommonUserMapper {
      * @return
      */
     PortalCommonUser selectPortalCommonUserByUserId(String userId);
+
+    /**
+     * 根据用户ID查询关注(被关注)的用户信息
+     *
+     * @param userIdList
+     * @return
+     */
+    List<AttentionUserVO> selectPortalAttentionUserInfo(@Param("userIdList") List<String> userIdList);
 }

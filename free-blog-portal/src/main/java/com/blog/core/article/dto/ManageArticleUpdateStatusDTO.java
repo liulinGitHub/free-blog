@@ -24,6 +24,4 @@ public class ManageArticleUpdateStatusDTO {
     private String articleTopStatus;
 
     private String releaseStatus;
-
-    private ArticleUpdateStatusEnum articleUpdateStatusEnum;
 }

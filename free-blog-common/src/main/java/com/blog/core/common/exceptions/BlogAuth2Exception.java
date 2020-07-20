@@ -3,9 +3,9 @@ package com.blog.core.common.exceptions;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 
 /**
- * @program: ContomAccessDeniedException
+ * @ClassName: BlogAuth2Exception
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-04-10 14:26
  * @Version: 1.0
  */

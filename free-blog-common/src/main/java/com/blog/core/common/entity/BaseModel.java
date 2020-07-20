@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @program: free-blog
+ * @ClassName: BaseModel
  * @description: model公共类
  * @author: liulin
  * @create: 2019-04-30 14:06

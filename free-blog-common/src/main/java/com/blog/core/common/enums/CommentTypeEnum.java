@@ -1,7 +1,7 @@
 package com.blog.core.common.enums;
 
 /**
- * @ClassNmae: CommentBelongTypeEnum
+ * @ClassName: CommentBelongTypeEnum
  * @description: 评论类型
  * @Author: 950103
  * @Date: 2020/2/6 17:27

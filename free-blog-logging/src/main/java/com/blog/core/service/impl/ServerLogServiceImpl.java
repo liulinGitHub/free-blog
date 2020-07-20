@@ -70,7 +70,7 @@ public class ServerLogServiceImpl implements ServerLogService {
         serverLog.setOperatingTime(new Date());
         serverLog.setLogId(primarykeyUtil.getPimaryKey());
         serverLog.setIpAddress(IPUtils.getIpAddr(request));
-        serverLog.setAddress(IPUtils.getCityInfo(IPUtils.getIpAddr(request)));
+        serverLog.setAddress(IPUtils.getIpSource(IPUtils.getIpAddr(request)));
         serverLog.setBrowser(IPUtils.getBrowser(request));
         serverLog.setRequestPath(request.getRequestURI());
         serverLog.setRequestMethod(request.getMethod());

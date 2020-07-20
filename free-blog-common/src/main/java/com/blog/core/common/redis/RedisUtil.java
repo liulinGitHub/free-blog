@@ -11,9 +11,9 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @program: RedisUtil
+ * @ClassName: RedisUtil
  * @description: redis工具类
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-15 15:57
  * @Version: 1.0
  */

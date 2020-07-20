@@ -20,7 +20,7 @@
         UPDATE
             portal_article_info
         SET
-            comments_number = #{commentsNumber}
+            comments_number = comments_number + 1
         WHERE
             article_id = #{articleId}
     </update>

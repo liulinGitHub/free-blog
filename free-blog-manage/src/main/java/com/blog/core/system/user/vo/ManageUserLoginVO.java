@@ -1,6 +1,5 @@
 package com.blog.core.system.user.vo;
 
-import com.blog.core.common.enums.IsEnableEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -38,5 +37,5 @@ public class ManageUserLoginVO {
     private String email;
 
     @ApiModelProperty(value="启用/停用",name="email")
-    private String isEnable;
+    private String enable;
 }

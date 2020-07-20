@@ -2,7 +2,7 @@ package com.blog.core.system.role.controller;
 
 import com.blog.core.common.utils.QueryRequest;
 import com.blog.core.common.utils.ResponseBo;
-import com.blog.core.system.role.entity.dto.PortalUserRoleAddQO;
+import com.blog.core.system.role.dto.PortalUserRoleAddQO;
 import com.blog.core.system.role.service.PortalRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: fee_blog
+ * @ClassName: PortalRoleController
  * @description: 角色服务Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-27 13:39
  */
 @Api(value = "角色服务Controller",tags = "角色服务")

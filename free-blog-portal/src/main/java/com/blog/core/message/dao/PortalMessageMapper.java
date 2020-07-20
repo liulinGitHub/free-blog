@@ -1,15 +1,15 @@
 package com.blog.core.message.dao;
 
-import com.blog.core.message.entity.domain.PortalMessage;
-import com.blog.core.message.entity.dto.PortalMessageQueryDTO;
-import com.blog.core.message.entity.vo.PortalMessageVO;
+import com.blog.core.message.dto.PortalMessageQueryDTO;
+import com.blog.core.message.entity.PortalMessage;
+import com.blog.core.message.vo.PortalMessageVO;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @program: PortalMessageMapper
- * @description:
- * @author: liulin
+ * @ClassName: PortalMessageMapper
+ * @description: 消息服务Mapper
+ * @author: 950103
  * @create: 2019-08-09 14:33
  * @Version: 1.0
  */

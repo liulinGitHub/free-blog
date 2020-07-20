@@ -1,9 +1,9 @@
 package com.blog.core.common.consts;
 
 /**
- * @program: RedisKeyConst
+ * @ClassName: RedisKeyConst
  * @description: redis的key
- * @author: liulin
+ * @author: 950103
  * @create: 2019-06-15 09:24
  * @Version: 1.0
  */

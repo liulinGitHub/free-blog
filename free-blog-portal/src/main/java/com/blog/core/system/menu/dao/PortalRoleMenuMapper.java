@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @program: PortalRoleMenuMapper
+ * @ClassName: PortalRoleMenuMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-10 10:49
  * @Version: 1.0
  */

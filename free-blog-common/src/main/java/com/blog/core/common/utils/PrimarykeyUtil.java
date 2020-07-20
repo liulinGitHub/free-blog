@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * @ClassNmae: PrimarkeyUtil
  * @description: 生成唯一的key
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/2/2 14:36
  **/
 @Slf4j

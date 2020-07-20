@@ -1,8 +1,7 @@
 package com.blog.core.system.user.service;
 
-import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.role.service.PortalRoleService;
-import com.blog.core.system.user.entity.domain.SecurityUserDetails;
+import com.blog.core.system.role.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.user.vo.PortalUserLoginVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,11 +13,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @ClassNmae: UserDetailsService
- * @description:
- * @Author: liulin
- * @Date: 2019/10/26 1:31
- **/
+ * @ClassName: CustomizeUserDetailsService
+ * @Description: 公共service
+ * @date: 2020/7/19 0:10
+ * @author: 950103
+ * @Version 1.0
+ */
 @Slf4j
 @Service
 public class CustomizeUserDetailsService implements UserDetailsService {

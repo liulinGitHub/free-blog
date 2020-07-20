@@ -6,8 +6,7 @@ import com.blog.core.comment.entity.ManageComment;
 import com.blog.core.comment.vo.ManageCommentDetailVO;
 import com.blog.core.comment.vo.ManageCommentListVO;
 import com.blog.core.comment.service.ManageCommentService;
-import com.blog.core.common.enums.IsEnableEnum;
-import com.blog.core.common.enums.IsParentEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.entity.SecurityUser;
@@ -90,7 +89,7 @@ public class ManageCommentServiceImpl implements ManageCommentService {
         manageComment.setCommentTime(new Date());
         manageComment.setCreateTime(new Date());
         manageComment.setCreateId(user.getUserId());
-        manageComment.setIsEnable(IsEnableEnum.Enable_YES);
+        manageComment.setEnable(EnableEnum.Enable_YES);
         this.manageCommentMapper.insertManageComment(manageComment);
     }
 

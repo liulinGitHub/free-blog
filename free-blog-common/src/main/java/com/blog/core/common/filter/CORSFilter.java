@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * @ClassNmae: CORSFilter
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/3/30 11:17
  **/
 @Order(Ordered.HIGHEST_PRECEDENCE)

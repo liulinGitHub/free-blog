@@ -1,9 +1,9 @@
 package com.blog.core.common.command;
 
 /**
- * @ClassNmae: ICommandInvoker
+ * @ClassName: ICommandInvoker
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/12/19 23:43
  **/
 public interface ICommandInvoker {

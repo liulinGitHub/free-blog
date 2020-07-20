@@ -1,6 +1,6 @@
 package com.blog.core.system.auth.service;
 
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.system.auth.entity.SecurityUser;
 import com.blog.core.system.role.service.ManageRoleService;
@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.nio.file.AccessDeniedException;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -48,7 +47,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
         if(Objects.isNull(manageUserLoginVO)){
             throw new BlogRuntimeException("用户名不正确！");
         }
-        if(IsEnableEnum.Enable_NO.getValue().equals(manageUserLoginVO.getUserId())) {
+        if(EnableEnum.Enable_NO.getValue().equals(manageUserLoginVO.getUserId())) {
             throw new BlogRuntimeException("账号未激活！");
         }
         return createSecurityUserDetailsUser(manageUserLoginVO);

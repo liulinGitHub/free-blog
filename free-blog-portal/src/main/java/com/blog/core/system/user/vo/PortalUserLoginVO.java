@@ -4,9 +4,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @ClassNmae: SysBaseUserInfoVO
+ * @ClassNmae: PortalUserLoginVO
  * @description: 登陆信息返回对象
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/4/14 19:55
  **/
 @Data

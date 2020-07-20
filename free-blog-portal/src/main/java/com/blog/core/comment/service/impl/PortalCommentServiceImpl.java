@@ -10,7 +10,7 @@ import com.blog.core.comment.vo.PortalCommentTree;
 import com.blog.core.comment.service.PortalCommentService;
 import com.blog.core.common.consts.Constants;
 import com.blog.core.common.enums.ApprovalTypeEnum;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
 import com.blog.core.system.user.entity.PortalCommonUser;
@@ -83,7 +83,7 @@ public class PortalCommentServiceImpl implements PortalCommentService {
         portalComment.setCommentId(UUIDUtil.randomUUID32());
         portalComment.setCommentUserId(Constants.USER_ID);
         portalComment.setCommentTime(new Date());
-        portalComment.setEnable(IsEnableEnum.Enable_NO.getValue());
+        portalComment.setEnable(EnableEnum.Enable_NO.getValue());
         portalComment.setArticleId(portalCommentAddDTO.getArticleId());
         if (Objects.nonNull(portalComment.getParentId())) {
             portalComment.setParentId(portalComment.getParentId());

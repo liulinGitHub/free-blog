@@ -1,15 +1,16 @@
 package com.blog.core.system.role.service;
 
-import com.blog.core.system.role.entity.dto.PortalUserRoleAddQO;
-import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
-import com.blog.core.system.role.entity.vo.PortalRoleVO;
+
+import com.blog.core.system.role.dto.PortalUserRoleAddQO;
+import com.blog.core.system.role.vo.PortalRoleMenuInfoVO;
+import com.blog.core.system.role.vo.PortalRoleVO;
 
 import java.util.List;
 
 /**
- * @program: PortalRoleService
+ * @ClassName: PortalRoleService
  * @description: 角色信息service
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-30 17:44
  * @Version: 1.0
  */

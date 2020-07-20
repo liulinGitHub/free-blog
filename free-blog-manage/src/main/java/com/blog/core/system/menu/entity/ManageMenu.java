@@ -1,6 +1,6 @@
 package com.blog.core.system.menu.entity;
 
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.enums.MenuTypeEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -44,7 +44,7 @@ public class ManageMenu {
     private String perms;
 
     @ApiModelProperty("启用/停用")
-    private IsEnableEnum isEnable;
+    private EnableEnum enable;
 
     @ApiModelProperty("创建人")
     private String createId;

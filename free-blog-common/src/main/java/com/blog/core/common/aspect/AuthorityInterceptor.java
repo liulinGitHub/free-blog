@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @program: free-blog
+ * @ClassName: AuthorityInterceptor
  * @description: 自定义全局拦截器
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-29 13:40
  */
 @Slf4j

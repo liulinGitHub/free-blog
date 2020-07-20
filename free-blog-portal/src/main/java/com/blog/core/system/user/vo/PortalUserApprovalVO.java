@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * @ClassNmae: PortalUserApprovalVO
  * @description: 用户点赞信息
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/3/25 21:00
  **/
 @Data

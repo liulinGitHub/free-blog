@@ -1,6 +1,7 @@
 package com.blog.core.article.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.blog.core.approva.service.PortalApprovalService;
 import com.blog.core.article.vo.PortalArticleApprovalVO;
 import com.blog.core.common.enums.ApprovalTypeEnum;
 import com.blog.core.system.user.vo.PortalUserApprovalVO;
@@ -18,7 +19,7 @@ import java.util.Set;
 public class PortalArticleApprovalServiceImplTest {
 
     @Autowired
-    private PortalArticleApprovalService portalArticleApprovalService;
+    private PortalApprovalService portalArticleApprovalService;
 
     @Test
     public void approval() {

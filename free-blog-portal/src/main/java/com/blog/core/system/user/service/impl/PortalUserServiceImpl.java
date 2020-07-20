@@ -1,22 +1,21 @@
 package com.blog.core.system.user.service.impl;
 
 import com.blog.core.common.aspect.RequestHolder;
-import com.blog.core.system.role.entity.vo.PortalRoleVO;
 import com.blog.core.system.role.service.PortalRoleService;
+import com.blog.core.system.role.vo.PortalRoleVO;
 import com.blog.core.system.user.dao.PortalUserMapper;
-import com.blog.core.system.user.entity.domain.PortalUser;
-import com.blog.core.system.user.entity.dto.PortalUserAddDTO;
-import com.blog.core.system.user.entity.dto.PortalUserEditDTO;
-import com.blog.core.system.user.entity.dto.PortalUserLoginDTO;
-import com.blog.core.system.user.entity.dto.PortalUserQueryDTO;
-import com.blog.core.system.user.entity.vo.PortalUserInfoVO;
+import com.blog.core.system.user.dto.PortalUserAddDTO;
+import com.blog.core.system.user.dto.PortalUserEditDTO;
+import com.blog.core.system.user.dto.PortalUserQueryDTO;
+import com.blog.core.system.user.entity.PortalUser;
+import com.blog.core.system.user.vo.PortalUserInfoVO;
 import com.blog.core.system.user.vo.PortalUserLoginVO;
-import com.blog.core.system.user.entity.vo.PortalUserVO;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
 import com.blog.core.system.user.service.PortalUserService;
+import com.blog.core.system.user.vo.PortalUserVO;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,12 +25,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @ClassNmae:UserServiceImpl
- * @description:
- * @Author:liulin
- * @Date: 2019/4/6 15:25
- **/
-
+ * @ClassName: PortalUserServiceImpl
+ * @Description: 用户service
+ * @date: 2020/7/19 0:10
+ * @author: 950103
+ * @Version 1.0
+ */
 @Service("portalUserService")
 public class PortalUserServiceImpl implements PortalUserService {
 
@@ -41,34 +40,6 @@ public class PortalUserServiceImpl implements PortalUserService {
     @Resource
     private PortalRoleService portalRoleService;
 
-    @Override
-    public PortalUserLoginVO login(PortalUserLoginDTO portalUserLoginDTO){
-        PortalUser portalUser = MapperUtils.mapperBean(portalUserLoginDTO, PortalUser.class);
-        portalUser.getUserPassword();
-        PortalUserLoginVO userLogin = this.portalUserMapper.login(portalUserLoginDTO);
-        return userLogin;
-    }
-
-    @Override
-    public PortalUserLoginVO checkLogin(PortalUserLoginDTO portalUserLoginDTO){
-        PortalUserLoginVO portalUserLoginVO = this.portalUserMapper.selectUserByUserName(portalUserLoginDTO.getUsername());
-        if(Objects.isNull(portalUserLoginVO)){
-            throw new BlogRuntimeException("用户名不存在");
-        }else {
-//           // String as = new Sha256Hash(userLoginVO.getUserPassword(),userLoginVO.getSalt()).toHex();
-//            System.out.println(as);
-//            System.out.println(userLoginVO.getUserPassword());
-//            if(!userLoginVO.getUserPassword().equals(new Sha256Hash(userLoginDTO.getUserpassword(),userLoginVO.getSalt()).toHex())){
-//                throw new BlogRuntimeException("密码错误！");
-//            }
-        }
-        return portalUserLoginVO;
-    }
-
-    /**
-     * 根据用户名查询用户信息
-     * @param username
-     */
     @Override
     public PortalUserLoginVO queryUserByUserName(String username){
         PortalUserLoginVO portalUserLoginVO = this.portalUserMapper.selectUserByUserName(username);
@@ -89,25 +60,24 @@ public class PortalUserServiceImpl implements PortalUserService {
     }
 
     @Override
-    public List<PortalUserVO> queryUser(PortalUserQueryDTO portalUserQueryDTO){
+    public List<PortalUserVO> queryPortalUser(PortalUserQueryDTO portalUserQueryDTO){
         List<PortalUserVO> portalUserVOList = this.portalUserMapper.queryUser(portalUserQueryDTO);
         return portalUserVOList;
     }
 
     @Override
-    public PortalUserVO queryUserById(String userId){
-        PortalUserVO portalUserVO = this.portalUserMapper.selectUserById(userId);
-        return portalUserVO;
+    public PortalUserVO queryPortalUserDetails(String userId){
+        return this.portalUserMapper.selectUserById(userId);
     }
 
     @Transactional
     @Override
-    public void addUser(PortalUserAddDTO portalUserAddDTO){
+    public void savePortalUser(PortalUserAddDTO portalUserAddDTO){
         PortalUser portalUser = MapperUtils.mapperBean(portalUserAddDTO, PortalUser.class);
         portalUser.setUserId(UUIDUtil.randomUUID32());
         portalUser.setCreateId(RequestHolder.get()+"");
         portalUser.setCreateTime(new Date());
-        portalUser.setIsEnable(IsEnableEnum.Enable_NO.getValue());
+        portalUser.setEnable(EnableEnum.Enable_NO.getValue());
 //        User.setCreateName("");
         //sha256加密
         //String salt = RandomStringUtils.randomAlphanumeric(20);
@@ -121,13 +91,10 @@ public class PortalUserServiceImpl implements PortalUserService {
 
     @Transactional
     @Override
-    public void updateUser(PortalUserEditDTO portalUserEditDTO){
+    public void editPortalUser(PortalUserEditDTO portalUserEditDTO){
         PortalUser portalUser = MapperUtils.mapperBean(portalUserEditDTO, PortalUser.class);
         portalUser.setUpdateTime(new Date());
-        int result = this.portalUserMapper.updateUser(portalUser);
-        if(result < 1){
-            throw new BlogRuntimeException("修改用户信息失败！");
-        }
+        this.portalUserMapper.updateUser(portalUser);
     }
 
 }

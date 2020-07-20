@@ -8,7 +8,7 @@ import com.blog.core.category.dto.ManageCategoryIdDTO;
 import com.blog.core.category.entity.ManageCategory;
 import com.blog.core.category.vo.ManageCategoryVO;
 import com.blog.core.category.service.ManageCategoryService;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.entity.SecurityUser;
@@ -56,7 +56,7 @@ public class ManageCategoryServiceImpl implements ManageCategoryService {
         manageCategory.setCategoryId(primarykeyUtil.getPimaryKey());
         manageCategory.setCreateId(user.getUserId());
         manageCategory.setCreateTime(new Date());
-        manageCategory.setIsEnable(IsEnableEnum.Enable_YES);
+        manageCategory.setEnable(EnableEnum.Enable_YES);
         this.manageCategoryMapper.insertManageCategory(manageCategory);
     }
 

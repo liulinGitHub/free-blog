@@ -56,11 +56,8 @@ public class ManageArticle extends BaseModel {
    	@ApiModelProperty("浏览人数" )
 	private Integer readNumber;
 
-   	@ApiModelProperty("文章类型" )
-	private ArticleTypeEnum articleType;
-
    	@ApiModelProperty("置顶状态" )
-	private ArticleTopStatusEnum articleTopStatus;
+	private TopStatusEnum articleTopStatus;
 
    	@ApiModelProperty("是否开启评论" )
 	private ArticleCommentsStatusEnum articleCommentsStatus;
@@ -69,6 +66,6 @@ public class ManageArticle extends BaseModel {
 	private ArticleFineNoteStatusEnum articleFineNoteStatus;
 
 	@ApiModelProperty("删除标识" )
-	private IsEnableEnum isEnable;
+	private EnableEnum enable;
 
 }

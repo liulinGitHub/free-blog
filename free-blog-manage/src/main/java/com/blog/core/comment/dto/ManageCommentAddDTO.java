@@ -1,6 +1,6 @@
 package com.blog.core.comment.dto;
 
-import com.blog.core.common.enums.CommentBelongTypeEnum;
+import com.blog.core.common.enums.CommentTypeEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -24,7 +24,7 @@ public class ManageCommentAddDTO {
     private String commentParentId;
 
     @ApiModelProperty("评论所属")
-    private CommentBelongTypeEnum commentBelongType;
+    private CommentTypeEnum commentType;
 
     @ApiModelProperty("评论所属")
     private String belongId;

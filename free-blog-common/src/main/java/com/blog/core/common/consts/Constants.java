@@ -3,9 +3,9 @@ package com.blog.core.common.consts;
 import com.blog.core.common.enums.ApprovalTypeEnum;
 
 /**
- * @program: CommonConst
+ * @ClassName: CommonConst
  * @description: 常用常量
- * @author: liulin
+ * @author: 950103
  * @create: 2019-06-29 11:26
  * @Version: 1.0
  */

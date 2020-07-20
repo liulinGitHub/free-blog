@@ -1,7 +1,6 @@
 package com.blog.core.system.menu.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blog.core.system.menu.entity.PortalMenuTree;
 import com.blog.core.system.menu.service.PortalMenuService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

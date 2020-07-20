@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 /**
  * @CalssName: ResponseResultHandler
  * @description: 结果返回处理器
- * @author: liulin
+ * @author: 950103
  * @create: 2020-04-08 17:09
  * @Version: 1.0
  */

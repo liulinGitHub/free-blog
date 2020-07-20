@@ -6,9 +6,9 @@ package com.blog.core.common.tio;
 import org.tio.utils.time.Time;
 
 /**
- * @ClassNmae: TioServerConfig
+ * @ClassName: TioServerConfig
  * @description: TIO 配置文件
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/6/10 00:08
  **/
 public abstract class TioServerConfig {

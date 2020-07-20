@@ -2,7 +2,7 @@ package com.blog.core.system.user.controller;
 
 import com.blog.core.common.redis.RedisUtil;
 import com.blog.core.common.utils.ResponseBo;
-import com.blog.core.system.user.entity.domain.SecurityUserDetails;
+import com.blog.core.system.user.entity.SecurityUserDetails;
 import com.blog.core.system.user.service.PortalUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,10 +15,9 @@ import javax.annotation.Resource;
 /**
  * @ClassNmae: UserLoginController
  * @description: 用户登陆Controller
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/4/11 23:19
  **/
-
 @Api(value = "用户登陆Controller",tags = "用户登陆")
 @RestController
 public class PortalUserLoginController {

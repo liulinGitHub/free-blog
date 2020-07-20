@@ -20,12 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @ClassNmae:NbBolgSwagger
+ * @ClassName: FreeBlogSwagger
  * @description: Swagger
- * @Author:liulin
+ * @Author:950103
  * @Date: 2019/4/7 10:02
  **/
-
 @Configuration
 @EnableSwagger2
 public class FreeBlogSwagger implements WebMvcConfigurer {

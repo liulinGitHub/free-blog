@@ -8,9 +8,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @program: PortalRoleMenuService
+ * @ClassName: PortalRoleMenuServiceImpl
  * @description: 角色菜单实现类
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-30 16:10
  * @Version: 1.0
  */

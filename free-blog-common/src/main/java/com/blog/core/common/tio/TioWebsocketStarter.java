@@ -4,9 +4,9 @@ import org.tio.server.ServerGroupContext;
 import org.tio.websocket.server.WsServerStarter;
 
 /**
- * @ClassNmae: TioWebsocketStarter
+ * @ClassName: TioWebsocketStarter
  * @description: TIO 配置文件
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/6/10 00:08
  **/
 

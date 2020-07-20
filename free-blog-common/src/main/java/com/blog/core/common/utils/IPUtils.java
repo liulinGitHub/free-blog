@@ -1,20 +1,11 @@
 package com.blog.core.common.utils;
 
-import cn.hutool.core.io.resource.ClassPathResource;
 import com.alibaba.fastjson.JSON;
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.UserAgent;
-import com.blog.core.common.consts.Constants;
-import org.lionsoul.ip2region.DataBlock;
-import org.lionsoul.ip2region.DbConfig;
-import org.lionsoul.ip2region.DbSearcher;
-
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -22,10 +13,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @program: nbbolg
+ * @ClassName: IPUtils
  * @description:
- * @author: liulin
- * @create: 2019-04-08 20:11
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
  */
 public class IPUtils {
 

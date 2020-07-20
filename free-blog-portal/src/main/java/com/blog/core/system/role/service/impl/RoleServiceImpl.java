@@ -4,14 +4,13 @@ import com.blog.core.common.aspect.RequestHolder;
 import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.common.utils.UUIDUtil;
 import com.blog.core.common.utils.MapperUtils;
-import com.blog.core.system.menu.service.PortalMenuService;
 import com.blog.core.system.menu.service.PortalRoleMenuService;
 import com.blog.core.system.role.dao.PortalRoleMapper;
-import com.blog.core.system.role.entity.domain.PortalUserRole;
-import com.blog.core.system.role.entity.dto.PortalUserRoleAddQO;
-import com.blog.core.system.role.entity.vo.PortalRoleMenuInfoVO;
-import com.blog.core.system.role.entity.vo.PortalRoleVO;
+import com.blog.core.system.role.dto.PortalUserRoleAddQO;
+import com.blog.core.system.role.entity.PortalUserRole;
 import com.blog.core.system.role.service.PortalRoleService;
+import com.blog.core.system.role.vo.PortalRoleMenuInfoVO;
+import com.blog.core.system.role.vo.PortalRoleVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
@@ -19,12 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
- * @ClassNmae: RoleServiceImpl
+ * @ClassName: RoleServiceImpl
  * @description: 角色信息service
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/4/14 23:20
  **/
 @Slf4j

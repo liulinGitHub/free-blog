@@ -1,8 +1,8 @@
 package com.blog.core.comment.entity;
 
 import com.blog.core.common.entity.BaseModel;
-import com.blog.core.common.enums.CommentBelongTypeEnum;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.CommentTypeEnum;
+import com.blog.core.common.enums.EnableEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -36,11 +36,11 @@ public class ManageComment extends BaseModel {
     private Date commentTime;
 
     @ApiModelProperty("评论所属")
-    private CommentBelongTypeEnum commentBelongType;
+    private CommentTypeEnum commentType;
 
     @ApiModelProperty("评论所属")
     private String commentBelongId;
 
     @ApiModelProperty("启用/停用")
-    private IsEnableEnum isEnable;
+    private EnableEnum enable;
 }

@@ -1,9 +1,9 @@
 package com.blog.core.common.consts;
 
 /**
- * @program: SecurityConstants
+ * @ClassName: SecurityAuthorizationConstants
  * @description: 权限常量
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-30 16:55
  * @Version: 1.0
  */

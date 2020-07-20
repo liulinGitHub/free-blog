@@ -1,8 +1,8 @@
 package com.blog.core.category.entity;
 
 import com.blog.core.common.entity.BaseModel;
-import com.blog.core.common.enums.CategoryBelongTypeEnum;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.CategoryTypeEnum;
+import com.blog.core.common.enums.EnableEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -25,7 +25,7 @@ public class ManageCategory extends BaseModel {
     private String parentCategoryId;
 
     @ApiModelProperty("分类所属")
-    private CategoryBelongTypeEnum categoryBelongType;
+    private CategoryTypeEnum categoryBelongType;
 
     @ApiModelProperty("分类所属id")
     private String categoryBelongId;
@@ -34,5 +34,5 @@ public class ManageCategory extends BaseModel {
     private Integer sort;
 
     @ApiModelProperty("删除标识" )
-    private IsEnableEnum isEnable;
+    private EnableEnum enable;
 }

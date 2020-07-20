@@ -1,4 +1,5 @@
-package com.blog.core.common.tread;//package com.blog.core.common.tread;
+package com.blog.core.common.tread;
+//package com.blog.core.common.tread;
 //
 //import java.text.DecimalFormat;
 //import java.util.Random;
@@ -10,9 +11,9 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * @program: TreadPoolConfig
+ * @ClassName: TreadPoolConfig
  * @description: 线程池
- * @author: liulin
+ * @author: 950103
  * @create: 2019-07-03 11:09
  * @Version: 1.0
  */

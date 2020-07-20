@@ -5,6 +5,13 @@ import lombok.Data;
 
 import java.util.HashMap;
 
+/**
+ * @ClassName: ResponseBo
+ * @description:
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
+ */
 @Data
 public class ResponseBo extends HashMap<String, Object> {
 

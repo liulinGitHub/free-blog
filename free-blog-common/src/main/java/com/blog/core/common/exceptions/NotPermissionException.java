@@ -1,9 +1,9 @@
 package com.blog.core.common.exceptions;
 
 /**
- * @program: NotPermissionException
+ * @ClassName: NotPermissionException
  * @description: 访问权限不足
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-30 17:36
  * @Version: 1.0
  */

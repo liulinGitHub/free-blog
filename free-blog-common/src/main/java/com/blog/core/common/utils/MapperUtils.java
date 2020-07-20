@@ -9,10 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @program: nbbolg
+ * @ClassName: MapperUtils
  * @description:
- * @author: liulin
- * @create: 2019-04-27 13:54
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
  */
 public class MapperUtils {
 

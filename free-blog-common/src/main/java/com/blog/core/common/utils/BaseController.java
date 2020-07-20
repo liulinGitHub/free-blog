@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * @CalssNmae: BaseController
+ * @ClassName: BaseController
  * @description:
  * @author: 950103
  * @create: 2019-04-27 13:43

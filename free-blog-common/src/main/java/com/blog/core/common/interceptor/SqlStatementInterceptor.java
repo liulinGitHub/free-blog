@@ -22,9 +22,9 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 
 /**
- * @program: SqlStatementInterceptor
+ * @ClassName: SqlStatementInterceptor
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-10 11:19
  * @Version: 1.0
  */

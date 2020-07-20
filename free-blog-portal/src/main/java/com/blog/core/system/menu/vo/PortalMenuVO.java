@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @ClassNmae: SysBaseRole
+ * @ClassName: PortalMenuVO
  * @description: 菜单返回前端VO
  * @Author: liulin
  * @Date: 2019/4/18 23:48
@@ -14,13 +14,13 @@ import java.util.List;
 @Data
 public class PortalMenuVO {
 
-    @ApiModelProperty("菜单ID")
-    private String menuId;
+    @ApiModelProperty("菜单Code")
+    private String menuCode;
 
-    @ApiModelProperty("菜单父ID")
-    private String parentId;
+    @ApiModelProperty("菜单父Code")
+    private String parentCode;
 
-    @ApiModelProperty(value="菜单名称")
+    @ApiModelProperty("菜单名称")
     private String menuName;
 
     @ApiModelProperty("返回给前端的标识（如新增 add）")
@@ -50,9 +50,6 @@ public class PortalMenuVO {
     @ApiModelProperty("标识菜单是前端还是后台")
     private String isWeb;
 
-    /**
-     * 父菜单名称
-     */
     private String parentName;
 
     private List<PortalMenuVO> menuVOList;

@@ -1,11 +1,12 @@
 package com.blog.core.system.role.dao;
 
-import com.blog.core.system.role.entity.domain.PortalUserRole;
+
+import com.blog.core.system.role.entity.PortalUserRole;
 
 /**
- * @program: PortalUserRoleMapper
+ * @ClassName: PortalUserRoleMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-10 10:51
  * @Version: 1.0
  */

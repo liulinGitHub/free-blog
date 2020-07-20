@@ -20,9 +20,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * File工具类，扩展 hutool 工具包
- * @author Zheng Jie
- * @date 2018-12-27
+ * @ClassName: FileUtil
+ * @description: File工具类，扩展 hutool 工具包
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
  */
 public class FileUtil extends cn.hutool.core.io.FileUtil {
 

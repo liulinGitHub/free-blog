@@ -1,6 +1,9 @@
 package com.blog.core.system.user.service;
 
+import com.blog.core.attentioninfo.vo.AttentionUserVO;
 import com.blog.core.system.user.entity.PortalCommonUser;
+
+import java.util.List;
 
 /**
  * @ClassName: PortalCommonUserService
@@ -19,4 +22,12 @@ public interface PortalCommonUserService {
      * @return
      */
     PortalCommonUser queryPortalCommonUserByUserId(String userId);
+
+    /**
+     * 根据用户ID查询关注(被关注)的用户信息
+     *
+     * @param userIdList
+     * @return
+     */
+    List<AttentionUserVO> queryPortalAttentionUserInfo(List<String> userIdList);
 }

@@ -1,6 +1,5 @@
 package com.blog.core.common.redis;
 
-import com.blog.core.common.utils.FastJson2JsonRedisSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,16 +22,15 @@ import org.springframework.data.redis.connection.lettuce.LettucePoolingClientCon
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.lang.Nullable;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
 
 /**
- * @program: RedisConfig
+ * @ClassName: RedisConfig
  * @description: redis配置类
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-15 18:39
  * @Version: 1.0
  */

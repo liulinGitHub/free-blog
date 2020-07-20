@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @program: free-blog
+ * @ClassName: ExceptionEnum
  * @description: 异常信息枚举
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-04 17:34
  */
 

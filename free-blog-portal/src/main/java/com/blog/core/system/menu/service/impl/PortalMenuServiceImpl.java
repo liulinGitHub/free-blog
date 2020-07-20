@@ -1,25 +1,19 @@
 package com.blog.core.system.menu.service.impl;
 
-import com.blog.core.common.aspect.RequestHolder;
-import com.blog.core.common.enums.SupperEnum;
-import com.blog.core.common.exceptions.TokenException;
 import com.blog.core.system.menu.dao.PortalMenuMapper;
-import com.blog.core.system.menu.entity.PortalMenuTree;
 import com.blog.core.system.menu.service.PortalMenuService;
+import com.blog.core.system.menu.vo.PortalMenuTree;
 import com.blog.core.system.menu.vo.PortalMenuVO;
-import com.blog.core.system.user.entity.vo.PortalUserVO;
 import com.blog.core.system.user.service.PortalUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
- * @ClassNmae: SysBaseMenuServiceImpl
+ * @ClassName: PortalMenuServiceImpl
  * @description: 角色信息service
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/4/14 23:20
  **/
 @Slf4j

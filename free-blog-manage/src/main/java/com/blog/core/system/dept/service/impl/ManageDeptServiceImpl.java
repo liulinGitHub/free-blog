@@ -1,6 +1,6 @@
 package com.blog.core.system.dept.service.impl;
 
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.utils.SecurityUtils;
@@ -71,7 +71,7 @@ public class ManageDeptServiceImpl implements ManageDeptService {
         String userId = SecurityUtils.getUserId();
         ManageDept manageDept = MapperUtils.mapperBean(manageDeptAddDTO, ManageDept.class);
         manageDept.setDeptId(primarykeyUtil.getPimaryKey());
-        manageDept.setIsEnable(IsEnableEnum.Enable_YES);
+        manageDept.setEnable(EnableEnum.Enable_YES);
         manageDept.setCreateId(userId);
         manageDept.setCreateTime(new Date());
         this.manageDeptMapper.insertManageDept(manageDept);

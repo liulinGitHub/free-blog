@@ -1,9 +1,9 @@
 package com.blog.core.common.consts;
 
 /**
- * @program: MQTopicConstants
+ * @ClassName: MQTopicConstants
  * @description: MQ Topic静态常量
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-29 16:50
  * @Version: 1.0
  */

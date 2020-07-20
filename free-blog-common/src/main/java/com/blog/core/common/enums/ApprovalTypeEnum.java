@@ -1,7 +1,7 @@
 package com.blog.core.common.enums;
 
 /**
- * @ClassNmae: ArticleApprovalEnum
+ * @ClassName: ArticleApprovalEnum
  * @description: 点赞枚举
  * @Author: 950103
  * @Date: 2020/3/25 11:15

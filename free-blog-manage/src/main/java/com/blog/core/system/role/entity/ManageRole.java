@@ -26,6 +26,6 @@ public class ManageRole extends BaseModel {
     private String roleCode;
 
     @ApiModelProperty("启用/停用")
-    private String isEnable;
+    private String enable;
 
 }

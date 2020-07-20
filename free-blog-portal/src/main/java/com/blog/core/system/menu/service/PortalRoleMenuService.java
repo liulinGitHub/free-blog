@@ -3,9 +3,9 @@ package com.blog.core.system.menu.service;
 import java.util.List;
 
 /**
- * @program: PortalRoleMenuService
+ * @ClassName: PortalRoleMenuService
  * @description: 角色菜单service
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-30 16:03
  * @Version: 1.0
  */

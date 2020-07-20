@@ -1,9 +1,9 @@
 package com.blog.core.tag.service.impl;
 
 import com.blog.core.tag.dao.PortalTagMapper;
-import com.blog.core.tag.entity.qo.PortalTagQueryDTO;
-import com.blog.core.tag.entity.vo.PortalTagVO;
+import com.blog.core.tag.dto.PortalTagQueryDTO;
 import com.blog.core.tag.service.PortalTagService;
+import com.blog.core.tag.vo.PortalTagVO;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;

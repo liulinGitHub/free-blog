@@ -1,6 +1,6 @@
 package com.blog.core.category.dto;
 
-import com.blog.core.common.enums.CategoryBelongTypeEnum;
+import com.blog.core.common.enums.CategoryTypeEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -24,7 +24,7 @@ public class ManageCategoryAddDTO {
     private String parentCategoryId;
 
     @ApiModelProperty("分类所属")
-    private CategoryBelongTypeEnum categoryBelongType;
+    private CategoryTypeEnum categoryType;
 
     @ApiModelProperty("分类所属id")
     private String categoryBelongId;

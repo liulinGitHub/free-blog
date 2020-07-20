@@ -1,15 +1,15 @@
 package com.blog.core.tag.dao;
 
-import com.blog.core.tag.entity.qo.PortalTagQueryDTO;
-import com.blog.core.tag.entity.vo.PortalTagVO;
+import com.blog.core.tag.dto.PortalTagQueryDTO;
+import com.blog.core.tag.vo.PortalTagVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * @program: ManageTagMapper
+ * @ClassName: ManageTagMapper
  * @description: 标签mapper
- * @author: liulin
+ * @author: 950103
  * @create: 2019-07-23 17:48
  * @Version: 1.0
  */

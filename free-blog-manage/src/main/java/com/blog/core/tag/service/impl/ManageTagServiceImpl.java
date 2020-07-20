@@ -1,6 +1,6 @@
 package com.blog.core.tag.service.impl;
 
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.entity.SecurityUser;
@@ -56,7 +56,7 @@ public class ManageTagServiceImpl implements ManageTagService {
         manageTag.setTagId(primarykeyUtil.getPimaryKey());
         manageTag.setCreateId(user.getUserId());
         manageTag.setCreateTime(new Date());
-        manageTag.setIsEnable(IsEnableEnum.Enable_YES);
+        manageTag.setEnable(EnableEnum.Enable_YES);
         this.manageTagMapper.insertManageTag(manageTag);
     }
 

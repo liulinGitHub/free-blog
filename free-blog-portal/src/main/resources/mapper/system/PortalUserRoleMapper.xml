@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blog.core.system.role.dao.PortalUserRoleMapper">
 
-    <select id="selectUserRoleByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.role.entity.domain.PortalUserRole">
+    <select id="selectUserRoleByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.role.entity.PortalUserRole">
         SELECT
             id,
             role_id,
@@ -13,7 +13,7 @@
             user_id = #{userId}
     </select>
 
-    <insert id="insertUserRole" parameterType="com.blog.core.system.role.entity.domain.PortalUserRole">
+    <insert id="insertUserRole" parameterType="com.blog.core.system.role.entity.PortalUserRole">
         INSERT INTO portal_user_role
         (role_id, user_id, create_id,create_time)
         VALUES

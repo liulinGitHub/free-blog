@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @program: PortalMenuMapper
+ * @ClassName: PortalMenuMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-10-09 18:50
  * @Version: 1.0
  */

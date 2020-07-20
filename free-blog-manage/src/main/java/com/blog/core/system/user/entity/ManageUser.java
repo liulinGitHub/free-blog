@@ -1,7 +1,7 @@
 package com.blog.core.system.user.entity;
 
 import com.blog.core.common.entity.BaseModel;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -39,5 +39,5 @@ public class ManageUser extends BaseModel {
 
     private String attentionId;
 
-    private IsEnableEnum isEnable;
+    private EnableEnum enable;
 }

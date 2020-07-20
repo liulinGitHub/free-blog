@@ -1,24 +1,27 @@
 package com.blog.core.system.menu.entity;
 
 import com.blog.core.common.entity.BaseModel;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.enums.MenuTypeEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @ClassNmae: SysBaseRole
+ * @ClassName: PortalMenu
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/4/18 23:48
  **/
 @Data
 public class PortalMenu extends BaseModel {
 
-    @ApiModelProperty("菜单父ID")
-    private String parentId;
+    @ApiModelProperty("菜单code")
+    private String menuCode;
 
-    @ApiModelProperty(value="菜单名称")
+    @ApiModelProperty("菜单父Code")
+    private String parentCode;
+
+    @ApiModelProperty("菜单名称")
     private String menuName;
 
     @ApiModelProperty("返回给前端的标识（如新增 add）")
@@ -40,6 +43,6 @@ public class PortalMenu extends BaseModel {
     private String perms;
 
     @ApiModelProperty("启用/停用")
-    private IsEnableEnum isEnable;
+    private EnableEnum enable;
 
 }

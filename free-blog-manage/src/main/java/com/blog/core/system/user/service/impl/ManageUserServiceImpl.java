@@ -1,6 +1,6 @@
 package com.blog.core.system.user.service.impl;
 
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.system.auth.entity.SecurityUser;
@@ -86,7 +86,7 @@ public class ManageUserServiceImpl implements ManageUserService {
         manageUser.setUserId(primarykeyUtil.getPimaryKey());
         manageUser.setCreateId(user.getUserId());
         manageUser.setCreateTime(new Date());
-        manageUser.setIsEnable(IsEnableEnum.Enable_YES);
+        manageUser.setEnable(EnableEnum.Enable_YES);
         this.manageUserMapper.insertManageUser(manageUser);
         //添加用户角色关联信息
         List<String> roleIdList = manageUserAddDTO.getRoles().stream().map(ManageRoleIdDTO::getRoleId).collect(Collectors.toList());

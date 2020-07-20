@@ -66,16 +66,16 @@ public class ManageArticleListVO {
     private String articleType;
 
     @ApiModelProperty("置顶状态" )
-    private String articleTopStatus;
+    private String topStatus;
 
     @ApiModelProperty("是否开启评论" )
-    private String articleCommentsStatus;
+    private String commentsStatus;
 
     @ApiModelProperty("是否精帖" )
     private String articleFineNoteStatus;
 
     @ApiModelProperty("删除标识" )
-    private String isEnable;
+    private String enable;
 
     @ApiModelProperty(name = "发表文章的作者的头像" )
     private String articleAuthorImage;
@@ -97,25 +97,18 @@ public class ManageArticleListVO {
         return EnumUtils.getByValue(ReleaseStatusEnum.class, this.articleReleaseStatus).getName();
     }
 
-    public String getArticleTypeName() {
-        if(StringUtils.isEmpty(articleType)){
+    public String getTopStatusName() {
+        if(StringUtils.isEmpty(topStatus)){
             return null;
         }
-        return EnumUtils.getByValue(ArticleTypeEnum.class, this.articleType).getName();
+        return EnumUtils.getByValue(TopStatusEnum.class, this.topStatus).getName();
     }
 
-    public String getArticleTopStatusName() {
-        if(StringUtils.isEmpty(articleTopStatus)){
+    public String getCommentsStatusName() {
+        if(StringUtils.isEmpty(commentsStatus)){
             return null;
         }
-        return EnumUtils.getByValue(ArticleTopStatusEnum.class, this.articleTopStatus).getName();
-    }
-
-    public String getArticleCommentsStatusName() {
-        if(StringUtils.isEmpty(articleCommentsStatus)){
-            return null;
-        }
-        return EnumUtils.getByValue(ArticleCommentsStatusEnum.class, this.articleCommentsStatus).getName();
+        return EnumUtils.getByValue(ArticleCommentsStatusEnum.class, this.commentsStatus).getName();
     }
 
     public String getArticleFineNoteStatusName() {
@@ -125,10 +118,10 @@ public class ManageArticleListVO {
         return EnumUtils.getByValue(ArticleFineNoteStatusEnum.class, this.articleFineNoteStatus).getName();
     }
 
-    public String getIsEnableName() {
-        if(StringUtils.isEmpty(isEnable)){
+    public String getEnableName() {
+        if(StringUtils.isEmpty(enable)){
             return null;
         }
-        return EnumUtils.getByValue(IsEnableEnum.class, this.isEnable).getName();
+        return EnumUtils.getByValue(EnableEnum.class, this.enable).getName();
     }
 }

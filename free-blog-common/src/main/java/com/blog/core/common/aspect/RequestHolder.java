@@ -4,9 +4,9 @@ package com.blog.core.common.aspect;
 import org.springframework.stereotype.Component;
 
 /**
- * @program: RequestHolder
+ * @ClassName: RequestHolder
  * @description: threadLocal处理类
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-16 11:06
  * @Version: 1.0
  */

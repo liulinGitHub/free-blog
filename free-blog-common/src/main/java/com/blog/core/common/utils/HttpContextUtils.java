@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 /**
- * @program: nbbolg
+ * @ClassName: HttpContextUtils
  * @description:
- * @author: liulin
- * @create: 2019-04-08 20:11
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
  */
 public class HttpContextUtils {
 

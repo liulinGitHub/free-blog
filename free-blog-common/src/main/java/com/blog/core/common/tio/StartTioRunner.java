@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * @ClassNmae: StartTioRunner
+ * @ClassName: StartTioRunner
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/6/10 00:04
  **/
 @Component

@@ -1,9 +1,9 @@
 package com.blog.core.common.exceptions;
 
 /**
- * @program: free-blog
+ * @ClassName: DataNotFoundException
  * @description: 数据未找到
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-04 17:54
  */
 public class DataNotFoundException extends RuntimeException {

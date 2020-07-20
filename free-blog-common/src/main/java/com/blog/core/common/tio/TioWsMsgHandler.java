@@ -8,9 +8,9 @@ import org.tio.websocket.common.WsRequest;
 import org.tio.websocket.server.handler.IWsMsgHandler;
 
 /**
- * @ClassNmae: TioWsMsgHandler
+ * @ClassName: TioWsMsgHandler
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/6/9 23:45
  **/
 @Component

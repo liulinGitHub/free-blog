@@ -1,11 +1,11 @@
 package com.blog.core.system.user.dao;
 
-import com.blog.core.system.user.entity.domain.PortalUser;
-import com.blog.core.system.user.entity.dto.PortalUserLoginDTO;
-import com.blog.core.system.user.entity.dto.PortalUserQueryDTO;
-import com.blog.core.system.user.entity.vo.PortalUserInfoVO;
+import com.blog.core.system.user.dto.PortalUserLoginDTO;
+import com.blog.core.system.user.dto.PortalUserQueryDTO;
+import com.blog.core.system.user.entity.PortalUser;
+import com.blog.core.system.user.vo.PortalUserInfoVO;
 import com.blog.core.system.user.vo.PortalUserLoginVO;
-import com.blog.core.system.user.entity.vo.PortalUserVO;
+import com.blog.core.system.user.vo.PortalUserVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

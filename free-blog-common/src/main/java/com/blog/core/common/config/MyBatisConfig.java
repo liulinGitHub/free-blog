@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @ClassName: MyBatisConfig
+ * @description: MyBatis
+ * @Author:950103
+ * @Date: 2019/4/7 10:02
+ **/
 @Configuration
 public class MyBatisConfig {
 

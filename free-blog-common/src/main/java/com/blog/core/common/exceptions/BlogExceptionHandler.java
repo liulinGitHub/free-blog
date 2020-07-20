@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.security.access.AccessDeniedException;
 
 /**
- * @program: free_blog
+ * @ClassName: BlogExceptionHandler
  * @description: 自定义全局异常
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-22 17:24
  */
 @Slf4j

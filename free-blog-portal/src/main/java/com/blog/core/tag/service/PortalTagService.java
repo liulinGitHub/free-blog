@@ -1,7 +1,7 @@
 package com.blog.core.tag.service;
 
-import com.blog.core.tag.entity.qo.PortalTagQueryDTO;
-import com.blog.core.tag.entity.vo.PortalTagVO;
+import com.blog.core.tag.dto.PortalTagQueryDTO;
+import com.blog.core.tag.vo.PortalTagVO;
 
 import java.util.List;
 

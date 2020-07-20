@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 获取枚举列表
- *
- * @author guohuaming
- * @version 1.0.0
- * @date 2017-06-14
+ * @ClassName: EnumUtils
+ * @description: 获取枚举列表
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
  */
 public class EnumUtils {
 

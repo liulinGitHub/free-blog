@@ -1,7 +1,7 @@
 package com.blog.core.tag.entity;
 
 import com.blog.core.common.entity.BaseModel;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -24,5 +24,5 @@ public class ManageTag extends BaseModel {
     private String tagCateGoryId;
 
     @ApiModelProperty("停用/启用")
-    private IsEnableEnum isEnable;
+    private EnableEnum enable;
 }

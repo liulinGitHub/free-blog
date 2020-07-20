@@ -2,27 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.message.dao.PortalMessageMapper">
 
-    <select id="selectPortalMessageByPage" parameterType="com.blog.core.message.entity.dto.PortalMessageQueryDTO"
-            resultType="com.blog.core.message.entity.vo.PortalMessageVO">
+    <select id="selectPortalMessageByPage" parameterType="com.blog.core.message.dto.PortalMessageQueryDTO"
+            resultType="com.blog.core.message.vo.PortalMessageVO">
         SELECT
-            id,
-            receive_id,
-            receive_time,
-            send_id,
-            send_time,
-            content,
-            message_type,
-            read_status
+            message_id messageId,
+            receive_id receiveId,
+            receive_time receiveTime,
+            send_id sendId,
+            send_time sendTime,
+            content content,
+            message_type messageType,
+            read_status readStatus
         FROM
-        portal_im_message
+            portal_message
         WHERE
-        message_type = #{messageType.value}
+            message_type = #{messageType.value}
+        AND
+            receive_id = #{userId}
     </select>
 
-    <insert id="insertPortalMessage" parameterType="com.blog.core.message.entity.domain.PortalMessage">
-        INSERT INTO portal_im_message
-        (id, receive_id, receive_time, send_id, send_id, send_time, content, message_type, read_status)
+    <insert id="insertPortalMessage" parameterType="com.blog.core.message.entity.PortalMessage">
+        INSERT INTO portal_message
+        (message_id, receive_id, receive_time, send_id, send_time, content, message_type, read_status)
         VALUES
-        (#{id}, #{receiveId}, #{receiveTime}, #{sendId}, #{sendTime}, #{content}, #{messageType}, #{readStatus})
+        (#{messageId}, #{receiveId}, #{receiveTime}, #{sendId}, #{sendTime}, #{content}, #{messageType}, #{readStatus})
     </insert>
 </mapper>

@@ -8,11 +8,11 @@ import org.springframework.core.convert.converter.ConverterFactory;
 import java.util.Map;
 
 /**
- * @Describe
- * @Author:
- * @Date: 2019/3/20 9:32
- * @Version 1.0
- */
+ * @ClassName: EnumConverterFactory
+ * @description:
+ * @Author: 950103
+ * @Date: 2019/12/19 23:43
+ **/
 public class EnumConverterFactory implements ConverterFactory<String, BaseEnum> {
 
     private static final Map<Class, Converter> converterMap = Maps.newHashMap();

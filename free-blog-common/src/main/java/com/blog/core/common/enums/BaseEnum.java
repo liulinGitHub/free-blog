@@ -1,9 +1,9 @@
 package com.blog.core.common.enums;
 
 /**
- * @program: nbbolg
+ * @ClassName: BaseEnum
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-27 14:35
  */
 public interface BaseEnum {

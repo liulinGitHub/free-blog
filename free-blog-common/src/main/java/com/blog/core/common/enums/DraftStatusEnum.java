@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @ClassName: DraftStatus
+ * @ClassName: DraftStatusEnum
  * @Description: 是否草稿枚举 0 是草稿 1 不是草稿
  * @date: 2020/7/20 0:58
  * @author: 950103

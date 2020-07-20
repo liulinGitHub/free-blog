@@ -1,7 +1,7 @@
 package com.blog.core.system.job.entity;
 
 import com.blog.core.common.entity.BaseModel;
-import com.blog.core.common.enums.IsEnableEnum;
+import com.blog.core.common.enums.EnableEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -25,5 +25,5 @@ public class ManageJob extends BaseModel {
     private String deptId;
 
     @ApiModelProperty("启用/停用")
-    private IsEnableEnum isEnable;
+    private EnableEnum enable;
 }

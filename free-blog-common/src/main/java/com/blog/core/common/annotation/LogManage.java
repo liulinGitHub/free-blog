@@ -6,9 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @program: LogManage
+ * @ClassName: LogManage
  * @description: 自定义日志注解
- * @author: liulin
+ * @author: 950103
  * @create: 2019-04-08 19:35
  */
 

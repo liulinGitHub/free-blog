@@ -1,5 +1,12 @@
 package com.blog.core.common.enums;
 
+/**
+ * @ClassName: ResponseCodeEnum
+ * @description: 请求返回Code枚举
+ * @author: 950103
+ * @create: 2019-05-27 17:35
+ * @Version: 1.0
+ */
 public enum ResponseCodeEnum {
 
     SUCCESS("响应成功",200),

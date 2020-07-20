@@ -6,10 +6,11 @@ import java.util.Arrays;
 import java.util.UUID;
 
 /**
- * @program: nbbolg
- * @description: 生成32的UUID
- * @author: liulin
- * @create: 2019-04-08 14:34
+ * @ClassName: UUIDUtil
+ * @description:
+ * @author: 950103
+ * @create: 2020-04-29 16:53
+ * @Version: 1.0
  */
 public class UUIDUtil {
 

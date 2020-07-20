@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 /**
- * @program: ResponseResultInterceptor
+ * @ClassName: ResponseResultInterceptor
  * @description: 结果集返回拦截器
- * @author: liulin
+ * @author: 950103
  * @create: 2020-04-08 14:01
  * @Version: 1.0
  */

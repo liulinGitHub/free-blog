@@ -1,6 +1,5 @@
 package com.blog.core.common.redis;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 

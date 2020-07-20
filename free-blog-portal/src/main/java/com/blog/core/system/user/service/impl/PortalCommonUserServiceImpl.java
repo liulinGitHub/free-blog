@@ -1,10 +1,13 @@
 package com.blog.core.system.user.service.impl;
 
+import com.blog.core.attentioninfo.vo.AttentionUserVO;
 import com.blog.core.system.user.dao.PortalCommonUserMapper;
 import com.blog.core.system.user.entity.PortalCommonUser;
 import com.blog.core.system.user.service.PortalCommonUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @ClassName: PortalCommonUserServiceImpl
@@ -22,5 +25,10 @@ public class PortalCommonUserServiceImpl implements PortalCommonUserService {
     @Override
     public PortalCommonUser queryPortalCommonUserByUserId(String userId) {
         return this.portalCommonUserMapper.selectPortalCommonUserByUserId(userId);
+    }
+
+    @Override
+    public List<AttentionUserVO> queryPortalAttentionUserInfo(List<String> userIdList) {
+        return this.portalCommonUserMapper.selectPortalAttentionUserInfo(userIdList);
     }
 }

@@ -22,7 +22,6 @@ public class PortalCategoryServiceImpl implements PortalCategoryService {
     @Autowired
     private PortalCategoryMapper portalCategoryMapper;
 
-
     @Override
     public List<PortalCategoryVO> queryCategoryByCategoryType(CategoryTypeEnum categoryTypeEnum) {
         return this.portalCategoryMapper.selectCategoryByCategoryType(categoryTypeEnum);

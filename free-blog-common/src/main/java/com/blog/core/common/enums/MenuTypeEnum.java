@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @program: MenuTypeEnum
- * @description:
- * @author: liulin
+ * @ClassName: MenuTypeEnum
+ * @description: 菜单类型枚举
+ * @author: 950103
  * @create: 2019-06-29 09:49
  * @Version: 1.0
  */

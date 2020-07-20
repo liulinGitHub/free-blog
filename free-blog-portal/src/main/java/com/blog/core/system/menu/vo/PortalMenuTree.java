@@ -6,9 +6,9 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @program: MenuTree
+ * @ClassName: MenuTree
  * @description: 返回
- * @author: liulin
+ * @author: 950103
  * @create: 2019-06-29 10:54
  * @Version: 1.0
  */

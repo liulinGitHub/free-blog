@@ -3,9 +3,9 @@ package com.blog.core.common.command;
 import lombok.Data;
 
 /**
- * @ClassNmae: AbstractCommand
+ * @ClassName: AbstractCommand
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/12/19 23:42
  **/
 @Data

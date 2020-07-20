@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @program: ResultTypeEnum
+ * @ClassName: ResultTypeEnum
  * @description: 返回结果枚举
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-24 16:41
  * @Version: 1.0
  */
-public enum  ResultTypeEnum implements BaseEnum {
+public enum ResultTypeEnum implements BaseEnum {
 
     SUCCESS("1", "成功"),
     ERROR("0", "失败");

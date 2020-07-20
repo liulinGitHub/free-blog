@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @program: MessageReadEnum
+ * @ClassName: MessageReadEnum
  * @description: 消息阅读枚举
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-16 10:48
  * @Version: 1.0
  */

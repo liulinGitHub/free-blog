@@ -54,19 +54,19 @@
     <update id="updateApproves" parameterType="java.lang.String">
         UPDATE portal_article
         SET approves = approves + 1
-        WHERE id = #{articleId}
+        WHERE article_id = #{articleId}
     </update>
 
     <update id="updateTemperature" parameterType="java.lang.String">
         UPDATE portal_article
         SET temperature = temperature + 1
-        WHERE id = #{articleId}
+        WHERE article_id = #{articleId}
     </update>
 
     <update id="updateComments" parameterType="java.lang.String">
         UPDATE portal_article
         SET comments = comments + 1
-        WHERE id = #{articleId}
+        WHERE article_id = #{articleId}
     </update>
 
     <update id="checkArticle" parameterType="com.blog.core.article.entity.PortalArticle">
@@ -74,7 +74,7 @@
         SET article_status = #{articleStatus},
         release_status = #{releaseStatus},
         release_date = #{releaseDate}
-        WHERE id = #{articleId}
+        WHERE article_id = #{articleId}
     </update>
 
     <update id="submitCheckArticle" parameterType="com.blog.core.article.entity.PortalArticle">
@@ -85,34 +85,38 @@
         article_tag = #{articleTag},
         article_images = #{articleImages},
         article_user_id = #{articleUserId}
-        WHERE id = #{articleId}
+        WHERE article_id = #{articleId}
     </update>
 
     <insert id="insertPortalArticleDraft" parameterType="com.blog.core.article.entity.PortalArticle">
         INSERT INTO
         portal_article
         (
-            `article_title`,
-            `article_content`,
-            `article_user_id`,
-            `article_tag`,
-            `article_images`,
-            `article_status`,
-            `release_status`,
-            `create_time`,
-            `create_name`
+            article_id,
+            article_title,
+            article_desc,
+            article_content,
+            article_user_id,
+            article_tag,
+            article_images,
+            article_status,
+            release_status,
+            create_id,
+            create_time
         )
         VALUES
         (
+            #{articleId},
             #{articleTitle},
+            #{articleDesc},
             #{articleContent},
             #{articleUserId},
             #{articleTag},
             #{articleImages},
             #{articleStatus},
             #{releaseStatus},
-            #{createTime},
-            #{createName}
+            #{createId},
+            #{createTime}
         )
 
     </insert>

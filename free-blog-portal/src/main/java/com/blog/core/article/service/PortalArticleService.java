@@ -23,7 +23,7 @@ public interface PortalArticleService {
      *
      * @return
      */
-    List<PortalArticleListVO> queryArticleByPage();
+    List<PortalArticleListVO> queryPortalArticleByPage();
 
     /**
      * 查看文章信息
@@ -31,23 +31,14 @@ public interface PortalArticleService {
      * @param articleId
      * @return
      */
-    PortalArticleDetailsVO queryArticleDetails(String articleId);
-
-    /**
-     * @Author ll
-     * @Description 编辑文章信息
-     * @Date 2020/1/27 21:10
-     * @Param [articleId]
-     * @return void
-     **/
-    void editArticleById(String articleId);
+    PortalArticleDetailsVO queryPortalArticleDetails(String articleId);
 
     /**
      * 提交审核
      *
      * @param portalArticleCheckDTO
      */
-    void submitCheckArticle(PortalArticleCheckDTO portalArticleCheckDTO);
+    void submitCheckPortalArticle(PortalArticleCheckDTO portalArticleCheckDTO);
 
     /**
      * 保存文章草稿

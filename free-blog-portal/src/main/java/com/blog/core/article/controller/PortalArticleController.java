@@ -32,29 +32,22 @@ public class PortalArticleController extends BaseController {
 
     @ApiOperation(value="分页查询文章信息", notes="")
     @GetMapping("/query")
-    public ResponseBo queryArticleByPage(QueryRequest queryRequest) {
+    public ResponseBo queryPortalArticleByPage(QueryRequest queryRequest) {
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->
-                this.portalArticleService.queryArticleByPage()));
+                this.portalArticleService.queryPortalArticleByPage()));
     }
 
     @LogPortal
     @ApiOperation(value="查看文章详细信息", notes="")
     @GetMapping("/details/{articleId}")
-    public ResponseBo queryArticleDetails(@PathVariable("articleId") String articleId) {
-        return ResponseBo.newDataResponse(this.portalArticleService.queryArticleDetails(articleId));
-    }
-
-    @ApiOperation(value="编辑文章信息", notes="")
-    @GetMapping("/edit/{articleId}")
-    public ResponseBo editArticleById(@PathVariable String articleId) {
-        this.portalArticleService.editArticleById(articleId);
-        return ResponseBo.ok("编辑成功！");
+    public ResponseBo queryPortalArticleDetails(@PathVariable("articleId") String articleId) {
+        return ResponseBo.newDataResponse(this.portalArticleService.queryPortalArticleDetails(articleId));
     }
 
     @ApiOperation(value="文章提交审核", notes="")
     @PutMapping("/check_article")
-    public ResponseBo submitCheckArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
-        this.portalArticleService.submitCheckArticle(portalArticleCheckDTO);
+    public ResponseBo submitCheckPortalArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
+        this.portalArticleService.submitCheckPortalArticle(portalArticleCheckDTO);
         return ResponseBo.ok("提交成功！");
     }
 

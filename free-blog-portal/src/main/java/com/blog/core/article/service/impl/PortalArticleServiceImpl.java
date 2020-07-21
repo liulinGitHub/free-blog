@@ -61,7 +61,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
      * @return
      */
     @Override
-    public List<PortalArticleListVO> queryArticleByPage() {
+    public List<PortalArticleListVO> queryPortalArticleByPage() {
         List<PortalArticleListVO> portalArticleListVOList = this.portalArticleMapper.selectArticleByPage();
         if (CollectionUtils.isNotEmpty(portalArticleListVOList)) {
             portalArticleListVOList.parallelStream().forEach(portalArticleListVO -> {
@@ -81,7 +81,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     }
 
     @Override
-    public PortalArticleDetailsVO queryArticleDetails(String articleId) {
+    public PortalArticleDetailsVO queryPortalArticleDetails(String articleId) {
         // 查询文章信息
         PortalArticleDetailsVO portalArticleDetailsVO = this.portalArticleMapper.selectArticleByArticleId(articleId);
         // 查询文章标签
@@ -101,13 +101,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
 
     @Transactional
     @Override
-    public void editArticleById(String articleId) {
-        this.portalArticleMapper.selectArticleByArticleId(articleId);
-    }
-
-    @Transactional
-    @Override
-    public void submitCheckArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
+    public void submitCheckPortalArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
         PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
         article.setArticleUserId(RequestHolder.get().toString());
         int result = this.portalArticleMapper.submitCheckArticle(article);

@@ -1,6 +1,6 @@
 package com.blog.core.article.vo;
 
-import com.blog.core.tag.entity.vo.PortalTagVO;
+import com.blog.core.tag.vo.PortalTagVO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

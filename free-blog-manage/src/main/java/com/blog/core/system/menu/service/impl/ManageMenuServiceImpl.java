@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 /**
  * @ClassNmae: ManageMenuServiceImpl
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/2/7 16:21
  **/
 @Service
@@ -49,7 +49,7 @@ public class ManageMenuServiceImpl implements ManageMenuService {
         List<ManageMenuListVO> manageMenuListVOS = new ArrayList<>();
         //如果是超级管理员就获得所有菜单
         //TODO 记得修改判断
-        if(SupperEnum.SUPPER.getValue().equals("1")){
+        if(user.getUsername().equals("admin")){
             manageMenuListVOS = this.manageMenuMapper.selectBuildManageMenuList();
         }else {
             manageMenuListVOS = this.manageMenuMapper.selectBuildManageMenuByUserId(user.getUserId());

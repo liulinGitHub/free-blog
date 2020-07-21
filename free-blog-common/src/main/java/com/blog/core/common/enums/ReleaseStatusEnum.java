@@ -30,7 +30,8 @@ public enum ReleaseStatusEnum implements BaseEnum {
         return value;
     }
 
-    public String getName() {
+    @Override
+	public String getName() {
         return name;
     }
 

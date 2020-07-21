@@ -1,8 +1,5 @@
 package com.blog.core.common.quartz;
 
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 
 /**
  * @ClassName: JobFactory
@@ -11,10 +8,6 @@ import org.quartz.JobExecutionException;
  * @create: 2020-07-20 17:13
  * @Version: 1.0
  */
-public class JobFactory implements Job {
+public class JobFactory {
 
-	@Override
-	public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-		jobExecutionContext.getMergedJobDataMap();
-	}
 }

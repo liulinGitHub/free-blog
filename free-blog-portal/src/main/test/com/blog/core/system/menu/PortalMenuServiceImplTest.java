@@ -1,7 +1,8 @@
-package com.blog.core.system.menu.service.impl;
+package com.blog.core.system.menu;
 
 import com.alibaba.fastjson.JSONObject;
 import com.blog.core.system.menu.service.PortalMenuService;
+import com.blog.core.system.menu.vo.PortalMenuTree;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

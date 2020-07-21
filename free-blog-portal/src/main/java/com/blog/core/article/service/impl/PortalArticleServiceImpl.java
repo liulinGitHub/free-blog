@@ -19,7 +19,7 @@ import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
 import com.blog.core.system.user.entity.PortalCommonUser;
 import com.blog.core.system.user.service.PortalCommonUserService;
-import com.blog.core.tag.entity.vo.PortalTagVO;
+import com.blog.core.tag.vo.PortalTagVO;
 import com.blog.core.tag.service.PortalTagService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;

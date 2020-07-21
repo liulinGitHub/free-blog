@@ -28,7 +28,8 @@ public enum EnableEnum implements BaseEnum {
         return value;
     }
 
-    public String getName() {
+    @Override
+	public String getName() {
         return name;
     }
 

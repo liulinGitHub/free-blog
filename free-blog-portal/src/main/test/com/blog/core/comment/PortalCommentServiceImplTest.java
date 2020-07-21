@@ -1,4 +1,4 @@
-package com.blog.core.comment.service.impl;
+package com.blog.core.comment;
 
 import com.alibaba.fastjson.JSONObject;
 import com.blog.core.comment.dto.PortalApprovalCommentDTO;

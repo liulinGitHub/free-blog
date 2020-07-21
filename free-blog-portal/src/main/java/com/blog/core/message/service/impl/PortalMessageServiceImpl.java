@@ -1,5 +1,6 @@
 package com.blog.core.message.service.impl;
 
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.enums.MessageReadEnum;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.common.utils.UUIDUtil;
@@ -40,6 +41,7 @@ public class PortalMessageServiceImpl implements PortalMessageService {
         PortalMessage portalMessage = MapperUtils.mapperBean(portalMessageAddDTO, PortalMessage.class);
         portalMessage.setMessageId(UUIDUtil.randomUUID32());
         portalMessage.setReadStatus(MessageReadEnum.MESSAGE_READ_NO);
+        portalMessage.setEnable(EnableEnum.Enable_YES);
         this.portalMessageMapper.insertPortalMessage(portalMessage);
     }
 }

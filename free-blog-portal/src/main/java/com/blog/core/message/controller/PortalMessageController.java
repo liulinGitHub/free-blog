@@ -29,7 +29,8 @@ public class PortalMessageController extends BaseController {
 
     @ApiOperation(value="分页查询消息信息", notes="")
     @GetMapping("/query")
-    public ResponseBo queryArticleByPage(QueryRequest request, PortalMessageQueryDTO portalMessageQueryDTO){
+    public ResponseBo queryPortalMessageByPage(QueryRequest request, PortalMessageQueryDTO portalMessageQueryDTO){
         return ResponseBo.newDataResponse(super.selectByPageNumSize(request,() -> this.portalMessageService.queryPortalMessageByPage(portalMessageQueryDTO)));
     }
 }
+

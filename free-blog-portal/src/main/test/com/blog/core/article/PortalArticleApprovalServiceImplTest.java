@@ -1,4 +1,4 @@
-package com.blog.core.article.service.impl;
+package com.blog.core.article;
 
 import com.alibaba.fastjson.JSONObject;
 import com.blog.core.approva.service.PortalApprovalService;

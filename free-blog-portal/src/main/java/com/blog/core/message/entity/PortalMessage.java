@@ -1,5 +1,6 @@
 package com.blog.core.message.entity;
 
+import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.enums.MessageReadEnum;
 import com.blog.core.common.enums.MessageTypeEnum;
 import io.swagger.annotations.ApiModelProperty;
@@ -40,4 +41,7 @@ public class PortalMessage {
 
     @ApiModelProperty("1 已读 0 未读")
     private MessageReadEnum readStatus;
+
+    @ApiModelProperty("启用/停用 1 启用 0 停用")
+    private EnableEnum enable;
 }

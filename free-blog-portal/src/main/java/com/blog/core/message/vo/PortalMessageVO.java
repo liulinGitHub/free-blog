@@ -1,7 +1,6 @@
 package com.blog.core.message.vo;
 
-import com.blog.core.common.enums.MessageReadEnum;
-import com.blog.core.common.enums.MessageTypeEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -24,12 +23,14 @@ public class PortalMessageVO {
     private String receiveId;
 
     @ApiModelProperty("接收时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date receiveTime;
 
     @ApiModelProperty("发送人id")
     private String sendId;
 
     @ApiModelProperty("发送时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date sendTime;
 
     @ApiModelProperty("发送内容")

@@ -19,12 +19,14 @@
             message_type = #{messageType.value}
         AND
             receive_id = #{userId}
+        AND
+            enable = '1'
     </select>
 
     <insert id="insertPortalMessage" parameterType="com.blog.core.message.entity.PortalMessage">
         INSERT INTO portal_message
-        (message_id, receive_id, receive_time, send_id, send_time, content, message_type, read_status)
+        (message_id, receive_id, receive_time, send_id, send_time, content, message_type, read_status, enable)
         VALUES
-        (#{messageId}, #{receiveId}, #{receiveTime}, #{sendId}, #{sendTime}, #{content}, #{messageType}, #{readStatus})
+        (#{messageId}, #{receiveId}, #{receiveTime}, #{sendId}, #{sendTime}, #{content}, #{messageType.value}, #{readStatus.value}, #{enable.value})
     </insert>
 </mapper>

@@ -17,6 +17,7 @@ public interface PortalMessageService {
 
     /**
      * 查询消息
+     *
      * @param portalMessageQueryDTO
      * @return
      */
@@ -24,6 +25,7 @@ public interface PortalMessageService {
 
     /**
      * 添加消息
+     *
      * @param portalMessageAddDTO
      */
     void savePortalMessage(PortalMessageAddDTO portalMessageAddDTO);

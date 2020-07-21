@@ -39,39 +39,9 @@ public class ManageCommentServiceImpl implements ManageCommentService {
     public List<ManageCommentListVO> queryManageCommentByPage() {
         List<ManageCommentListVO> manageCommentVOList = this.manageCommentMapper.selectManageCommentByPage();
         if(CollectionUtils.isNotEmpty(manageCommentVOList)){
-            Map<String, List<ManageCommentListVO>> map = manageCommentVOList.stream()
-                    .filter(manageCommentDetailVO ->
-                            IsParentEnum.PARENT_YES.getValue().equals(manageCommentDetailVO.getIsParent()))
-                    .collect(Collectors.groupingBy(ManageCommentListVO::getCommentParentId));
-            if(Objects.isNull(map)){
-                return manageCommentVOList;
-            }
-            manageCommentVOList = manageCommentVOList.stream()
-                    .filter(manageComment ->
-                            Objects.isNull(manageComment.getCommentParentId())
-                                    && map.containsKey(manageComment.getCommentId()))
-                    .map(manageComment -> this.getChildCommentTree(map, manageComment))
-                    .sorted()
-                    .collect(Collectors.toList());
             return manageCommentVOList;
         }
         return manageCommentVOList;
-    }
-
-    private ManageCommentListVO getChildCommentTree(Map<String, List<ManageCommentListVO>> map
-            ,ManageCommentListVO manageCommentListVO){
-        ManageCommentListVO commentListVO = MapperUtils.mapperBean(manageCommentListVO, ManageCommentListVO.class);
-        List<ManageCommentListVO> manageCommentListVOS = map.get(manageCommentListVO.getCommentId());
-        if(CollectionUtils.isEmpty(manageCommentListVOS)){
-            return commentListVO;
-        }
-        if(Objects.isNull(commentListVO.getManageCommentList())){
-            commentListVO.setManageCommentList(new ArrayList<>());
-        }
-        for(ManageCommentListVO _manageComment : manageCommentListVOS){
-            commentListVO.getManageCommentList().add(getChildCommentTree(map, _manageComment));
-        }
-        return commentListVO;
     }
 
     @Override

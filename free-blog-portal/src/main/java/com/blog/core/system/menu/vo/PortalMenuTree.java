@@ -39,7 +39,7 @@ public class PortalMenuTree {
     private List<PortalMenuTree> childs;
 
     public PortalMenuTree(PortalMenuVO portalMenuVO) {
-        this.menuId = portalMenuVO.getMenuId();
+        this.menuId = portalMenuVO.getMenuCode();
         this.webCode = portalMenuVO.getWebCode();
         this.menuName = portalMenuVO.getMenuName();
         this.menuUrl = portalMenuVO.getMenuUrl();

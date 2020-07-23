@@ -3,7 +3,7 @@ package com.blog.core.speech.dao;
 import org.springframework.stereotype.Repository;
 
 /**
- * @program: PortalShowSpeechBookMapper
+ * @ClassName: PortalShowSpeechBookMapper
  * @description:
  * @author: 950103
  * @create: 2019-10-10 09:37

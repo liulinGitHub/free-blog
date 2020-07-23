@@ -11,9 +11,9 @@
             pa.article_content_markdown articleContentMarkDown,
             pa.article_desc articleDesc,
             pa.article_image articleImage,
-            pa.article_top_status articleTopStatus,
-            pa.article_comment_status articleCommentStatus,
-            pa.article_fine_note_status articleFineNoteStatus,
+            pa.top_status topStatus,
+            pa.comment_status commentStatus,
+            pa.fine_note_status fineNoteStatus,
             pa.article_user_id articleUserId
         FROM
             portal_article pa
@@ -33,9 +33,9 @@
             pa.article_content_markdown articleContentMarkDown,
             pa.article_desc articleDesc,
             pa.article_image articleImage,
-            pa.article_top_status articleTopStatus,
-            pa.article_comment_status articleCommentStatus,
-            pa.article_fine_note_status articleFineNoteStatus,
+            pa.top_status topStatus,
+            pa.comment_status commentStatus,
+            pa.fine_note_status fineNoteStatus,
             pa.article_user_id articleUserId,
             pu.nick_name articleAuthor,
             pu.avatar articleAuthorImage

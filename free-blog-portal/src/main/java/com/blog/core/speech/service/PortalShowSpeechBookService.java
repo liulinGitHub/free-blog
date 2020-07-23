@@ -1,7 +1,7 @@
 package com.blog.core.speech.service;
 
 /**
- * @program: ShowSpeechBookService
+ * @ClassName: ShowSpeechBookService
  * @description:
  * @author: 950103
  * @create: 2019-05-28 18:07

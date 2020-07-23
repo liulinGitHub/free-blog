@@ -49,6 +49,6 @@ public class PortalCommentController extends BaseController {
     @PostMapping("/approval")
     public ResponseBo approvalPortalComment(@RequestBody PortalApprovalCommentDTO portalApprovalCommentDTO) {
         this.portalCommentService.approvalPortalComment(portalApprovalCommentDTO);
-        return ResponseBo.ok("评论点赞成功！");
+        return ResponseBo.ok("点赞成功！");
     }
 }

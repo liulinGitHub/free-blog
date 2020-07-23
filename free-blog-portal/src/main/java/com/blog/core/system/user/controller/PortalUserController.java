@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * @ClassNmae: UserController
+ * @ClassNmae: PortalUserController
  * @description: 用户服务 Controller
  * @Author: 950103
  * @Date: 2019/4/6 15:37

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @program: ShowSpeechBookController
+ * @ClassName: ShowSpeechBookController
  * @description:
  * @author: 950103
  * @create: 2019-05-28 18:09

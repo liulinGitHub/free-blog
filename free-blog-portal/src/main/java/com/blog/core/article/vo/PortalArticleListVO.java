@@ -37,10 +37,10 @@ public class PortalArticleListVO {
     private String articleImage;
 
     @ApiModelProperty("置顶状态 0 未置顶 1 已置顶" )
-    private String articleTopStatus;
+    private String topStatus;
 
     @ApiModelProperty("是否精帖 0 不是精帖 1 是精帖" )
-    private String articleFineNoteStatus;
+    private String fineNoteStatus;
 
     @ApiModelProperty(name = "创建时间" )
     @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")

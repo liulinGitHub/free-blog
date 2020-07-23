@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @program: ShowSpeechBookServiceImpl
+ * @ClassName: ShowSpeechBookServiceImpl
  * @description:
  * @author: 950103
  * @create: 2019-05-28 18:08

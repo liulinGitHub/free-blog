@@ -14,8 +14,8 @@ spring:
     password: root
     # 连接池配置
     initial-size: 5
-    min-idle: 5
-    max-active: 10
+    min-idle: 10
+    max-active: 50
     # 连接等待超时时间
     max-wait: 30000
 

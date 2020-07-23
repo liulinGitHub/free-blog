@@ -35,7 +35,7 @@ public class PortalArticleDetailsVO {
     private String articleContentMarkDown;
 
     @ApiModelProperty("评论开启状态 0 未开启 1 已开启" )
-    private String articleCommentStatus;
+    private String commentStatus;
 
     @ApiModelProperty("发表文章的作者ID" )
     private String articleUserId;

@@ -4,9 +4,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @program: ManageTagEditDTO
  * @description: 标签修改参数
- * @author: liulin
+ * @author: 950103
  * @create: 2020-01-18 14:05
  * @Version: 1.0
  */

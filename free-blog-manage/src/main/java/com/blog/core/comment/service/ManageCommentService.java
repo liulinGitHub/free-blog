@@ -8,9 +8,9 @@ import com.blog.core.comment.vo.ManageCommentVO;
 import java.util.List;
 
 /**
- * @program: ManageCommentServiceImpl
+ * @ClassName: ManageCommentServiceImpl
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-18 16:41
  * @Version: 1.0
  */

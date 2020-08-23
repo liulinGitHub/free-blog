@@ -25,7 +25,7 @@ public class ManageRoleListVO {
     private String roleCode;
 
     @ApiModelProperty("启用/停用")
-    private String isEnable;
+    private String enable;
 
     @ApiModelProperty("创建时间")
     private String createTime;

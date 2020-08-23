@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @ClassNmae: ManageCategoryIdDTO
+ * @ClassName: ManageCategoryIdDTO
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/2/9 21:40
  **/
 @Data

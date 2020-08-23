@@ -2,7 +2,7 @@ package com.blog.core.system.user.service;
 
 import com.blog.core.system.role.service.PortalRoleService;
 import com.blog.core.system.role.vo.PortalRoleMenuInfoVO;
-import com.blog.core.system.user.vo.PortalUserLoginVO;
+import com.blog.core.system.user.vo.PortalUserInfoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,14 +32,15 @@ public class CustomizeUserDetailsService implements UserDetailsService {
     /**
      * 获取用户信息
      * 返回UserDetails对象
+     *
      * @param username
      * @return
      * @throws UsernameNotFoundException
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        PortalUserLoginVO portalUserLoginVO = this.portalUserService.queryUserByUserName(username);
-        List<PortalRoleMenuInfoVO> portalRoleMenuInfoVOList = portalRoleService.queryRoleMenuInfoByUserId(portalUserLoginVO.getUserId());
+        PortalUserInfoVO portalUserInfoVO = this.portalUserService.queryUserByUserName(username);
+        List<PortalRoleMenuInfoVO> portalRoleMenuInfoVOList = portalRoleService.queryRoleMenuInfoByUserId(portalUserInfoVO.getUserId());
         return null;
     }
 }

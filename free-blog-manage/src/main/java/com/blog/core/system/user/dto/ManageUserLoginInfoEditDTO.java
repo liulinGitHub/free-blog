@@ -7,11 +7,10 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @program: ManageUserLoginInfoEditDTO
  * @description: 用户登录相关信息
- * @author: liulin
+ * @author: 950103
  * @create: 2020-04-02 17:31
- * @Version: 1.0
+ * @version: 1.0
  */
 @Data
 @Builder

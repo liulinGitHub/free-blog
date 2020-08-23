@@ -1,7 +1,5 @@
 package com.blog.core.system.menu.dao;
 
-import com.blog.core.system.menu.entity.PortalMenu;
-import com.blog.core.system.menu.entity.PortalRoleMenu;
 import com.blog.core.system.menu.vo.PortalMenuVO;
 import org.springframework.stereotype.Repository;
 
@@ -29,48 +27,6 @@ public interface PortalMenuMapper {
      * @return
      */
     PortalMenuVO selectMenuByMenuId(String menuId);
-
-    /**
-     * 添加角色信息
-     * @param portalMenu
-     * @return
-     */
-    int addMenu(PortalMenu portalMenu);
-
-    /**
-     * 修改角色信息
-     * @param portalMenu
-     * @return
-     */
-    int editMenu(PortalMenu portalMenu);
-
-    /**
-     * 删除角色信息
-     * @param menuId
-     * @return
-     */
-    int deleteMenu(String menuId);
-
-    /**
-     * 启用角色信息
-     * @param menuId
-     * @return
-     */
-    int enableMenu(String menuId);
-
-    /**
-     * 停用角色信息
-     * @param menuId
-     * @return
-     */
-    int disabledMenu(String menuId);
-
-    /**
-     * 保存用户角色信息
-     * @param userMenu
-     * @return
-     */
-    int addRoleMenu(PortalRoleMenu userMenu);
 
     /**
      * 根据角色id查询菜单

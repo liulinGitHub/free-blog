@@ -17,11 +17,4 @@ public interface PortalRoleMenuService {
      * @return
      */
     List<String> queryMenuIdByRoleId(String roleId);
-
-    /**
-     * 根据角色id查询所属菜单id
-     * @param roleIdList
-     * @return
-     */
-    List<String> queryMenuIdByRoleIdList(List<String> roleIdList);
 }

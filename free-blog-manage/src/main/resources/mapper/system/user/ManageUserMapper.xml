@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.system.user.dao.ManageUserMapper">
 
-    <select id="queryUserByPage" resultType="com.blog.core.system.user.vo.ManageUserListVO">
+    <select id="queryManageUserByPage" resultType="com.blog.core.system.user.vo.ManageUserListVO">
         SELECT
             user.user_id userId,
             user.user_name userName,
@@ -15,12 +15,12 @@
             user.email email,
             user.login_ip loginIp,
             user.last_login_time lastLoginTime,
-            user.is_enable isEnable,
+            user.enable enable,
             user.create_time createTime,
             u.user_name createName
         FROM
             manage_user user
-        LEFT JOIN manage_user u ON user.user_id = u.user_id
+        LEFT JOIN manage_user u ON user.create_id = u.user_id
     </select>
 
     <select id="selectUserByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.user.vo.ManageUserDetailVO">
@@ -55,7 +55,7 @@
             email email,
             login_ip loginIp,
             last_login_time lastLoginTime,
-            is_enable isEnable,
+            enable enable,
             create_time createTime,
             create_id createId
         FROM
@@ -69,10 +69,11 @@
         (   user_id,
             user_name,
             nick_name,
+            password,
             gender,
             telephone,
             email,
-            is_enable,
+            enable,
             create_time,
             create_id
         )
@@ -80,10 +81,11 @@
         (#{userId},
         #{userName},
         #{nickName},
+        #{password},
         #{gender},
         #{telephone},
         #{email},
-        #{isEnable.value},
+        #{enable.value},
         #{createTime},
         #{createId})
     </insert>
@@ -95,7 +97,7 @@
         gender = #{gender},
         telephone = #{telephone},
         email = #{email},
-        is_enable = #{isEnable},
+        enable = #{enable},
         update_id = #{updateId},
         update_time = #{updateTime}
         WHERE user_id = #{userId}

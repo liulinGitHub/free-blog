@@ -6,9 +6,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @ClassNmae: ManageTag
+ * @ClassName: ManageTag
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/2/2 12:47
  **/
 @Data

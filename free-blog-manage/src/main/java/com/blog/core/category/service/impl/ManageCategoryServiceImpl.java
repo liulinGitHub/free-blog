@@ -20,9 +20,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @program: ManageCategoryServiceImpl
+ * @ClassName: ManageCategoryServiceImpl
  * @description: 文章分类信息service
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 17:54
  * @Version: 1.0
  */

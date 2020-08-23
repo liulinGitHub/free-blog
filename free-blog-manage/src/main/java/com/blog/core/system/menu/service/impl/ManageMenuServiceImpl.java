@@ -103,17 +103,17 @@ public class ManageMenuServiceImpl implements ManageMenuService {
             }
             for (ManageMenuListVO it : manageMenuListVOList) {
                 if (StringUtils.isNotBlank(it.getParentId())
-                        && it.getParentId().equals(manageMenuListVO.getId())) {
+                        && it.getParentId().equals(manageMenuListVO.getMenuId())) {
                     if (manageMenuListVO.getChildren() == null) {
                         manageMenuListVO.setChildren(new ArrayList<>());
                     }
                     manageMenuListVO.getChildren().add(it);
-                    ids.add(it.getId());
+                    ids.add(it.getMenuId());
                 }
             }
         }
         if(trees.size() == 0){
-            trees = manageMenuListVOList.stream().filter(s -> !ids.contains(s.getId())).collect(Collectors.toList());
+            trees = manageMenuListVOList.stream().filter(s -> !ids.contains(s.getMenuId())).collect(Collectors.toList());
         }
         return trees;
     }
@@ -169,7 +169,7 @@ public class ManageMenuServiceImpl implements ManageMenuService {
         ManageMenuTree manageMenuTree = new ManageMenuTree(menuVO);
         manageMenuTree.setMeta(new ManageMenuMetaVO(menuVO.getName(),menuVO.getIcon(),!menuVO.getCache()));
 
-        List<ManageMenuListVO> childMenuList = groupMap.get(menuVO.getId());
+        List<ManageMenuListVO> childMenuList = groupMap.get(menuVO.getMenuId());
         if(null == manageMenuTree.getChildren()){
             manageMenuTree.setChildren(new ArrayList<>());
         }

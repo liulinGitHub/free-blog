@@ -51,9 +51,5 @@ public class UUIDUtil {
         String uuid = UUID.randomUUID().toString().replace("-", "");
         return uuid;
     }
-    public static void main(String[] args) {
-        String a = " abcdefg";
-        String substring = a.substring(2, 3);
-        System.out.println(substring);
-    }
+
 }

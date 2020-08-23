@@ -12,7 +12,7 @@
             is_parent isParent,
             comment_time commentTime,
             approves approves,
-            is_enable isParent,
+            enable enable,
             create_time createTime,
             create_id createId
         FROM
@@ -31,7 +31,7 @@
             is_parent isParent,
             comment_time commentTime,
             approves approves,
-            is_enable isParent,
+            enable enable,
             create_time createTime,
             create_id createId
         FROM
@@ -52,7 +52,7 @@
         is_parent,
         comment_time,
         approves,
-        is_enable,
+        enable,
         create_time,
         create_id)
         VALUE
@@ -65,7 +65,7 @@
         #{isParent},
         #{commentTime},
         #{approves},
-        #{isEnable},
+        #{enable},
         #{createTime},
         #{createId}
         )

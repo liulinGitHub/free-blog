@@ -28,10 +28,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @ClassNmae: ManageUserServiceImpl
  * @description: 用户信息service
- * @Author: liulin
- * @Date: 2019/11/24 1:10
+ * @author: 950103
+ * @date: 2019/11/24 1:10
+ * @version: 1.0
  **/
 @Service("manageUserService")
 public class ManageUserServiceImpl implements ManageUserService {
@@ -49,16 +49,8 @@ public class ManageUserServiceImpl implements ManageUserService {
     private PrimarykeyUtil primarykeyUtil;
 
     @Override
-    public List<ManageUserListVO> queryUserByPage() {
-        List<ManageUserListVO> manageUserListVOList = this.manageUserMapper.queryUserByPage();
-        if (CollectionUtils.isNotEmpty(manageUserListVOList)) {
-            manageUserListVOList.forEach(manageUserListVO -> {
-                List<ManageRoleInfoVO> manageRoleInfoVOList = this.manageRoleService.queryUserRoleByUserId(manageUserListVO.getUserId());
-                if (CollectionUtils.isNotEmpty(manageRoleInfoVOList)) {
-                    manageUserListVO.setRoles(manageRoleInfoVOList);
-                }
-            });
-        }
+    public List<ManageUserListVO> queryManageUserByPage() {
+        List<ManageUserListVO> manageUserListVOList = this.manageUserMapper.queryManageUserByPage();
         return manageUserListVOList;
     }
 
@@ -80,17 +72,17 @@ public class ManageUserServiceImpl implements ManageUserService {
     }
 
     @Override
-    public void addUser(ManageUserAddDTO manageUserAddDTO) {
+    public void addManageUser(ManageUserAddDTO manageUserAddDTO) {
         SecurityUser user = SecurityUtils.getUser();
         ManageUser manageUser = MapperUtils.mapperBean(manageUserAddDTO, ManageUser.class);
         manageUser.setUserId(primarykeyUtil.getPimaryKey());
+        manageUser.setPassword("$2a$10$RJxDZ4bZaelml3Kfzjnv9ep110tbKE4BD5Zmi5kSUj5Vn1fwvHTGq");
         manageUser.setCreateId(user.getUserId());
         manageUser.setCreateTime(new Date());
         manageUser.setEnable(EnableEnum.Enable_YES);
         this.manageUserMapper.insertManageUser(manageUser);
         //添加用户角色关联信息
-        List<String> roleIdList = manageUserAddDTO.getRoles().stream().map(ManageRoleIdDTO::getRoleId).collect(Collectors.toList());
-        this.manageUserRoleService.addUserRoleRelevance(manageUser.getUserId(), roleIdList);
+        this.manageUserRoleService.addUserRoleRelevance(manageUser.getUserId(), manageUserAddDTO.getRoleIds());
     }
 
     @Transactional

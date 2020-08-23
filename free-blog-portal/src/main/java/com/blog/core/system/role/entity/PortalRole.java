@@ -29,5 +29,5 @@ public class PortalRole extends BaseModel {
     private String roleDescribe;
 
     @ApiModelProperty("启用/停用")
-    private EnableEnum isEnable;
+    private EnableEnum enable;
 }

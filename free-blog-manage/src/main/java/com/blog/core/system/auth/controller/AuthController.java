@@ -22,15 +22,15 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassNmae: AuthController
- * @description: 权限controller
- * @Author: liulin
+ * @description: 系统登录Controller
+ * @Author: 950103
  * @Date: 2020/3/3 15:49
+ * @version: 1.0
  **/
 @Slf4j
 @RestController
 @RequestMapping("/auth")
-@Api(tags = "系统：系统授权接口")
+@Api(tags = "系统登录Controller")
 public class AuthController {
 
     @Autowired
@@ -45,7 +45,6 @@ public class AuthController {
     @Autowired
     private RedisUtil redisUtil;
 
-    @LogManage("获取验证码")
     @ApiOperation("获取验证码")
     @GetMapping(value = "/code")
     public ResponseBo getCode(){
@@ -64,7 +63,7 @@ public class AuthController {
         return ResponseBo.newDataResponse(imgResult);
     }
 
-    @LogManage("获取用户信息")
+
     @ApiOperation("获取用户信息")
     @GetMapping(value = "/info")
     public ResponseBo queryUserInfo(HttpServletRequest request){

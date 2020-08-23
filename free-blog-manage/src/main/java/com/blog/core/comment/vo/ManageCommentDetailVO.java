@@ -8,9 +8,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @program: ManageCommentDetailVO
+ * @ClassName: ManageCommentDetailVO
  * @description: 评论详情vo
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-19 09:47
  * @Version: 1.0
  */

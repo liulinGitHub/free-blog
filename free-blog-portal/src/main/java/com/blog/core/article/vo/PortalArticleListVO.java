@@ -28,7 +28,7 @@ public class PortalArticleListVO {
 
     @ApiModelProperty(name = "发布日期" )
     @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
-    private Date articleReleaseDate;
+    private Date releaseDate;
 
     @ApiModelProperty("文章描述" )
     private String articleDesc;
@@ -38,6 +38,9 @@ public class PortalArticleListVO {
 
     @ApiModelProperty("置顶状态 0 未置顶 1 已置顶" )
     private String topStatus;
+
+    @ApiModelProperty("评论状态 0 未开启 1 开启" )
+    private String commentStatus;
 
     @ApiModelProperty("是否精帖 0 不是精帖 1 是精帖" )
     private String fineNoteStatus;

@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @ClassNmae: ManageUserMapper
  * @description:
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/11/24 1:16
+ * @version: 1.0
  **/
 @Repository("manageUserMapper")
 public interface ManageUserMapper {
@@ -22,7 +22,7 @@ public interface ManageUserMapper {
      *
      * @return
      */
-    List<ManageUserListVO> queryUserByPage();
+    List<ManageUserListVO> queryManageUserByPage();
 
     /**
      * 根据用户id查看用户详情

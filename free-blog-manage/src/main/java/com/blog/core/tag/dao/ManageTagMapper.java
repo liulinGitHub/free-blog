@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @program: ManageTagMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-01-18 14:13
  * @Version: 1.0
  */

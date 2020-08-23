@@ -8,9 +8,9 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @program: free-blog
+ * @ClassName: free-blog
  * @description: 查看文章信息返回对象
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-04 13:15
  */
 

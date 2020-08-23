@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @program: ManageCommentVO
+ * @ClassName: ManageCommentVO
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-16 16:08
  * @Version: 1.0
  */

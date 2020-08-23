@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: CommentController
+ * @ClassName: CommentController
  * @description: 文章评论服务Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-16 15:28
  * @Version: 1.0
  */

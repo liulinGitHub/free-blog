@@ -3,9 +3,9 @@ package com.blog.core.comment.vo;
 import lombok.Data;
 
 /**
- * @program: ManageCommentVO
+ * @ClassName: ManageCommentVO
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-23 14:38
  * @Version: 1.0
  */

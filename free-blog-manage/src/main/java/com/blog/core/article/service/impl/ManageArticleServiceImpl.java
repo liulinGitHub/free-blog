@@ -15,9 +15,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @program: ManageArticleServiceImpl
+ * @ClassName: ManageArticleServiceImpl
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 14:53
  * @Version: 1.0
  */

@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <description>前台展示页面模块</description>
-
     <artifactId>free-blog-portal</artifactId>
 
     <properties>

@@ -29,7 +29,7 @@ public class PortalRoleVO implements ConfigAttribute {
     private String roleDescribe;
 
     @ApiModelProperty("启用/停用")
-    private String isEnable;
+    private String enable;
 
     @ApiModelProperty("创建时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")

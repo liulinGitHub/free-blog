@@ -22,9 +22,15 @@ public class PortalMenuController {
     @Autowired
     private PortalMenuService portalMenuService;
 
-    @ApiOperation(value="保存角色菜单信息", notes="")
-    @GetMapping("/query")
-    public ResponseBo queryUserMenu(){
-        return ResponseBo.newDataResponse(this.portalMenuService.queryUserMenu());
+    @ApiOperation(value = "查询所有菜单信息", notes="")
+    @GetMapping("/list")
+    public ResponseBo queryPortalMenuList() {
+        return ResponseBo.newDataResponse(this.portalMenuService.queryMenuList());
+    }
+
+    @ApiOperation(value = "查询用户所有菜单信息", notes="")
+    @GetMapping("/user/list")
+    public ResponseBo queryUserPortalMenuList() {
+        return ResponseBo.newDataResponse(this.portalMenuService.queryUserPortalMenuList());
     }
 }

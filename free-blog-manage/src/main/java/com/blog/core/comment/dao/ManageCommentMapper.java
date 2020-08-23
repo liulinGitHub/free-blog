@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @program: ManageCommentMapper
+ * @ClassName: ManageCommentMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-19 09:44
  * @Version: 1.0
  */

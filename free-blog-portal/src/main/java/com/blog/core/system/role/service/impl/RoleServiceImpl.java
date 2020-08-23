@@ -1,22 +1,15 @@
 package com.blog.core.system.role.service.impl;
 
-import com.blog.core.common.aspect.RequestHolder;
-import com.blog.core.common.exceptions.BlogRuntimeException;
-import com.blog.core.common.utils.UUIDUtil;
 import com.blog.core.common.utils.MapperUtils;
 import com.blog.core.system.menu.service.PortalRoleMenuService;
 import com.blog.core.system.role.dao.PortalRoleMapper;
-import com.blog.core.system.role.dto.PortalUserRoleAddQO;
-import com.blog.core.system.role.entity.PortalUserRole;
 import com.blog.core.system.role.service.PortalRoleService;
 import com.blog.core.system.role.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.role.vo.PortalRoleVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,35 +38,12 @@ public class RoleServiceImpl implements PortalRoleService {
         return portalRoleVOList;
     }
 
-    /**
-     * 添加角色信息
-     * @param portalUserRoleAddQO
-     */
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void addUserRole(PortalUserRoleAddQO portalUserRoleAddQO) {
-        PortalUserRole userRole = MapperUtils.mapperBean(portalUserRoleAddQO, PortalUserRole.class);
-        userRole.setUserRoleId(UUIDUtil.randomUUID32());
-        userRole.setCreateId(RequestHolder.get()+"");
-        userRole.setCreateTime(new Date());
-        int result = this.portalRoleMapper.addUserRole(userRole);
-        if(result < 1){
-            log.error("保存失败！");
-            throw new BlogRuntimeException("保存失败！");
-        }
-    }
-
     @Override
     public List<PortalRoleVO> queryRoleByUserId(String userId){
         List<PortalRoleVO> portalRoleVOList = this.portalRoleMapper.selectRoleByUserId(userId);
         return portalRoleVOList;
     }
 
-    /**
-     * 根据用户id查询角色菜单
-     * @param userId
-     * @return
-     */
     @Override
     public List<PortalRoleMenuInfoVO> queryRoleMenuInfoByUserId(String userId) {
         List<PortalRoleVO> portalRoleVOList = this.portalRoleMapper.selectRoleByUserId(userId);

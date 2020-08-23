@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @program: ManageCategoryMapper
+ * @ClassName: ManageCategoryMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 17:55
  * @Version: 1.0
  */

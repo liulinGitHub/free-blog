@@ -37,7 +37,7 @@ import java.util.List;
  * @Date: 2020/3/25 11:08
  **/
 @Slf4j
-@Service("portalArticleService")
+@Service
 public class PortalArticleServiceImpl implements PortalArticleService {
 
     @Resource
@@ -63,20 +63,16 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     @Override
     public List<PortalArticleListVO> queryPortalArticleByPage() {
         List<PortalArticleListVO> portalArticleListVOList = this.portalArticleMapper.selectArticleByPage();
-        if (CollectionUtils.isNotEmpty(portalArticleListVOList)) {
-            portalArticleListVOList.parallelStream().forEach(portalArticleListVO -> {
-                String articleId = portalArticleListVO.getArticleId();
-                List<PortalTagVO> portalTagVOList = this.portalTagService.queryTagByArticleId(articleId);
-                if (CollectionUtils.isNotEmpty(portalTagVOList)) {
-                    portalArticleListVO.setTags(portalTagVOList);
-                }
-                PortalArticleInfoVO meta = this.portalArticleInfoService.queryPortalArticleInfoDetails(articleId);
-                portalArticleListVO.setMeta(meta);
-
-                PortalCommonUser portalCommonUser = this.portalCommonUserService.queryPortalCommonUserByUserId(portalArticleListVO.getArticleUserId());
-                portalArticleListVO.setArticleUser(portalCommonUser);
-            });
-        }
+//        if (CollectionUtils.isNotEmpty(portalArticleListVOList)) {
+//            portalArticleListVOList.parallelStream().forEach(portalArticleListVO -> {
+//                String articleId = portalArticleListVO.getArticleId();
+////                PortalArticleInfoVO meta = this.portalArticleInfoService.queryPortalArticleInfoDetails(articleId);
+////                portalArticleListVO.setMeta(meta);
+//
+//                PortalCommonUser portalCommonUser = this.portalCommonUserService.queryPortalCommonUserByUserId(portalArticleListVO.getArticleUserId());
+//                portalArticleListVO.setArticleUser(portalCommonUser);
+//            });
+//        }
         return portalArticleListVOList;
     }
 
@@ -99,20 +95,8 @@ public class PortalArticleServiceImpl implements PortalArticleService {
         return portalArticleDetailsVO;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = BlogRuntimeException.class)
     @Override
-    public void submitCheckPortalArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
-        PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
-        article.setArticleUserId(RequestHolder.get().toString());
-        int result = this.portalArticleMapper.submitCheckArticle(article);
-        if (result < 1) {
-            log.error("提交文章审核失败!");
-            throw new BlogRuntimeException("提交文章审核失败！");
-        }
-    }
-
-    @Override
-    @Transactional
     public void savePortalArticleDraft(PortalArticleAddDTO portalArticleAddDTO) {
         PortalArticle portalArticle = MapperUtils.mapperBean(portalArticleAddDTO, PortalArticle.class);
         portalArticle.setArticleId(UUIDUtil.randomUUID32());
@@ -126,6 +110,14 @@ public class PortalArticleServiceImpl implements PortalArticleService {
 
         // TODO 修改xml文件
         this.portalArticleMapper.insertPortalArticleDraft(portalArticle);
+    }
+
+    @Transactional(rollbackFor = BlogRuntimeException.class)
+    @Override
+    public void submitCheckPortalArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
+        PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
+        article.setArticleUserId(RequestHolder.get().toString());
+        this.portalArticleMapper.submitCheckArticle(article);
     }
 
     @Override

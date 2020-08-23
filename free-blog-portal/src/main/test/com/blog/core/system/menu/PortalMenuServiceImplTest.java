@@ -20,6 +20,8 @@ public class PortalMenuServiceImplTest {
 
     @Test
     public void queryMenuList() {
+        List<PortalMenuTree> portalMenuTrees = this.portalMenuService.queryMenuList();
+        System.out.println(JSONObject.toJSONString(portalMenuTrees));
     }
 
     @Test
@@ -28,7 +30,7 @@ public class PortalMenuServiceImplTest {
 
     @Test
     public void queryUserMenu() {
-        List<PortalMenuTree> portalMenuTrees = this.portalMenuService.queryUserMenu();
+        List<PortalMenuTree> portalMenuTrees = this.portalMenuService.queryUserPortalMenuList();
         System.out.println(JSONObject.toJSONString(portalMenuTrees));
     }
 }

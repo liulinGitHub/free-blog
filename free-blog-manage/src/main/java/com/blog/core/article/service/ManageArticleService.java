@@ -6,9 +6,9 @@ import com.blog.core.article.vo.ManageArticleVO;
 import java.util.List;
 
 /**
- * @program: ManageArticleService
+ * @ClassName: ManageArticleService
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 14:50
  * @Version: 1.0
  */

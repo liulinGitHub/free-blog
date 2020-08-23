@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @ClassNmae: BuildPrimarykey
  * @description: 定时生成主键ID
  * @Author: liulin
  * @Date: 2020/4/4 20:26
@@ -56,10 +55,10 @@ public class BuildTimedJob {
         }
     }
 
-    private static int i = -1;
-    @Scheduled(cron = "*/10 * * * * ?")
-    public void test() {
-        i++;
-        System.out.println(i);
-    }
+//    private static int i = -1;
+//    @Scheduled(cron = "*/10 * * * * ?")
+//    public void test() {
+//        i++;
+//        System.out.println(i);
+//    }
 }

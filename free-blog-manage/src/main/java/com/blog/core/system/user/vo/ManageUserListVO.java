@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @ClassNmae: ManageUserVO
  * @description: 用户信息返回VO参数
- * @Author: liulin
- * @Date: 2019/11/24 1:13
+ * @author: 950103
+ * @date: 2019/11/24 1:13
+ * @version: 1.0
  **/
 @Data
 public class ManageUserListVO {
@@ -47,7 +47,7 @@ public class ManageUserListVO {
     private Date lastLoginTime;
 
     @ApiModelProperty("启用/停用")
-    private String isEnable;
+    private String enable;
 
     @ApiModelProperty("创建时间")
     private String createTime;

@@ -7,7 +7,7 @@
         job_id jobId,
         job_name jobName,
         dept_id deptId,
-        is_enable isEnable,
+        enable enable,
         create_time createTime
         FROM
             manage_job
@@ -27,7 +27,7 @@
         (job_id,
         job_name,
         dept_id,
-        is_enable,
+        enable,
         create_id,
         create_time
         )
@@ -35,7 +35,7 @@
         (#{jobId},
         #{jobName},
         #{deptId},
-        #{isEnable.value},
+        #{enable.value},
         #{createId},
         #{createTime})
     </insert>

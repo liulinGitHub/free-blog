@@ -53,7 +53,7 @@ public class UserRoleInfoVO {
     private String gender;
 
     @ApiModelProperty(value="停用/启用（0，停用；1，启用）",name="isEnable")
-    private String isEnable;
+    private String enable;
 
     private List<String> roleIdList;
 }

@@ -7,9 +7,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @program: free-blog
+ * @ClassName: free-blog
  * @description: 文章分类信息
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-04 16:28
  */
 @Data

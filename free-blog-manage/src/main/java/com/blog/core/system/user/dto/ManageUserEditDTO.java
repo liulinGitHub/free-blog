@@ -8,10 +8,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @ClassNmae: ManageUserEditDTO
  * @description: 修改用户信息参数
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/11/24 1:25
+ * @version: 1.0
  **/
 @Data
 public class ManageUserEditDTO {

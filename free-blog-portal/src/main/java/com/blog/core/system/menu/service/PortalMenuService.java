@@ -16,21 +16,24 @@ import java.util.List;
 public interface PortalMenuService {
 
     /**
-     * 根据用户id查询菜单
-     * @param UserId
+     * 查询全部菜单
+     *
      * @return
      */
-    List<PortalMenuVO> queryMenuByUserId(String UserId);
+    List<PortalMenuTree> queryMenuList();
 
     /**
      * 根据登录用户获取相应的菜单
+     *
      * @return
      */
-    List<PortalMenuTree> queryUserMenu();
+    List<PortalMenuTree> queryUserPortalMenuList();
 
     /**
-     * 查询全部菜单
+     * 根据角色获取相应的菜单
+     *
+     * @param roleId
      * @return
      */
-    List<PortalMenuVO> queryMenuList();
+    List<PortalMenuTree> queryRoleMenu(String roleId);
 }

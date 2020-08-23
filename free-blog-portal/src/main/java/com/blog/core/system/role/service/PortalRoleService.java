@@ -1,7 +1,6 @@
 package com.blog.core.system.role.service;
 
 
-import com.blog.core.system.role.dto.PortalUserRoleAddQO;
 import com.blog.core.system.role.vo.PortalRoleMenuInfoVO;
 import com.blog.core.system.role.vo.PortalRoleVO;
 
@@ -22,11 +21,6 @@ public interface PortalRoleService {
      */
     List<PortalRoleVO> queryPortalRole();
 
-    /**
-     * 保存用户角色信息
-     * @param portalUserRoleAddQO
-     */
-    void addUserRole(PortalUserRoleAddQO portalUserRoleAddQO);
 
     /**
      * 根据用户id查询角色

@@ -30,15 +30,4 @@ public class PortalRoleMenuServiceImpl implements PortalRoleMenuService {
         List<String> menuIdList = this.portalRoleMenuMapper.selectMenuIdByRoleId(roleId);
         return menuIdList;
     }
-
-    /**
-     * 根据角色id查询所属菜单id
-     * @param roleIdList
-     * @return
-     */
-    @Override
-    public List<String> queryMenuIdByRoleIdList(List<String> roleIdList) {
-        List<String> menuIdList = this.portalRoleMenuMapper.selectMenuIdByRoleIdList(roleIdList);
-        return menuIdList;
-    }
 }

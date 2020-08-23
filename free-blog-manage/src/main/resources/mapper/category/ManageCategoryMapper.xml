@@ -9,7 +9,7 @@
             sort,
             create_time,
             create_id,
-            is_enable
+            enable
         FROM
           manage_category
     </select>
@@ -22,7 +22,7 @@
             sort,
             create_time,
             create_id,
-            is_enable
+            enable
         FROM
           manage_category
         WHERE
@@ -39,7 +39,7 @@
         category_belong_id,
         create_id,
         create_time,
-        is_enable)
+        enable)
         VALUES
         (#{categoryId},
         #{categoryName},
@@ -48,7 +48,7 @@
         #{categoryBelongId},
         #{createId},
         #{createTime},
-        #{isEnable.value})
+        #{enable.value})
     </insert>
 
     <update id="updateManageCategory" parameterType="com.blog.core.category.entity.ManageCategory">
@@ -67,7 +67,7 @@
         UPDATE
            manage_category
         SET
-            is_enable = '1'
+        enable = '1'
         WHERE
             category_id IN
             <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
@@ -79,7 +79,7 @@
         UPDATE
           manage_category
         SET
-          is_enable = '0'
+        enable = '0'
         WHERE
             category_id IN
             <foreach collection="list" item="item" index="index" open="(" separator="," close=")">

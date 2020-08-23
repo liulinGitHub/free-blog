@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * @program: ManageArticleInfoVO
+ * @ClassName: ManageArticleInfoVO
  * @description: 文章信息返回参数
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 14:51
  * @Version: 1.0
  */

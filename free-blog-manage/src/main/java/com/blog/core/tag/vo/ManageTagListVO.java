@@ -7,9 +7,8 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @program: ManageTagVO
  * @description: 标签返回参数
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 14:52
  * @Version: 1.0
  */

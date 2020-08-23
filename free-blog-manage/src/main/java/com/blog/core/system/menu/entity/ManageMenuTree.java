@@ -57,7 +57,7 @@ public class ManageMenuTree {
     }
 
     public ManageMenuTree(ManageMenuListVO manageMenuListVO) {
-        this.id = manageMenuListVO.getId();
+        this.id = manageMenuListVO.getMenuId();
         this.component = StringUtils.isEmpty(manageMenuListVO.getParentId()) ? "Layout" :manageMenuListVO.getComponent();
         this.componentName = manageMenuListVO.getComponentName();
         this.name = StringUtils.isNotBlank(manageMenuListVO.getComponentName()) ? manageMenuListVO.getComponentName() : manageMenuListVO.getName();

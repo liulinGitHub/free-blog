@@ -5,9 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @program: ManageCommentAddDTO
+ * @ClassName: ManageCommentAddDTO
  * @description: 保存评论
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-16 16:09
  * @Version: 1.0
  */

@@ -100,4 +100,6 @@ public interface PortalArticleMapper {
      * @return
      */
     int submitCheckArticle(PortalArticle article);
+
+    int insert(PortalArticle portalArticle);
 }

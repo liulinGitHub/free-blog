@@ -8,7 +8,7 @@
             role.role_name roleName,
             role.role_describe roleDescribe,
             role.role_code roleCode,
-            role.is_enable isEnable,
+            role.enable enable,
             role.create_time createTime,
             USER.user_name createName
         FROM
@@ -23,7 +23,7 @@
             role.role_name roleName,
             role.role_describe roleDescribe,
             role.role_code roleCode,
-            role.is_enable isEnable,
+            role.enable enable,
             role.create_time createTime
         FROM
             manage_role role
@@ -38,7 +38,7 @@
             r.role_code rolePermission
         FROM
             manage_menu m
-            LEFT JOIN manage_role_menu rm ON m.id = rm.menu_id
+            LEFT JOIN manage_role_menu rm ON m.menu_id = rm.menu_id
             LEFT JOIN manage_role r ON rm.role_id = r.role_id
             LEFT JOIN manage_user_role ur ON r.role_id = ur.role_id
         WHERE

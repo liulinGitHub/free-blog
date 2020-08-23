@@ -4,9 +4,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @program: ArticleCategoryEditDTO
+ * @ClassName: ArticleCategoryEditDTO
  * @description: 文章分类修改传参对象
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-07 11:30
  * @Version: 1.0
  */

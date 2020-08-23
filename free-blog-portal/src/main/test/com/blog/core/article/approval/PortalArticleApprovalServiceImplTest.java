@@ -1,9 +1,10 @@
-package com.blog.core.article;
+package com.blog.core.article.approval;
 
 import com.alibaba.fastjson.JSONObject;
 import com.blog.core.approva.service.PortalApprovalService;
 import com.blog.core.article.vo.PortalArticleApprovalVO;
 import com.blog.core.common.enums.ApprovalTypeEnum;
+import com.blog.core.common.tread.TreadPoolConfig;
 import com.blog.core.system.user.vo.PortalUserApprovalVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

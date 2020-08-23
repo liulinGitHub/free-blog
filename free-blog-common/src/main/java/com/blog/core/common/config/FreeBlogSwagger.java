@@ -5,65 +5,86 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.ParameterBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.builders.*;
 import springfox.documentation.schema.ModelRef;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Parameter;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static springfox.documentation.builders.PathSelectors.regex;
+
 /**
- * @ClassName: FreeBlogSwagger
- * @description: Swagger
- * @Author:950103
- * @Date: 2019/4/7 10:02
+ * @description: Swagger配置
+ * @author: 950103
+ * @date: 2019/4/7 10:02
+ * @version: 1.0
  **/
 @Configuration
 @EnableSwagger2
-public class FreeBlogSwagger implements WebMvcConfigurer {
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
+public class FreeBlogSwagger {
 
     @Bean
-    public Docket createRestApi() {
-        //添加head参数
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        List<Parameter> pars = new ArrayList<Parameter>();
-        tokenPar.name("token").description("AccessToken令牌")
-                .modelRef(new ModelRef("string"))
-                .parameterType("header")
-                .required(false)
-                .build();
-        pars.add(tokenPar.build());
-
+    Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
                 .select()
-                //加了ApiOperation注解的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
-                .globalOperationParameters(pars);
+                .securityContexts(Arrays.asList(securityContext()))
+                .securitySchemes(Arrays.asList(securityScheme()))
+                .apiInfo(new ApiInfoBuilder()
+                        .description("接口文档的描述信息")
+                        .title("free_blog项目接口文档")
+                        .termsOfServiceUrl("http://www.free-blog.com")
+                        .version("1.0")
+                        .build());
     }
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("free-blog使用Swagger2构建RESTful APIs")
-                .description("更多请关注http://www.free-blog.com")
-                .termsOfServiceUrl("http://www.free-blog.com")
-                .contact("sunf")
-                .version("1.0")
-                .build();
-        }
+
+//    private AuthorizationScope[] scopes() {
+//        return new AuthorizationScope[]{
+//                new AuthorizationScope("all", "all scope")
+//        };
+//    }
+//
+//    private SecurityScheme securityScheme() {
+//        GrantType grant = new ResourceOwnerPasswordCredentialsGrant("http://localhost:8681/oauth/token");
+//        return new OAuthBuilder().name("OAuth2")
+//                .grantTypes(Arrays.asList(grant))
+//                .scopes(Arrays.asList(scopes()))
+//                .build();
+//    }
+//
+//    private SecurityContext securityContext() {
+//        return SecurityContext.builder()
+//                .securityReferences(Arrays.asList(new SecurityReference("OAuth2", scopes())))
+//                .forPaths(PathSelectors.any())
+//                .build();
+//    }
+
+
+    private SecurityScheme securityScheme() {
+        return new ApiKey("Authorization", "Authorization", "header");
     }
+
+    private SecurityContext securityContext() {
+        return SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.any())
+                .build();
+    }
+
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("xxx", "描述信息");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return Arrays.asList(new SecurityReference("Authorization", authorizationScopes));
+    }
+
+}

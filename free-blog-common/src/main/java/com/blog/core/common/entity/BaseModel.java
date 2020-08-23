@@ -20,7 +20,7 @@ public class BaseModel {
     @ApiModelProperty("创建时间")
     private Date createTime;
 
-    @ApiModelProperty("创建人")
+    @ApiModelProperty("修改人")
     private String updateId;
 
     @ApiModelProperty("修改时间")

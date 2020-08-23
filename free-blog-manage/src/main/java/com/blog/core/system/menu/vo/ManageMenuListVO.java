@@ -16,7 +16,7 @@ import java.util.List;
 public class ManageMenuListVO {
 
     @ApiModelProperty("菜单ID")
-    private String id;
+    private String menuId;
 
     @ApiModelProperty("菜单父ID")
     private String parentId;

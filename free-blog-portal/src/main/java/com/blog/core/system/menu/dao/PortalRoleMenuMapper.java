@@ -14,10 +14,6 @@ import java.util.List;
  */
 public interface PortalRoleMenuMapper {
 
-    int  insertRoleMenu(PortalRoleMenu portalRoleMenu);
-
-    int deleteRoleMenuByRoleId(String roleId);
-
     /**
      * 根据角色id查询所属菜单id
      * @param roleId
@@ -25,10 +21,4 @@ public interface PortalRoleMenuMapper {
      */
     List<String> selectMenuIdByRoleId(String roleId);
 
-    /**
-     * 根据角色id查询所属菜单id
-     * @param roleIdList
-     * @return
-     */
-    List<String> selectMenuIdByRoleIdList(@Param("roleIdList") List<String> roleIdList);
 }

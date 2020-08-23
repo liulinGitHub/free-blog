@@ -9,9 +9,9 @@ import com.blog.core.category.vo.ManageCategoryVO;
 import java.util.List;
 
 /**
- * @program: ManageCategoryService
+ * @ClassName: ManageCategoryService
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 17:53
  * @Version: 1.0
  */

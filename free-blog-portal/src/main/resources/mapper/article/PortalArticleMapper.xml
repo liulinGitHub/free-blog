@@ -2,13 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.article.dao.PortalArticleMapper">
 
-    <select id="selectArticleByPage" resultType="com.blog.core.article.vo.PortalArticleListVO">
+    <resultMap id="articleResult" type="com.blog.core.article.vo.PortalArticleListVO">
+        <id column = "articleId" property = "articleId"/>
+        <result column = "articleTitle" property = "articleTitle"/>
+        <result column = "releaseDate" property = "releaseDate"/>
+        <result column = "articleDesc" property = "articleDesc"/>
+        <result column = "articleImage" property = "articleImage"/>
+        <result column = "topStatus" property = "topStatus"/>
+        <result column = "commentStatus" property = "commentStatus"/>
+        <result column = "fineNoteStatus" property = "fineNoteStatus"/>
+        <result column = "articleUserId" property = "articleUserId"/>
+        <collection property="tags" column="articleId"
+                    ofType="com.blog.core.tag.vo.PortalTagVO"
+                    javaType="java.util.ArrayList"
+                    select="com.blog.core.tag.dao.PortalTagMapper.selectTagByArticleId">
+        </collection>
+        <collection property="meta" column="articleId"
+                    ofType="com.blog.core.article.vo.PortalArticleInfoVO"
+                    select="com.blog.core.article.dao.PortalArticleInfoMapper.selectPortalArticleInfoDetails">
+        </collection>
+        <collection property="articleUser" column="articleUserId"
+                    ofType="com.blog.core.system.user.entity.PortalCommonUser"
+                    select="com.blog.core.system.user.dao.PortalCommonUserMapper.selectPortalCommonUserByUserId">
+        </collection>
+    </resultMap>
+
+    <select id="selectArticleByPage" resultMap="articleResult">
         SELECT
             pa.article_id articleId,
             pa.article_title articleTitle,
-            pa.article_release_date articleReleaseDate,
-            pa.article_content_html articleContentHtml,
-            pa.article_content_markdown articleContentMarkDown,
+            pa.release_date releaseDate,
             pa.article_desc articleDesc,
             pa.article_image articleImage,
             pa.top_status topStatus,
@@ -20,7 +43,8 @@
         WHERE
             pa.enable = '1'
         AND
-            pa.article_release_status = '1'
+            pa.release_status = '1'
+        AND     pa.article_id = '1'
     </select>
 
     <select id="selectArticleByArticleId" parameterType="java.lang.String"
@@ -28,7 +52,7 @@
          SELECT
             pa.article_id articleId,
             pa.article_title articleTitle,
-            pa.article_release_date articleReleaseDate,
+            pa.release_date releaseDate,
             pa.article_content_html articleContentHtml,
             pa.article_content_markdown articleContentMarkDown,
             pa.article_desc articleDesc,
@@ -95,10 +119,11 @@
             article_id,
             article_title,
             article_desc,
-            article_content,
+            article_content_html,
+            article_content_markdown,
             article_user_id,
             article_tag,
-            article_images,
+            article_image,
             article_status,
             release_status,
             create_id,
@@ -109,10 +134,10 @@
             #{articleId},
             #{articleTitle},
             #{articleDesc},
-            #{articleContent},
+            #{articleContentHtml},
+            #{articleContentMarkDown},
             #{articleUserId},
-            #{articleTag},
-            #{articleImages},
+            #{articleImage},
             #{articleStatus},
             #{releaseStatus},
             #{createId},
@@ -129,4 +154,36 @@
         WHERE
             article_id = #{articleId}
     </update>
+
+    <insert id="insert" parameterType="com.blog.core.article.entity.PortalArticle">
+        INSERT INTO
+        portal_article
+        (
+            article_id,
+            article_title,
+            release_date,
+            article_desc,
+            article_content_html,
+            article_user_id,
+            article_image,
+            audit_status,
+            release_status,
+            create_id,
+            create_time
+        )
+        VALUES
+        (
+            #{articleId},
+            #{articleTitle},
+            #{releaseDate},
+            #{articleDesc},
+            #{articleContentHtml},
+            #{articleUserId},
+            #{articleImage},
+            #{auditStatus},
+            #{releaseStatus},
+            #{createId},
+            #{createTime}
+        )
+    </insert>
 </mapper>

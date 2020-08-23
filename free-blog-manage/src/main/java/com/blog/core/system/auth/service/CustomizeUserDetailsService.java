@@ -43,7 +43,6 @@ public class CustomizeUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ManageUserLoginVO manageUserLoginVO = this.manageUserService.queryUserByUserName(username);
-
         if(Objects.isNull(manageUserLoginVO)){
             throw new BlogRuntimeException("用户名不正确！");
         }

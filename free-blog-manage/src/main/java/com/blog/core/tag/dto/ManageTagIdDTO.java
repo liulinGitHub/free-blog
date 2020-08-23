@@ -5,9 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @program: ManageTagIdDTO
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-01-18 14:10
  * @Version: 1.0
  */

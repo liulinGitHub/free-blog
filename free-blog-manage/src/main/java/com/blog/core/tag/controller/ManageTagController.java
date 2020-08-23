@@ -13,9 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: ManageTagController
  * @description: 标签信息服务Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-12-16 15:17
  * @Version: 1.0
  */

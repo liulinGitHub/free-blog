@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: ManageArticleController
+ * @ClassName: ManageArticleController
  * @description: 文章信息服务Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-11-22 14:46
- * @Version: 1.0
+ * @version: 1.0
  */
 @Api(value = "文章信息服务Controller",tags = "文章信息服务")
 @RestController

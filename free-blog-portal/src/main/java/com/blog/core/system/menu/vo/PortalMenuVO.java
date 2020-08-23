@@ -14,11 +14,11 @@ import java.util.List;
 @Data
 public class PortalMenuVO {
 
-    @ApiModelProperty("菜单Code")
-    private String menuCode;
+    @ApiModelProperty("菜单Id")
+    private String menuId;
 
-    @ApiModelProperty("菜单父Code")
-    private String parentCode;
+    @ApiModelProperty("菜单父Id")
+    private String parentId;
 
     @ApiModelProperty("菜单名称")
     private String menuName;
@@ -38,19 +38,8 @@ public class PortalMenuVO {
     @ApiModelProperty("菜单或按钮(MENU :菜单，BUTTON：按钮)")
     private String menuType;
 
-    @ApiModelProperty("权限标识")
-    private String perms;
-
-    @ApiModelProperty("启用/停用")
-    private String isEnable;
-
     @ApiModelProperty("创建时间")
     private Date createTime;
-
-    @ApiModelProperty("标识菜单是前端还是后台")
-    private String isWeb;
-
-    private String parentName;
 
     private List<PortalMenuVO> menuVOList;
 }

@@ -7,9 +7,9 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @program: free-blog
+ * @ClassName: free-blog
  * @description: 文章分类信息返回前端对象
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-04 16:31
  */
 @Data

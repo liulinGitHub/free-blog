@@ -11,10 +11,10 @@ import com.blog.core.system.user.vo.ManageUserLoginVO;
 import java.util.List;
 
 /**
- * @ClassNmae: ManageUserService
  * @description: 用户信息service
- * @Author: liulin
- * @Date: 2019/11/24 1:10
+ * @author: 950103
+ * @date: 2019/11/24 1:10
+ * @version: 1.0
  **/
 public interface ManageUserService {
 
@@ -23,7 +23,7 @@ public interface ManageUserService {
      *
      * @return
      */
-    List<ManageUserListVO> queryUserByPage();
+    List<ManageUserListVO> queryManageUserByPage();
 
     /**
      * 根据用户id查看用户详情
@@ -47,7 +47,7 @@ public interface ManageUserService {
      *
      * @param manageUserAddDTO
      */
-    void addUser(ManageUserAddDTO manageUserAddDTO);
+    void addManageUser(ManageUserAddDTO manageUserAddDTO);
 
     /**
      * 修改用户信息

@@ -4,10 +4,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @ClassNmae: ManageUserLoginVO
  * @description:
- * @Author: liulin
- * @Date: 2019/12/22 23:25
+ * @author: 950103
+ * @date: 2019/12/22 23:25
+ * @version: 1.0
  **/
 @Data
 public class ManageUserLoginVO {

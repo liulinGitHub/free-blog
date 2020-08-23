@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: free-blog
+ * @ClassName: ManageCategoryController
  * @description: 分类服务Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-05-05 18:20
  */
 @Api(value = "分类服务Controller",tags = "文章分类服务")

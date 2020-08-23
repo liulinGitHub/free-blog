@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * @ClassNmae: ManageComment
  * @description: 评论信息
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/2/2 21:22
  **/
 @Data

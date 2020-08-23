@@ -1,6 +1,11 @@
+server:
+  port: 8680
+  tomcat:
+    uri-encoding: utf-8
+
 spring:
   profiles:
-    active: test
+    active: dev
   freemarker:
     check-template-location: false
 

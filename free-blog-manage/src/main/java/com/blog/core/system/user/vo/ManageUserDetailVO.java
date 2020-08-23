@@ -6,10 +6,10 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @ClassNmae: ManageUserDetailVO
  * @description: 用户详情
- * @Author: liulin
- * @Date: 2020/3/31 14:36
+ * @author: 950103
+ * @date: 2020/3/31 14:36
+ * @version: 1.0
  **/
 @Data
 public class ManageUserDetailVO {

@@ -4,33 +4,10 @@
 
     <select id="selectMenuIdByRoleId" parameterType="java.lang.String" resultType="java.lang.String">
         SELECT
-            menu_code
+            menu_id
         FROM
             portal_role_menu
         WHERE
             role_id = #{roleId}
     </select>
-
-    <select id="selectMenuIdByRoleIdList" resultType="java.lang.String">
-        SELECT
-            menu_id
-        FROM
-            portal_role_menu
-        WHERE
-            role_id IN
-            <foreach collection="roleIdList" item="item" open="(" separator="," close=")">
-              #{item}
-            </foreach>
-    </select>
-
-    <insert id="insertRoleMenu" parameterType="com.blog.core.system.menu.entity.PortalRoleMenu">
-        INSERT INTO portal_role_menu
-        (role_menu_id, role_id, menu_code, create_id, create_time)
-        VALUES
-        (#{roleMenuId}, #{roleId}, #{menuCode}, #{createId}, #{createTime})
-    </insert>
-
-    <delete id="deleteRoleMenuByRoleId" parameterType="java.lang.String">
-        DELETE FROM portal_role_menu WHERE role_id = #{roleId}
-    </delete>
 </mapper>

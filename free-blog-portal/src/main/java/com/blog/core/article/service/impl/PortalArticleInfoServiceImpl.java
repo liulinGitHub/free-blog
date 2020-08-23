@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * @ClassName: PortalArticleInfoServiceImpl
  * @Description: 文章相关信息Service实现类
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2020/4/19 21:14
  * @Version 1.0
  */

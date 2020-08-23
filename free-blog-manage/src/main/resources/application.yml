@@ -16,7 +16,6 @@ logging:
     org.springframework.security: DEBUG
     com.blog.core.**.dao: DEBUG
 
-
 blog:
   version: 1.0
   showsql: true

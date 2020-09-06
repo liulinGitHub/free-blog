@@ -1,9 +1,8 @@
 package com.blog.core.util;
 
 /**
- * @ClassName: Test
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-06-24 14:43
  * @Version: 1.0
  */

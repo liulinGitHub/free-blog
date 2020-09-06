@@ -13,7 +13,7 @@ import lombok.Data;
 public class PortalCategoryVO {
 
     @ApiModelProperty(name = "分类id" )
-    private String categoryId;
+    private Integer categoryId;
 
     @ApiModelProperty(name = "类别名称" )
     private String categoryName;

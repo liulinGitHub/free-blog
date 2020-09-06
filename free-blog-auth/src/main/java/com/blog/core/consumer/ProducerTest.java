@@ -12,9 +12,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @program: ProducerTest
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-30 15:02
  * @Version: 1.0
  */

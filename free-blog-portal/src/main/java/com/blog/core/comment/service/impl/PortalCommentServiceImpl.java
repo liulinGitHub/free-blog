@@ -51,17 +51,17 @@ public class PortalCommentServiceImpl implements PortalCommentService {
     private PortalArticleInfoService portalArticleInfoService;
 
     @Override
-    public List<PortalCommentTree> queryPortalCommentTree(String articleId) {
+    public List<PortalCommentTree> queryPortalCommentTree(Integer articleId) {
         List<PortalCommentTree> portalCommentTreeList = this.portalCommentMapper.selectPortalCommentTree(articleId);
         if (CollectionUtils.isEmpty(portalCommentTreeList)) {
             return new ArrayList<>();
         }
         List<PortalCommentTree> commentTreeList = portalCommentTreeList.stream()
-                .filter(portalCommentTree -> StringUtils.isBlank(portalCommentTree.getParentId()))
+                .filter(portalCommentTree -> Objects.nonNull(portalCommentTree.getParentId()))
                 .collect(Collectors.toList());
         for (PortalCommentTree commentTree : commentTreeList) {
             List<PortalCommentTree> replyChildrenList = portalCommentTreeList.stream().filter(portalCommentTree ->
-                    StringUtils.isNotBlank(portalCommentTree.getParentId())
+                    Objects.nonNull(portalCommentTree.getParentId())
                             && portalCommentTree.getParentId().equals(commentTree.getCommentId())
             ).collect(Collectors.toList());
             if (CollectionUtils.isNotEmpty(replyChildrenList)) {
@@ -80,7 +80,6 @@ public class PortalCommentServiceImpl implements PortalCommentService {
     @Override
     public void  savePortalComment(PortalCommentAddDTO portalCommentAddDTO) {
         PortalComment portalComment = MapperUtils.mapperBean(portalCommentAddDTO, PortalComment.class);
-        portalComment.setCommentId(UUIDUtil.randomUUID32());
         portalComment.setCommentUserId(Constants.USER_ID);
         portalComment.setCommentTime(new Date());
         portalComment.setEnable(EnableEnum.Enable_NO.getValue());

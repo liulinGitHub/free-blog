@@ -40,7 +40,7 @@ public class PortalArticleController extends BaseController {
     @LogPortal
     @ApiOperation(value="查看文章详细信息", notes="")
     @GetMapping("/details/{articleId}")
-    public ResponseBo queryPortalArticleDetails(@PathVariable("articleId") String articleId) {
+    public ResponseBo queryPortalArticleDetails(@PathVariable("articleId") Integer articleId) {
         return ResponseBo.newDataResponse(this.portalArticleService.queryPortalArticleDetails(articleId));
     }
 
@@ -60,7 +60,7 @@ public class PortalArticleController extends BaseController {
 
     @ApiOperation(value="文章删除草稿", notes="")
     @DeleteMapping("/delete/draft/{articleId}")
-    public ResponseBo deletePortalArticleDraft(@PathVariable("articleId") String articleId) {
+    public ResponseBo deletePortalArticleDraft(@PathVariable("articleId") Integer articleId) {
         this.portalArticleService.deletePortalArticleDraft(articleId);
         return ResponseBo.ok("删除草稿！");
     }

@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.EnableCaching;
 /**
  * @program: FreeBlogAuthApplication
  * @description: 权限模块
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-29 16:42
  * @Version: 1.0
  */

@@ -35,7 +35,7 @@
         </where>
     </select>
 
-    <select id="selectRoleByRoleId" parameterType="java.lang.String" resultType="com.blog.core.system.role.vo.PortalRoleVO">
+    <select id="selectRoleByRoleId" parameterType="java.lang.Integer" resultType="com.blog.core.system.role.vo.PortalRoleVO">
         SELECT
             role_id roleId,
             role_name roleName,
@@ -51,16 +51,16 @@
     </select>
 
     <insert id="addRole" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.system.role.entity.PortalRole">
-        INSERT INTO portal_role (
-            role_id,
+        INSERT INTO
+        portal_role (
             role_name,
             role_describe,
             role_code,
             enable,
             create_id,
             create_time
-        ) VALUES (
-            #{roleId},
+        )
+        VALUES (
             #{roleName},
             #{roleDescribe},
             #{roleCode},
@@ -82,14 +82,14 @@
             role_id = #{roleId}
     </update>
 
-    <delete id="deleteRole" parameterType="java.lang.String">
+    <delete id="deleteRole" parameterType="java.lang.Integer">
         DELETE FROM
             portal_role
         WHERE
             role_id = #{roleId}
     </delete>
 
-    <update id="enableRole" parameterType="java.lang.String">
+    <update id="enableRole" parameterType="java.lang.Integer">
         UPDATE
             portal_role
         SET
@@ -98,7 +98,7 @@
             role_id = #{roleId}
     </update>
 
-    <update id="disabledRole" parameterType="java.lang.String">
+    <update id="disabledRole" parameterType="java.lang.Integer">
         UPDATE
             portal_role
         SET
@@ -111,7 +111,6 @@
         INSERT
             portal_role
         (
-            user_role_id,
             role_id,
             user_id,
             create_id,
@@ -119,7 +118,6 @@
         )
          VALUES
          (
-            #{userRoleId},
             #{roleId},
             #{userId},
             #{createId},
@@ -127,7 +125,7 @@
          )
     </insert>
 
-    <select id="selectRoleByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.role.vo.PortalRoleVO">
+    <select id="selectRoleByUserId" parameterType="java.lang.Integer" resultType="com.blog.core.system.role.vo.PortalRoleVO">
          SELECT
             role.role_id  roleId,
             role.role_name  roleName,

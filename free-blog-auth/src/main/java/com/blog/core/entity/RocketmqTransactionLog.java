@@ -5,7 +5,7 @@ import lombok.Builder;
 /**
  * @program: RocketmqTransactionLog
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-30 17:22
  * @Version: 1.0
  */

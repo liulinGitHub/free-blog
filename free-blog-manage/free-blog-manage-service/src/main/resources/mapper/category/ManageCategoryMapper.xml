@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.category.dao.ManageCategoryMapper">
+
+    <select id="selectManageCategoryByPage" resultType="com.blog.core.category.vo.ManageCategoryVO">
+        SELECT
+            category_id categoryId,
+            category_name categoryName,
+            sort,
+            create_time,
+            create_id,
+            enable
+        FROM
+          manage_category
+    </select>
+
+    <select id="selectManageCategoryByCategoryId" parameterType="java.lang.Integer"
+                    resultType="com.blog.core.category.vo.ManageCategoryVO">
+        SELECT
+            category_id categoryId,
+            category_name categoryName,
+            sort,
+            create_time,
+            create_id,
+            enable
+        FROM
+          manage_category
+        WHERE
+          category_id = #{categoryId}
+    </select>
+
+    <insert id="insertManageCategory" parameterType="com.blog.core.category.entity.ManageCategory">
+        INSERT
+        manage_category
+        (
+        category_name,
+        sort,
+        category_belong_type,
+        category_belong_id,
+        create_id,
+        create_time,
+        enable)
+        VALUES
+        (
+        #{categoryName},
+        #{sort},
+        #{categoryBelongType.value},
+        #{categoryBelongId},
+        #{createId},
+        #{createTime},
+        #{enable.value})
+    </insert>
+
+    <update id="updateManageCategory" parameterType="com.blog.core.category.entity.ManageCategory">
+        UPDATE
+          manage_category
+        SET
+          category_name = #{categoryName},
+          sort = #{sort},
+          update_id = #{updateId},
+          update_time = #{updateTime}
+        WHERE
+          category_id = #{categoryId}
+    </update>
+
+    <update id="enableManageCategoryByCategoryId">
+        UPDATE
+           manage_category
+        SET
+        enable = '1'
+        WHERE
+            category_id IN
+            <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+    </update>
+
+    <update id="disableManageCategoryByCategoryId">
+        UPDATE
+          manage_category
+        SET
+        enable = '0'
+        WHERE
+            category_id IN
+            <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+    </update>
+</mapper>

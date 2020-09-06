@@ -14,8 +14,8 @@ import lombok.Data;
 public class AttentionDTO {
 
 	@ApiModelProperty("添加关注的用户id")
-	private String attentionUserId;
+	private Integer attentionUserId;
 
 	@ApiModelProperty("被关注的用户id")
-	private String beAttentionUserId;
+	private Integer beAttentionUserId;
 }

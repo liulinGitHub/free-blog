@@ -14,5 +14,5 @@ import lombok.Data;
 public class ArticleDetailsDTO {
 
     @ApiModelProperty("文章id" )
-    private String articleTitleId;
+    private Integer articleId;
 }

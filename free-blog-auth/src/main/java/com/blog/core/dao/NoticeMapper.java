@@ -9,9 +9,8 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 /**
- * @program: NoticeMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-30 17:21
  * @Version: 1.0
  */

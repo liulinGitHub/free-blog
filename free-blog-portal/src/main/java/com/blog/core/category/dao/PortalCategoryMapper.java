@@ -31,5 +31,5 @@ public interface PortalCategoryMapper {
      * @param articleId
      * @return
      */
-    List<PortalCategoryVO> selectCategoryByArticleId(String articleId);
+    List<PortalCategoryVO> selectCategoryByArticleId(Integer articleId);
 }

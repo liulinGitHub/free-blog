@@ -27,13 +27,13 @@ public class PortalAttentionInfoController {
 
 	@ApiOperation(value="获取被关注人的用户信息", notes="")
 	@GetMapping("/beAttention/{userId}")
-	public ResponseBo queryBeAttentionInfo(@PathVariable String userId) {
+	public ResponseBo queryBeAttentionInfo(@PathVariable Integer userId) {
 		return ResponseBo.newDataResponse(this.portalAttentionInfoService.queryBeAttentionInfo(userId));
 	}
 
 	@ApiOperation(value="获取用户关注人信息", notes="")
 	@GetMapping("/get/{userId}")
-	public ResponseBo queryAttentionInfo(@PathVariable("userId") String userId) {
+	public ResponseBo queryAttentionInfo(@PathVariable("userId") Integer userId) {
 		return ResponseBo.newDataResponse(this.portalAttentionInfoService.queryAttentionInfo(userId));
 	}
 

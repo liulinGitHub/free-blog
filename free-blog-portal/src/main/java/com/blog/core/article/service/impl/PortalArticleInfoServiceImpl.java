@@ -20,12 +20,12 @@ public class PortalArticleInfoServiceImpl implements PortalArticleInfoService {
     private PortalArticleInfoMapper portalArticleInfoMapper;
 
     @Override
-    public PortalArticleInfoVO queryPortalArticleInfoDetails(String articleId) {
+    public PortalArticleInfoVO queryPortalArticleInfoDetails(Integer articleId) {
         return this.portalArticleInfoMapper.selectPortalArticleInfoDetails(articleId);
     }
 
     @Override
-    public void editArticleCommentNumber(String articleId) {
+    public void editArticleCommentNumber(Integer articleId) {
         this.portalArticleInfoMapper.updateArticleCommentNumber(articleId);
     }
 }

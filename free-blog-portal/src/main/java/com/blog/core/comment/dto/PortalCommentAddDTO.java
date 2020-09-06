@@ -16,8 +16,8 @@ public class PortalCommentAddDTO {
     private String commentContent;
 
     @ApiModelProperty("所属文章ID" )
-    private String articleId;
+    private Integer articleId;
 
     @ApiModelProperty("父ID" )
-    private String parentId;
+    private Integer parentId;
 }

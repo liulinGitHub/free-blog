@@ -5,9 +5,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * @program: RocketmqTransactionLogMapper
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-30 17:21
  * @Version: 1.0
  */

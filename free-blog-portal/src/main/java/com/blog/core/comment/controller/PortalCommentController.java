@@ -32,7 +32,7 @@ public class PortalCommentController extends BaseController {
     @LogPortal
     @ApiOperation(value="分页查询评论信息", notes="")
     @GetMapping("/query/{articleId}")
-    public ResponseBo queryCommentByPage(@PathVariable String articleId, QueryRequest queryRequest){
+    public ResponseBo queryCommentByPage(@PathVariable Integer articleId, QueryRequest queryRequest){
         List<PortalCommentTree> portalCommentTrees = this.portalCommentService.queryPortalCommentTree(articleId);
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->
                 portalCommentTrees));

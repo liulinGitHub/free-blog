@@ -15,10 +15,10 @@ import lombok.Data;
 public class PortalArticleInfo extends BaseModel {
 
     @ApiModelProperty("文章相关信息id" )
-    private String articleInfoId;
+    private Integer articleInfoId;
 
     @ApiModelProperty("文章id" )
-    private String articleTitleId;
+    private Integer articleId;
 
     @ApiModelProperty("点赞数" )
     private Long approveNumber;

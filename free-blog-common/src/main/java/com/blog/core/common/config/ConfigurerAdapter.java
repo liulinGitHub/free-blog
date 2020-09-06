@@ -9,9 +9,8 @@
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //
 ///**
-// * @program: CorsConfig
 // * @description: 解决跨域
-// * @author: liulin
+// * @author: 950103
 // * @create: 2019-07-13 11:44
 // * @Version: 1.0
 // */

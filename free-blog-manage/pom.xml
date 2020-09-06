@@ -10,43 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>free-blog-manage</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>free-blog-manage-protocol</module>
+        <module>free-blog-manage-service</module>
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.blog.core</groupId>
-            <artifactId>free-blog-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-jwt</artifactId>
-            <version>1.0.7.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.whvcse</groupId>
-            <artifactId>easy-captcha</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-            <version>2.3.5.RELEASE</version>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

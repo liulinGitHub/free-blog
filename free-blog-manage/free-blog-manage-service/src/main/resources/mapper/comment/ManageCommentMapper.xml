@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.comment.dao.ManageCommentMapper">
+
+    <select id="selectManageCommentByPage"
+            resultType="com.blog.core.comment.vo.ManageCommentListVO">
+        SELECT
+            comment_id commentId,
+            comment_content commentContent,
+            comment_user_id commentUserId,
+            comment_parent_id commentParentId,
+            is_parent isParent,
+            comment_time commentTime,
+            approves approves,
+            enable enable,
+            create_time createTime,
+            create_id createId
+        FROM
+            manage_comment
+        ORDER BY
+            create_time DESC
+    </select>
+
+    <select id="selectManageCommentById" parameterType="java.lang.Integer"
+            resultType="com.blog.core.comment.vo.ManageCommentDetailVO">
+        SELECT
+            comment_id commentId,
+            comment_content commentContent,
+            comment_user_id commentUserId,
+            comment_parent_id commentParentId,
+            is_parent isParent,
+            comment_time commentTime,
+            approves approves,
+            enable enable,
+            create_time createTime,
+            create_id createId
+        FROM
+            manage_comment
+        WHERE
+            comment_belong_id = #{commentBelongId}
+        ORDER BY
+            create_time DESC
+    </select>
+
+    <insert id="insertManageComment" parameterType="com.blog.core.comment.entity.ManageComment">
+        INSERT INTO manage_comment
+        (comment_content,
+        comment_user_id,
+        comment_parent_id,
+        article_id,
+        is_parent,
+        comment_time,
+        approves,
+        enable,
+        create_time,
+        create_id)
+        VALUE
+        (
+        #{commentContent},
+        #{commentUserId},
+        #{commentParentId},
+        #{articleId},
+        #{isParent},
+        #{commentTime},
+        #{approves},
+        #{enable},
+        #{createTime},
+        #{createId}
+        )
+    </insert>
+</mapper>

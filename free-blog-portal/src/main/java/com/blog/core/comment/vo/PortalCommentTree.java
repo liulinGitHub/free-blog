@@ -19,13 +19,13 @@ import java.util.List;
 public class PortalCommentTree {
 
 	@ApiModelProperty( "评论id" )
-	private String commentId;
+	private Integer commentId;
 
 	@ApiModelProperty( "评论内容" )
 	private String commentContent;
 
 	@ApiModelProperty( "父id" )
-	private String parentId;
+	private Integer parentId;
 
 	@ApiModelProperty( "评论时间" )
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")

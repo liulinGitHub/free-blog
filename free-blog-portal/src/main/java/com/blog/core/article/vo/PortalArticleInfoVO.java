@@ -3,9 +3,8 @@ package com.blog.core.article.vo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 /**
- * @ClassName: PortalArticleInfoVO
  * @Description: 文章相关信息返回前端参数
- * @Author: liulin
+ * @Author: 950103
  * @Create: 2019-05-04 15:15
  * @Version 1.0
  */
@@ -13,7 +12,7 @@ import lombok.Data;
 public class PortalArticleInfoVO {
 
     @ApiModelProperty("文章id" )
-    private String articleId;
+    private Integer articleId;
 
     @ApiModelProperty("点赞数" )
     private Integer approvesNumber;

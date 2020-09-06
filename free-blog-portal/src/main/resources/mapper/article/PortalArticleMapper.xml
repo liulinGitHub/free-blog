@@ -44,10 +44,9 @@
             pa.enable = '1'
         AND
             pa.release_status = '1'
-        AND     pa.article_id = '1'
     </select>
 
-    <select id="selectArticleByArticleId" parameterType="java.lang.String"
+    <select id="selectArticleByArticleId" parameterType="java.lang.Integer"
             resultType="com.blog.core.article.vo.PortalArticleDetailsVO">
          SELECT
             pa.article_id articleId,
@@ -69,25 +68,25 @@
         WHERE pa.article_id = #{articleId}
     </select>
 
-    <update id="updateReadArticleByArticleId" parameterType="java.lang.String">
+    <update id="updateReadArticleByArticleId" parameterType="java.lang.Integer">
         UPDATE portal_article
         SET like_number = like_number + 1
         WHERE article_id = #{articleId}
     </update>
 
-    <update id="updateApproves" parameterType="java.lang.String">
+    <update id="updateApproves" parameterType="java.lang.Integer">
         UPDATE portal_article
         SET approves = approves + 1
         WHERE article_id = #{articleId}
     </update>
 
-    <update id="updateTemperature" parameterType="java.lang.String">
+    <update id="updateTemperature" parameterType="java.lang.Integer">
         UPDATE portal_article
         SET temperature = temperature + 1
         WHERE article_id = #{articleId}
     </update>
 
-    <update id="updateComments" parameterType="java.lang.String">
+    <update id="updateComments" parameterType="java.lang.Integer">
         UPDATE portal_article
         SET comments = comments + 1
         WHERE article_id = #{articleId}
@@ -116,7 +115,6 @@
         INSERT INTO
         portal_article
         (
-            article_id,
             article_title,
             article_desc,
             article_content_html,
@@ -131,7 +129,6 @@
         )
         VALUES
         (
-            #{articleId},
             #{articleTitle},
             #{articleDesc},
             #{articleContentHtml},
@@ -159,7 +156,6 @@
         INSERT INTO
         portal_article
         (
-            article_id,
             article_title,
             release_date,
             article_desc,
@@ -173,7 +169,6 @@
         )
         VALUES
         (
-            #{articleId},
             #{articleTitle},
             #{releaseDate},
             #{articleDesc},

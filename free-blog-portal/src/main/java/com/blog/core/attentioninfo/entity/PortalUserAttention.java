@@ -18,13 +18,13 @@ import java.util.Date;
 public class PortalUserAttention {
 
 	@ApiModelProperty("关注ID")
-	private String attentionId;
+	private Integer attentionId;
 
 	@ApiModelProperty("用户ID")
-	private String attentionUserId;
+	private Integer attentionUserId;
 
 	@ApiModelProperty("关注用户ID")
-	private String beAttentionUserId;
+	private Integer beAttentionUserId;
 
 	@ApiModelProperty("关注时间")
 	private Date attentionTime;

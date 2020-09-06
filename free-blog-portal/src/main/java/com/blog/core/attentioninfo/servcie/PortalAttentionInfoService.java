@@ -20,7 +20,7 @@ public interface PortalAttentionInfoService {
 	 * @param userId
 	 * @return
 	 **/
-	List<AttentionUserVO> queryBeAttentionInfo(String userId);
+	List<AttentionUserVO> queryBeAttentionInfo(Integer userId);
 
 	/**
 	 * 根据用户ID查询所有的关注人信息
@@ -28,7 +28,7 @@ public interface PortalAttentionInfoService {
 	 * @param userId
 	 * @return
 	 **/
-	List<AttentionUserVO> queryAttentionInfo(String userId);
+	List<AttentionUserVO> queryAttentionInfo(Integer userId);
 
 	/**
 	 * 添加关注

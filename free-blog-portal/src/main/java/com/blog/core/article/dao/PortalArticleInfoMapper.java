@@ -19,7 +19,7 @@ public interface PortalArticleInfoMapper {
      * @param articleId
      * @return PortalArticleInfoVO
      */
-    PortalArticleInfoVO selectPortalArticleInfoDetails(String articleId);
+    PortalArticleInfoVO selectPortalArticleInfoDetails(Integer articleId);
 
-    void updateArticleCommentNumber(String articleId);
+    void updateArticleCommentNumber(Integer articleId);
 }

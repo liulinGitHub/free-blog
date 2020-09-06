@@ -14,7 +14,7 @@ import lombok.Data;
 public class AttentionUserVO {
 
 	@ApiModelProperty("用户id")
-	private String userId;
+	private Integer userId;
 
 	@ApiModelProperty("用户昵称")
 	private String nickName;

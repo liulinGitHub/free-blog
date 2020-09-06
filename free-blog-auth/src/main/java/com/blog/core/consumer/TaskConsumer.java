@@ -11,9 +11,8 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 /**
- * @program: TaskConsumer
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-29 17:11
  * @Version: 1.0
  */

@@ -19,7 +19,7 @@ public interface PortalAttentionInfoMapper {
 	 * @param userId
 	 * @return
 	 **/
-	List<String> selectBeAttentionInfo(String userId);
+	List<Integer> selectBeAttentionInfo(Integer userId);
 
 	/**
 	 * 根据用户ID查询关注的用户信息
@@ -27,7 +27,7 @@ public interface PortalAttentionInfoMapper {
 	 * @param userId
 	 * @return
 	 **/
-	List<String> selectAttentionInfo(String userId);
+	List<Integer> selectAttentionInfo(Integer userId);
 
 	/**
 	 * 添加用户关注信息

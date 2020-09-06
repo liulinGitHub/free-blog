@@ -26,6 +26,6 @@ public interface PortalTagService {
      * @param articleId
      * @return
      */
-    List<PortalTagVO> queryTagByArticleId(String articleId);
+    List<PortalTagVO> queryTagByArticleId(Integer articleId);
 
 }

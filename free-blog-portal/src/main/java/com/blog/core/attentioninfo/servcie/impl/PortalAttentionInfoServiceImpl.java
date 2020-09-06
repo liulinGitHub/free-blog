@@ -37,8 +37,8 @@ public class PortalAttentionInfoServiceImpl implements PortalAttentionInfoServic
 	private PortalCommonUserService portalCommonUserService;
 
 	@Override
-	public List<AttentionUserVO> queryBeAttentionInfo(String userId) {
-		List<String> beAttentionUserIdList = this.portalAttentionInfoMapper.selectBeAttentionInfo(userId);
+	public List<AttentionUserVO> queryBeAttentionInfo(Integer userId) {
+		List<Integer> beAttentionUserIdList = this.portalAttentionInfoMapper.selectBeAttentionInfo(userId);
 		if (CollectionUtils.isEmpty(beAttentionUserIdList)) {
 			return new ArrayList<>();
 		}
@@ -47,8 +47,8 @@ public class PortalAttentionInfoServiceImpl implements PortalAttentionInfoServic
 	}
 
 	@Override
-	public List<AttentionUserVO> queryAttentionInfo(String userId) {
-		List<String> attentionUserIdList = this.portalAttentionInfoMapper.selectAttentionInfo(userId);
+	public List<AttentionUserVO> queryAttentionInfo(Integer userId) {
+		List<Integer> attentionUserIdList = this.portalAttentionInfoMapper.selectAttentionInfo(userId);
 		if (CollectionUtils.isEmpty(attentionUserIdList)) {
 			return new ArrayList<>();
 		}
@@ -60,7 +60,6 @@ public class PortalAttentionInfoServiceImpl implements PortalAttentionInfoServic
 	@Override
 	public void savePortalAttention(AttentionDTO attentionDTOO) {
 		PortalUserAttention portalUserAttention = PortalUserAttention.builder()
-				.attentionId(UUIDUtil.randomUUID32())
 				.attentionUserId(attentionDTOO.getAttentionUserId())
 				.beAttentionUserId(attentionDTOO.getBeAttentionUserId())
 				.attentionTime(new Date())

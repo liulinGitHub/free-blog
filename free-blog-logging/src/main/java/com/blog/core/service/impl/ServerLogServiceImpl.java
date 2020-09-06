@@ -2,7 +2,6 @@ package com.blog.core.service.impl;
 
 import com.blog.core.annotation.LogServer;
 import com.blog.core.common.utils.IPUtils;
-import com.blog.core.common.utils.PrimarykeyUtil;
 import com.blog.core.dao.ServerLogMapper;
 import com.blog.core.dto.ServerLogQueryDTO;
 import com.blog.core.entity.ServerLog;
@@ -33,9 +32,6 @@ public class ServerLogServiceImpl implements ServerLogService {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    @Autowired
-    private PrimarykeyUtil primarykeyUtil;
 
     @Override
     public List<ServerLogVO> queryServerLogByPage(ServerLogQueryDTO serverLogQueryDTO) {
@@ -68,15 +64,14 @@ public class ServerLogServiceImpl implements ServerLogService {
             serverLog.setRequestParams(params.toString());
         }
         serverLog.setOperatingTime(new Date());
-        serverLog.setLogId(primarykeyUtil.getPimaryKey());
         serverLog.setIpAddress(IPUtils.getIpAddr(request));
         serverLog.setAddress(IPUtils.getIpSource(IPUtils.getIpAddr(request)));
         serverLog.setBrowser(IPUtils.getBrowser(request));
         serverLog.setRequestPath(request.getRequestURI());
         serverLog.setRequestMethod(request.getMethod());
-//        SecurityUser user = SecurityUtils.getUser();
-//        if (Objects.nonNull(user)) {
-//            manageLog.setOperatingId(user.getUserId());
+//        SecurityUser currentUser = SecurityUtils.getUser();
+//        if (Objects.nonNull(currentUser)) {
+//            manageLog.setOperatingId(currentUser.getUserId());
 //        }
         try {
             this.serverLogMapper.insertServerLog(serverLog);

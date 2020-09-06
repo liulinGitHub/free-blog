@@ -23,12 +23,12 @@ public class PortalCommonUserServiceImpl implements PortalCommonUserService {
     private PortalCommonUserMapper portalCommonUserMapper;
 
     @Override
-    public PortalCommonUser queryPortalCommonUserByUserId(String userId) {
+    public PortalCommonUser queryPortalCommonUserByUserId(Integer userId) {
         return this.portalCommonUserMapper.selectPortalCommonUserByUserId(userId);
     }
 
     @Override
-    public List<AttentionUserVO> queryPortalAttentionUserInfo(List<String> userIdList) {
+    public List<AttentionUserVO> queryPortalAttentionUserInfo(List<Integer> userIdList) {
         return this.portalCommonUserMapper.selectPortalAttentionUserInfo(userIdList);
     }
 }

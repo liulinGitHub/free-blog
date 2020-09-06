@@ -12,9 +12,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @program: ConsumerInOrderTest
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-30 15:06
  * @Version: 1.0
  */

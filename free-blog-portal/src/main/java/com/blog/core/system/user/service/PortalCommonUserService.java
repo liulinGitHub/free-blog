@@ -21,7 +21,7 @@ public interface PortalCommonUserService {
      * @param userId
      * @return
      */
-    PortalCommonUser queryPortalCommonUserByUserId(String userId);
+    PortalCommonUser queryPortalCommonUserByUserId(Integer userId);
 
     /**
      * 根据用户ID查询关注(被关注)的用户信息
@@ -29,5 +29,5 @@ public interface PortalCommonUserService {
      * @param userIdList
      * @return
      */
-    List<AttentionUserVO> queryPortalAttentionUserInfo(List<String> userIdList);
+    List<AttentionUserVO> queryPortalAttentionUserInfo(List<Integer> userIdList);
 }

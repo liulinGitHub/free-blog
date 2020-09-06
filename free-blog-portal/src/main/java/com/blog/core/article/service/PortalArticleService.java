@@ -31,7 +31,7 @@ public interface PortalArticleService {
      * @param articleId
      * @return
      */
-    PortalArticleDetailsVO queryPortalArticleDetails(String articleId);
+    PortalArticleDetailsVO queryPortalArticleDetails(Integer articleId);
 
     /**
      * 提交审核
@@ -52,7 +52,7 @@ public interface PortalArticleService {
      *
      * @param articleId
      */
-    void deletePortalArticleDraft(String articleId);
+    void deletePortalArticleDraft(Integer articleId);
 
     /**
      * 文章点赞

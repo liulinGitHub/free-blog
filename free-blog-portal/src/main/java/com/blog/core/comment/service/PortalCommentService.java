@@ -21,7 +21,7 @@ public interface PortalCommentService {
      * @param articleId
      * @return
      */
-    List<PortalCommentTree> queryPortalCommentTree(String articleId);
+    List<PortalCommentTree> queryPortalCommentTree(Integer articleId);
 
     /**
      * 保存评论信息

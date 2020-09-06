@@ -14,10 +14,10 @@ import lombok.Data;
 public class PortalApprovalCommentDTO {
 
     @ApiModelProperty("被点赞的评论ID")
-    private String subjectCommentId;
+    private Integer subjectCommentId;
 
     @ApiModelProperty("点赞的用户ID")
-    private String postUserId;
+    private Integer postUserId;
 
     @ApiModelProperty("被点赞的内容")
     private String commentContent;

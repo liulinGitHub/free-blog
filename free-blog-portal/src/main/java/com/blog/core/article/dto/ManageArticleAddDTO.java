@@ -13,7 +13,7 @@ import lombok.Data;
 public class ManageArticleAddDTO {
 
     @ApiModelProperty(name = "文章id" )
-    private String id;
+    private Integer articleId;
 
     @ApiModelProperty(name = "标题" )
     private String articleTitle;

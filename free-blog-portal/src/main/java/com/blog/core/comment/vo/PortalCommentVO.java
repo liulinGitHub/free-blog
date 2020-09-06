@@ -18,7 +18,7 @@ import java.util.List;
 public class PortalCommentVO {
 
 	@ApiModelProperty( "评论id" )
-	private String commentId;
+	private Integer commentId;
 
 	@ApiModelProperty( "评论内容" )
 	private String commentContent;
@@ -27,7 +27,7 @@ public class PortalCommentVO {
 	private String author;
 
 	@ApiModelProperty( "父id" )
-	private String parentId;
+	private Integer parentId;
 
 	@ApiModelProperty( "是否为父级" )
 	private String isParent;

@@ -19,7 +19,7 @@ import java.util.List;
 public class PortalArticleDetailsVO {
 
     @ApiModelProperty("文章id" )
-    private String articleId;
+    private Integer articleId;
 
     @ApiModelProperty("标题" )
     private String articleTitle;
@@ -38,7 +38,7 @@ public class PortalArticleDetailsVO {
     private String commentStatus;
 
     @ApiModelProperty("发表文章的作者ID" )
-    private String articleUserId;
+    private Integer articleUserId;
 
     @ApiModelProperty("发表文章的作者" )
     private String articleAuthor;

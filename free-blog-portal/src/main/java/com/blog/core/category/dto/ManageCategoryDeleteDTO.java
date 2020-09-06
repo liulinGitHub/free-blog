@@ -13,5 +13,5 @@ import java.util.List;
 @Data
 public class ManageCategoryDeleteDTO {
 
-    private List<String> categoryIdList;
+    private List<Integer> categoryIdList;
 }

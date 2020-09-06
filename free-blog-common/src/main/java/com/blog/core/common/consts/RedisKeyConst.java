@@ -33,4 +33,6 @@ public interface RedisKeyConst {
      * 前台访问人数 KEY
      */
     String PORTAL_VIEWS_COUNT = "PORTAL_VIEWS_COUNT";
+
+    String CAPTCHA_KEY = "CAPTCHA_KEY";
 }

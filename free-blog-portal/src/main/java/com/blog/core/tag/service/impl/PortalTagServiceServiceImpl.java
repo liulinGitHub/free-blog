@@ -28,7 +28,7 @@ public class PortalTagServiceServiceImpl implements PortalTagService {
     }
 
     @Override
-    public List<PortalTagVO> queryTagByArticleId(String articleId) {
+    public List<PortalTagVO> queryTagByArticleId(Integer articleId) {
         List<PortalTagVO> portalTagVOList = this.portalTagMapper.selectTagByArticleId(articleId);
         return portalTagVOList;
     }

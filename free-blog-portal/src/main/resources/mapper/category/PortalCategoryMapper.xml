@@ -15,7 +15,7 @@
         ORDER BY sort
     </select>
 
-    <select id="selectCategoryByArticleId" parameterType="java.lang.String" resultType="com.blog.core.category.vo.PortalCategoryVO">
+    <select id="selectCategoryByArticleId" parameterType="java.lang.Integer" resultType="com.blog.core.category.vo.PortalCategoryVO">
         SELECT
             pc.category_id,
             pc.category_name

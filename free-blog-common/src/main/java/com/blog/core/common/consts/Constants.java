@@ -36,7 +36,7 @@ public interface Constants {
         return type + "";
     }
 
-    String USER_ID = "1";
+    Integer USER_ID = 1;
 
     /**
      * 用于IP定位转换

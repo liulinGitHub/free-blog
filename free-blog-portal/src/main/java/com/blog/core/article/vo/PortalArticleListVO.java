@@ -21,7 +21,7 @@ import java.util.List;
 public class PortalArticleListVO {
 
     @ApiModelProperty("文章id" )
-    private String articleId;
+    private Integer articleId;
 
     @ApiModelProperty(name = "标题" )
     private String articleTitle;
@@ -50,7 +50,7 @@ public class PortalArticleListVO {
     private Date createTime;
 
     @ApiModelProperty(name = "发表文章的作者ID" )
-    private String articleUserId;
+    private Integer articleUserId;
 
     @ApiModelProperty(name = "文章用户信息" )
     private PortalCommonUser articleUser;

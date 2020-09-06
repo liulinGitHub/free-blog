@@ -13,7 +13,7 @@ import lombok.Data;
 public class ManageArticleUpdateStatusDTO {
 
     @ApiModelProperty(name = "id" )
-    private String id;
+    private Integer articleId;
 
     private String recommendStatus;
 

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 public class PortalArticleAddDTO {
 
     @ApiModelProperty("文章id" )
-    private String articleId;
+    private Integer articleId;
 
     @ApiModelProperty("标题" )
     @NotNull(message = "文章标题不能为空")

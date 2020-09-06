@@ -28,7 +28,7 @@ public class PortalCategoryServiceImpl implements PortalCategoryService {
     }
 
     @Override
-    public List<PortalCategoryVO> queryCategoryByArticleId(String articleId) {
+    public List<PortalCategoryVO> queryCategoryByArticleId(Integer articleId) {
         return this.portalCategoryMapper.selectCategoryByArticleId(articleId);
     }
 

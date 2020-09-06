@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blog.core.system.role.dao.PortalUserRoleMapper">
 
-    <select id="selectUserRoleByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.role.entity.PortalUserRole">
+    <select id="selectUserRoleByUserId" parameterType="java.lang.Integer" resultType="com.blog.core.system.role.entity.PortalUserRole">
         SELECT
             id,
             role_id,
@@ -20,7 +20,7 @@
         (roleId, userId, createId, createTime)
     </insert>
 
-    <delete id="deleteUserRoleByUserId" parameterType="java.lang.String">
+    <delete id="deleteUserRoleByUserId" parameterType="java.lang.Integer">
         DELETE FROM portal_user_role WHERE user_id = #{userId}
     </delete>
 </mapper>

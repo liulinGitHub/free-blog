@@ -11,10 +11,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @ClassNmae: PrimarkeyUtil
  * @description: 生成唯一的key
  * @Author: 950103
  * @Date: 2020/2/2 14:36
+ * @version: 1.0
  **/
 @Slf4j
 @Component

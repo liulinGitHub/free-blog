@@ -27,6 +27,6 @@ public interface PortalTagMapper {
      * @param tagId
      * @return
      */
-    List<PortalTagVO> selectTagByArticleId(String tagId);
+    List<PortalTagVO> selectTagByArticleId(Integer tagId);
 
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.job.dao.ManageJobMapper">
+
+    <select id="selectManageJobByPage" resultType="com.blog.core.system.job.vo.ManageJobListVO">
+        SELECT
+        job_id jobId,
+        job_name jobName,
+        dept_id deptId,
+        enable enable,
+        create_time createTime
+        FROM
+            manage_job
+    </select>
+
+    <update id="updateManageJob" parameterType="com.blog.core.system.job.entity.ManageJob">
+        UPDATE manage_job
+        SET
+            job_name = #{jobName},
+            update_id = #{updateId},
+            update_time = #{updateTime}
+        WHERE job_id = #{jobId}
+    </update>
+
+    <insert id="insertManageJob" parameterType="com.blog.core.system.job.entity.ManageJob">
+        INSERT INTO manage_job
+        (
+        job_name,
+        dept_id,
+        enable,
+        create_id,
+        create_time
+        )
+        VALUES
+        (
+        #{jobName},
+        #{deptId},
+        #{enable.value},
+        #{createId},
+        #{createTime})
+    </insert>
+</mapper>

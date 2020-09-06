@@ -17,11 +17,11 @@ public class PortalCategory extends BaseModel {
     private String categoryName;
 
     @ApiModelProperty(name = "类别父名称id" )
-    private String parentCategoryId;
+    private Integer parentCategoryId;
 
     @ApiModelProperty(name = "排序" )
     private Integer sort;
 
     @ApiModelProperty(name = "删除标识" )
-    private String isEnable;
+    private String enable;
 }

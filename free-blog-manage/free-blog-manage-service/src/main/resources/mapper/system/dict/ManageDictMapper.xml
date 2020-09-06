@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.dict.dao.ManageDictMapper">
+
+    <select id="selectManageDictByPage" resultType="com.blog.core.system.dict.vo.ManageDictVO">
+        SELECT
+            dict_id dictId,
+            field_type fieldType,
+            remark remark,
+            create_id createName,
+            create_time createTime
+        FROM
+            manage_dict
+    </select>
+
+    <select id="selectManageDictByDictId" parameterType="java.lang.Integer" resultType="com.blog.core.system.dict.vo.ManageDictVO">
+        SELECT
+            dict_id dictId,
+            field_type fieldType,
+            remark remark,
+            create_time createTime
+        FROM
+            manage_dict
+        WHERE
+            dict_id = #{dictId}
+    </select>
+
+    <insert id="insertManageDict" parameterType="com.blog.core.system.dict.entity.ManageDict">
+        INSERT INTO manage_dict
+        (field_type, remark, create_id, create_time)
+        VALUES
+        (#{fieldType}, #{remark}, #{createId}, #{createTime})
+    </insert>
+
+    <update id="updateManageDict" parameterType="com.blog.core.system.dict.entity.ManageDict">
+        UPDATE
+            manage_dict
+        SET
+            field_type = #{fieldType},
+            remark = #{remark},
+            update_id = #{updateId},
+            update_time = #{updateTime}
+        WHERE
+            dict_id = #{dictId}
+    </update>
+
+    <delete id="deleteManageDict" parameterType="java.lang.Integer">
+        DELETE FROM manage_dict WHERE dict_id = #{dictId}
+    </delete>
+</mapper>

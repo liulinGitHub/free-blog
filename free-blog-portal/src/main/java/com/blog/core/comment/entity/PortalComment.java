@@ -17,19 +17,19 @@ import java.util.Date;
 public class PortalComment extends BaseModel {
 
 	@ApiModelProperty("评论ID" )
-	private String commentId;
+	private Integer commentId;
 
    	@ApiModelProperty("评论内容" )
 	private String commentContent;
 
    	@ApiModelProperty("评论者的用户id" )
-	private String commentUserId;
+	private Integer commentUserId;
 
    	@ApiModelProperty("父id" )
-	private String parentId;
+	private Integer parentId;
 
    	@ApiModelProperty("所属文章id" )
-	private String articleId;
+	private Integer articleId;
 
    	@ApiModelProperty("评论时间" )
 	private Date commentTime;

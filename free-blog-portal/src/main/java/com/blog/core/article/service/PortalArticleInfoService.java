@@ -17,7 +17,7 @@ public interface PortalArticleInfoService {
      * @param articleId
      * @return
      */
-    PortalArticleInfoVO queryPortalArticleInfoDetails(String articleId);
+    PortalArticleInfoVO queryPortalArticleInfoDetails(Integer articleId);
 
     /**
      * 添加文章评论数
@@ -25,5 +25,5 @@ public interface PortalArticleInfoService {
      *
      * @param articleId
      */
-    void editArticleCommentNumber(String articleId);
+    void editArticleCommentNumber(Integer articleId);
 }

@@ -18,7 +18,7 @@
         ORDER BY menu_sort
     </select>
 
-    <select id="selectMenuByMenuId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
+    <select id="selectMenuByMenuId" parameterType="java.lang.Integer" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
             menu_id  menuId,
             parent_id  parentId,
@@ -35,7 +35,7 @@
            menu_id = #{menuId}
     </select>
 
-    <select id="selectMenuByRoleId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
+    <select id="selectMenuByRoleId" parameterType="java.lang.Integer" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
             menu.menu_id  menuId,
             menu.parent_id  parentId,
@@ -53,7 +53,7 @@
 	        roleMenu.role_id = #{roleId}
     </select>
 
-    <select id="selectMenuList" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
+    <select id="selectMenuList" parameterType="java.lang.Integer" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
             menu.menu_id  menuId,
             menu.parent_id  parentId,
@@ -68,7 +68,7 @@
             portal_menu  menu
     </select>
 
-    <select id="selectUserMenuByUserId" parameterType="java.lang.String" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
+    <select id="selectUserMenuByUserId" parameterType="java.lang.Integer" resultType="com.blog.core.system.menu.vo.PortalMenuVO">
         SELECT
             menu.menu_id  menuId,
             menu.parent_id  parentId,

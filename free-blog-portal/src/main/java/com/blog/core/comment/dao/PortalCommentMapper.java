@@ -23,7 +23,7 @@ public interface PortalCommentMapper {
      * @param articleId
      * @return
      */
-    List<PortalCommentTree> selectPortalCommentTree(String articleId);
+    List<PortalCommentTree> selectPortalCommentTree(Integer articleId);
 
     /**
      * 根据id查询评论信息
@@ -31,7 +31,7 @@ public interface PortalCommentMapper {
      * @param commentId
      * @return
      */
-    PortalCommentVO queryCommentById(String commentId);
+    PortalCommentVO queryCommentById(Integer commentId);
 
     /**
      * 根据文章id查询文章所有评论信息
@@ -39,7 +39,7 @@ public interface PortalCommentMapper {
      * @param articleId
      * @return
      */
-    List<PortalCommentVO> queryCommentByArticleId(String articleId);
+    List<PortalCommentVO> queryCommentByArticleId(Integer articleId);
 
     /**
      * 根据父id查询评论信息
@@ -47,7 +47,7 @@ public interface PortalCommentMapper {
      * @param parentId
      * @return
      */
-    List<PortalCommentVO> queryCommentByParentId(String parentId);
+    List<PortalCommentVO> queryCommentByParentId(Integer parentId);
 
     /**
      * 保存评论信息

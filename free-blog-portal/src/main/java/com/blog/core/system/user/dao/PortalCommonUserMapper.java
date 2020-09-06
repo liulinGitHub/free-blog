@@ -23,7 +23,7 @@ public interface PortalCommonUserMapper {
      * @param userId
      * @return
      */
-    PortalCommonUser selectPortalCommonUserByUserId(String userId);
+    PortalCommonUser selectPortalCommonUserByUserId(Integer userId);
 
     /**
      * 根据用户ID查询关注(被关注)的用户信息
@@ -31,5 +31,5 @@ public interface PortalCommonUserMapper {
      * @param userIdList
      * @return
      */
-    List<AttentionUserVO> selectPortalAttentionUserInfo(@Param("userIdList") List<String> userIdList);
+    List<AttentionUserVO> selectPortalAttentionUserInfo(@Param("userIdList") List<Integer> userIdList);
 }

@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @ClassName: PortalMenuVO
  * @description: 菜单返回前端VO
- * @Author: liulin
+ * @Author: 950103
  * @Date: 2019/4/18 23:48
+ * @version: 1.0
  **/
 @Data
 public class PortalMenuVO {

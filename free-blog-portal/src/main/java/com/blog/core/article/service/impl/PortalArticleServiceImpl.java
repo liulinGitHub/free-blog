@@ -31,7 +31,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @ClassNmae: PortalArticleServiceImpl
  * @description: 文章信息service
  * @Author: 950103
  * @Date: 2020/3/25 11:08
@@ -77,7 +76,7 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     }
 
     @Override
-    public PortalArticleDetailsVO queryPortalArticleDetails(String articleId) {
+    public PortalArticleDetailsVO queryPortalArticleDetails(Integer articleId) {
         // 查询文章信息
         PortalArticleDetailsVO portalArticleDetailsVO = this.portalArticleMapper.selectArticleByArticleId(articleId);
         // 查询文章标签
@@ -99,7 +98,6 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     @Override
     public void savePortalArticleDraft(PortalArticleAddDTO portalArticleAddDTO) {
         PortalArticle portalArticle = MapperUtils.mapperBean(portalArticleAddDTO, PortalArticle.class);
-        portalArticle.setArticleId(UUIDUtil.randomUUID32());
         portalArticle.setCreateId(Constants.USER_ID);
         portalArticle.setCreateTime(new Date());
         portalArticle.setCommentStatus(ArticleCommentsStatusEnum.COMMENTS_YES.getValue());
@@ -116,13 +114,13 @@ public class PortalArticleServiceImpl implements PortalArticleService {
     @Override
     public void submitCheckPortalArticle(PortalArticleCheckDTO portalArticleCheckDTO) {
         PortalArticle article = MapperUtils.mapperBean(portalArticleCheckDTO, PortalArticle.class);
-        article.setArticleUserId(RequestHolder.get().toString());
+        //article.setArticleUserId(RequestHolder.get());
         this.portalArticleMapper.submitCheckArticle(article);
     }
 
     @Override
     @Transactional
-    public void deletePortalArticleDraft(String articleId) {
+    public void deletePortalArticleDraft(Integer articleId) {
         this.portalArticleMapper.deletePortalArticleDraft(articleId, EnableEnum.Enable_NO);
     }
 

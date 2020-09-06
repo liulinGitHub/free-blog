@@ -16,7 +16,7 @@ import java.util.Date;
 public class PortalArticle extends BaseModel {
 
     @ApiModelProperty("文章id" )
-    private String articleId;
+    private Integer articleId;
 
     @ApiModelProperty("标题" )
     private String articleTitle;
@@ -34,7 +34,7 @@ public class PortalArticle extends BaseModel {
     private String articleDesc;
 
     @ApiModelProperty("发表文章的作者ID" )
-    private String articleUserId;
+    private Integer articleUserId;
 
     @ApiModelProperty("发布状态 1 未发布 2 已发布" )
     private String releaseStatus;

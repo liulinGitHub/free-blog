@@ -14,9 +14,8 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 
 /**
- * @program: TestTransactionListener
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-30 17:19
  * @Version: 1.0
  */

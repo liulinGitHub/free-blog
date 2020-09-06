@@ -9,10 +9,10 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * @ClassName: BaseController
  * @description:
  * @author: 950103
  * @create: 2019-04-27 13:43
+ * @version: 1.0
  */
 public class BaseController {
 

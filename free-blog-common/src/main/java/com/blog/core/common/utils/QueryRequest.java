@@ -5,10 +5,10 @@ import com.google.common.base.MoreObjects;
 import java.io.Serializable;
 
 /**
- * @CalssNmae: QueryRequest
  * @description:
  * @author: 950103
- * @create: 2019-04-27 13:43
+ * @create_time: 2019-04-27 13:43
+ * @version: 1.0
  */
 public class QueryRequest implements Serializable {
 

@@ -3,11 +3,15 @@ package com.blog.core.common.filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Enumeration;
 
 /**
  * @ClassNmae: CORSFilter
@@ -33,10 +37,12 @@ public class CORSFilter implements Filter {
         response.setHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS,PUT,DELETE,PATCH,HEAD");
         response.setHeader("Access-Control-Allow-Max-Age","3600");
         response.setHeader("Access-Control-Allow-Headers","*");
-        if("OPTIONS".equalsIgnoreCase(request.getMethod())){
-            response.setStatus(HttpServletResponse.SC_OK);
-        }else{
-            filterChain.doFilter(servletRequest,servletResponse);
+        if (HttpMethod.OPTIONS.name().equalsIgnoreCase(request.getMethod())) {
+            response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, request.getHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD));
+            response.setStatus(HttpStatus.NO_CONTENT.value());
+        } else {
+            response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, request.getMethod());
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 

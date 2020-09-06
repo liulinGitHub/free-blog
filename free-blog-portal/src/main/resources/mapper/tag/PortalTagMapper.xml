@@ -18,7 +18,7 @@
         ORDER BY create_time DESC
     </select>
 
-    <select id="selectTagByArticleId" parameterType="java.lang.String" resultType="com.blog.core.tag.vo.PortalTagVO">
+    <select id="selectTagByArticleId" parameterType="java.lang.Integer" resultType="com.blog.core.tag.vo.PortalTagVO">
         SELECT
             tag.tag_id,
             tag.tag_name tagName,

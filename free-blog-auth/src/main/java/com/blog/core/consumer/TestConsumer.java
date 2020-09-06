@@ -10,9 +10,8 @@ import org.apache.rocketmq.spring.core.RocketMQPushConsumerLifecycleListener;
 import org.springframework.stereotype.Component;
 
 /**
- * @program: TestConsumer
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-29 16:50
  * @Version: 1.0
  */

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.blog.core.attentioninfo.dao.PortalAttentionInfoMapper">
 
-    <select id="selectBeAttentionInfo" parameterType="java.lang.String" resultType="java.lang.String">
+    <select id="selectBeAttentionInfo" parameterType="java.lang.Integer" resultType="java.lang.String">
         SELECT
             user_id
         FROM
@@ -13,7 +13,7 @@
             enable = '1'
     </select>
 
-    <select id="selectAttentionInfo" parameterType="java.lang.String" resultType="java.lang.String">
+    <select id="selectAttentionInfo" parameterType="java.lang.Integer" resultType="java.lang.String">
         SELECT
             attention_user_id
         FROM
@@ -26,9 +26,9 @@
 
     <insert id="insertPortalAttention" parameterType="com.blog.core.attentioninfo.entity.PortalUserAttention">
         INSERT INTO portal_user_attention
-        (attention_id, attention_user_id, be_attention_user_id, attention_time, cancel_attention_time, enable)
+        (attention_user_id, be_attention_user_id, attention_time, cancel_attention_time, enable)
         VALUES
-        (#{attentionId}, #{attentionUserId}, #{beAttentionUserId}, #{attentionTime}, #{cancelAttentionTime}, #{enable})
+        (#{attentionUserId}, #{beAttentionUserId}, #{attentionTime}, #{cancelAttentionTime}, #{enable})
     </insert>
 
     <update id="cancelPortalAttention" parameterType="com.blog.core.attentioninfo.entity.PortalUserAttention">

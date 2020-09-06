@@ -25,8 +25,8 @@
 
     <insert id="insertPortalMessage" parameterType="com.blog.core.message.entity.PortalMessage">
         INSERT INTO portal_message
-        (message_id, receive_id, receive_time, send_id, send_time, content, message_type, read_status, enable)
+        (receive_id, receive_time, send_id, send_time, content, message_type, read_status, enable)
         VALUES
-        (#{messageId}, #{receiveId}, #{receiveTime}, #{sendId}, #{sendTime}, #{content}, #{messageType.value}, #{readStatus.value}, #{enable.value})
+        (#{receiveId}, #{receiveTime}, #{sendId}, #{sendTime}, #{content}, #{messageType.value}, #{readStatus.value}, #{enable.value})
     </insert>
 </mapper>

@@ -15,7 +15,7 @@
         </collection>
     </resultMap>
 
-    <select id="selectPortalCommentTree" parameterType="java.lang.String"
+    <select id="selectPortalCommentTree" parameterType="java.lang.Integer"
             resultMap="portalCommentTreeList">
         SELECT
             pc.comment_id commentId,
@@ -80,7 +80,7 @@
         ORDER BY comment.comment_time desc
     </select>
 
-    <select id="queryCommentByArticleId" resultType="com.blog.core.comment.vo.PortalCommentVO" parameterType="java.lang.String">
+    <select id="queryCommentByArticleId" resultType="com.blog.core.comment.vo.PortalCommentVO" parameterType="java.lang.Integer">
         SELECT
             ccomment_id,
             comment_content,
@@ -106,7 +106,6 @@
     <!--auto generated Code-->
     <insert id="insertPortalComment" useGeneratedKeys="true" keyProperty="id" parameterType="com.blog.core.comment.entity.PortalComment">
         INSERT INTO portal_comment (
-            comment_id,
             comment_content,
             comment_user_id,
             parent_id,
@@ -115,8 +114,8 @@
             enable,
             create_id,
             create_time
-        ) VALUES (
-            #{commentId},
+        )
+        VALUES (
             #{commentContent},
             #{commentUserId},
             #{parentId},

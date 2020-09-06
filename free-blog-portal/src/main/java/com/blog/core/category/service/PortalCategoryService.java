@@ -27,5 +27,5 @@ public interface PortalCategoryService {
      * @param articleId
      * @return
      */
-    List<PortalCategoryVO> queryCategoryByArticleId(String articleId);
+    List<PortalCategoryVO> queryCategoryByArticleId(Integer articleId);
 }

@@ -34,7 +34,7 @@ public interface PortalArticleMapper {
      * @param articleId
      * @return
      */
-    PortalArticleDetailsVO selectArticleByArticleId(String articleId);
+    PortalArticleDetailsVO selectArticleByArticleId(Integer articleId);
 
     /**
      * 修改阅读文章量
@@ -42,7 +42,7 @@ public interface PortalArticleMapper {
      * @param articleId
      * @return
      */
-    void updateReadArticleByArticleId(String articleId);
+    void updateReadArticleByArticleId(Integer articleId);
 
     /**
      * 文章点赞
@@ -50,7 +50,7 @@ public interface PortalArticleMapper {
      * @param articleId
      * @return
      */
-    int updateApproves(String articleId);
+    int updateApproves(Integer articleId);
 
     /**
      * 增加评论数
@@ -58,7 +58,7 @@ public interface PortalArticleMapper {
      * @param articleId
      * @return
      */
-    int updateComments(String articleId);
+    int updateComments(Integer articleId);
 
     /**
      * 删除文章草稿
@@ -67,7 +67,7 @@ public interface PortalArticleMapper {
      * @param enableEnum
      * @return
      */
-    int deletePortalArticleDraft(@Param("articleId") String articleId, @Param("EnableEnum") EnableEnum enableEnum);
+    int deletePortalArticleDraft(@Param("articleId") Integer articleId, @Param("EnableEnum") EnableEnum enableEnum);
 
     /**
      * 文章已经升温
@@ -75,7 +75,7 @@ public interface PortalArticleMapper {
      * @param articleId
      * @return
      */
-    int updateTemperature(String articleId);
+    int updateTemperature(Integer articleId);
 
     /**
      * 保存草稿

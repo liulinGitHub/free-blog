@@ -10,9 +10,8 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 import org.apache.rocketmq.common.message.Message;
 /**
- * @program: SyncProducer
  * @description:
- * @author: liulin
+ * @author: 950103
  * @create: 2020-05-29 18:14
  * @Version: 1.0
  */

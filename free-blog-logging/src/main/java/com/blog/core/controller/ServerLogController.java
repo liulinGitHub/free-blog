@@ -11,9 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: ManageLogController
  * @description: 后台系统操作日志Controller
- * @author: liulin
+ * @author: 950103
  * @create: 2019-07-22 10:39
  * @Version: 1.0
  */

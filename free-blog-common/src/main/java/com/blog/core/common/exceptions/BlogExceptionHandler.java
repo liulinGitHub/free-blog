@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.security.access.AccessDeniedException;
 
 /**
- * @ClassName: BlogExceptionHandler
  * @description: 自定义全局异常
  * @author: 950103
- * @create: 2019-04-22 17:24
+ * @create_time: 2019-04-22 17:24
+ * @version: 1.0
  */
 @Slf4j
 @ControllerAdvice
@@ -40,27 +40,6 @@ public class BlogExceptionHandler {
         return ResponseBo.tokenError(ExceptionEnum.TOKEN_NONE.getName());
     }
 
-    /**
-     * 数据未找到
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(DataNotFoundException.class)
-    @ResponseBody
-    public ResponseBo DataNotFoundException(DataNotFoundException e) {
-        return ResponseBo.error(ExceptionEnum.DATA_NOT_FOUND.getName());
-    }
-
-    /**
-     * 没有权限访问
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(NotPermissionException.class)
-    @ResponseBody
-    public ResponseBo NotPermissionException(DataNotFoundException e) {
-        return ResponseBo.error(ExceptionEnum.AUTHORIZATION_ERROR.getName());
-    }
 
     /**
      * 业务异常
@@ -74,7 +53,7 @@ public class BlogExceptionHandler {
     }
 
     /**
-     *
+     * 授权异常
      * @param e
      * @return
      */
@@ -82,6 +61,13 @@ public class BlogExceptionHandler {
     @ResponseBody
     public ResponseBo accessDeniedException(BlogAuth2Exception e) {
         log.error("授权异常", e);
+        return ResponseBo.error(e.getMessage());
+    }
+
+    @ExceptionHandler(CaptchaException.class)
+    @ResponseBody
+    public ResponseBo accessDeniedException(CaptchaException e) {
+        log.error("验证码异常", e);
         return ResponseBo.error(e.getMessage());
     }
 }

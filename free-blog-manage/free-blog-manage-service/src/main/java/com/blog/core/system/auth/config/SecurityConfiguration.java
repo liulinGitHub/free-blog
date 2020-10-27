@@ -1,10 +1,10 @@
 package com.blog.core.system.auth.config;
 
-import com.blog.core.common.filter.CaptchaFilter;
 import com.blog.core.system.auth.service.CustomizeUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @ClassNmae: SecurityConfiguration
@@ -37,14 +36,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        CaptchaFilter captchaFilter = new CaptchaFilter();
+        // CaptchaFilter captchaFilter = new CaptchaFilter();
 
-        http.addFilterBefore(captchaFilter, UsernamePasswordAuthenticationFilter.class)
-            .authorizeRequests()
+        http.authorizeRequests()
             .antMatchers(
-                    "/actuator/**",
+                    "/oauth/**",
                     "/mobile/**").permitAll()
             .anyRequest().authenticated()
+            .and().cors()
             .and().csrf().disable();
     }
 
@@ -75,4 +74,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //        provider.setUserDetailsService(userDetailsService);
 //        return provider;
 //    }
+
+        public static void main(String[] args) {
+        // $2a$10$RJxDZ4bZaelml3Kfzjnv9ep110tbKE4BD5Zmi5kSUj5Vn1fwvHTGq
+        BCryptPasswordEncoder delegatingPasswordEncoder = new BCryptPasswordEncoder();
+        String encode = delegatingPasswordEncoder.encode("123456");
+        System.out.println(encode);
+    }
 }

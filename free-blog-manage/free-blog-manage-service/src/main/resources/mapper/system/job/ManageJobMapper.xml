@@ -10,11 +10,11 @@
         enable enable,
         create_time createTime
         FROM
-            manage_job
+            sys_job
     </select>
 
     <update id="updateManageJob" parameterType="com.blog.core.system.job.entity.ManageJob">
-        UPDATE manage_job
+        UPDATE sys_job
         SET
             job_name = #{jobName},
             update_id = #{updateId},
@@ -23,7 +23,7 @@
     </update>
 
     <insert id="insertManageJob" parameterType="com.blog.core.system.job.entity.ManageJob">
-        INSERT INTO manage_job
+        INSERT INTO sys_job
         (
         job_name,
         dept_id,

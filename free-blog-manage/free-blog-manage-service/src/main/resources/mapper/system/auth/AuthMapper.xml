@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.auth.dao.AuthMapper">
+
+    <select id="selectUserInfoByUserId" parameterType="java.lang.Integer" resultType="com.blog.core.system.auth.vo.UserInfoVO">
+        SELECT
+            user_id userId,
+            user_name userName,
+            nick_name nickName,
+            avatar avatar,
+            gender gender,
+            signature signature,
+            telephone telephone,
+            email email,
+            login_ip loginIp,
+            last_login_time lastLoginTime
+        FROM
+            sys_user
+        WHERE user_id = #{userId}
+    </select>
+</mapper>

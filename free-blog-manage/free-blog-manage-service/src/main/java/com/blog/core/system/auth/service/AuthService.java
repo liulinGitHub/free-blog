@@ -1,6 +1,6 @@
 package com.blog.core.system.auth.service;
 
-import com.blog.core.system.auth.vo.ManageUserInfoVO;
+import com.blog.core.system.auth.vo.UserInfoVO;
 
 /**
  * @description:
@@ -15,5 +15,5 @@ public interface AuthService {
      *
      * @return
      */
-    ManageUserInfoVO queryUserInfo();
+    UserInfoVO queryUserInfo();
 }

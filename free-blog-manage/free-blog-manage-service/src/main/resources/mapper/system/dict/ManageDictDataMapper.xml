@@ -12,7 +12,7 @@
             create_id createName,
             create_time createDate
         FROM
-            manage_dict_data
+            sys_dict_data
         WHERE
             dict_id = #{dictId}
         ORDER BY sort DESC
@@ -20,20 +20,20 @@
 
     <select id="selectManageDictDataByFieldType" parameterType="java.lang.String" resultType="com.blog.core.system.dict.vo.ManageDictDataVO">
         SELECT
-            mdd.dict_data_id dictDataId,
-            mdd.dict_id dictId,
-            mdd.name,
-            mdd.value,
-            mdd.sort
+            sdd.dict_data_id dictDataId,
+            sdd.dict_id dictId,
+            sdd.name,
+            sdd.value,
+            sdd.sort
         FROM
-            manage_dict md
-            LEFT JOIN manage_dict_data mdd ON md.dict_id = mdd.dict_id
+            sys_dict sd
+            LEFT JOIN sys_dict_data sdd ON sd.dict_id = sdd.dict_id
         WHERE
-            md.field_type = #{fieldType}
-        ORDER BY mdd.sort DESC
+            sd.field_type = #{fieldType}
+        ORDER BY sdd.sort DESC
     </select>
 
     <delete id="deleteManageDictData" parameterType="java.lang.Integer">
-        DELETE FROM manage_dict_data WHERE dict_data_id = #{dictDataId}
+        DELETE FROM sys_dict_data WHERE dict_data_id = #{dictDataId}
     </delete>
 </mapper>

@@ -3,9 +3,9 @@ package com.blog.core.system.auth.service;
 import com.blog.core.common.enums.EnableEnum;
 import com.blog.core.common.exceptions.BlogRuntimeException;
 import com.blog.core.system.auth.entity.SecurityUser;
-import com.blog.core.system.role.service.ManageRoleService;
-import com.blog.core.system.user.service.ManageUserService;
-import com.blog.core.system.user.vo.ManageUserLoginVO;
+import com.blog.core.system.role.service.RoleService;
+import com.blog.core.system.user.service.UserService;
+import com.blog.core.system.user.vo.UserLoginVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,10 +28,10 @@ import java.util.Objects;
 public class CustomizeUserDetailsService implements UserDetailsService {
 
     @Resource
-    private ManageUserService manageUserService;
+    private UserService UserService;
 
     @Resource
-    private ManageRoleService manageRoleService;
+    private RoleService RoleService;
 
     /**
      * 获取用户信息  返回UserDetails对象
@@ -42,26 +42,26 @@ public class CustomizeUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ManageUserLoginVO manageUserLoginVO = this.manageUserService.queryUserByUserName(username);
-        if(Objects.isNull(manageUserLoginVO)){
+        UserLoginVO userLoginVO = this.UserService.queryUserByUserName(username);
+        if(Objects.isNull(userLoginVO)){
             throw new BlogRuntimeException("用户名不正确！");
         }
-        if(EnableEnum.Enable_NO.getValue().equals(manageUserLoginVO.getUserId())) {
+        if(EnableEnum.Enable_NO.getValue().equals(userLoginVO.getUserId())) {
             throw new BlogRuntimeException("账号未激活！");
         }
-        return createSecurityUserDetailsUser(manageUserLoginVO);
+        return createSecurityUserDetailsUser(userLoginVO);
     }
 
-    private SecurityUser createSecurityUserDetailsUser(ManageUserLoginVO manageUserLoginVO) {
-        Collection<GrantedAuthority> authorities = this.manageRoleService.queryRoleInfoByUserId(manageUserLoginVO.getUserId());
-        return new SecurityUser(manageUserLoginVO.getUserId(),
-                manageUserLoginVO.getUsername(),
-                manageUserLoginVO.getPassword(),
-                manageUserLoginVO.getGender(),
-                manageUserLoginVO.getNickName(),
-                manageUserLoginVO.getAvatar(),
-                manageUserLoginVO.getTelephone(),
-                manageUserLoginVO.getEmail(),
+    private SecurityUser createSecurityUserDetailsUser(UserLoginVO userLoginVO) {
+        Collection<GrantedAuthority> authorities = this.RoleService.queryRoleInfoByUserId(userLoginVO.getUserId());
+        return new SecurityUser(userLoginVO.getUserId(),
+                userLoginVO.getUsername(),
+                userLoginVO.getPassword(),
+                userLoginVO.getGender(),
+                userLoginVO.getNickName(),
+                userLoginVO.getAvatar(),
+                userLoginVO.getTelephone(),
+                userLoginVO.getEmail(),
                 authorities);
     }
 }

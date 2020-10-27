@@ -6,11 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 /**
- * @ClassName: FreeBlogPortalApplication
  * @description: 前台页面展示系统启动类
  * @author: 950103
- * @create: 2019-10-09 16:51
- * @Version: 1.0
+ * @create_time: 2019-10-09 16:51
+ * @version: 1.0
  */
 @SpringBootApplication
 @MapperScan("com.blog.core.**.dao")

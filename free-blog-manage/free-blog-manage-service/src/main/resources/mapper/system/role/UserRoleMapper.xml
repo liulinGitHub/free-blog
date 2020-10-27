@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.role.dao.UserRoleMapper">
+
+    <delete id="deleteUserRoleByUserId" parameterType="java.lang.Integer">
+        DELETE FROM sys_user_role
+        WHERE user_id = #{userId}
+    </delete>
+
+    <insert id="insertUserRole">
+        INSERT INTO sys_user_role
+        (
+        role_id,
+        user_id,
+        create_id,
+        create_time)
+        VALUES
+        <foreach collection="userRoleList" item="item" separator=",">
+            (
+            #{item.roleId},
+            #{item.userId},
+            #{item.createId},
+            #{item.createTime})
+        </foreach>
+    </insert>
+</mapper>

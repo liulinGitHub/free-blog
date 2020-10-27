@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.user.dao.UserMapper">
+
+    <select id="queryUserByPage" resultType="com.blog.core.system.user.vo.UserListVO">
+        SELECT
+            su.user_id userId,
+            su.user_name userName,
+            su.password password,
+            su.nick_name nickName,
+            su.avatar avatar,
+            su.gender gender,
+            su.signature signature,
+            su.telephone telephone,
+            su.email email,
+            su.login_ip loginIp,
+            su.last_login_time lastLoginTime,
+            su.enable enable,
+            su.create_time createTime,
+            u.user_name createName
+        FROM
+            sys_user su
+        LEFT JOIN sys_user u ON su.create_id = u.user_id
+    </select>
+
+    <select id="selectUserByUserId" parameterType="java.lang.Integer" resultType="com.blog.core.system.user.vo.UserDetailVO">
+        SELECT
+            user_id userId,
+            user_name userName,
+            password password,
+            nick_name nickName,
+            avatar avatar,
+            gender gender,
+            signature signature,
+            telephone telephone,
+            email email,
+            login_ip loginIp,
+            last_login_time lastLoginTime,
+            enable
+        FROM
+            sys_user
+        WHERE
+            user_id = #{userId}
+    </select>
+
+    <select id="selectUserByUserName" parameterType="java.lang.String" resultType="com.blog.core.system.user.vo.UserLoginVO">
+        SELECT
+            user_id userId,
+            user_name userName,
+            password password,
+            nick_name nickName,
+            avatar avatar,
+            gender gender,
+            signature signature,
+            telephone telephone,
+            email email,
+            login_ip loginIp,
+            last_login_time lastLoginTime,
+            enable enable,
+            create_time createTime,
+            create_id createId
+        FROM
+            sys_user
+        WHERE
+            user_name = #{userName}
+    </select>
+
+    <insert id="insertUser" parameterType="com.blog.core.system.user.entity.User" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO sys_user
+        (
+            user_name,
+            nick_name,
+            password,
+            gender,
+            telephone,
+            email,
+            enable,
+            create_time,
+            create_id
+        )
+        VALUES
+        (
+            #{userName},
+            #{nickName},
+            #{password},
+            #{gender},
+            #{telephone},
+            #{email},
+            #{enable.value},
+            #{createTime},
+            #{createId}
+        )
+    </insert>
+
+    <update id="updateUser" parameterType="com.blog.core.system.user.entity.User">
+        UPDATE sys_user
+        SET user_name = #{userName},
+            nick_name = #{nickName},
+            gender = #{gender},
+            telephone = #{telephone},
+            email = #{email},
+            enable = #{enable},
+            update_id = #{updateId},
+            update_time = #{updateTime}
+        WHERE
+            user_id = #{userId}
+    </update>
+
+    <update id="updateUserLoginInfo" parameterType="com.blog.core.system.user.entity.User">
+        UPDATE sys_user
+        SET
+            login_ip = #{lastLoginIp},
+            last_login_time = #{lastLoginTime},
+            update_id = #{updateId},
+            update_time = #{updateTime}
+        WHERE
+            user_id = #{userId}
+    </update>
+
+    <update id="disableUserByUserId" parameterType="com.blog.core.system.user.entity.User">
+
+    </update>
+
+    <update id="enableUserByUserId" parameterType="com.blog.core.system.user.entity.User">
+
+    </update>
+
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.core.system.role.dao.RoleMapper">
+
+    <select id="selectRoleByPage" resultType="com.blog.core.system.role.vo.RoleListVO">
+        SELECT
+            sr.role_id roleId,
+            sr.role_name roleName,
+            sr.role_describe roleDescribe,
+            sr.enable enable,
+            sr.create_time createTime,
+            su.user_name createName
+        FROM
+            sys_role sr
+            LEFT JOIN sys_user su ON sr.create_id = su.user_id
+    </select>
+
+    <select id="selectRoleList" resultType="com.blog.core.system.role.vo.RoleListVO">
+        SELECT
+            role_id roleId,
+            role_name roleName,
+            role_describe roleDescribe,
+            create_time createTime
+        FROM
+            sys_role sr
+        WHERE
+            enable = '1'
+    </select>
+
+    <select id="selectRoleDetails" parameterType="java.lang.Integer" resultType="com.blog.core.system.role.vo.RoleDetailsVO">
+        SELECT
+            role_id roleId,
+            role_name roleName,
+            role_describe roleDescribe,
+            enable enable
+        FROM
+            sys_role
+        WHERE
+            role_id = #{roleId}
+    </select>
+
+
+    <select id="selectUserRoleByUserId" parameterType="java.lang.Integer"
+            resultType="com.blog.core.system.role.vo.RoleListVO">
+        SELECT
+            sr.role_id roleId,
+            sr.role_name roleName
+        FROM
+            sys_role sr
+            LEFT JOIN sys_user_role sur ON sr.role_id = sur.role_id
+        WHERE sur.user_id = #{userId}
+    </select>
+
+    <select id="selectRoleInfoByUserId" parameterType="java.lang.Integer"
+            resultType="com.blog.core.system.role.vo.RoleInfoVO">
+        SELECT
+            sm.permission permission
+        FROM
+            sys_menu sm
+            LEFT JOIN sys_role_menu srm ON sm.menu_id = srm.menu_id
+            LEFT JOIN sys_role sr ON srm.role_id = sr.role_id
+            LEFT JOIN sys_user_role sur ON sr.role_id = sur.role_id
+        WHERE
+            sm.permission IS NOT NULL
+            AND sur.user_id = #{userId}
+    </select>
+</mapper>

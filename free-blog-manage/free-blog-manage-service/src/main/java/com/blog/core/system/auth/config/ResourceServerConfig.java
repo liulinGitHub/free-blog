@@ -43,6 +43,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         registry.anyRequest()
                 .authenticated()
                 .and()
+                .cors()
+                .and()
                 .csrf()
                 .disable();
     }

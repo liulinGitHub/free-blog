@@ -24,8 +24,8 @@ public class ManageArticleController extends BaseController {
     private ManageArticleService manageArticleService;
 
     @ApiOperation(value="分页查询文章信息", notes="")
-    @PostMapping("/all")
-    public ResponseBo queryManageArticleByPage(QueryRequest queryRequest){
+    @PostMapping("/queryPage")
+    public ResponseBo queryManageArticleByPage(QueryRequest queryRequest) {
         return ResponseBo.newDataResponse(super.selectByPageNumSize(queryRequest, () ->
                 this.manageArticleService.queryManageArticleByPage()));
     }

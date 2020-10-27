@@ -10,7 +10,7 @@
             create_id createName,
             create_time createTime
         FROM
-            manage_dict
+            sys_dict
     </select>
 
     <select id="selectManageDictByDictId" parameterType="java.lang.Integer" resultType="com.blog.core.system.dict.vo.ManageDictVO">
@@ -20,13 +20,13 @@
             remark remark,
             create_time createTime
         FROM
-            manage_dict
+            sys_dict
         WHERE
             dict_id = #{dictId}
     </select>
 
     <insert id="insertManageDict" parameterType="com.blog.core.system.dict.entity.ManageDict">
-        INSERT INTO manage_dict
+        INSERT INTO sys_dict
         (field_type, remark, create_id, create_time)
         VALUES
         (#{fieldType}, #{remark}, #{createId}, #{createTime})
@@ -34,7 +34,7 @@
 
     <update id="updateManageDict" parameterType="com.blog.core.system.dict.entity.ManageDict">
         UPDATE
-            manage_dict
+            sys_dict
         SET
             field_type = #{fieldType},
             remark = #{remark},
@@ -45,6 +45,6 @@
     </update>
 
     <delete id="deleteManageDict" parameterType="java.lang.Integer">
-        DELETE FROM manage_dict WHERE dict_id = #{dictId}
+        DELETE FROM sys_dict WHERE dict_id = #{dictId}
     </delete>
 </mapper>

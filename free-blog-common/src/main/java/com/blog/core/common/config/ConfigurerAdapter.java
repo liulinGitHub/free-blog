@@ -15,8 +15,7 @@
 // * @Version: 1.0
 // */
 //@Configuration
-//@EnableWebMvc
-//public class ConfigurerAdapter implements WebMvcConfigurer {
+//public class ConfigurerAdapter {
 //
 //    @Bean
 //    public CorsFilter corsFilter() {

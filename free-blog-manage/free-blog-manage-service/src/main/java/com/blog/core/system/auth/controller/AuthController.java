@@ -7,13 +7,14 @@ import com.blog.core.common.utils.ResponseBo;
 import com.blog.core.system.auth.entity.SecurityUser;
 import com.blog.core.system.auth.service.AuthService;
 import com.blog.core.system.auth.utils.SecurityUtils;
-import com.blog.core.system.auth.vo.ManageUserInfoVO;
-import com.blog.core.system.onlineuser.service.ManageOnlineUserService;
-import com.blog.core.system.user.dto.ManageUserLoginInfoEditDTO;
-import com.blog.core.system.user.service.ManageUserService;
+import com.blog.core.system.auth.vo.UserInfoVO;
+import com.blog.core.system.onlineuser.service.OnlineUserService;
+import com.blog.core.system.user.dto.UserLoginInfoEditDTO;
+import com.blog.core.system.user.service.UserService;
 import com.wf.captcha.ArithmeticCaptcha;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,10 +44,10 @@ public class AuthController {
     private AuthService authService;
 
     @Autowired
-    private ManageUserService manageUserService;
+    private UserService UserService;
 
     @Autowired
-    private ManageOnlineUserService manageOnlineUserService;
+    private OnlineUserService onlineUserService;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -69,25 +70,25 @@ public class AuthController {
         return ResponseBo.newDataResponse(imgResult);
     }
 
-
+    @LogManage("获取用户信息")
     @ApiOperation("获取用户信息")
     @GetMapping(value = "/info")
     public ResponseBo queryUserInfo(HttpServletRequest request){
         SecurityUser currentUser = SecurityUtils.getUser();
         //获取用户信息
-        ManageUserInfoVO manageUserInfoVO = this.authService.queryUserInfo();
+        UserInfoVO userInfoVO = this.authService.queryUserInfo();
         //修改用户登录相关信息
-        ManageUserLoginInfoEditDTO manageUserLoginInfoEditDTO = ManageUserLoginInfoEditDTO.builder()
+        UserLoginInfoEditDTO userLoginInfoEditDTO = UserLoginInfoEditDTO.builder()
                 .userId(currentUser.getUserId())
                 .lastLoginIp(IPUtils.getIpAddr(request))
                 .lastLoginTime(new Date())
                 .updateId(currentUser.getUserId())
                 .updateTime(new Date())
                 .build();
-        this.manageUserService.editManageUserLoginInfo(manageUserLoginInfoEditDTO);
+        this.UserService.editUserLoginInfo(userLoginInfoEditDTO);
         //保存在线用户
-        this.manageOnlineUserService.addOnlineUser(currentUser);
-        return ResponseBo.newDataResponse(manageUserInfoVO);
+        this.onlineUserService.addOnlineUser(currentUser);
+        return ResponseBo.newDataResponse(userInfoVO);
     }
 
     @LogManage("退出登录")
